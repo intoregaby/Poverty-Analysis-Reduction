@@ -1,0 +1,35 @@
+{
+  "ussd": {
+    "menu": "",
+    "back": "",
+    "bye": "",
+    "invalid": "",
+    "notRegistered": "",
+    "blocked": "",
+    "expired": "",
+    "tooMany": "",
+    "error": "",
+    "insurance": "",
+    "insuranceNone": "",
+    "status": {
+      "paid": "",
+      "partial": "",
+      "unpaid": ""
+    },
+    "visit": "",
+    "visitNone": "",
+    "agent": "",
+    "agentNone": "",
+    "voting": "",
+    "votingNone": "",
+    "state": {
+      "open": "",
+      "upcoming": "",
+      "closed": ""
+    },
+    "voted": "",
+    "notVoted": "",
+    "language": "",
+    "languageSaved": ""
+  }
+}

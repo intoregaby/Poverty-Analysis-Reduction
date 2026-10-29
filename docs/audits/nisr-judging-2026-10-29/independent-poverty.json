@@ -1,0 +1,187 @@
+{
+  "method": "Independent direct weighted mean of supplied poverty flag; no application calculation helpers imported. Does not independently validate poverty-line construction or other indicators.",
+  "national": 27.4,
+  "all_30_match": true,
+  "districts": [
+    {
+      "district": "Nyarugenge",
+      "calculated": 6.8,
+      "dashboard": 6.8,
+      "households": 647
+    },
+    {
+      "district": "Gasabo",
+      "calculated": 11.1,
+      "dashboard": 11.1,
+      "households": 644
+    },
+    {
+      "district": "Kicukiro",
+      "calculated": 6.9,
+      "dashboard": 6.9,
+      "households": 647
+    },
+    {
+      "district": "Nyanza",
+      "calculated": 43.3,
+      "dashboard": 43.3,
+      "households": 486
+    },
+    {
+      "district": "Gisagara",
+      "calculated": 45.6,
+      "dashboard": 45.6,
+      "households": 486
+    },
+    {
+      "district": "Nyaruguru",
+      "calculated": 39.7,
+      "dashboard": 39.7,
+      "households": 486
+    },
+    {
+      "district": "Huye",
+      "calculated": 24.2,
+      "dashboard": 24.2,
+      "households": 485
+    },
+    {
+      "district": "Nyamagabe",
+      "calculated": 51.4,
+      "dashboard": 51.4,
+      "households": 486
+    },
+    {
+      "district": "Ruhango",
+      "calculated": 15.0,
+      "dashboard": 15.0,
+      "households": 486
+    },
+    {
+      "district": "Muhanga",
+      "calculated": 15.0,
+      "dashboard": 15.0,
+      "households": 486
+    },
+    {
+      "district": "Kamonyi",
+      "calculated": 39.7,
+      "dashboard": 39.7,
+      "households": 484
+    },
+    {
+      "district": "Karongi",
+      "calculated": 38.2,
+      "dashboard": 38.2,
+      "households": 486
+    },
+    {
+      "district": "Rutsiro",
+      "calculated": 40.8,
+      "dashboard": 40.8,
+      "households": 486
+    },
+    {
+      "district": "Rubavu",
+      "calculated": 38.8,
+      "dashboard": 38.8,
+      "households": 485
+    },
+    {
+      "district": "Nyabihu",
+      "calculated": 20.2,
+      "dashboard": 20.2,
+      "households": 486
+    },
+    {
+      "district": "Ngororero",
+      "calculated": 30.2,
+      "dashboard": 30.2,
+      "households": 485
+    },
+    {
+      "district": "Rusizi",
+      "calculated": 44.2,
+      "dashboard": 44.2,
+      "households": 486
+    },
+    {
+      "district": "Nyamasheke",
+      "calculated": 42.8,
+      "dashboard": 42.8,
+      "households": 486
+    },
+    {
+      "district": "Rulindo",
+      "calculated": 21.6,
+      "dashboard": 21.6,
+      "households": 486
+    },
+    {
+      "district": "Gakenke",
+      "calculated": 24.5,
+      "dashboard": 24.5,
+      "households": 486
+    },
+    {
+      "district": "Musanze",
+      "calculated": 21.0,
+      "dashboard": 21.0,
+      "households": 486
+    },
+    {
+      "district": "Burera",
+      "calculated": 22.0,
+      "dashboard": 22.0,
+      "households": 486
+    },
+    {
+      "district": "Gicumbi",
+      "calculated": 13.3,
+      "dashboard": 13.3,
+      "households": 486
+    },
+    {
+      "district": "Rwamagana",
+      "calculated": 23.8,
+      "dashboard": 23.8,
+      "households": 486
+    },
+    {
+      "district": "Nyagatare",
+      "calculated": 36.4,
+      "dashboard": 36.4,
+      "households": 486
+    },
+    {
+      "district": "Gatsibo",
+      "calculated": 18.4,
+      "dashboard": 18.4,
+      "households": 486
+    },
+    {
+      "district": "Kayonza",
+      "calculated": 36.6,
+      "dashboard": 36.6,
+      "households": 485
+    },
+    {
+      "district": "Kirehe",
+      "calculated": 14.2,
+      "dashboard": 14.2,
+      "households": 486
+    },
+    {
+      "district": "Ngoma",
+      "calculated": 30.9,
+      "dashboard": 30.9,
+      "households": 486
+    },
+    {
+      "district": "Bugesera",
+      "calculated": 23.7,
+      "dashboard": 23.7,
+      "households": 486
+    }
+  ]
+}

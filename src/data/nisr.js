@@ -1,0 +1,36 @@
+// Official district names and their provinces. Every statistic shown in the app comes from the survey-derived
+// files in this folder (dashboard-eicv7-aggregates.json, dashboard-trends.json), never from this list.
+export const PROVINCES = ["Eastern","Kigali City","Northern","Southern","Western"];
+
+export const DISTRICTS = [
+  { name: "Bugesera", province: "Eastern" },
+  { name: "Burera", province: "Northern" },
+  { name: "Gakenke", province: "Northern" },
+  { name: "Gasabo", province: "Kigali City" },
+  { name: "Gatsibo", province: "Eastern" },
+  { name: "Gicumbi", province: "Northern" },
+  { name: "Gisagara", province: "Southern" },
+  { name: "Huye", province: "Southern" },
+  { name: "Kamonyi", province: "Southern" },
+  { name: "Karongi", province: "Western" },
+  { name: "Kayonza", province: "Eastern" },
+  { name: "Kicukiro", province: "Kigali City" },
+  { name: "Kirehe", province: "Eastern" },
+  { name: "Muhanga", province: "Southern" },
+  { name: "Musanze", province: "Northern" },
+  { name: "Ngoma", province: "Eastern" },
+  { name: "Ngororero", province: "Western" },
+  { name: "Nyabihu", province: "Western" },
+  { name: "Nyagatare", province: "Eastern" },
+  { name: "Nyamagabe", province: "Southern" },
+  { name: "Nyamasheke", province: "Western" },
+  { name: "Nyanza", province: "Southern" },
+  { name: "Nyarugenge", province: "Kigali City" },
+  { name: "Nyaruguru", province: "Southern" },
+  { name: "Rubavu", province: "Western" },
+  { name: "Ruhango", province: "Southern" },
+  { name: "Rulindo", province: "Northern" },
+  { name: "Rusizi", province: "Western" },
+  { name: "Rutsiro", province: "Western" },
+  { name: "Rwamagana", province: "Eastern" },
+];

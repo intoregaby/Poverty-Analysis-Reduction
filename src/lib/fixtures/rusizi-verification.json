@@ -1,0 +1,512 @@
+{
+ "status": "Completed",
+ "generated_at": "2026-10-29T12:07:20+00:00",
+ "district": "Rusizi",
+ "summary": {
+  "total": 10,
+  "counts": {
+   "verified_match": 7,
+   "discrepancy_requires_review": 0,
+   "not_externally_verified": 1,
+   "methodology_mismatch": 2,
+   "new_analytical_finding": 0
+  },
+  "unresolved": 0,
+  "unresolved_items": []
+ },
+ "registry": [
+  {
+   "indicator_id": "poverty_headcount",
+   "indicator": "Poverty rate (district)",
+   "district": "Rusizi",
+   "survey_period": "2023/24",
+   "internal_value": 44.2,
+   "published_value": 44.16,
+   "unit": "percent of people",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Main Indicators Report 2023/24",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "source_page_or_table": "Table A9.23, PDF page 109 (printed page 107)",
+   "verification_status": "verified_match",
+   "status_label": "Verified match",
+   "methodology_comparable": true,
+   "verification_notes": "The published value matches within rounding. This confirms the value only; it does not independently validate how the internal figure was calculated.",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "source_version": "6105321b6eda",
+   "published_standard_error": 3.43,
+   "published_interval": [
+    37.43,
+    50.9
+   ],
+   "estimate_type": "observed",
+   "difference": 0.04,
+   "internal_definition": "Population-weighted share of residents with pov_jan == Poor (January 2024 poverty method).",
+   "published_definition": "Headcount poverty rate (%) by district, EICV7 2023/24.",
+   "other_published": []
+  },
+  {
+   "indicator_id": "poverty_headcount_national",
+   "indicator": "Poverty rate (Rwanda)",
+   "district": "Rwanda",
+   "survey_period": "2023/24",
+   "internal_value": 27.4,
+   "published_value": 27.4,
+   "unit": "percent of people",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Main Indicators Report 2023/24",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "source_page_or_table": "Table 9.1, PDF page 81 (printed page 79)",
+   "verification_status": "verified_match",
+   "status_label": "Verified match",
+   "methodology_comparable": true,
+   "verification_notes": "The published value matches within rounding. This confirms the value only; it does not independently validate how the internal figure was calculated.",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "source_version": "6105321b6eda",
+   "published_standard_error": 0.5,
+   "published_interval": [
+    26.4,
+    28.3
+   ],
+   "estimate_type": "observed",
+   "difference": 0.0,
+   "internal_definition": "Population-weighted share of residents with pov_jan == Poor, all Rwanda.",
+   "published_definition": "Headcount poverty rate (%), Rwanda, EICV7 2023/24.",
+   "other_published": []
+  },
+  {
+   "indicator_id": "extreme_poverty_national",
+   "indicator": "Extreme poverty rate (Rwanda)",
+   "district": "Rwanda",
+   "survey_period": "2023/24",
+   "internal_value": 5.4,
+   "published_value": 5.4,
+   "unit": "percent of people",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Main Indicators Report 2023/24",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "source_page_or_table": "Table 9.2, PDF page 81 (printed page 79)",
+   "verification_status": "verified_match",
+   "status_label": "Verified match",
+   "methodology_comparable": true,
+   "verification_notes": "The published value matches within rounding. This confirms the value only; it does not independently validate how the internal figure was calculated.",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "source_version": "6105321b6eda",
+   "published_standard_error": 0.3,
+   "published_interval": [
+    4.9,
+    6.0
+   ],
+   "estimate_type": "observed",
+   "difference": 0.0,
+   "internal_definition": "Population-weighted share of residents below the extreme poverty line, all Rwanda.",
+   "published_definition": "Headcount extreme poverty rate (%), Rwanda, EICV7 2023/24.",
+   "other_published": []
+  },
+  {
+   "indicator_id": "health_insurance",
+   "indicator": "People with current health insurance (district)",
+   "district": "Rusizi",
+   "survey_period": "2023/24",
+   "internal_value": 78.1,
+   "published_value": 78.09,
+   "unit": "percent of people",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Main Indicators Report 2023/24",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "source_page_or_table": "Table A3.7, PDF page 93 (printed page 91)",
+   "verification_status": "verified_match",
+   "status_label": "Verified match",
+   "methodology_comparable": true,
+   "verification_notes": "The published value matches within rounding. This confirms the value only; it does not independently validate how the internal figure was calculated.",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "source_version": "6105321b6eda",
+   "published_standard_error": 2.52,
+   "published_interval": [
+    73.16,
+    83.03
+   ],
+   "estimate_type": "observed",
+   "difference": 0.01,
+   "internal_definition": "Person-weighted share answering Yes to current health insurance; Don't know excluded.",
+   "published_definition": "Percentage (%) of population with health insurance, by district.",
+   "other_published": []
+  },
+  {
+   "indicator_id": "health_insurance_national",
+   "indicator": "People with current health insurance (Rwanda)",
+   "district": "Rwanda",
+   "survey_period": "2023/24",
+   "internal_value": 85.3,
+   "published_value": 85.31,
+   "unit": "percent of people",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Main Indicators Report 2023/24",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "source_page_or_table": "Table A3.7, PDF page 93 (printed page 91)",
+   "verification_status": "verified_match",
+   "status_label": "Verified match",
+   "methodology_comparable": true,
+   "verification_notes": "The published value matches within rounding. This confirms the value only; it does not independently validate how the internal figure was calculated.",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "source_version": "6105321b6eda",
+   "published_standard_error": 0.36,
+   "published_interval": [
+    84.6,
+    86.02
+   ],
+   "estimate_type": "observed",
+   "difference": -0.01,
+   "internal_definition": "Person-weighted share answering Yes to current health insurance, all Rwanda; Don't know excluded.",
+   "published_definition": "Percentage (%) of population with health insurance, Rwanda.",
+   "other_published": []
+  },
+  {
+   "indicator_id": "grid_connection",
+   "indicator": "Households with grid electricity (district)",
+   "district": "Rusizi",
+   "survey_period": "2023/24",
+   "internal_value": 66.0,
+   "published_value": 78.85,
+   "unit": "percent of households",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Main Indicators Report 2023/24",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "source_page_or_table": "Table A5.14, PDF page 99 (printed page 97)",
+   "verification_status": "methodology_mismatch",
+   "status_label": "Methodology mismatch",
+   "methodology_comparable": false,
+   "verification_notes": "Different definition. Internal: Household-weighted share reporting a grid connection (grid, or grid and solar); solar-only excluded. Published: Households using electricity as the main source of lighting (a different question from having a grid connection). The published figure (78.85) is not a like-for-like comparison, so a difference of -12.85 points is not treated as an error.",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "source_version": "6105321b6eda",
+   "published_standard_error": 2.62,
+   "published_interval": [
+    73.7,
+    83.99
+   ],
+   "estimate_type": "observed",
+   "difference": -12.85,
+   "internal_definition": "Household-weighted share reporting a grid connection (grid, or grid and solar); solar-only excluded.",
+   "published_definition": "Households using electricity as the main source of lighting (a different question from having a grid connection).",
+   "other_published": [
+    {
+     "source_document": "EICV7 Utilities and Amenities Thematic Report",
+     "table": "B.7",
+     "value": 78.8,
+     "pdf_page": 159,
+     "definition": "Households using the electricity distributor as the primary source of lighting (a different question from having a grid connection)."
+    }
+   ]
+  },
+  {
+   "indicator_id": "grid_connection_national",
+   "indicator": "Households with grid electricity (Rwanda)",
+   "district": "Rwanda",
+   "survey_period": "2023/24",
+   "internal_value": 50.8,
+   "published_value": 72.02,
+   "unit": "percent of households",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Main Indicators Report 2023/24",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "source_page_or_table": "Table A5.14, PDF page 98 (printed page 96)",
+   "verification_status": "methodology_mismatch",
+   "status_label": "Methodology mismatch",
+   "methodology_comparable": false,
+   "verification_notes": "Different definition. Internal: Household-weighted share reporting a grid connection (grid, or grid and solar), all Rwanda; solar-only excluded. Published: Households using electricity as the main source of lighting (a different question from having a grid connection). The published figure (72.02) is not a like-for-like comparison, so a difference of -21.22 points is not treated as an error.",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "source_version": "6105321b6eda",
+   "published_standard_error": 0.49,
+   "published_interval": [
+    71.05,
+    72.99
+   ],
+   "estimate_type": "observed",
+   "difference": -21.22,
+   "internal_definition": "Household-weighted share reporting a grid connection (grid, or grid and solar), all Rwanda; solar-only excluded.",
+   "published_definition": "Households using electricity as the main source of lighting (a different question from having a grid connection).",
+   "other_published": []
+  },
+  {
+   "indicator_id": "vup_among_poor",
+   "indicator": "Poor households reporting VUP participation (district)",
+   "district": "Rusizi",
+   "survey_period": "2023/24",
+   "internal_value": 16.4,
+   "published_value": null,
+   "unit": "percent of surveyed poor households",
+   "source_organization": null,
+   "source_document": null,
+   "source_url": null,
+   "source_page_or_table": null,
+   "verification_status": "not_externally_verified",
+   "status_label": "Not externally verified",
+   "methodology_comparable": null,
+   "verification_notes": "No published district table reports this indicator, so it is an analysis of the microdata that has not been compared with an official figure.",
+   "retrieved_at": null,
+   "source_version": null,
+   "published_standard_error": null,
+   "published_interval": null,
+   "estimate_type": "observed",
+   "difference": null,
+   "internal_definition": "Household-weighted share of surveyed poor households with a VUP participant in any of five S9D modules; not payment receipt or eligibility.",
+   "published_definition": null,
+   "other_published": []
+  },
+  {
+   "indicator_id": "district_sample_households",
+   "indicator": "Surveyed households in the district",
+   "district": "Rusizi",
+   "survey_period": "2023/24",
+   "internal_value": 486,
+   "published_value": 486.0,
+   "unit": "households",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Utilities and Amenities Thematic Report",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-05/EICV7_Thematic%20Report%20Amenities%20and%20Utilities%20%281%29.pdf",
+   "source_page_or_table": "Table B.7, PDF page 159 (printed page 157)",
+   "verification_status": "verified_match",
+   "status_label": "Verified match",
+   "methodology_comparable": true,
+   "verification_notes": "The published value matches within rounding. This confirms the value only; it does not independently validate how the internal figure was calculated.",
+   "retrieved_at": "2026-10-25T21:37:37.669241+00:00",
+   "source_version": "40202c9e1ef8",
+   "published_standard_error": null,
+   "published_interval": null,
+   "estimate_type": "observed",
+   "difference": 0.0,
+   "internal_definition": "Households interviewed in the district in EICV7.",
+   "published_definition": "Unweighted household count shown beside the electricity table for the district.",
+   "other_published": []
+  },
+  {
+   "indicator_id": "poverty_headcount_standard_error",
+   "indicator": "Standard error of the district poverty rate",
+   "district": "Rusizi",
+   "survey_period": "2023/24",
+   "internal_value": 3.43,
+   "published_value": 3.43,
+   "unit": "percentage points",
+   "source_organization": "National Institute of Statistics of Rwanda",
+   "source_document": "EICV7 Main Indicators Report 2023/24",
+   "source_url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "source_page_or_table": "Table A9.23, PDF page 109 (printed page 107)",
+   "verification_status": "verified_match",
+   "status_label": "Verified match",
+   "methodology_comparable": true,
+   "verification_notes": "The engine's standard error from the microdata (stratified, clustered design) agrees with NISR's design-adjusted value. NISR reports a design effect of 2.66, so the simple random sampling formula would understate the uncertainty. The 95% interval shown in reports is NISR's published interval (37.43 to 50.9), not one recalculated here.",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "source_version": "6105321b6eda",
+   "published_standard_error": null,
+   "published_interval": null,
+   "estimate_type": "observed",
+   "difference": 0.0,
+   "internal_definition": "Taylor-linearised standard error with strata and clusters.",
+   "published_definition": "Design-adjusted standard error, 95% interval, design effect.",
+   "other_published": []
+  }
+ ],
+ "methods_review": {
+  "decomposition": {
+   "status": "Unavailable",
+   "checks": [],
+   "assumptions": [],
+   "reproduce": null
+  }
+ },
+ "directions": [
+  {
+   "id": "poverty",
+   "district_value": 44.2,
+   "national_value": 27.4,
+   "difference": 16.8,
+   "direction": "above"
+  },
+  {
+   "id": "grid_connection",
+   "district_value": 66.0,
+   "national_value": 50.8,
+   "difference": 15.2,
+   "direction": "above"
+  },
+  {
+   "id": "health_insurance",
+   "district_value": 78.1,
+   "national_value": 85.3,
+   "difference": -7.2,
+   "direction": "below"
+  },
+  {
+   "id": "vup_among_poor",
+   "district_value": 16.4,
+   "national_value": 15.9,
+   "difference": 0.5,
+   "direction": "above"
+  }
+ ],
+ "sources": [
+  {
+   "id": "eicv7-main",
+   "title": "EICV7 Main Indicators Report 2023/24",
+   "url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+   "available": true,
+   "version": "6105321b6eda",
+   "retrieved_at": "2026-10-25T21:36:29.119515+00:00",
+   "last_modified": "Thu, 10 Jul 2025 08:24:32 GMT",
+   "error": null
+  },
+  {
+   "id": "eicv7-poverty",
+   "title": "EICV7 Poverty Profile 2023/24",
+   "url": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Poverty%20Profile.pdf",
+   "available": true,
+   "version": "8e711487c011",
+   "retrieved_at": "2026-10-25T21:36:53.929131+00:00",
+   "last_modified": "Thu, 10 Jul 2025 15:11:10 GMT",
+   "error": null
+  },
+  {
+   "id": "eicv7-utilities",
+   "title": "EICV7 Utilities and Amenities Thematic Report",
+   "url": "https://statistics.gov.rw/sites/default/files/documents/2025-05/EICV7_Thematic%20Report%20Amenities%20and%20Utilities%20%281%29.pdf",
+   "available": true,
+   "version": "40202c9e1ef8",
+   "retrieved_at": "2026-10-25T21:37:37.669241+00:00",
+   "last_modified": "Mon, 19 May 2025 09:08:10 GMT",
+   "error": null
+  }
+ ],
+ "audit_trail": [
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "start",
+   "indicator_id": null,
+   "detail": "Evidence verification started for Rusizi"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "poverty_headcount",
+   "detail": "eicv7-main Table A9.23: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "poverty_headcount",
+   "detail": "Verified match: internal 44.2, published 44.16"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "poverty_headcount_national",
+   "detail": "eicv7-main Table 9.1: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "poverty_headcount_national",
+   "detail": "Verified match: internal 27.4, published 27.4"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "extreme_poverty_national",
+   "detail": "eicv7-main Table 9.2: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "extreme_poverty_national",
+   "detail": "Verified match: internal 5.4, published 5.4"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "health_insurance",
+   "detail": "eicv7-main Table A3.7: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "health_insurance",
+   "detail": "Verified match: internal 78.1, published 78.09"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "health_insurance_national",
+   "detail": "eicv7-main Table A3.7: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "health_insurance_national",
+   "detail": "Verified match: internal 85.3, published 85.31"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "grid_connection",
+   "detail": "eicv7-main Table A5.14: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "grid_connection",
+   "detail": "eicv7-utilities Table B.7: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "grid_connection",
+   "detail": "Methodology mismatch: internal 66.0, published 78.85"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "grid_connection_national",
+   "detail": "eicv7-main Table A5.14: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "grid_connection_national",
+   "detail": "Methodology mismatch: internal 50.8, published 72.02"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "vup_among_poor",
+   "detail": "Not externally verified: internal 16.4, published None"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "retrieve",
+   "indicator_id": "district_sample_households",
+   "detail": "eicv7-utilities Table B.7: cached document read"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "district_sample_households",
+   "detail": "Verified match: internal 486, published 486.0"
+  },
+  {
+   "at": "2026-10-29T12:07:18+00:00",
+   "step": "compare",
+   "indicator_id": "poverty_headcount_standard_error",
+   "detail": "Verified match: internal 3.43, published 3.43"
+  },
+  {
+   "at": "2026-10-29T12:07:20+00:00",
+   "step": "finish",
+   "indicator_id": null,
+   "detail": "10 claims checked; 0 unresolved"
+  }
+ ],
+ "limitations": [
+  "A match with a published figure confirms the value only. It does not validate how the internal figure was calculated.",
+  "Published tables are read from the documents the engine retrieved and cached, with their version and retrieval time. If a document could not be retrieved, the claim is reported as not verified.",
+  "Two figures with the same indicator name are compared only when their definitions, population, period and geography agree; otherwise they are reported as a methodology mismatch.",
+  "Original analyses have no published counterpart and are labelled as new findings. They describe associations, not causes."
+ ]
+}

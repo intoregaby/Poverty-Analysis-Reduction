@@ -1,0 +1,1250 @@
+[
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\App.jsx",
+    "Hash": "9DC5B06BA36A15F63F9590DCC8F20105FC6E3289DDAB6F56AF769E8CAB7CF21E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\index.css",
+    "Hash": "42D9498DB7C76D01302A886F2C83DD77DB3810DE26796715709978F84E3D6607"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\main.jsx",
+    "Hash": "1C69739529A84FF664CBA61ACFAC04A632C5242C5EB16E58CFC1C083CEA34840"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\api\\base44Client.js",
+    "Hash": "AC90E3B11D391F5ED5D365053ACD2D2D30F1F43C06F81D9CFD235C15548A88D9"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\AuthLayout.jsx",
+    "Hash": "27191E5279AB7A6D30609F7954C64EDF586CE11817CA50CA63ED03BD432629CE"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\GoogleIcon.jsx",
+    "Hash": "4D5D7B5C6A368F8246FE088EAA158B2CD0872BFAFA8E5C495EC39EBB697C4F6B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ProtectedRoute.jsx",
+    "Hash": "680B97261785EEE88073A2779B7D868630C03E507A525CB3875A1088570DCA3E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ScrollToTop.jsx",
+    "Hash": "56F6ECC5D3F0BD692E7D4BB6D89F73DDAC4148150718388EF8CF996A985F6138"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\UserNotRegisteredError.jsx",
+    "Hash": "5CECB11FE2FB3A03A73E5845B5EE9D26C9255E80FEDA689B3DFC70822BA288F1"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\AccessCard.jsx",
+    "Hash": "A0580F541A2A44B8047CA21F04C256BB29CFB408CE220C22CA1908B19A3ADF85"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\AccessPovertyCard.jsx",
+    "Hash": "73B2121DDC3295FE46E7CDB4BF138AB9EBF971C93AE743BC26C563455A578256"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\AnalystTopbar.jsx",
+    "Hash": "3C7DBC29C0451B33CCC1FB46EA12090BFC064FEC2CB04DE0E6BF1F6E19592066"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\Card.jsx",
+    "Hash": "EDB6609DEBE729BC52DE8861BC761D03A918574E57F008F76A89B6DC9651E1B1"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\DistrictAccessCard.jsx",
+    "Hash": "779337E00FBD18B3AE6ACEE8E082BA3EB8B9376BA441EEC8E21364F337B24625"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\DistrictNeedsCard.jsx",
+    "Hash": "9E68721FA596217D21E2EC98BB54F44C41917AD70C0D580C3ED484CC5447D700"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\FinanceChangeCard.jsx",
+    "Hash": "6D8F40052DC12672F47E8E287359E14AAF1BFE8B84D85BC2F81A53CF12D7DD45"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\FinanceSeriesCard.jsx",
+    "Hash": "AF1DE4D01501F3487BED76B291B506F0CB3EE2BAA12C333052393D0E81BFB058"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\FlaggedDistrictsTable.jsx",
+    "Hash": "8D3283099D6D49121DC53569E70AE808320268461EE472214694B667ED928D1C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\KpiStrip.jsx",
+    "Hash": "3A2AFA38BF49A63A7BE325FB3F7EDF4D096A3354A236B9441CF4B6D3184B5752"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\MoversCard.jsx",
+    "Hash": "F593082494F3131E50DD60A022633B02BF1AE361B32E5CAE3AF0919C5365547C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\PanelGuide.jsx",
+    "Hash": "27944D86CF6C3446CD8B4B62891DB4A07DF30677B808E619FCD1BD2D36E6244E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\PanelMobilityCard.jsx",
+    "Hash": "B09312D7F97A254C5AE5C76C7C02392F5BDDEA8A65A51E5EA841EDD6F018E282"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\PovertyByDistrictChart.jsx",
+    "Hash": "6C93EFE7C3D2FB75E748F3D22780F125FE8A79E6C15600A3BAD564B4665CD2D4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\PovertySupportSection.jsx",
+    "Hash": "63B7BBF4226F56B9C70F2E059546035AB53AA92A4FF22D6C5C2A322B4FF0012A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\ProgrammeDeliveryCard.jsx",
+    "Hash": "FD5E043C4E544F4C8E61A2971DB6B74D12416FBA0A3E91BCBBACB9F5580750C8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\Term.jsx",
+    "Hash": "B009A4AA366BB245FF7DBB313B352E08C359351E2A85E90E76CAEBF5C034A37A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\TrendBits.jsx",
+    "Hash": "B4D9BD89DDB3A831746E2E32298C44EF5C64BA8135C81ADCB9826A7079AB09AC"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\TrendChangeCard.jsx",
+    "Hash": "4FBC73B4E7AD1F57270AF32DE3B3D6EA6A26EFA97A2FD8C923020BFD4BFF7CC4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\support\\CompareChart.jsx",
+    "Hash": "BAA84A3DE973CDD7D616A4DA319287887A815C8DD50B88359916D3996C623344"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\support\\DistrictPanel.jsx",
+    "Hash": "FC5DE5427425E91778109BFECCBDFEDB0ED05033AEF5C8212ECE1EED5320EB53"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\support\\DistrictsTable.jsx",
+    "Hash": "E7AFFEF921B6BBFFC459CACA7FFFB010D915BA3A812518AB3B6EBCE9346F2D7C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\support\\InfoTip.jsx",
+    "Hash": "10173C105BDB60E97A2E04CBD6C75D1779AF2AAA3543F3A575C474A16FD9345A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\support\\PriorityScatter.jsx",
+    "Hash": "9DFEDAEAF2B3F1D05644896435D0CFC6DDD7AC60DF06D68E7884D6D0AF3C5BDE"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\analyst\\support\\shared.jsx",
+    "Hash": "ECA2C5F3847ECB0799CE4266CFE0C0F764FF90FB4E8D2577696FAB4174746456"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\government\\Beneficiary360.jsx",
+    "Hash": "841F7F08D999864B1A390A57FF948074D778EF92850BBF2119C5D77529885153"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\government\\GovCooperatives.jsx",
+    "Hash": "81C8C5C3350960761B6B1AD76EA4EC8BE9BAAF55CF8F8D7A6334462B20859156"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\government\\GovMembersDb.jsx",
+    "Hash": "22C9754681EC856CBA5929FC65A350650124D5FBC62CA82D115E505FA52F9E6E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\government\\GovTabs.jsx",
+    "Hash": "F86D614BA7908D882926E497FE89D3CDD631993106D802376D6D0DE9936DC816"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\AccessEvidence.jsx",
+    "Hash": "CE80D859A62DBA6341D7A390540379B2AF28AFF1812ECCF7ACF7DD447D8C4C37"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\AnalystBrief.jsx",
+    "Hash": "8CCABAC6C5A2C7E1E53F8D2071E421F646C64D8E3BCB5D8BDB6F59DDE789BB9C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\ConnectionsPanel.jsx",
+    "Hash": "0EDAFBC4FEDB4B0628C9A1C30462D64DCE726ABF942EEFEEA94EC5ED78E7A4E6"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\ContextEvidence.jsx",
+    "Hash": "2B287A60C7AFFF29B218E534E3CB921ABC175227A1C8F872B421B67F653C0144"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\DataUsed.jsx",
+    "Hash": "457D25834025122EC6092761B572DC8953998C53379754D8D74B8BD759807A3E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\DistrictDelivery.jsx",
+    "Hash": "080AABBCC08FF3398FC8DCB2FB4CD06615928CA02944669C2A9F9989F3C0DF33"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\DriverDiagnosis.jsx",
+    "Hash": "73EAD0503DB3E39F04771B1CE96F6A3DD185913D59B03D6C716F550FE18F51F2"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\EvidenceSections.jsx",
+    "Hash": "996B2A91D908666FC729838F2D10DED119D98568DE692BA5CC3662DE0556D987"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\FinanceTrendEvidence.jsx",
+    "Hash": "34AF732129CC0E210AB39A3D7D25766E91BFD1BCE8959DA486835787DAEFDF63"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\FindingGraphic.jsx",
+    "Hash": "4057BE24D352EA2327179EB66EEA7A361AA55B2B33A35AC19077379A56F6693B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\InvestigationChat.jsx",
+    "Hash": "CF2BD971725109A5FE1DA39439BA31AF9F9916C31D690AB2BB959D79E2D5B6FB"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\InvestigationHistory.jsx",
+    "Hash": "5E39D41AF43701853DF13189E91D7245744A27159F57CD399BDED578DC421992"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\InvestigationStatus.jsx",
+    "Hash": "923B28763712D7AAF460D4CD936729826A6FC5F9CE0EF29B39D3F420F669841D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\Markdown.jsx",
+    "Hash": "BBB986805FFEE06A30208C9D2D64DD43467FC3FD75C9995DF912BA6A9D351AF7"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\Notebook.jsx",
+    "Hash": "AC85121C658733520E2D5FCEDE90AA3A2D86B53C67930136F1FD443B880CE1B8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\PriorityBoard.jsx",
+    "Hash": "6D6DDFEF1FD1D1BE729BBBD35503122149AEF762D99FE2A60139EBDBD0CA9621"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\ProblemProfile.jsx",
+    "Hash": "7E0D7515D261AA0066497C27BAD7E27BA175E9DEF0391F95683952583A0A6D73"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\ReliabilityEvidence.jsx",
+    "Hash": "E82BF4865DBF20CED11BAAD8B2D18C90EA87D40EEF4681AD02114C25C63AC482"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\ReportArtifact.jsx",
+    "Hash": "B119C53D0F04EBDFD151FF4EE13FE219DEF770487EC345F631EFD7F0B640352D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\ReportCharts.jsx",
+    "Hash": "5CBA27E330B8275231732AEAA29FF519192425589E9610C947280BAC3EA7435D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\reportData.js",
+    "Hash": "2A8BF539C8A382051318E56795637D78504EE3EB6DE43A51E7C5CD4E51C9343B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\reportExport.js",
+    "Hash": "DBFEF3059BB6D37598710E1434E3807D3C87A32B536F7171AAE5B6808AD36B8D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\SidePanel.jsx",
+    "Hash": "F253BC2CB6C592E134F4CA334C809B29DB5B1A962DE1191FF839DCFD5E5BACCD"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\stageInfo.js",
+    "Hash": "D8E33D608108EFD2C5DD30CCDBAD3A1561A0299997A2BB6CDE11D06EC5F8D901"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\TaskPanel.jsx",
+    "Hash": "1BEF9532FB02B6C9502C5D1E79B920286DA12F27BC4A694E41DA78FAC19871D4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\ThinkingBlock.jsx",
+    "Hash": "693E7E3409A613B4C8303ECF790D6E228079E2086E650FB159E4420D180254C4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\TrendEvidence.jsx",
+    "Hash": "1B286BEA2904BEADA56730128C22ACA60D5C6ABA35346CACE2E426AC67E6731C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\useAiReport.js",
+    "Hash": "38168DFE381B1AF70A652102E7AC28E4F3C919C0986C57A56B85420BA1510545"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\VerificationSection.jsx",
+    "Hash": "FEDF527D21DB59EBC29D72773F3369968FBE8F88E0F77F5E2ECBBF5C7904BEAD"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\investigation\\WorkspacePanes.jsx",
+    "Hash": "D4C1CD8DB85D7967B0136F00885A422624A5072E22E314D4744019E640559D22"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\layout\\Brand.jsx",
+    "Hash": "7CDC5B5F2D9FE0547F7CA8CF6D920D07189582C8E8395CE07DF45A57A48DA3C2"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\layout\\DashboardShell.jsx",
+    "Hash": "E03747460F1B6BAB2BDD6F5B7ECEFB1B86FB97A5010B35A4AFA22C80FB93984C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\layout\\PageHeader.jsx",
+    "Hash": "C35F2989F00852242B3F3B17F3B7C42AF465BA1A73DEAB960DBC371E347311D9"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\layout\\RoleGuard.jsx",
+    "Hash": "8C86D6DD1E38F7FB2843D1E35929A7F53D1ECB5E2B3AFB40DF93C68177ADAF33"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\layout\\Sidebar.jsx",
+    "Hash": "A79843D40DFD1BCD0A821A98812E998DA675BE95F64058640A3F10F471C26164"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\map\\ChoroplethMap.jsx",
+    "Hash": "3374925E9C4DA85D03DA529F4FEFFCC31904DA5B6C7BE85365F88D447D4D48DD"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\map\\DistrictDetail.jsx",
+    "Hash": "9525ABAE6C91EF9419829D51F832389BF07CDF84833ED8FFFFC484F9B0F06E82"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\map\\MapLabels.jsx",
+    "Hash": "7B72D04F3C9C2EA7927D32EA5B8D5FEB6744C5873DB1D61586AE05BA5BF1BA19"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\map\\MapLegend.jsx",
+    "Hash": "2A8AC00A36AFD013BC26BF75A8408762E51BEC9B6508DF94DE7767529F08054C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\map\\PriorityList.jsx",
+    "Hash": "3E9E7D2450AD793885EFBD310DCE3769DD22795B7FF79071EE4519C20FE1577A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\map\\SectorPanel.jsx",
+    "Hash": "48501C63D14DA47A692970C7FE41434AB0964E69C320F23970991BD325EBB4B6"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\Agent360.jsx",
+    "Hash": "A7DF47C972B5A01FF80D9875ECF2C0DA59C92C6B7DAEC6DBB891EB7BA4FB223A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\AgentsTab.jsx",
+    "Hash": "477F87947AA1C7E6A2941D0F611FBBAF5614D0C536F2A3164ECB02718D534112"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\BeneficiariesTab.jsx",
+    "Hash": "7A16FC719509A2A4CAD05C82CB091CCA2743A27ED23111F54C8E7C33F3321C1F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\BeneficiaryDetail.jsx",
+    "Hash": "F7B7E6CE88A437193239AF69026A0C08F9E59DF964E4CBE5323A0C32BE876272"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\CooperativesTab.jsx",
+    "Hash": "F2AE3A6BF2B4BE6281110EB4D733937ACA862866856B37BF73D30D3CDD1C69D1"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\JobsTab.jsx",
+    "Hash": "0F8D6876553DFE9364FAFCAAA4F184BABAF63DFF9EF7F93468A4F15D5A2D6D91"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\OverviewTab.jsx",
+    "Hash": "D1078365BD65F642212CCF20D4504C64FDF0006ABCAAB2B8BE282BCB8E5954D4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\PaymentsTab.jsx",
+    "Hash": "771ABD6FF59870BD0FEF066324B5CAC3329BCD0309BC6D7F66861253D75987E3"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\RequestsTab.jsx",
+    "Hash": "89F293550DC8F680A7434990D6FCA8F5B2D891C8CE9066688E7DBE4CF56F2444"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\programme\\SkillsTab.jsx",
+    "Hash": "1BA465DE523BB519247A734216813E9A5D39601E7EA0E36CBC453C91457F0F45"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\requests\\AnalystRequests.jsx",
+    "Hash": "B3BFD0FD1D4E249E56705F6A0592C37CAC355A8A44E724AD769E824C81B7F073"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\requests\\bits.jsx",
+    "Hash": "20E4EDB9AFC5258FA5D3AD5F1081C357DB0732292684C2E99FECB38C3FF1724F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\requests\\evidence.js",
+    "Hash": "EFEE34A424EB489586E0752D88C91623034DC3A86BE4F5F898F0ED4CEDB96F90"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\requests\\RequestDialog.jsx",
+    "Hash": "0B84287D613206A32F8945B322CAA78D1C285F4444C63C13FC883935209777AB"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\tour\\GuidedTour.jsx",
+    "Hash": "732636BC35CDB7DAFDDE0B610DBE8519B59433B3FED35C9C704F0CDEB5AB2E9F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\tour\\tours.js",
+    "Hash": "C81520854C372A3019C9159A21BF5C3DE04CAF285632B5F1E76281E4FDE90AC8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\tour\\tours.test.mjs",
+    "Hash": "3F658E012372D5B8D2BF3C353430053783A80F9397207866AE55C2A5C2586015"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\accordion.jsx",
+    "Hash": "B47533B3783B8149550B8481E4AE93D54BDCBC51D434793C176B0AEC5558EE1C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\alert-dialog.jsx",
+    "Hash": "A20098CDC2EB2B5915575D3F0FB7A3E8E6C1035C7EEF77144F3FC389E0FDBDA0"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\alert.jsx",
+    "Hash": "C5BAF27FB6A4BF130236FA0F336C21084FEE192E8215BB6B20C87436C27F3B38"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\aspect-ratio.jsx",
+    "Hash": "08B0AA0B05EFC573C7D63363C03E83D4B101BFEB54140764E96DDEA30659CFCC"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\avatar.jsx",
+    "Hash": "703FB6852952BD039B68DC494C004EEE1D835FA12647B851722AB9B6B3058B32"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\badge.jsx",
+    "Hash": "380DCDA78FF8FDD80C82B89CB7DD38FFD84C355735FC8F16300FF647E15988AA"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\breadcrumb.jsx",
+    "Hash": "4C0972765DC0212C5101446CB931DB44B7DB68A21EF9D7BC8A75C46F9BB96E42"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\button.jsx",
+    "Hash": "6C28699C64FF8C36EC5A2BAF835D6BFA141CEDEAF472B97D64671DAC6CF7CBF8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\calendar.jsx",
+    "Hash": "06E0C81497BDA70AC24855B54FDDD385557CBC3BE8D8066A345BEDBEC551B3EE"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\card.jsx",
+    "Hash": "8AB6F42E722E9C51752CE2F14AABB2696BDDC0B6818041FB8F313F670955C2C4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\carousel.jsx",
+    "Hash": "55EB9456609F96F5C28C1FA35FE79554FC0FFAB12883E3ACEB041FF10E347E83"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\chart.jsx",
+    "Hash": "C4684B470CAE53B857A08E5FE006D4406450A442A103858BEB179EC810ABA2B3"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\checkbox.jsx",
+    "Hash": "B0260CB7767493D8273F5DEF1B7D32E844D068DB5F5760258D333AE6AD88F0D8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\collapsible.jsx",
+    "Hash": "F4CDD104DE29928BFCD40B865C7D08EED9157A537FBB8B5E6D0921F02B63CC04"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\command.jsx",
+    "Hash": "E7CEA37AFF49E211FFEA1BF3ED67ADD6CE1AB29862E902AFF739FCD11014F06F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\context-menu.jsx",
+    "Hash": "5FE320CAD9EE1833E9528F86E340F83F419F77790549F4CFF083FAD329E8DC4C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\dialog.jsx",
+    "Hash": "50A7CC4AE5CE0F2527662ED9742D35B8C4933D1629A2740B26890793AEE00742"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\drawer.jsx",
+    "Hash": "3D2DCE97D3F6BC5DFA887E87C6688228298526BFDC29A28F2EDBD6C1DC2EB47A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\dropdown-menu.jsx",
+    "Hash": "D36CD67E71781BBB03059B057B6F686445477A4275120359178729574398C465"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\form.jsx",
+    "Hash": "D899B071230C321ACDB2996CBE02D84A46DD9825F81AF1015F7E54C6B9EE211C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\hover-card.jsx",
+    "Hash": "3B49E533AD60995767A3419351642037438E8F27B62132115FC71115CF1FD0AD"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\image-helpers.js",
+    "Hash": "6C302BD1AC9EE28AA03A8A0CC6D9E926A93FB034F36E7148D6933D82B853009E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\image.jsx",
+    "Hash": "23653558C4971119743FB5F9844012B7E2536DD959C3EEBA40BB942764142E17"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\input-otp.jsx",
+    "Hash": "78A437A82203C1D9D22D47DB830BDC67D49D6473C5C28AD77634EEB8C399A649"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\input.jsx",
+    "Hash": "4455AEA152904F128DF0ECD82047BBCEB23E06FFCC9CCC7CBB3BCC87DF5BCC4F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\label.jsx",
+    "Hash": "37C6425D2A5C798ADE4E60F89F86054D703433A8977E12D796DE2B5BB4E3D0B7"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\menubar.jsx",
+    "Hash": "5411F1B8221D9A34FC9B58F830642CFA3A33C776D0072014690E2F024515391D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\navigation-menu.jsx",
+    "Hash": "A1F789747CB750329A33EE04C54209B044239A15BA200FB9D7DA1F2CE6B73403"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\pagination.jsx",
+    "Hash": "1D519FC3BA1C8C6CF7F2D30C98739ECBA2FA7AF35CBC024D6793785E7A6D65C8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\popover.jsx",
+    "Hash": "199CC7B3D810013867AE91305F0966B8A66526A1C13D10248C38EE1797D169DB"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\progress.jsx",
+    "Hash": "1AD2808D51C365F04F23A4E985B03274DCC30735D74DB68E1F78332A6533859C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\radio-group.jsx",
+    "Hash": "10CED1E6932E4FE53D6C18201F50B8BB4B334B4372F01CE5F0993AA2A6BB9110"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\resizable.jsx",
+    "Hash": "4E74FB31B8321012570554DC8C55A58AACF1ADCCED2FDC43085C67FF96CE9773"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\responsive-image.jsx",
+    "Hash": "E15B3BE64DD8D69183A64C052BECAFAA6B9A27472BF358EDC9FCED194E09BA5B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\scroll-area.jsx",
+    "Hash": "3DE4BED34BE51A940243B0FBF8C6D9324ECB416A91A919D65CA18D15A7BA32A1"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\select.jsx",
+    "Hash": "15C7A0E4C45B655FFA8D3F3BE8BDAAB727A19FD6BAA95B34056BF02C7254243E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\separator.jsx",
+    "Hash": "2C82247ABD573D0F4A93EB259166E3B778365B58C0D18921B4739D5BA4B29E7E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\sheet.jsx",
+    "Hash": "33F27D1B55925DBC354D0A61B0CBC6F977352DA13F4DF519F06E5B5BD9ED2D5C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\sidebar.jsx",
+    "Hash": "828BEC5AC1EC715FE50DEEBAE08A7DA23F01E9B0DCB221B110E37DE63EB22D3C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\skeleton.jsx",
+    "Hash": "C5F32316D9F8FEEBA529BAC6321766424067185AFEE5F29A15BB18145ADAF1BC"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\slider.jsx",
+    "Hash": "1761BFAA0A06480B76B31511E4A5C24903B407732E027FC11AD615DD3D93A562"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\sonner.jsx",
+    "Hash": "F1309F953467D583202225D08414161FC3183758AC38C997249EB63686A27BA8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\switch.jsx",
+    "Hash": "880E95637CC1D90EF4476F79114AFD2FA7B5F6E5DA1F49A70E0EFC1F84AA0C8A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\table.jsx",
+    "Hash": "301509BB8337184F1B299CB15B8D4F8EC8F0D3BBC17A2FFDF33FF58F7EAA444E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\tabs.jsx",
+    "Hash": "57591BDFB3FA931B06EDCF4168B6881A79785C674AD0618003D12CD656072350"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\textarea.jsx",
+    "Hash": "B64A8FABF495DD59DBFD23914334FFBDFA695F506A133370603A49ECA1243F62"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\toast.jsx",
+    "Hash": "CF9D4869024D879C2E0C4122F74DD0D7CFC834C7377634A14E1BFC47DB1D15E0"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\toaster.jsx",
+    "Hash": "FC1BCE32D9A45F5BE28C67B486962B90EED76742F3C0995F5FB908FFC6BDE3CD"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\toggle-group.jsx",
+    "Hash": "1C7566B9F2AA00F0AFDF161527BE90588A11386158DCA55425EA0D8C0E3883E4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\toggle.jsx",
+    "Hash": "E8FE6DE52EF73D6FA868229AE7A21E681FB3088975847D6EE65A8387731C1C79"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\tooltip.jsx",
+    "Hash": "73E47A5DDE6C55ACA2E32E429BA95D8746CE2CCA02CC718613F337B5BC9F5F19"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\use-responsive-image.jsx",
+    "Hash": "2BF5573B4688BEA5F3EDF76C68889737C8B8E0163B5FB4C3B4AB5DA5715E25B9"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\components\\ui\\use-toast.jsx",
+    "Hash": "40F2839736597A3F7D54E4359A375C5991CE58EB341D8ABB944874AC0DCE9BBC"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\cardHelp.js",
+    "Hash": "CDBDCFEDC5306D8B5F6C90A9CA788C27685CD4786B5C595DAC3C69C0EA513DAB"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\dashboard-eicv7-aggregates.json",
+    "Hash": "35DBD6EB9460B4AA5D5B34C1B58F93569D803666A2B77AAAFAE9414AF7420999"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\dashboard-trends.json",
+    "Hash": "8231904B003B4510C00838D4EC41333BA280E187612361166A8FAFDA7BDD0FB2"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\dashboardEvidence.js",
+    "Hash": "F4F1BAF3D2E89942DBBF034C11FF84991FF0D1419C09D86AF715825DCD6B6A4F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\dashboardTrends.js",
+    "Hash": "15D80E1F6DC50DA5372DEE482C8EEDD6C3859A68DE1E151D643E8BB40A66A12B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\dashboardTrends.test.mjs",
+    "Hash": "04076D2AEEAA84CAD890A089DF8B0D7863D25E732B477738DD8A1BAAE7CBC56D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\datasets.js",
+    "Hash": "C4651C4396DED73E3FA3E053F7FC3D01B510176C84D20BD24604940B724DEB0C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\nisr.js",
+    "Hash": "A2ACBA756AF2D1A1F79A4141FF3041F917B54A15FA5FD3877D9CBE3DFD8E8A43"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\nisr.test.mjs",
+    "Hash": "858AF1303D7DE6CA3554ACC3BA074B759E8206EB1CCAF0933575F3D329E51996"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\programme.js",
+    "Hash": "9ADC9A4C936348DAF24CC75AE549138395F9E2A28ACFBDDD733E652A561BE60C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\programmeDelivery.js",
+    "Hash": "876B7F16398224F0437E39ACA59F152362F5677C7AA279819226232D068CB425"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\data\\sectorSamples.js",
+    "Hash": "2471DE28FE499A26ECE412563934F7553D51F30B0EBA1DE4B4855553796931BE"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\hooks\\use-mobile.jsx",
+    "Hash": "A136217739E79F9D02440E711B9BD1ABB6ADF60F1A83B45A39A009A09568AD1C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\hooks\\use-size.jsx",
+    "Hash": "9D9E943E8DADCC95A2BE6C40C20DEE85029C87B443ED1FA1C6104D10AE7B9BDC"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\i18n\\core.js",
+    "Hash": "D1553B45C6EDA498A2AD0D9210BD29B1C875FE40722407E67DBCDC5408246E16"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\i18n\\en.json",
+    "Hash": "CE0602C08DC833D1D04DABC63C604A8B193F5BA7EB3F29DC1B7DEF1147A737DF"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\i18n\\i18n.test.mjs",
+    "Hash": "F1FF8BF8CCD30A6402CA7875262D913A48191B89E567E620A0E4C8F0BAD365E9"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\i18n\\index.js",
+    "Hash": "BC91357C2442A1C937E031022D6ACA87DD400909113E0CA14563A603496C5251"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\i18n\\profileLanguage.js",
+    "Hash": "9D1330B891F7F0EA6188B4DA728E07DF29BD44E54C382F96797E579F6C365A5F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\i18n\\rw.json",
+    "Hash": "72745CD3E0111EF33A582AD11DF069FD7B8A57A94563173E06E7C69FC9F6E0E5"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\i18n\\syncRw.mjs",
+    "Hash": "FF30BB29CFFDCA18CB3205BAAA2FFBDE0324444540C2267209AF78765FE5B6F4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\actionRequests.js",
+    "Hash": "538D4C007D6E6793E144118D5A4B8BEA2CA562ACB1B88D92AE152B02107BA97D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\app-params.js",
+    "Hash": "E2969325001B9B38A87FACCA370532AA195123477262EB79897F38390E41B6AF"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\AuthContext.jsx",
+    "Hash": "2AC2133BC9448D8E8C0F12D3CCEF7287F20EFDDFE0F4C90D0B517BBDC25C0FC0"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\authReturnTo.js",
+    "Hash": "945E12AB4A68E6166DDEFBB9C91983D04E7B55DB7BB2A3AF628A192B95DE01C9"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\chartAi.js",
+    "Hash": "80E3A3A6571196BD29A766E8F0A0EC1F6718E9A1D38FCA8BC34C970D45620ED2"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\cooperatives.js",
+    "Hash": "4E1B5F4C324CCA9EDF6818474A05A82C0C672065D26453BF8EED7DB5937D1150"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\DemoAuthContext.jsx",
+    "Hash": "DE4CE134C77E2F4BD8FEC55C5B5E77FB7F110A197E199207256902A6DF369286"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\format.js",
+    "Hash": "4518C4F82B2F3489BEEBCD0EA2D04CD955FAD2983F62C1A998E80160E0C0DB43"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\geoScope.js",
+    "Hash": "5DA5B1EFEFE1768A65A655F20454B705639B31F921AD1A1058B8CF7E6D882F1F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\geoScope.test.mjs",
+    "Hash": "167771BF9D6774633AD50C0E6E4AB65BEF7DBDDE0E00C943DDB2601FAC2A99A1"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\govApi.js",
+    "Hash": "10521D3952FF20C974C35DA25880645CA93B5D132E055917054F259BDAFDBD9C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\govArea.js",
+    "Hash": "B79C03F63D3193DA5D2AA79EC36E23ADD14301E284EECF71BFEF8AB360D0C3CA"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\govIssues.js",
+    "Hash": "918BDDFE20F623A9E7D412919D51E07A967FB5645A10EADABB97E992A43EE688"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\investigationApi.js",
+    "Hash": "DCCDA0EA07B09F789A715AFF1B0ACC2625AC9E9EADC0BC2ED75E0F38CA9AEC76"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\mapLayers.js",
+    "Hash": "50ABA5AD37A15BCA586C3239A88BA1CF08621F74949430D29728993A39DC854C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\mapLayers.test.mjs",
+    "Hash": "E562D95637424E16C985B16FB7462769A7C24364F1377A8FFEB8FBF4A532E989"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\memberApi.js",
+    "Hash": "D3266123A59E9483448AC73944C20CF5C2C15C8EFEEFA34BBAED0CABB03E0C61"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\memberRules.js",
+    "Hash": "BDE089847B734BF56B808E9D3C0C7F1E05ADCDE3BDABDC126103A769B686518B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\memberRules.test.mjs",
+    "Hash": "D6C176B68355460D6751BB63F529E352B55519B1B16811CC50F6D6935CF54046"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\memberTabs.js",
+    "Hash": "4AA92ADD4A4F6DE4E5505F4E6FA41D6B6D355F71BE1C7F93A0120D86FFB17748"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\PageNotFound.jsx",
+    "Hash": "8536E2091188275762A6729ECD77A77B8C5F1187525AE4189DF42C95CA42F196"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\pdfPagination.js",
+    "Hash": "4CA09B0856751533C59C9DD8966FFF788D803476637C5CFD9C7F2404EDCB8EC6"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\pdfPagination.test.mjs",
+    "Hash": "43487874E08DD37982DD74712BE8EEA483CE2B7BADF6B91188AB07836A4188D9"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\povertySupport.js",
+    "Hash": "4CB2E0002A6C2474B31F85F3984ED7BA761C5DA5F30C96ED68E9755005CFDE76"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\povertySupport.test.mjs",
+    "Hash": "F80AFD1B101FD5FB11ABA3230924CF92DACE278FDE3F8E6264CF355EAC95582C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\programmeScope.js",
+    "Hash": "B081C70A5C69212478B61800F26C458C32E41473AB65177BCB175A7870A37988"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\query-client.js",
+    "Hash": "0A080B6D9A1ED9F5F32150D9E3FAA928F955D2B8D6206831E2B1658E84612C92"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\reportChecks.js",
+    "Hash": "6389EBE6BEF3F87D0B95C2FB81AE4BCD1807F934B108FBF106EE2DE6216C8819"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\reportChecks.test.mjs",
+    "Hash": "296745C74816A76C251F175D14CA26279AE92F6597D12EF17D95EF478BFB7CC7"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\reportTemplate.js",
+    "Hash": "907DEDA70549A51931AA5094F57DA32355F737277C13B5E06673B4C6E4DC6D0B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\reportTemplate.test.mjs",
+    "Hash": "DBA278ABA50F5AB3AB5B2B4C78E11BF2904F729CDEC7EA238A0AD5C66E9A486F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\reportVerification.js",
+    "Hash": "FE4007269D6CEFCB66C144FD3FACFAA25CCB7DD589825D064975EB3C29E1A330"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\roles.js",
+    "Hash": "1F5C91D17F4B938172DB227E270AEDEEA0CD6F32A808D3CBBAD1FCF214B2716C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\rusiziReport.test.mjs",
+    "Hash": "58FCB9EE54E84FCB2D420589ECDB5C07DC1B73AB18D199C26FEB6E8EE8F0CA7B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\supabaseClient.js",
+    "Hash": "E40F187A3A6F0D7C9035E05DD115A88936BF1EB74F5C43397D2FFD10C2A41590"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\userSettings.js",
+    "Hash": "A65828585F4FB9C0194C516E79843CC3AA217CE2EF3E6D47EC74192BE2A3D745"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\utils.js",
+    "Hash": "4F592359765D69C32C3617700FA111AF9A6A9CAC8F18CB1987C25503A343C203"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\lib\\fixtures\\rusizi-verification.json",
+    "Hash": "ACCDC471754BD32FA283F06C0ADA8ED37A0EFCA38902D84153D8503E8550BA1B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\AgentDashboard.jsx",
+    "Hash": "82988AC0580719D37DF4D7B1F117DF64A54DCD6CD0C144BD04652E883C7C593C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\AnalystDashboard.jsx",
+    "Hash": "E3D5AB2AFAF159188AC0A2997D3C54E0B20815A780DD69A107EBCAEB2BBE8F97"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\BeneficiaryAccess.jsx",
+    "Hash": "67CA32DB3DFEB71399DF93C4B4267366FD9F40953B653A230D8A1121208A8117"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\CooperativePanel.jsx",
+    "Hash": "ECA3793F0E730CD6CBCF4BF0AFF39CD91544F7AEC2ADD91D298B14AAB2A6C764"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\Cooperatives.jsx",
+    "Hash": "DDC49905520642F16BF56DC55919FB5F5CA45F3710D7DA69EA35691C868C96AA"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\DatasetDocumentation.jsx",
+    "Hash": "C18BDCFE4240BA58EE0B72C56CB7D044088EF03BB72141E5DADF724FC39AD9A5"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\DistrictInvestigation.jsx",
+    "Hash": "E99FB95690DCEEAD6C63BF44F55985BF3D3C17654738381844A8523402B691A0"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\FinancialMap.jsx",
+    "Hash": "A0D09EB70E84868569D4352C0A4A08DFAAD193B3BF8A607C05B321228CFEF4C8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\ForgotPassword.jsx",
+    "Hash": "A5637ED3C56E98A97DD70FF74201A87383D9B9683AF43599D39979E0B4A059F3"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\GovernmentPanel.jsx",
+    "Hash": "D06BA100C943BB4335E75DBD2A0557753A90CE0CA906FCEA93018BD6F65C8FF0"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\JobApplicant.jsx",
+    "Hash": "61E3221685B5885249A177F0F3E79F969B4E67694756BFFA849795F15A044624"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\Login.jsx",
+    "Hash": "4C46EA3DC8EEDDBBF29CF5143B757F3E615FC2FE1FD720E059AAC915991B41CA"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\MemberPanel.jsx",
+    "Hash": "04B17B94ED77CEE0A9B2F3FBB9799E293457AE33FDBD5736D25BBF1415BF394D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\Nst2Indicators.jsx",
+    "Hash": "3F5D4D532329761B01FFC93742861B2E78A62F7C87725E01FC27C38DB483EA0D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\OAuthConsent.jsx",
+    "Hash": "9FF2E4119B12B0F94CB1F6C136C337B88ABDADB4B425FEF0A88781FDF80724A2"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\ProgrammeEvidence.jsx",
+    "Hash": "3658E643B10CA42388A00FC96AC89F661BDF990A8F74C581E8D1952FBBC68652"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\ProgrammeManagement.jsx",
+    "Hash": "C716F8A5B3611837D5E823A0482A3D16377250254D22BB17926C97F77FD0F16E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\Register.jsx",
+    "Hash": "BEA8B4668238D0768E50BE970B3EA1B43AE31C0247786BB935F0E421D277B6AA"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\ResetPassword.jsx",
+    "Hash": "E68C455710F69A5BD3028C3C42609EBA8DD11155F076462CB3A1E0E18FC4C3F4"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\Settings.jsx",
+    "Hash": "411D08E6D44F769863493020D3BE6EA26BC890C083A95B905B3B4C705CC6B077"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\UssdControl.jsx",
+    "Hash": "51EAF30EC724F53D35F5E56B6F9451B6E78C90E1C2831CEB07607E3ED59A7756"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\UssdSimulator.jsx",
+    "Hash": "4190C86F713001B3938FDE33F5B0D40D6CB2461B0F21350709B245A6DA503CD8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\member\\AgentTab.jsx",
+    "Hash": "EE3A4D2E01EFC7B97C5D54363C55A1A6B2B3B2FD22DC65CD58D9DC061DFED7C6"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\member\\CooperativesTab.jsx",
+    "Hash": "16EC3638151E94FA84F099D02F4E777BBB15E278BA3FCACF8E884697A440ECA1"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\member\\InsuranceTab.jsx",
+    "Hash": "647B91FE4AC977DA16DD64B792B5E9C1CA56C47C7DA2878354D2DAC21FD61D70"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\member\\MemberGate.jsx",
+    "Hash": "B707354762AFAED3F79AF4CE08ABBC3690BF768CBE3C17DC36861B1EAC6A0EE0"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\member\\ProfileTab.jsx",
+    "Hash": "DFF403937B1A122180689CF8186F8E805098F751E64184DCD0B58B6AB0A14C80"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\pages\\member\\SpaceTab.jsx",
+    "Hash": "97384902A16CAF7DB8B56DE9081344E22D4F58CABF7829990FBB304B35B0A056"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\ussd\\core.js",
+    "Hash": "6337F6003B0CE1FF5DAFF7D703FCCBF888C02BCA3C98D27EA6E32A2251BC2886"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\ussd\\core.test.mjs",
+    "Hash": "679E601EBBB2BD80758993C9C4B8E293E454953F2FAE68AFDA87132BD778F526"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\ussd\\gateway.js",
+    "Hash": "D689C7E2F9BF5C7F211C230DB5D0FD36F91C6C94AAAB603344CEAF073849FF09"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\src\\utils\\index.ts",
+    "Hash": "1BD31D3E8630B19DCB1D92878A2501D5E29FC935EAB48EC5D90E66C410CF7E1A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\analysis\\derive_dashboard_evidence.py",
+    "Hash": "70B3BB0DF75937BA0244182338A430A267E18C24732395FA2FA48B865B133119"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\analysis\\derive_dashboard_trends.py",
+    "Hash": "9D621F0DB6A6F79C4215914339AA56617EFD1C0BA2F07932A2F3C1FFAC8ACF1F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\analysis\\gap_ceiling.py",
+    "Hash": "75F9286DA9FF864C64D193C36B0652B897420169716B05D75841FB763CE36345"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\analysis\\gap_land_eicv5.py",
+    "Hash": "61CD8B489D2543AE81261F7D606EE94B0A9473C9190999F91A0B0EA7398616CC"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\.gitignore",
+    "Hash": "0EDE6BFF6C9713F0B0E413BB321CAC967E4852F50DC23A773BFCB1D8DDD7EEA2"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\CONTRIBUTING.md",
+    "Hash": "A58DCE7B0E5C4624E3A2B6FB43C49690E7D9DC055FA12D1FE9D2746C5B30CAFF"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\INSTALL.bat",
+    "Hash": "68107C98317D18F57A8B1DE60BCB98DF8090806EDFA46C254E8C144ADEFDD845"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\LICENSE",
+    "Hash": "D44720BAA3EA3C7084AFEBB1D8004F6AB7FF93A11B816F0FA197585FCE49B31D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\LOCAL_SETUP.md",
+    "Hash": "B23B907DA2C84C8269DA5FEEC4300E8CDD19D15658AE4AE6DACD50F888BA10BA"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\manifest.json",
+    "Hash": "62A9AC2C7423C6B3E5ADA97FE38BCD879D3DCEA0184A27775E06D3A04520FDED"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\popup.css",
+    "Hash": "539F23CBD703AA0C39A8B5FC4EC6B2A6EB18FC032F1BF9D265C8689FB0FFA343"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\popup.html",
+    "Hash": "A4F1B79F2F6D26D67914F6604304E2D96985C80EECD9C92D959F880AAF73AFDD"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\popup.js",
+    "Hash": "7404BC4AFAFC8535C3ABC703C33046938BB908D1B3DB7AD45602CA877933EDC8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\base44-code-downloader\\README.md",
+    "Hash": "9A739686AFB4F802043567DC5728A24E2AB874E7B8F538D8DE89E9B17CBB854C"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\ai-chat.mjs",
+    "Hash": "9CBB58ABBB84E97FE06800AEAC52962E0262805D8FB0A6D476FAE9216283B698"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\ai-notebook.mjs",
+    "Hash": "2A03CC095751E37026A7DBB2CC873E4DB045394C630E4D953B79F3F715531606"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\ai-report.mjs",
+    "Hash": "CB6E53B5B90FB757D69A51814842406662825D2DE4C5CC52399DCB996C22646A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\ai-writers.test.mjs",
+    "Hash": "06D21ACD8EC927F45A78EBB30AF371BA7465A1AC658487227CA3425B0B8D624D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\ai.py",
+    "Hash": "B6CEF73D14940B3076F2CB07A119A4D6DA0B77C37F160524EA5E23698DA37A71"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\analysis.py",
+    "Hash": "A4963510B8D63E68C6CD9C0146FC3B25C1E4B45C260D05420DAF79BA7D7A45AF"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\board.py",
+    "Hash": "2AC4C8E4F904D6ABA37000CCD2A2B95301576224DF796479E70B4986375CCD5A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\brief.py",
+    "Hash": "01FBA24AE5707FB0D51DC5F9FB9B4FDD4E2F3EBB8E9C898785B740406D772437"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\browser-render.mjs",
+    "Hash": "41DDA079F5ECD0FAA38930F1EF2BE0920398D71DA06F963EA6D9C59EC774A35B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\catalog.py",
+    "Hash": "5D29A3EFD419BCB592D287CA7C592628E2C53DBEBFAF604975D4361F7D830E52"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\check_ai.py",
+    "Hash": "F6329682C3F4AB791322695E2B971335CD83724AF7167D6808D707458B91A509"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\context.py",
+    "Hash": "7BFC1C71C1F3B7F496A1B44ADB9383AE381C56B655BD8D23FF061F914BB44C7A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\data-platform.mjs",
+    "Hash": "71D08B14ACFEB9746C97CE5A06F851B656C7120E442F709F89E8226B55AB2BE6"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\diagnosis.py",
+    "Hash": "D0C9B22E36DF620B9227EAB6A1CAE8F37650981F1E0F6F09F0B188056693D292"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\document_evidence.py",
+    "Hash": "91F4CD9A741C9F79A7A7DC2FBCD6EDA4EEA5DB934BCCB335314CD9F88CFA5977"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\drivers.py",
+    "Hash": "34F6DEFB4F51525D140C1353435668E04FD1DF7642F314F7924BD439439142E2"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\engine.py",
+    "Hash": "AE0E255D971736DA5A68BBBF4AF09394788AD96340B90B93814BD3339D97EC45"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\fileio.py",
+    "Hash": "A295D34657CC3EEDF6E490E4D815850CD0D01C03CA12976A51D729633F93FD95"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\finance.py",
+    "Hash": "0F580307DFFB317C7A3CA7C034873BC88A3E9FBF62C04748EB799BAA130F876F"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\finscope2012.py",
+    "Hash": "122E389A47B4D4238A1C6CE5435CD84E9D9DCE07EADD0932776EACA1ADE82644"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\finscope2016.py",
+    "Hash": "977C7610F72B1E8C28FE980332805D2D8A9C733689E52538491D4588BBAE9AE9"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\finscope2020.py",
+    "Hash": "78FD7DBDEF5053901228EA8DB4F62A5C1BADABDF2E5CF9DB5679A0BEDBC26B3E"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\knowledge.py",
+    "Hash": "7DC8D31FA05FBCAEC3A757C47426B29405865EBD731DF80AC1F7CB18C2A78F09"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\llm.mjs",
+    "Hash": "0E64764DD4801A3E870ECDAA9DC48C3136050A9A1BBBFEC49F7DA1B43C8D7DE6"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\problem_profile.py",
+    "Hash": "5B3400248B6FDB2019E28CB67934870E715A86AD34ACF6D5CB30519611A60463"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\provenance.py",
+    "Hash": "D8E67FB20F3D1AD866013ACEEB39A468903AF96F0E51B1479B174452FEAC0922"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\read_document.py",
+    "Hash": "ABCE5F4F8D8B3062D58D299B84712CEAF505676E9FFFE69D230F0E3257F8E4D5"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\registry.py",
+    "Hash": "DD18839DB71A72D011111D88B0CAA646A7360CDB1521FE4776EAA218B98D0D99"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\reliability.py",
+    "Hash": "E3AED7F56A5FC5A8FB58FA0C96A4FE703E77FF069EB11AF4D00FC35800D366B6"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\reports.py",
+    "Hash": "E9C2DA4DFE070E1912F274D98C51EE88144CF3EFA5F65930F712EECFF88EAD5B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\requirements.txt",
+    "Hash": "809781F9C0ED484798710B77C3856D7C29FE2EBB9C1BC9D7F0E024A156444D34"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\results.py",
+    "Hash": "321B459D00B2164665838B15790863CE23AF4EF2FF2860A31841D64E26EBB302"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\site-index.mjs",
+    "Hash": "24A6A59E8803E56D415C0F0EBD6581119091FAE23A59CDE5F7E323269C39CF25"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\sources.py",
+    "Hash": "4222A7BA5B06239A10C91D204722DF05100B948B9E069DA8C40C15BEE489B3B9"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\test_investigation.py",
+    "Hash": "0099D16C76A45985E05C0ABDC6C27A427279A1EAA3782FE0D86458894B8BF74D"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\test_verification.py",
+    "Hash": "71C1B1E4C7980BC06FA1F32DABB932394755D1BF2B51973BC2ACE79FF3D2A106"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\trends.py",
+    "Hash": "ED3B251406794A56C3C38664A7FF41D2C397706F45F242FDDB0D78785E3A0EB2"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\used_columns.py",
+    "Hash": "10EA5C680A146E9E1347438731EBBA01592605BAE376AF3C51B003BAD8960488"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\variable_checks.py",
+    "Hash": "3F691283C6E1337DE51649635A8520AB5D9B3FF7DF94758DAEA16484B650CA7A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\verification.py",
+    "Hash": "43010BD9407401E40DEA565E7056E9C4DFB2FB2678B45353DCB96F8A5D37A225"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\verify_acceptance.py",
+    "Hash": "4CEFC4A3906EA6076377E7021A550F4164FB0822FF5AF68B9E40C2CA2C18CB5A"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\vite-api.mjs",
+    "Hash": "6BBF3C9B54ABDCCF98CEC32AEBFC3E2C5A11885A7F48BA036261BE57A8996040"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\vite-api.test.mjs",
+    "Hash": "4E5A8F1EA7E0E1FF5CE9DF236974531A11D4C80A4EED97D312545DEB15CFC982"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\investigation\\web-source.mjs",
+    "Hash": "388040E6535F7F8B39D6C6FF8B02C25A3A28CAB484F6D4E2AD68E059C4D32C10"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\ussd\\build-function.mjs",
+    "Hash": "6BAA7D0310C26C0088C3931D776081B3833A67D214B78E8E9DD8AB5E14473678"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\tools\\ussd\\function\\index.ts",
+    "Hash": "D694A28B51136AFF4CF23B7E2258642E294130963611DEB971E73D9B6672DDFB"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\base44\\config.jsonc",
+    "Hash": "374B3EE51FCE2BA718CB6E629BD7115C301EE2A82C8E2445D1D700F5AA994A26"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\base44\\entities\\User.jsonc",
+    "Hash": "4DE38108E89F3BB0C1C7411EABDD47F8899238F1580428A167DE47B10C5B3A31"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\base44\\functions\\chart-insight\\function.jsonc",
+    "Hash": "AAC8C81161DA37508EE529EE227FE27CAF142B605A1E58B34ED5BED4AC5F417B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\base44\\functions\\chart-insight\\groq.mjs",
+    "Hash": "D9A88098ACB81336AEDF4A700C2670523522A7F3165DBB7D59A3EB446016A590"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\base44\\functions\\chart-insight\\groq.test.mjs",
+    "Hash": "E500B7261D4028E954BAB26028483DCE0F892011D88315049E9FAF5DA55B4CF8"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\base44\\functions\\chart-insight\\index.ts",
+    "Hash": "4B8721D5691A598ACC0648D6B9CD8E8305637D046E3B5455669303F270939893"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\public\\geo\\rwanda-districts.json",
+    "Hash": "5089C3B86F994F7099941DC45C04982D7575D9AF72A4B8F81D5C22C0BC7705D1"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\public\\geo\\rwanda-sectors.json",
+    "Hash": "2E18BADE82D5322F7AAB19FA0D3DECB13FA2BF680F0290D4A8DD1DF9F09BCA90"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\README.md",
+    "Hash": "416381D6FA21D2ABB5A4CA0C1FFB0053930BE67F273905020002943E6E11C898"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\package.json",
+    "Hash": "26BD5570BF6DA975BDBAD8DF16948B4AECD85D4D9632A4CB80758C5CBEF3736B"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\package-lock.json",
+    "Hash": "31DD20AB7D925F7C2F8A933009C1ADDC021CFDD959993EE7935DD2F4F52153D7"
+  },
+  {
+    "Path": "D:\\Project\\Poverty-Analysis-Reduction\\vite.config.js",
+    "Hash": "3CB9022A3B902B1E1AD2BB741D382E021A03E185FCBA59FBB146C2251B7A0792"
+  }
+]

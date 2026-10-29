@@ -1,0 +1,673 @@
+{
+  "common": {
+    "save": "",
+    "cancel": "",
+    "close": "",
+    "back": "",
+    "next": "",
+    "loading": "",
+    "logOut": "",
+    "settings": "",
+    "takeTour": "",
+    "programMember": "",
+    "programMembers": ""
+  },
+  "navGroups": {
+    "Analysis": "",
+    "Operations": "",
+    "People": "",
+    "Insights": "",
+    "Data": ""
+  },
+  "nav": {
+    "other-analysis": "",
+    "poverty-analysis": "",
+    "investigations": "",
+    "nst2": "",
+    "evidence": "",
+    "programmes": "",
+    "cooperatives": "",
+    "cooperative": "",
+    "government": "",
+    "agent": "",
+    "beneficiary": "",
+    "jobs": "",
+    "map": "",
+    "datasets": "",
+    "ussd-control": ""
+  },
+  "tour": {
+    "stepOf": "",
+    "close": "",
+    "back": "",
+    "skip": "",
+    "next": "",
+    "finish": "",
+    "welcome": "",
+    "intro": {
+      "other-analysis": "",
+      "poverty-analysis": "",
+      "investigations": "",
+      "nst2": "",
+      "evidence": "",
+      "programmes": "",
+      "cooperatives": "",
+      "cooperative": "",
+      "government": "",
+      "agent": "",
+      "beneficiary": "",
+      "jobs": "",
+      "map": "",
+      "datasets": "",
+      "ussd-control": ""
+    },
+    "menu": {
+      "title": "",
+      "text": "",
+      "textAlone": ""
+    },
+    "again": {
+      "title": "",
+      "text": ""
+    },
+    "steps": {
+      "analysis-filter": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-findings": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-poverty-chart": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-chart-eye": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-chart-ai": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-changes": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-finance": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-support": {
+        "title": "",
+        "text": ""
+      },
+      "support-views": {
+        "title": "",
+        "text": ""
+      },
+      "support-scatter": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-needs": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-priority": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-sources": {
+        "title": "",
+        "text": ""
+      },
+      "analysis-export": {
+        "title": "",
+        "text": ""
+      },
+      "inv-form": {
+        "title": "",
+        "text": ""
+      },
+      "inv-tabs": {
+        "title": "",
+        "text": ""
+      },
+      "inv-history": {
+        "title": "",
+        "text": ""
+      },
+      "nst2-intro": {
+        "title": "",
+        "text": ""
+      },
+      "nst2-latest": {
+        "title": "",
+        "text": ""
+      },
+      "nst2-targets": {
+        "title": "",
+        "text": ""
+      },
+      "ev-payments": {
+        "title": "",
+        "text": ""
+      },
+      "ev-journey": {
+        "title": "",
+        "text": ""
+      },
+      "ev-mix": {
+        "title": "",
+        "text": ""
+      },
+      "ev-table": {
+        "title": "",
+        "text": ""
+      },
+      "pm-programme-select": {
+        "title": "",
+        "text": ""
+      },
+      "coop-mine": {
+        "title": "",
+        "text": ""
+      },
+      "coop-requests": {
+        "title": "",
+        "text": ""
+      },
+      "coopp-requests": {
+        "title": "",
+        "text": ""
+      },
+      "coopp-members": {
+        "title": "",
+        "text": ""
+      },
+      "coopp-about": {
+        "title": "",
+        "text": ""
+      },
+      "coopp-activity": {
+        "title": "",
+        "text": ""
+      },
+      "agent-day": {
+        "title": "",
+        "text": ""
+      },
+      "agent-visits": {
+        "title": "",
+        "text": ""
+      },
+      "agent-record": {
+        "title": "",
+        "text": ""
+      },
+      "agent-problems": {
+        "title": "",
+        "text": ""
+      },
+      "me-payment": {
+        "title": "",
+        "text": ""
+      },
+      "me-programmes": {
+        "title": "",
+        "text": ""
+      },
+      "me-complaint": {
+        "title": "",
+        "text": ""
+      },
+      "job-application": {
+        "title": "",
+        "text": ""
+      },
+      "job-open": {
+        "title": "",
+        "text": ""
+      },
+      "map-layers": {
+        "title": "",
+        "text": ""
+      },
+      "map-canvas": {
+        "title": "",
+        "text": ""
+      },
+      "map-legend": {
+        "title": "",
+        "text": ""
+      },
+      "map-detail": {
+        "title": "",
+        "text": ""
+      },
+      "map-list": {
+        "title": "",
+        "text": ""
+      },
+      "ds-intro": {
+        "title": "",
+        "text": ""
+      },
+      "ds-list": {
+        "title": "",
+        "text": ""
+      },
+      "ds-dictionary": {
+        "title": "",
+        "text": ""
+      },
+      "programmes-subnav": {
+        "title": "",
+        "text": ""
+      },
+      "government-subnav": {
+        "title": "",
+        "text": ""
+      },
+      "gov-content": {
+        "title": "",
+        "text": ""
+      },
+      "member-profile": {
+        "title": "",
+        "text": ""
+      },
+      "member-coop-switcher": {
+        "title": "",
+        "text": ""
+      },
+      "member-coop-360": {
+        "title": "",
+        "text": ""
+      },
+      "member-coop-members": {
+        "title": "",
+        "text": ""
+      },
+      "member-space": {
+        "title": "",
+        "text": ""
+      },
+      "member-vote": {
+        "title": "",
+        "text": ""
+      },
+      "member-announcements": {
+        "title": "",
+        "text": ""
+      },
+      "member-agent": {
+        "title": "",
+        "text": ""
+      },
+      "member-visits": {
+        "title": "",
+        "text": ""
+      },
+      "member-insurance": {
+        "title": "",
+        "text": ""
+      },
+      "gov-members": {
+        "title": "",
+        "text": ""
+      },
+      "gov-360": {
+        "title": "",
+        "text": ""
+      },
+      "gov-coop-leaders": {
+        "title": "",
+        "text": ""
+      },
+      "agent-open": {
+        "title": "",
+        "text": ""
+      },
+      "ussd-stats": {
+        "title": "",
+        "text": ""
+      },
+      "ussd-sessions": {
+        "title": "",
+        "text": ""
+      },
+      "ussd-errors": {
+        "title": "",
+        "text": ""
+      },
+      "ussd-blocked": {
+        "title": "",
+        "text": ""
+      },
+      "ussd-audit": {
+        "title": "",
+        "text": ""
+      }
+    }
+  },
+  "settings": {
+    "title": "",
+    "intro": "",
+    "tabs": {
+      "profile": "",
+      "language": "",
+      "notifications": "",
+      "security": ""
+    },
+    "profile": {
+      "title": "",
+      "name": "",
+      "role": "",
+      "area": "",
+      "email": "",
+      "note": ""
+    },
+    "language": {
+      "title": "",
+      "help": "",
+      "saved": "",
+      "previewTitle": "",
+      "date": "",
+      "number": "",
+      "money": ""
+    },
+    "notifications": {
+      "title": "",
+      "help": "",
+      "app": "",
+      "sms": "",
+      "email": ""
+    },
+    "security": {
+      "title": "",
+      "help": "",
+      "signOut": ""
+    }
+  },
+  "member": {
+    "panel": "",
+    "noSession": "",
+    "noMember": "",
+    "tabs": {
+      "overview": "",
+      "profile": "",
+      "cooperatives": "",
+      "space": "",
+      "agent": "",
+      "insurance": ""
+    },
+    "profile": {
+      "title": "",
+      "name": "",
+      "phone": "",
+      "area": "",
+      "household": "",
+      "householdOf": "",
+      "category": "",
+      "programme": "",
+      "services": "",
+      "servicesHelp": "",
+      "protection": "",
+      "family": "",
+      "familyHelp": "",
+      "noFamily": "",
+      "age": ""
+    },
+    "coops": {
+      "switcher": "",
+      "none": "",
+      "readOnly": "",
+      "yourRole": "",
+      "memberCount": "",
+      "founded": "",
+      "votingStarts": "",
+      "votingEnds": "",
+      "leaders": "",
+      "leadersHelp": "",
+      "members": "",
+      "roles": {
+        "member": "",
+        "secretary": "",
+        "treasurer": "",
+        "vice_leader": "",
+        "leader": ""
+      }
+    },
+    "space": {
+      "voteTitle": "",
+      "noElection": "",
+      "where": "",
+      "when": "",
+      "state": {
+        "open": "",
+        "upcoming": "",
+        "closed": ""
+      },
+      "cannot": {
+        "upcoming": "",
+        "closed": ""
+      },
+      "pick": "",
+      "voted": "",
+      "confirmTitle": "",
+      "confirmText": "",
+      "confirmVote": "",
+      "announcements": "",
+      "meetings": "",
+      "contacts": "",
+      "memberList": "",
+      "none": ""
+    },
+    "agent": {
+      "title": "",
+      "help": "",
+      "none": "",
+      "phone": "",
+      "area": "",
+      "proximity": {
+        "cell": "",
+        "sector": "",
+        "district": ""
+      },
+      "visits": "",
+      "nextVisit": "",
+      "noVisits": "",
+      "purpose": "",
+      "prepare": "",
+      "status": {
+        "Scheduled": "",
+        "Done": "",
+        "Missed": "",
+        "Cancelled": ""
+      },
+      "history": "",
+      "reason": {
+        "auto_assigned": "",
+        "agent_unavailable": ""
+      }
+    },
+    "insurance": {
+      "title": "",
+      "none": "",
+      "status": {
+        "paid": "",
+        "partial": "",
+        "unpaid": ""
+      },
+      "overdue": "",
+      "due": "",
+      "paid": "",
+      "balance": "",
+      "dueDate": "",
+      "period": "",
+      "how": "",
+      "howHelp": "",
+      "calc": "",
+      "categories": {
+        "mutuelle_1": "",
+        "mutuelle_2": "",
+        "mutuelle_3": "",
+        "rama": ""
+      }
+    }
+  },
+  "gov": {
+    "membersHelp": "",
+    "search": "",
+    "noMembers": "",
+    "count": "",
+    "unpaidCount": "",
+    "sectorCell": "",
+    "who": "",
+    "agent": "",
+    "noLeaders": "",
+    "insurance": {
+      "title": "",
+      "any": "",
+      "paid": "",
+      "partial": "",
+      "unpaid": "",
+      "none": ""
+    },
+    "area": "",
+    "coops": "",
+    "noCoop": "",
+    "family": ""
+  },
+  "agent360": {
+    "joined": "",
+    "basedOn": "",
+    "noApplication": "",
+    "history": "",
+    "work": "",
+    "members": "",
+    "visitsDone": "",
+    "note": "",
+    "status": {
+      "label": "",
+      "Submitted": "",
+      "Under review": "",
+      "Accepted": "",
+      "Rejected": ""
+    }
+  },
+  "ussd": {
+    "menu": "",
+    "back": "",
+    "bye": "",
+    "invalid": "",
+    "notRegistered": "",
+    "blocked": "",
+    "expired": "",
+    "tooMany": "",
+    "error": "",
+    "insurance": "",
+    "insuranceNone": "",
+    "status": {
+      "paid": "",
+      "partial": "",
+      "unpaid": ""
+    },
+    "visit": "",
+    "visitNone": "",
+    "agent": "",
+    "agentNone": "",
+    "voting": "",
+    "votingNone": "",
+    "state": {
+      "open": "",
+      "upcoming": "",
+      "closed": ""
+    },
+    "voted": "",
+    "notVoted": "",
+    "language": "",
+    "languageSaved": ""
+  },
+  "ussdSim": {
+    "title": "",
+    "help": "",
+    "idle": "",
+    "dial": "",
+    "yourNumber": "",
+    "code": "",
+    "reply": "",
+    "send": "",
+    "cancel": "",
+    "timeLeft": "",
+    "timedOut": "",
+    "badCode": "",
+    "network": "",
+    "demoOnly": ""
+  },
+  "ussdAdmin": {
+    "title": "",
+    "needAdmin": "",
+    "noData": "",
+    "noErrors": "",
+    "noSessions": "",
+    "noBlocked": "",
+    "noAudit": "",
+    "stats": {
+      "total": "",
+      "today": "",
+      "active": "",
+      "timedOut": "",
+      "errors": "",
+      "blocked": ""
+    },
+    "byLanguage": "",
+    "byScreen": "",
+    "byScreenHelp": "",
+    "recentErrors": "",
+    "sessions": "",
+    "sessionsHelp": "",
+    "col": {
+      "phone": "",
+      "member": "",
+      "language": "",
+      "path": "",
+      "status": "",
+      "source": "",
+      "lastSeen": ""
+    },
+    "status": {
+      "active": "",
+      "ended": "",
+      "timed_out": "",
+      "blocked": "",
+      "error": ""
+    },
+    "errorsShort": "",
+    "end": "",
+    "block": "",
+    "unblock": "",
+    "blockedTitle": "",
+    "auditTitle": "",
+    "auditHelp": "",
+    "blockTitle": "",
+    "blockText": "",
+    "reason": "",
+    "actions": {
+      "end_session": "",
+      "block_number": "",
+      "unblock_number": ""
+    }
+  },
+  "login": {
+    "ussd": {
+      "title": "",
+      "text": "",
+      "open": "",
+      "admin": ""
+    }
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "method": {
+    "survey": "NISR EICV7 cross-section, 2023/24",
+    "poverty": "Population-weighted share below the January 2024 poverty line (pov_jan == Poor).",
+    "extremePoverty": "Population-weighted share below the food poverty line (epov_jan == Extreme Poor).",
+    "vupAmongPoor": "Household-weighted share of surveyed poor households with a member answering Yes to VUP participation in any of the five S9D modules. This measures reported participation, not receipt of a payment in the past 12 months or eligibility for all programmes.",
+    "vupAmongAllHouseholds": "Household-weighted share of all surveyed households with a member answering Yes to VUP participation in any of the five S9D modules (same definition as vupAmongPoor, all households).",
+    "uncertainty": "District sample counts are shown; design-based confidence intervals were not calculated."
+  },
+  "national": {
+    "poverty": 27.4,
+    "extremePoverty": 5.4,
+    "vupAmongPoor": 15.9,
+    "vupAmongAllHouseholds": 11.6,
+    "sampleHouseholds": 15054,
+    "samplePoorHouseholds": 3581
+  },
+  "districts": [
+    {
+      "name": "Bugesera",
+      "poverty": 23.7,
+      "extremePoverty": 3.8,
+      "vupAmongPoor": 13.9,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 100
+    },
+    {
+      "name": "Burera",
+      "poverty": 22.0,
+      "extremePoverty": 2.9,
+      "vupAmongPoor": 20.7,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 97
+    },
+    {
+      "name": "Gakenke",
+      "poverty": 24.5,
+      "extremePoverty": 5.3,
+      "vupAmongPoor": 20.7,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 101
+    },
+    {
+      "name": "Gasabo",
+      "poverty": 11.1,
+      "extremePoverty": 1.4,
+      "vupAmongPoor": 5.6,
+      "sampleHouseholds": 644,
+      "samplePoorHouseholds": 52
+    },
+    {
+      "name": "Gatsibo",
+      "poverty": 18.4,
+      "extremePoverty": 1.8,
+      "vupAmongPoor": 7.2,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 75
+    },
+    {
+      "name": "Gicumbi",
+      "poverty": 13.3,
+      "extremePoverty": 1.7,
+      "vupAmongPoor": 26.5,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 51
+    },
+    {
+      "name": "Gisagara",
+      "poverty": 45.6,
+      "extremePoverty": 8.8,
+      "vupAmongPoor": 18.2,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 194
+    },
+    {
+      "name": "Huye",
+      "poverty": 24.2,
+      "extremePoverty": 3.2,
+      "vupAmongPoor": 16.0,
+      "sampleHouseholds": 485,
+      "samplePoorHouseholds": 95
+    },
+    {
+      "name": "Kamonyi",
+      "poverty": 39.7,
+      "extremePoverty": 12.2,
+      "vupAmongPoor": 9.2,
+      "sampleHouseholds": 484,
+      "samplePoorHouseholds": 176
+    },
+    {
+      "name": "Karongi",
+      "poverty": 38.2,
+      "extremePoverty": 6.1,
+      "vupAmongPoor": 21.8,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 167
+    },
+    {
+      "name": "Kayonza",
+      "poverty": 36.6,
+      "extremePoverty": 9.5,
+      "vupAmongPoor": 11.1,
+      "sampleHouseholds": 485,
+      "samplePoorHouseholds": 152
+    },
+    {
+      "name": "Kicukiro",
+      "poverty": 6.9,
+      "extremePoverty": 0.7,
+      "vupAmongPoor": 3.1,
+      "sampleHouseholds": 647,
+      "samplePoorHouseholds": 40
+    },
+    {
+      "name": "Kirehe",
+      "poverty": 14.2,
+      "extremePoverty": 0.8,
+      "vupAmongPoor": 12.5,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 57
+    },
+    {
+      "name": "Muhanga",
+      "poverty": 15.0,
+      "extremePoverty": 3.2,
+      "vupAmongPoor": 11.5,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 61
+    },
+    {
+      "name": "Musanze",
+      "poverty": 21.0,
+      "extremePoverty": 3.1,
+      "vupAmongPoor": 15.4,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 84
+    },
+    {
+      "name": "Ngoma",
+      "poverty": 30.9,
+      "extremePoverty": 3.2,
+      "vupAmongPoor": 7.8,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 131
+    },
+    {
+      "name": "Ngororero",
+      "poverty": 30.2,
+      "extremePoverty": 5.1,
+      "vupAmongPoor": 29.2,
+      "sampleHouseholds": 485,
+      "samplePoorHouseholds": 120
+    },
+    {
+      "name": "Nyabihu",
+      "poverty": 20.2,
+      "extremePoverty": 1.6,
+      "vupAmongPoor": 16.7,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 81
+    },
+    {
+      "name": "Nyagatare",
+      "poverty": 36.4,
+      "extremePoverty": 6.7,
+      "vupAmongPoor": 4.3,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 160
+    },
+    {
+      "name": "Nyamagabe",
+      "poverty": 51.4,
+      "extremePoverty": 10.5,
+      "vupAmongPoor": 18.5,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 212
+    },
+    {
+      "name": "Nyamasheke",
+      "poverty": 42.8,
+      "extremePoverty": 9.1,
+      "vupAmongPoor": 24.1,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 188
+    },
+    {
+      "name": "Nyanza",
+      "poverty": 43.3,
+      "extremePoverty": 10.1,
+      "vupAmongPoor": 13.2,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 190
+    },
+    {
+      "name": "Nyarugenge",
+      "poverty": 6.8,
+      "extremePoverty": 0.9,
+      "vupAmongPoor": 6.8,
+      "sampleHouseholds": 647,
+      "samplePoorHouseholds": 35
+    },
+    {
+      "name": "Nyaruguru",
+      "poverty": 39.7,
+      "extremePoverty": 7.0,
+      "vupAmongPoor": 40.2,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 183
+    },
+    {
+      "name": "Rubavu",
+      "poverty": 38.8,
+      "extremePoverty": 15.0,
+      "vupAmongPoor": 17.1,
+      "sampleHouseholds": 485,
+      "samplePoorHouseholds": 168
+    },
+    {
+      "name": "Ruhango",
+      "poverty": 15.0,
+      "extremePoverty": 2.5,
+      "vupAmongPoor": 15.8,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 62
+    },
+    {
+      "name": "Rulindo",
+      "poverty": 21.6,
+      "extremePoverty": 3.5,
+      "vupAmongPoor": 17.2,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 93
+    },
+    {
+      "name": "Rusizi",
+      "poverty": 44.2,
+      "extremePoverty": 10.9,
+      "vupAmongPoor": 16.4,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 182
+    },
+    {
+      "name": "Rutsiro",
+      "poverty": 40.8,
+      "extremePoverty": 10.4,
+      "vupAmongPoor": 25.2,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 180
+    },
+    {
+      "name": "Rwamagana",
+      "poverty": 23.8,
+      "extremePoverty": 4.2,
+      "vupAmongPoor": 5.5,
+      "sampleHouseholds": 486,
+      "samplePoorHouseholds": 94
+    }
+  ]
+}

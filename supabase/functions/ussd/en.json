@@ -1,0 +1,35 @@
+{
+  "ussd": {
+    "menu": "Ireme: {{name}}\n1 Insurance\n2 Next visit\n3 My agent\n4 Voting\n5 Language\n0 Exit",
+    "back": "0 Back",
+    "bye": "Thank you. Goodbye.",
+    "invalid": "Wrong choice.",
+    "notRegistered": "This number is not registered as a Program Member.",
+    "blocked": "This service is not available for your number.",
+    "expired": "Your session ended. Please dial again.",
+    "tooMany": "Too many requests. Try again in a minute.",
+    "error": "Sorry, something went wrong. Try again later.",
+    "insurance": "Insurance: {{status}}\nTo pay: {{due}}\nPaid: {{paid}}\nPay by: {{date}}",
+    "insuranceNone": "No insurance record yet.",
+    "status": {
+      "paid": "Paid",
+      "partial": "Partly paid",
+      "unpaid": "Not paid"
+    },
+    "visit": "Next visit:\n{{when}}\n{{purpose}}",
+    "visitNone": "No visit is scheduled.",
+    "agent": "Your agent:\n{{name}}\n{{phone}}",
+    "agentNone": "No agent is assigned yet.",
+    "voting": "{{title}}\nWhere: {{venue}}\nWhen: {{from}} to {{to}}\nStatus: {{state}}\n{{voted}}",
+    "votingNone": "There is no election for you now.",
+    "state": {
+      "open": "Open",
+      "upcoming": "Not started",
+      "closed": "Closed"
+    },
+    "voted": "You have voted.",
+    "notVoted": "You have not voted yet.",
+    "language": "Language\n1 English\n2 Kinyarwanda",
+    "languageSaved": "Language saved."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gisagara_runs": [
+    "9c481237-25a2-46a1-a48c-b25b9f840afe",
+    "f34e5a93-029d-4b09-aabf-eb9b19d45edc"
+  ],
+  "repeat_values_identical": true,
+  "gisagara_estimates": {
+    "district": "Gisagara",
+    "province": "Southern Province",
+    "poverty": 45.6,
+    "extreme_poverty": 8.8,
+    "vup_among_poor": 18.2,
+    "grid_connection": 39.1,
+    "health_insurance": 85.0,
+    "sample_households": 486,
+    "sample_poor_households": 194,
+    "sample_people_health": 1983
+  },
+  "other_district_run": "de696ecb-ee1c-435f-8a8f-46c09c5cc448",
+  "other_district_estimates": {
+    "district": "Nyanza",
+    "province": "Southern Province",
+    "poverty": 43.3,
+    "extreme_poverty": 10.1,
+    "vup_among_poor": 13.2,
+    "grid_connection": 35.9,
+    "health_insurance": 82.3,
+    "sample_households": 486,
+    "sample_poor_households": 190,
+    "sample_people_health": 1932
+  },
+  "added_dataset": {
+    "status": "Passed",
+    "files": 17,
+    "tables": 316,
+    "variables": 15992,
+    "columns_added": 4,
+    "interpretation": "An added file derived from real aggregate estimates was catalogued. It was not double-counted or promoted to independent evidence without a validated adapter."
+  },
+  "operational_acceptance": "Blocked: trusted server roles, Action Center and verified follow-up integration are not configured",
+  "live_ai_acceptance": {
+    "finding_ids": [
+      "poverty",
+      "modelled_change",
+      "grid_connection",
+      "vup_among_poor"
+    ],
+    "option_titles": [
+      "Review existing VUP delivery",
+      "Investigate electricity access barriers"
+    ],
+    "question_ids": [
+      "sampling",
+      "eligibility",
+      "feasibility",
+      "definitions",
+      "conflicts"
+    ],
+    "questions": [
+      "Review the official district confidence intervals and sampling limitations.",
+      "Request authorized eligibility and delivery evidence before interpreting VUP participation.",
+      "Ask the responsible institution for feasibility, costs, and local implementation evidence.",
+      "Validate additional variable definitions and denominators before extending the analysis.",
+      "Resolve the recorded source conflicts with the original publisher."
+    ],
+    "status": "Completed",
+    "model": "openai/gpt-oss-120b",
+    "limitation": "AI selected references and research questions only. Calculations, evidence, and authorization remain controlled by application logic."
+  }
+}

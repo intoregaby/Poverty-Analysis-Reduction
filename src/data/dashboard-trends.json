@@ -1,0 +1,4191 @@
+{
+ "sources": {
+  "trends": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Poverty%20Profile.pdf",
+  "nationalSeries": "https://statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
+  "finscope": "https://statistics.gov.rw/sites/default/files/documents/2024-09/Rwanda-Finscope-2024-Report_compressed.pdf"
+ },
+ "finscopeTrend": {
+  "sources": {
+   "report_2024": "https://statistics.gov.rw/sites/default/files/documents/2024-09/Rwanda-Finscope-2024-Report_compressed.pdf",
+   "survey_2020": "https://microdata.statistics.gov.rw/index.php/catalog/89",
+   "press_2020": "https://www.ktpress.rw/2020/05/93-rwandans-are-financially-included-finscope-survey-2020/"
+  },
+  "files": {
+   "2020": "T2 Finance and Poverty - FinScope 2020 Financial Inclusion.zip",
+   "2024": "T2 Finance and Poverty - FinScope 2024 Financial Inclusion.dta"
+  },
+  "national": {
+   "y2020Microdata": {
+    "banked": 36.2,
+    "other_formal": 40.8,
+    "informal_only": 15.6,
+    "excluded": 7.4,
+    "formal": 77.0,
+    "mobile_money": 62.3,
+    "bank_account": 22.3
+   },
+   "y2020Restated": {
+    "banked": 22,
+    "other_formal": 55,
+    "informal_only": 16,
+    "excluded": 7,
+    "formal": 77
+   },
+   "y2024": {
+    "banked": 22,
+    "other_formal": 70,
+    "informal_only": 4,
+    "excluded": 4,
+    "formal": 92
+   },
+   "originalBanked2020": 36,
+   "mobileMoney": {
+    "2020": 62.3,
+    "2024": 76.2,
+    "published": {
+     "2020": 60,
+     "2024": 77
+    }
+   }
+  },
+  "checks": [
+   {
+    "measure": "formal",
+    "calculated": 77.0,
+    "published": 77,
+    "ok": true
+   },
+   {
+    "measure": "informal_only",
+    "calculated": 15.6,
+    "published": 16,
+    "ok": true
+   },
+   {
+    "measure": "excluded",
+    "calculated": 7.4,
+    "published": 7,
+    "ok": true
+   },
+   {
+    "measure": "banked",
+    "calculated": 36.2,
+    "published": 36,
+    "ok": true
+   },
+   {
+    "measure": "registered_mobile_money_2020",
+    "calculated": 62.3,
+    "published": 60,
+    "ok": true
+   },
+   {
+    "measure": "registered_mobile_money_2024",
+    "calculated": 76.2,
+    "published": 77,
+    "ok": true
+   }
+  ],
+  "districts": [
+   {
+    "name": "Bugesera",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 560,
+    "excluded": {
+     "y2020": {
+      "pct": 4.8,
+      "ci_lower": 1.9,
+      "ci_upper": 7.7
+     },
+     "y2024": 2.0,
+     "change": {
+      "points": -2.8,
+      "ci_lower": -6.1,
+      "ci_upper": 0.5,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 16.2,
+      "ci_lower": 11.2,
+      "ci_upper": 21.1
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -11.2,
+      "ci_lower": -16.7,
+      "ci_upper": -5.7,
+      "holm_adjusted_p": 0.0012,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 79.1,
+      "ci_lower": 72.8,
+      "ci_upper": 85.3
+     },
+     "y2024": 94.0,
+     "change": {
+      "points": 14.9,
+      "ci_lower": 8.2,
+      "ci_upper": 21.7,
+      "holm_adjusted_p": 0.0003,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 57.3,
+      "ci_lower": 48.1,
+      "ci_upper": 66.6
+     },
+     "y2024": 81.7,
+     "change": {
+      "points": 24.4,
+      "ci_lower": 14.3,
+      "ci_upper": 34.5,
+      "holm_adjusted_p": 0.0001,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Burera",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 416,
+    "excluded": {
+     "y2020": {
+      "pct": 12.7,
+      "ci_lower": 9.0,
+      "ci_upper": 16.4
+     },
+     "y2024": 1.0,
+     "change": {
+      "points": -11.7,
+      "ci_lower": -15.6,
+      "ci_upper": -7.7,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 30.9,
+      "ci_lower": 23.2,
+      "ci_upper": 38.7
+     },
+     "y2024": 2.0,
+     "change": {
+      "points": -28.9,
+      "ci_lower": -36.9,
+      "ci_upper": -21.0,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 56.4,
+      "ci_lower": 47.2,
+      "ci_upper": 65.5
+     },
+     "y2024": 98.0,
+     "change": {
+      "points": 41.6,
+      "ci_lower": 32.3,
+      "ci_upper": 51.0,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 39.3,
+      "ci_lower": 31.6,
+      "ci_upper": 47.0
+     },
+     "y2024": 86.8,
+     "change": {
+      "points": 47.5,
+      "ci_lower": 38.6,
+      "ci_upper": 56.4,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Gakenke",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 447,
+    "excluded": {
+     "y2020": {
+      "pct": 13.8,
+      "ci_lower": 6.6,
+      "ci_upper": 21.0
+     },
+     "y2024": 8.0,
+     "change": {
+      "points": -5.8,
+      "ci_lower": -13.8,
+      "ci_upper": 2.2,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 24.4,
+      "ci_lower": 15.0,
+      "ci_upper": 33.7
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -19.4,
+      "ci_lower": -29.1,
+      "ci_upper": -9.6,
+      "holm_adjusted_p": 0.0017,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 61.8,
+      "ci_lower": 49.6,
+      "ci_upper": 74.1
+     },
+     "y2024": 87.0,
+     "change": {
+      "points": 25.2,
+      "ci_lower": 12.2,
+      "ci_upper": 38.2,
+      "holm_adjusted_p": 0.0021,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 48.7,
+      "ci_lower": 38.5,
+      "ci_upper": 58.8
+     },
+     "y2024": 65.7,
+     "change": {
+      "points": 17.0,
+      "ci_lower": 5.2,
+      "ci_upper": 28.9,
+      "holm_adjusted_p": 0.0575,
+      "label": "Possible rise (not robust to testing 30 districts)"
+     }
+    }
+   },
+   {
+    "name": "Gasabo",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 848,
+    "excluded": {
+     "y2020": {
+      "pct": 0.4,
+      "ci_lower": 0.0,
+      "ci_upper": 0.9
+     },
+     "y2024": 1.0,
+     "change": {
+      "points": 0.6,
+      "ci_lower": -0.5,
+      "ci_upper": 1.8,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 1.2,
+      "ci_lower": 0.0,
+      "ci_upper": 2.6
+     },
+     "y2024": 2.0,
+     "change": {
+      "points": 0.8,
+      "ci_lower": -1.1,
+      "ci_upper": 2.7,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 98.5,
+      "ci_lower": 96.9,
+      "ci_upper": 100.0
+     },
+     "y2024": 97.0,
+     "change": {
+      "points": -1.5,
+      "ci_lower": -3.7,
+      "ci_upper": 0.8,
+      "holm_adjusted_p": 0.9861,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 92.2,
+      "ci_lower": 87.4,
+      "ci_upper": 97.0
+     },
+     "y2024": 91.9,
+     "change": {
+      "points": -0.3,
+      "ci_lower": -5.6,
+      "ci_upper": 5.1,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "name": "Gatsibo",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 17.0,
+      "ci_lower": 9.6,
+      "ci_upper": 24.4
+     },
+     "y2024": 1.0,
+     "change": {
+      "points": -16.0,
+      "ci_lower": -23.5,
+      "ci_upper": -8.5,
+      "holm_adjusted_p": 0.0009,
+      "label": "Clear fall"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 19.5,
+      "ci_lower": 12.6,
+      "ci_upper": 26.4
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -16.5,
+      "ci_lower": -23.7,
+      "ci_upper": -9.2,
+      "holm_adjusted_p": 0.0002,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 63.5,
+      "ci_lower": 54.6,
+      "ci_upper": 72.4
+     },
+     "y2024": 96.0,
+     "change": {
+      "points": 32.5,
+      "ci_lower": 23.2,
+      "ci_upper": 41.8,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 47.4,
+      "ci_lower": 37.7,
+      "ci_upper": 57.0
+     },
+     "y2024": 72.3,
+     "change": {
+      "points": 25.0,
+      "ci_lower": 13.8,
+      "ci_upper": 36.2,
+      "holm_adjusted_p": 0.0003,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Gicumbi",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 512,
+    "excluded": {
+     "y2020": {
+      "pct": 11.7,
+      "ci_lower": 5.0,
+      "ci_upper": 18.5
+     },
+     "y2024": 7.0,
+     "change": {
+      "points": -4.7,
+      "ci_lower": -12.1,
+      "ci_upper": 2.6,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 25.0,
+      "ci_lower": 18.1,
+      "ci_upper": 31.9
+     },
+     "y2024": 11.0,
+     "change": {
+      "points": -14.0,
+      "ci_lower": -21.7,
+      "ci_upper": -6.2,
+      "holm_adjusted_p": 0.0061,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 63.3,
+      "ci_lower": 56.3,
+      "ci_upper": 70.3
+     },
+     "y2024": 83.0,
+     "change": {
+      "points": 19.7,
+      "ci_lower": 11.6,
+      "ci_upper": 27.9,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 41.8,
+      "ci_lower": 33.5,
+      "ci_upper": 50.1
+     },
+     "y2024": 64.0,
+     "change": {
+      "points": 22.2,
+      "ci_lower": 12.3,
+      "ci_upper": 32.1,
+      "holm_adjusted_p": 0.0002,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Gisagara",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 9.0,
+      "ci_lower": 4.3,
+      "ci_upper": 13.6
+     },
+     "y2024": 4.0,
+     "change": {
+      "points": -5.0,
+      "ci_lower": -10.2,
+      "ci_upper": 0.3,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 29.6,
+      "ci_lower": 25.9,
+      "ci_upper": 33.3
+     },
+     "y2024": 9.0,
+     "change": {
+      "points": -20.6,
+      "ci_lower": -25.9,
+      "ci_upper": -15.3,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 61.5,
+      "ci_lower": 55.4,
+      "ci_upper": 67.5
+     },
+     "y2024": 87.0,
+     "change": {
+      "points": 25.5,
+      "ci_lower": 18.1,
+      "ci_upper": 33.0,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 36.7,
+      "ci_lower": 30.8,
+      "ci_upper": 42.6
+     },
+     "y2024": 69.3,
+     "change": {
+      "points": 32.6,
+      "ci_lower": 24.2,
+      "ci_upper": 41.0,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Huye",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 480,
+    "excluded": {
+     "y2020": {
+      "pct": 4.2,
+      "ci_lower": 1.3,
+      "ci_upper": 7.1
+     },
+     "y2024": 6.0,
+     "change": {
+      "points": 1.8,
+      "ci_lower": -2.3,
+      "ci_upper": 5.9,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 23.4,
+      "ci_lower": 16.6,
+      "ci_upper": 30.2
+     },
+     "y2024": 6.0,
+     "change": {
+      "points": -17.4,
+      "ci_lower": -24.7,
+      "ci_upper": -10.0,
+      "holm_adjusted_p": 0.0001,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 72.4,
+      "ci_lower": 64.0,
+      "ci_upper": 80.8
+     },
+     "y2024": 88.0,
+     "change": {
+      "points": 15.6,
+      "ci_lower": 6.3,
+      "ci_upper": 24.9,
+      "holm_adjusted_p": 0.0109,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 48.3,
+      "ci_lower": 37.8,
+      "ci_upper": 58.8
+     },
+     "y2024": 70.7,
+     "change": {
+      "points": 22.4,
+      "ci_lower": 10.6,
+      "ci_upper": 34.3,
+      "holm_adjusted_p": 0.0037,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Kamonyi",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 623,
+    "excluded": {
+     "y2020": {
+      "pct": 9.1,
+      "ci_lower": 4.9,
+      "ci_upper": 13.3
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -6.1,
+      "ci_lower": -10.7,
+      "ci_upper": -1.5,
+      "holm_adjusted_p": 0.2119,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 18.2,
+      "ci_lower": 11.8,
+      "ci_upper": 24.6
+     },
+     "y2024": 4.0,
+     "change": {
+      "points": -14.2,
+      "ci_lower": -21.0,
+      "ci_upper": -7.5,
+      "holm_adjusted_p": 0.0007,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 72.7,
+      "ci_lower": 63.8,
+      "ci_upper": 81.6
+     },
+     "y2024": 92.0,
+     "change": {
+      "points": 19.3,
+      "ci_lower": 10.0,
+      "ci_upper": 28.7,
+      "holm_adjusted_p": 0.0009,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 66.4,
+      "ci_lower": 60.5,
+      "ci_upper": 72.3
+     },
+     "y2024": 77.0,
+     "change": {
+      "points": 10.6,
+      "ci_lower": 3.2,
+      "ci_upper": 18.0,
+      "holm_adjusted_p": 0.0575,
+      "label": "Possible rise (not robust to testing 30 districts)"
+     }
+    }
+   },
+   {
+    "name": "Karongi",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 399,
+    "excluded": {
+     "y2020": {
+      "pct": 15.5,
+      "ci_lower": 9.4,
+      "ci_upper": 21.6
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -12.5,
+      "ci_lower": -19.0,
+      "ci_upper": -6.0,
+      "holm_adjusted_p": 0.0049,
+      "label": "Clear fall"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 21.7,
+      "ci_lower": 15.2,
+      "ci_upper": 28.2
+     },
+     "y2024": 6.0,
+     "change": {
+      "points": -15.7,
+      "ci_lower": -22.9,
+      "ci_upper": -8.5,
+      "holm_adjusted_p": 0.0004,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 62.9,
+      "ci_lower": 52.5,
+      "ci_upper": 73.2
+     },
+     "y2024": 91.0,
+     "change": {
+      "points": 28.1,
+      "ci_lower": 17.2,
+      "ci_upper": 39.1,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 45.3,
+      "ci_lower": 39.4,
+      "ci_upper": 51.2
+     },
+     "y2024": 66.6,
+     "change": {
+      "points": 21.3,
+      "ci_lower": 12.8,
+      "ci_upper": 29.7,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Kayonza",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 448,
+    "excluded": {
+     "y2020": {
+      "pct": 6.8,
+      "ci_lower": 2.5,
+      "ci_upper": 11.1
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -1.8,
+      "ci_lower": -6.9,
+      "ci_upper": 3.4,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 10.7,
+      "ci_lower": 7.2,
+      "ci_upper": 14.2
+     },
+     "y2024": 8.0,
+     "change": {
+      "points": -2.7,
+      "ci_lower": -7.6,
+      "ci_upper": 2.2,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 82.5,
+      "ci_lower": 76.8,
+      "ci_upper": 88.3
+     },
+     "y2024": 87.0,
+     "change": {
+      "points": 4.5,
+      "ci_lower": -2.7,
+      "ci_upper": 11.6,
+      "holm_adjusted_p": 0.9861,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 63.8,
+      "ci_lower": 57.6,
+      "ci_upper": 70.1
+     },
+     "y2024": 76.0,
+     "change": {
+      "points": 12.2,
+      "ci_lower": 4.0,
+      "ci_upper": 20.4,
+      "holm_adjusted_p": 0.0455,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Kicukiro",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 607,
+    "excluded": {
+     "y2020": {
+      "pct": 3.2,
+      "ci_lower": 0.4,
+      "ci_upper": 6.0
+     },
+     "y2024": 2.0,
+     "change": {
+      "points": -1.2,
+      "ci_lower": -4.5,
+      "ci_upper": 2.1,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 1.9,
+      "ci_lower": 0.5,
+      "ci_upper": 3.4
+     },
+     "y2024": 2.0,
+     "change": {
+      "points": 0.1,
+      "ci_lower": -2.1,
+      "ci_upper": 2.3,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 94.9,
+      "ci_lower": 91.9,
+      "ci_upper": 97.9
+     },
+     "y2024": 97.0,
+     "change": {
+      "points": 2.1,
+      "ci_lower": -1.4,
+      "ci_upper": 5.7,
+      "holm_adjusted_p": 0.9861,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 93.2,
+      "ci_lower": 88.9,
+      "ci_upper": 97.4
+     },
+     "y2024": 90.3,
+     "change": {
+      "points": -2.9,
+      "ci_lower": -8.2,
+      "ci_upper": 2.5,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "name": "Kirehe",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 464,
+    "excluded": {
+     "y2020": {
+      "pct": 8.5,
+      "ci_lower": 4.4,
+      "ci_upper": 12.7
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -5.5,
+      "ci_lower": -10.2,
+      "ci_upper": -0.8,
+      "holm_adjusted_p": 0.4406,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 14.0,
+      "ci_lower": 7.8,
+      "ci_upper": 20.3
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -9.0,
+      "ci_lower": -15.9,
+      "ci_upper": -2.2,
+      "holm_adjusted_p": 0.0682,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 77.5,
+      "ci_lower": 70.3,
+      "ci_upper": 84.7
+     },
+     "y2024": 93.0,
+     "change": {
+      "points": 15.5,
+      "ci_lower": 7.6,
+      "ci_upper": 23.5,
+      "holm_adjusted_p": 0.0019,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 58.9,
+      "ci_lower": 51.4,
+      "ci_upper": 66.4
+     },
+     "y2024": 73.9,
+     "change": {
+      "points": 15.0,
+      "ci_lower": 5.7,
+      "ci_upper": 24.3,
+      "holm_adjusted_p": 0.0239,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Muhanga",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 9.9,
+      "ci_lower": 4.8,
+      "ci_upper": 15.0
+     },
+     "y2024": 2.0,
+     "change": {
+      "points": -7.9,
+      "ci_lower": -13.3,
+      "ci_upper": -2.4,
+      "holm_adjusted_p": 0.1121,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 16.6,
+      "ci_lower": 10.3,
+      "ci_upper": 22.9
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -11.6,
+      "ci_lower": -18.5,
+      "ci_upper": -4.7,
+      "holm_adjusted_p": 0.0108,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 73.5,
+      "ci_lower": 64.0,
+      "ci_upper": 83.0
+     },
+     "y2024": 93.0,
+     "change": {
+      "points": 19.5,
+      "ci_lower": 9.5,
+      "ci_upper": 29.5,
+      "holm_adjusted_p": 0.0021,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 54.0,
+      "ci_lower": 43.2,
+      "ci_upper": 64.8
+     },
+     "y2024": 72.5,
+     "change": {
+      "points": 18.5,
+      "ci_lower": 6.3,
+      "ci_upper": 30.7,
+      "holm_adjusted_p": 0.0414,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Musanze",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 399,
+    "excluded": {
+     "y2020": {
+      "pct": 5.6,
+      "ci_lower": 3.4,
+      "ci_upper": 7.8
+     },
+     "y2024": 1.0,
+     "change": {
+      "points": -4.6,
+      "ci_lower": -7.2,
+      "ci_upper": -2.0,
+      "holm_adjusted_p": 0.0125,
+      "label": "Clear fall"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 24.5,
+      "ci_lower": 17.4,
+      "ci_upper": 31.5
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -19.5,
+      "ci_lower": -27.1,
+      "ci_upper": -11.9,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 69.9,
+      "ci_lower": 63.8,
+      "ci_upper": 76.1
+     },
+     "y2024": 95.0,
+     "change": {
+      "points": 25.1,
+      "ci_lower": 18.3,
+      "ci_upper": 31.8,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 58.9,
+      "ci_lower": 52.1,
+      "ci_upper": 65.8
+     },
+     "y2024": 81.7,
+     "change": {
+      "points": 22.7,
+      "ci_lower": 14.3,
+      "ci_upper": 31.2,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Ngoma",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 6.9,
+      "ci_lower": 1.4,
+      "ci_upper": 12.4
+     },
+     "y2024": 8.0,
+     "change": {
+      "points": 1.1,
+      "ci_lower": -5.5,
+      "ci_upper": 7.8,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 12.5,
+      "ci_lower": 7.8,
+      "ci_upper": 17.2
+     },
+     "y2024": 6.0,
+     "change": {
+      "points": -6.5,
+      "ci_lower": -12.3,
+      "ci_upper": -0.8,
+      "holm_adjusted_p": 0.131,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 80.6,
+      "ci_lower": 76.0,
+      "ci_upper": 85.2
+     },
+     "y2024": 86.0,
+     "change": {
+      "points": 5.4,
+      "ci_lower": -1.3,
+      "ci_upper": 12.1,
+      "holm_adjusted_p": 0.6802,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 64.1,
+      "ci_lower": 56.5,
+      "ci_upper": 71.8
+     },
+     "y2024": 67.5,
+     "change": {
+      "points": 3.4,
+      "ci_lower": -6.7,
+      "ci_upper": 13.4,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "name": "Ngororero",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 13.3,
+      "ci_lower": 8.5,
+      "ci_upper": 18.2
+     },
+     "y2024": 7.0,
+     "change": {
+      "points": -6.3,
+      "ci_lower": -12.2,
+      "ci_upper": -0.4,
+      "holm_adjusted_p": 0.6903,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 27.5,
+      "ci_lower": 21.3,
+      "ci_upper": 33.7
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -22.5,
+      "ci_lower": -29.3,
+      "ci_upper": -15.6,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 59.2,
+      "ci_lower": 50.2,
+      "ci_upper": 68.3
+     },
+     "y2024": 88.0,
+     "change": {
+      "points": 28.8,
+      "ci_lower": 18.8,
+      "ci_upper": 38.8,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 39.5,
+      "ci_lower": 31.9,
+      "ci_upper": 47.2
+     },
+     "y2024": 78.0,
+     "change": {
+      "points": 38.4,
+      "ci_lower": 29.0,
+      "ci_upper": 47.9,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Nyabihu",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 6.7,
+      "ci_lower": 3.1,
+      "ci_upper": 10.4
+     },
+     "y2024": 8.0,
+     "change": {
+      "points": 1.3,
+      "ci_lower": -4.0,
+      "ci_upper": 6.5,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 14.0,
+      "ci_lower": 8.4,
+      "ci_upper": 19.5
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -9.0,
+      "ci_lower": -15.3,
+      "ci_upper": -2.7,
+      "holm_adjusted_p": 0.0424,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 79.3,
+      "ci_lower": 72.6,
+      "ci_upper": 86.0
+     },
+     "y2024": 87.0,
+     "change": {
+      "points": 7.7,
+      "ci_lower": -0.4,
+      "ci_upper": 15.9,
+      "holm_adjusted_p": 0.5117,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 59.9,
+      "ci_lower": 48.7,
+      "ci_upper": 71.0
+     },
+     "y2024": 69.6,
+     "change": {
+      "points": 9.7,
+      "ci_lower": -3.1,
+      "ci_upper": 22.5,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "name": "Nyagatare",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 639,
+    "excluded": {
+     "y2020": {
+      "pct": 12.3,
+      "ci_lower": 5.9,
+      "ci_upper": 18.6
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -9.3,
+      "ci_lower": -15.9,
+      "ci_upper": -2.7,
+      "holm_adjusted_p": 0.1416,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 14.7,
+      "ci_lower": 9.7,
+      "ci_upper": 19.7
+     },
+     "y2024": 4.0,
+     "change": {
+      "points": -10.7,
+      "ci_lower": -16.1,
+      "ci_upper": -5.2,
+      "holm_adjusted_p": 0.0019,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 73.0,
+      "ci_lower": 65.3,
+      "ci_upper": 80.8
+     },
+     "y2024": 94.0,
+     "change": {
+      "points": 21.0,
+      "ci_lower": 12.8,
+      "ci_upper": 29.1,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 59.7,
+      "ci_lower": 48.2,
+      "ci_upper": 71.3
+     },
+     "y2024": 81.3,
+     "change": {
+      "points": 21.6,
+      "ci_lower": 9.4,
+      "ci_upper": 33.8,
+      "holm_adjusted_p": 0.009,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Nyamagabe",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 2.4,
+      "ci_lower": 0.2,
+      "ci_upper": 4.6
+     },
+     "y2024": 1.0,
+     "change": {
+      "points": -1.4,
+      "ci_lower": -4.1,
+      "ci_upper": 1.2,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 34.5,
+      "ci_lower": 26.6,
+      "ci_upper": 42.4
+     },
+     "y2024": 4.0,
+     "change": {
+      "points": -30.5,
+      "ci_lower": -38.9,
+      "ci_upper": -22.2,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 63.1,
+      "ci_lower": 55.1,
+      "ci_upper": 71.0
+     },
+     "y2024": 95.0,
+     "change": {
+      "points": 31.9,
+      "ci_lower": 23.4,
+      "ci_upper": 40.5,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 37.4,
+      "ci_lower": 27.2,
+      "ci_upper": 47.5
+     },
+     "y2024": 77.0,
+     "change": {
+      "points": 39.6,
+      "ci_lower": 27.9,
+      "ci_upper": 51.3,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Nyamasheke",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 432,
+    "excluded": {
+     "y2020": {
+      "pct": 12.5,
+      "ci_lower": 7.1,
+      "ci_upper": 17.8
+     },
+     "y2024": 6.0,
+     "change": {
+      "points": -6.5,
+      "ci_lower": -12.6,
+      "ci_upper": -0.3,
+      "holm_adjusted_p": 0.6911,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 21.6,
+      "ci_lower": 14.1,
+      "ci_upper": 29.2
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -18.6,
+      "ci_lower": -26.5,
+      "ci_upper": -10.7,
+      "holm_adjusted_p": 0.0001,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 65.9,
+      "ci_lower": 55.8,
+      "ci_upper": 76.0
+     },
+     "y2024": 91.0,
+     "change": {
+      "points": 25.1,
+      "ci_lower": 14.4,
+      "ci_upper": 35.8,
+      "holm_adjusted_p": 0.0001,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 44.3,
+      "ci_lower": 37.6,
+      "ci_upper": 51.0
+     },
+     "y2024": 76.8,
+     "change": {
+      "points": 32.5,
+      "ci_lower": 24.0,
+      "ci_upper": 41.0,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Nyanza",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 2.1,
+      "ci_lower": 0.0,
+      "ci_upper": 4.5
+     },
+     "y2024": 4.0,
+     "change": {
+      "points": 1.9,
+      "ci_lower": -1.6,
+      "ci_upper": 5.4,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 15.0,
+      "ci_lower": 9.2,
+      "ci_upper": 20.9
+     },
+     "y2024": 4.0,
+     "change": {
+      "points": -11.0,
+      "ci_lower": -17.4,
+      "ci_upper": -4.6,
+      "holm_adjusted_p": 0.0097,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 82.9,
+      "ci_lower": 75.6,
+      "ci_upper": 90.1
+     },
+     "y2024": 91.0,
+     "change": {
+      "points": 8.1,
+      "ci_lower": -0.0,
+      "ci_upper": 16.3,
+      "holm_adjusted_p": 0.461,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 56.2,
+      "ci_lower": 46.4,
+      "ci_upper": 65.9
+     },
+     "y2024": 72.1,
+     "change": {
+      "points": 15.9,
+      "ci_lower": 4.6,
+      "ci_upper": 27.2,
+      "holm_adjusted_p": 0.0585,
+      "label": "Possible rise (not robust to testing 30 districts)"
+     }
+    }
+   },
+   {
+    "name": "Nyarugenge",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 448,
+    "excluded": {
+     "y2020": {
+      "pct": 0.3,
+      "ci_lower": 0.0,
+      "ci_upper": 0.8
+     },
+     "y2024": 0.0,
+     "change": {
+      "points": -0.3,
+      "ci_lower": -1.0,
+      "ci_upper": 0.5,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 1.8,
+      "ci_lower": 0.2,
+      "ci_upper": 3.4
+     },
+     "y2024": 1.0,
+     "change": {
+      "points": -0.8,
+      "ci_lower": -2.9,
+      "ci_upper": 1.3,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 97.9,
+      "ci_lower": 96.3,
+      "ci_upper": 99.6
+     },
+     "y2024": 99.0,
+     "change": {
+      "points": 1.1,
+      "ci_lower": -1.1,
+      "ci_upper": 3.2,
+      "holm_adjusted_p": 0.9861,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 94.5,
+      "ci_lower": 91.7,
+      "ci_upper": 97.4
+     },
+     "y2024": 94.4,
+     "change": {
+      "points": -0.2,
+      "ci_lower": -4.3,
+      "ci_upper": 4.0,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "name": "Nyaruguru",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 6.4,
+      "ci_lower": 4.0,
+      "ci_upper": 8.7
+     },
+     "y2024": 10.0,
+     "change": {
+      "points": 3.6,
+      "ci_lower": -1.2,
+      "ci_upper": 8.5,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 25.8,
+      "ci_lower": 19.5,
+      "ci_upper": 32.2
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -20.8,
+      "ci_lower": -27.9,
+      "ci_upper": -13.8,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 67.8,
+      "ci_lower": 60.3,
+      "ci_upper": 75.3
+     },
+     "y2024": 84.0,
+     "change": {
+      "points": 16.2,
+      "ci_lower": 7.1,
+      "ci_upper": 25.3,
+      "holm_adjusted_p": 0.0057,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 43.2,
+      "ci_lower": 35.4,
+      "ci_upper": 51.0
+     },
+     "y2024": 54.3,
+     "change": {
+      "points": 11.1,
+      "ci_lower": 0.6,
+      "ci_upper": 21.5,
+      "holm_adjusted_p": 0.3466,
+      "label": "Possible rise (not robust to testing 30 districts)"
+     }
+    }
+   },
+   {
+    "name": "Rubavu",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 512,
+    "excluded": {
+     "y2020": {
+      "pct": 7.5,
+      "ci_lower": 3.7,
+      "ci_upper": 11.3
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -4.5,
+      "ci_lower": -8.8,
+      "ci_upper": -0.2,
+      "holm_adjusted_p": 0.7119,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 12.2,
+      "ci_lower": 7.8,
+      "ci_upper": 16.6
+     },
+     "y2024": 4.0,
+     "change": {
+      "points": -8.2,
+      "ci_lower": -13.1,
+      "ci_upper": -3.2,
+      "holm_adjusted_p": 0.0118,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 80.3,
+      "ci_lower": 74.6,
+      "ci_upper": 86.0
+     },
+     "y2024": 93.0,
+     "change": {
+      "points": 12.7,
+      "ci_lower": 6.2,
+      "ci_upper": 19.1,
+      "holm_adjusted_p": 0.0019,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 66.8,
+      "ci_lower": 59.6,
+      "ci_upper": 74.0
+     },
+     "y2024": 70.9,
+     "change": {
+      "points": 4.1,
+      "ci_lower": -4.7,
+      "ci_upper": 13.0,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "name": "Ruhango",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 416,
+    "excluded": {
+     "y2020": {
+      "pct": 3.0,
+      "ci_lower": 0.0,
+      "ci_upper": 7.2
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -0.0,
+      "ci_lower": -4.8,
+      "ci_upper": 4.7,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 13.9,
+      "ci_lower": 7.7,
+      "ci_upper": 20.2
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -8.9,
+      "ci_lower": -15.8,
+      "ci_upper": -2.1,
+      "holm_adjusted_p": 0.0682,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 83.1,
+      "ci_lower": 74.1,
+      "ci_upper": 92.0
+     },
+     "y2024": 92.0,
+     "change": {
+      "points": 8.9,
+      "ci_lower": -0.7,
+      "ci_upper": 18.6,
+      "holm_adjusted_p": 0.5117,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 59.6,
+      "ci_lower": 53.2,
+      "ci_upper": 66.0
+     },
+     "y2024": 74.2,
+     "change": {
+      "points": 14.6,
+      "ci_lower": 6.0,
+      "ci_upper": 23.2,
+      "holm_adjusted_p": 0.0143,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Rulindo",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 2.1,
+      "ci_lower": 0.0,
+      "ci_upper": 4.4
+     },
+     "y2024": 8.0,
+     "change": {
+      "points": 5.9,
+      "ci_lower": 1.5,
+      "ci_upper": 10.3,
+      "holm_adjusted_p": 0.21,
+      "label": "Possible rise (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 12.8,
+      "ci_lower": 8.2,
+      "ci_upper": 17.3
+     },
+     "y2024": 4.0,
+     "change": {
+      "points": -8.8,
+      "ci_lower": -14.1,
+      "ci_upper": -3.4,
+      "holm_adjusted_p": 0.0118,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 85.1,
+      "ci_lower": 79.7,
+      "ci_upper": 90.6
+     },
+     "y2024": 87.0,
+     "change": {
+      "points": 1.9,
+      "ci_lower": -5.3,
+      "ci_upper": 9.0,
+      "holm_adjusted_p": 0.9861,
+      "label": "No clear change"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 68.3,
+      "ci_lower": 61.2,
+      "ci_upper": 75.3
+     },
+     "y2024": 63.6,
+     "change": {
+      "points": -4.7,
+      "ci_lower": -14.4,
+      "ci_upper": 5.1,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "name": "Rusizi",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 480,
+    "excluded": {
+     "y2020": {
+      "pct": 17.2,
+      "ci_lower": 11.7,
+      "ci_upper": 22.6
+     },
+     "y2024": 6.0,
+     "change": {
+      "points": -11.2,
+      "ci_lower": -17.3,
+      "ci_upper": -5.0,
+      "holm_adjusted_p": 0.0107,
+      "label": "Clear fall"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 21.9,
+      "ci_lower": 14.4,
+      "ci_upper": 29.5
+     },
+     "y2024": 5.0,
+     "change": {
+      "points": -16.9,
+      "ci_lower": -24.9,
+      "ci_upper": -8.9,
+      "holm_adjusted_p": 0.0007,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 60.9,
+      "ci_lower": 52.3,
+      "ci_upper": 69.5
+     },
+     "y2024": 90.0,
+     "change": {
+      "points": 29.1,
+      "ci_lower": 19.7,
+      "ci_upper": 38.5,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 54.1,
+      "ci_lower": 43.6,
+      "ci_upper": 64.5
+     },
+     "y2024": 78.9,
+     "change": {
+      "points": 24.8,
+      "ci_lower": 13.2,
+      "ci_upper": 36.4,
+      "holm_adjusted_p": 0.0005,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "name": "Rutsiro",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 400,
+    "excluded": {
+     "y2020": {
+      "pct": 7.5,
+      "ci_lower": 3.7,
+      "ci_upper": 11.3
+     },
+     "y2024": 6.0,
+     "change": {
+      "points": -1.5,
+      "ci_lower": -6.5,
+      "ci_upper": 3.5,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 18.2,
+      "ci_lower": 12.0,
+      "ci_upper": 24.3
+     },
+     "y2024": 6.0,
+     "change": {
+      "points": -12.2,
+      "ci_lower": -19.0,
+      "ci_upper": -5.3,
+      "holm_adjusted_p": 0.0073,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 74.4,
+      "ci_lower": 67.0,
+      "ci_upper": 81.8
+     },
+     "y2024": 87.0,
+     "change": {
+      "points": 12.6,
+      "ci_lower": 4.0,
+      "ci_upper": 21.3,
+      "holm_adjusted_p": 0.0407,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 57.3,
+      "ci_lower": 51.4,
+      "ci_upper": 63.3
+     },
+     "y2024": 58.9,
+     "change": {
+      "points": 1.6,
+      "ci_lower": -7.2,
+      "ci_upper": 10.3,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "name": "Rwamagana",
+    "sampleAdults2020": 416,
+    "sampleAdults2024": 464,
+    "excluded": {
+     "y2020": {
+      "pct": 7.4,
+      "ci_lower": 3.4,
+      "ci_upper": 11.4
+     },
+     "y2024": 2.0,
+     "change": {
+      "points": -5.4,
+      "ci_lower": -9.8,
+      "ci_upper": -1.0,
+      "holm_adjusted_p": 0.326,
+      "label": "Possible fall (not robust to testing 30 districts)"
+     }
+    },
+    "informal_only": {
+     "y2020": {
+      "pct": 12.6,
+      "ci_lower": 7.3,
+      "ci_upper": 17.9
+     },
+     "y2024": 3.0,
+     "change": {
+      "points": -9.6,
+      "ci_lower": -15.3,
+      "ci_upper": -3.9,
+      "holm_adjusted_p": 0.0108,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2020": {
+      "pct": 80.0,
+      "ci_lower": 72.6,
+      "ci_upper": 87.3
+     },
+     "y2024": 95.0,
+     "change": {
+      "points": 15.0,
+      "ci_lower": 7.2,
+      "ci_upper": 22.8,
+      "holm_adjusted_p": 0.0021,
+      "label": "Clear rise"
+     }
+    },
+    "mobile_money": {
+     "y2020": {
+      "pct": 65.4,
+      "ci_lower": 58.0,
+      "ci_upper": 72.7
+     },
+     "y2024": 83.5,
+     "change": {
+      "points": 18.1,
+      "ci_lower": 9.6,
+      "ci_upper": 26.6,
+      "holm_adjusted_p": 0.0006,
+      "label": "Clear rise"
+     }
+    }
+   }
+  ],
+  "counts": {
+   "excluded": {
+    "Clear fall": 5,
+    "Clear rise": 0,
+    "Possible": 9,
+    "No clear change": 16
+   },
+   "informal_only": {
+    "Clear fall": 23,
+    "Clear rise": 0,
+    "Possible": 3,
+    "No clear change": 4
+   },
+   "formal": {
+    "Clear fall": 0,
+    "Clear rise": 21,
+    "Possible": 0,
+    "No clear change": 9
+   },
+   "mobile_money": {
+    "Clear fall": 0,
+    "Clear rise": 18,
+    "Possible": 4,
+    "No clear change": 8
+   }
+  },
+  "limitations": [
+   "2024 district figures are NISR's published whole numbers; their uncertainty is approximated from the 2024 weights and rounding, and the 2024 file has no cluster field, so those intervals are too narrow.",
+   "'Banked' changed definition between the 2020 and 2024 reports (36% originally, restated to 22%), so no banked trend is shown. Informal only, excluded and formally served are comparable.",
+   "The 2020 file asks about mobile money of fewer people (20% blank); blanks are counted as not registered, which matches NISR's published 60% within about 2 points.",
+   "FinScope is not linked to EICV by household. District changes are descriptions, not explanations, and district samples are 416 adults in 2020."
+  ]
+ },
+ "finscopeSeries": {
+  "series": [
+   {
+    "key": "2016",
+    "label": "2016",
+    "definition": "NISR's own strand from the microdata (original definition)",
+    "banked": 25.9,
+    "other_formal": 41.6,
+    "informal_only": 20.6,
+    "excluded": 11.9,
+    "formal": 67.5
+   },
+   {
+    "key": "2020",
+    "label": "2020",
+    "definition": "NISR's own strand from the microdata (original definition)",
+    "banked": 36.2,
+    "other_formal": 40.8,
+    "informal_only": 15.6,
+    "excluded": 7.4,
+    "formal": 77.0
+   },
+   {
+    "key": "2020r",
+    "label": "2020 (restated)",
+    "definition": "NISR's 2024 report, restated on the 2024 definition",
+    "banked": 22,
+    "other_formal": 55,
+    "informal_only": 16,
+    "excluded": 7,
+    "formal": 77
+   },
+   {
+    "key": "2024",
+    "label": "2024",
+    "definition": "NISR's 2024 report",
+    "banked": 22,
+    "other_formal": 70,
+    "informal_only": 4,
+    "excluded": 4,
+    "formal": 92
+   }
+  ],
+  "checks": [
+   {
+    "measure": "banked",
+    "calculated": 25.9,
+    "published": 26,
+    "ok": true
+   },
+   {
+    "measure": "other_formal",
+    "calculated": 41.6,
+    "published": 42,
+    "ok": true
+   },
+   {
+    "measure": "informal_only",
+    "calculated": 20.6,
+    "published": 21,
+    "ok": true
+   },
+   {
+    "measure": "excluded",
+    "calculated": 11.9,
+    "published": 11,
+    "ok": true
+   },
+   {
+    "measure": "formal",
+    "calculated": 67.5,
+    "published": 68,
+    "ok": true
+   }
+  ],
+  "sources": {
+   "launch_report": "https://nextbillion.net/news/survey-over-89-percent-of-rwandans-have-access-to-finance",
+   "banked_and_formal": "https://tralac.org/news/article/9196-rwanda-financial-inclusion-up.html",
+   "microdata": "https://microdata.statistics.gov.rw/index.php/catalog/71"
+  },
+  "provinces": [
+   {
+    "province": "Eastern",
+    "sampleAdults2016": 2912,
+    "sampleAdults2020": 2912,
+    "banked": {
+     "y2016": 21.8,
+     "y2020": 28.6,
+     "change": {
+      "points": 6.8,
+      "ci_lower": 3.2,
+      "ci_upper": 10.5,
+      "holm_adjusted_p": 0.0011,
+      "label": "Clear rise"
+     }
+    },
+    "other_formal": {
+     "y2016": 43.2,
+     "y2020": 47.1,
+     "change": {
+      "points": 3.9,
+      "ci_lower": 0.1,
+      "ci_upper": 7.6,
+      "holm_adjusted_p": 0.1374,
+      "label": "Possible rise (not robust to testing 5 provinces)"
+     }
+    },
+    "informal_only": {
+     "y2016": 24.7,
+     "y2020": 14.6,
+     "change": {
+      "points": -10.1,
+      "ci_lower": -12.9,
+      "ci_upper": -7.3,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "excluded": {
+     "y2016": 10.3,
+     "y2020": 9.7,
+     "change": {
+      "points": -0.6,
+      "ci_lower": -3.3,
+      "ci_upper": 2.1,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "formal": {
+     "y2016": 65.0,
+     "y2020": 75.7,
+     "change": {
+      "points": 10.7,
+      "ci_lower": 7.0,
+      "ci_upper": 14.4,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "province": "Kigali City",
+    "sampleAdults2016": 1248,
+    "sampleAdults2020": 1248,
+    "banked": {
+     "y2016": 58.4,
+     "y2020": 79.1,
+     "change": {
+      "points": 20.7,
+      "ci_lower": 14.8,
+      "ci_upper": 26.5,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "other_formal": {
+     "y2016": 33.1,
+     "y2020": 18.4,
+     "change": {
+      "points": -14.6,
+      "ci_lower": -19.9,
+      "ci_upper": -9.4,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "informal_only": {
+     "y2016": 4.7,
+     "y2020": 1.5,
+     "change": {
+      "points": -3.3,
+      "ci_lower": -4.9,
+      "ci_upper": -1.6,
+      "holm_adjusted_p": 0.0005,
+      "label": "Clear fall"
+     }
+    },
+    "excluded": {
+     "y2016": 3.8,
+     "y2020": 1.0,
+     "change": {
+      "points": -2.7,
+      "ci_lower": -4.2,
+      "ci_upper": -1.3,
+      "holm_adjusted_p": 0.0009,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2016": 91.5,
+     "y2020": 97.5,
+     "change": {
+      "points": 6.0,
+      "ci_lower": 3.8,
+      "ci_upper": 8.2,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "province": "Northern",
+    "sampleAdults2016": 2080,
+    "sampleAdults2020": 2080,
+    "banked": {
+     "y2016": 22.7,
+     "y2020": 20.6,
+     "change": {
+      "points": -2.1,
+      "ci_lower": -6.4,
+      "ci_upper": 2.1,
+      "holm_adjusted_p": 0.6386,
+      "label": "No clear change"
+     }
+    },
+    "other_formal": {
+     "y2016": 45.1,
+     "y2020": 46.7,
+     "change": {
+      "points": 1.5,
+      "ci_lower": -2.9,
+      "ci_upper": 5.9,
+      "holm_adjusted_p": 0.7138,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2016": 23.4,
+     "y2020": 23.6,
+     "change": {
+      "points": 0.1,
+      "ci_lower": -3.9,
+      "ci_upper": 4.2,
+      "holm_adjusted_p": 0.9433,
+      "label": "No clear change"
+     }
+    },
+    "excluded": {
+     "y2016": 8.7,
+     "y2020": 9.2,
+     "change": {
+      "points": 0.5,
+      "ci_lower": -2.3,
+      "ci_upper": 3.2,
+      "holm_adjusted_p": 1.0,
+      "label": "No clear change"
+     }
+    },
+    "formal": {
+     "y2016": 67.9,
+     "y2020": 67.3,
+     "change": {
+      "points": -0.6,
+      "ci_lower": -5.4,
+      "ci_upper": 4.1,
+      "holm_adjusted_p": 0.794,
+      "label": "No clear change"
+     }
+    }
+   },
+   {
+    "province": "Southern",
+    "sampleAdults2016": 3328,
+    "sampleAdults2020": 3328,
+    "banked": {
+     "y2016": 22.4,
+     "y2020": 26.4,
+     "change": {
+      "points": 4.0,
+      "ci_lower": 0.5,
+      "ci_upper": 7.5,
+      "holm_adjusted_p": 0.0726,
+      "label": "Possible rise (not robust to testing 5 provinces)"
+     }
+    },
+    "other_formal": {
+     "y2016": 43.8,
+     "y2020": 45.4,
+     "change": {
+      "points": 1.6,
+      "ci_lower": -1.8,
+      "ci_upper": 5.1,
+      "holm_adjusted_p": 0.7138,
+      "label": "No clear change"
+     }
+    },
+    "informal_only": {
+     "y2016": 20.6,
+     "y2020": 22.2,
+     "change": {
+      "points": 1.5,
+      "ci_lower": -1.4,
+      "ci_upper": 4.5,
+      "holm_adjusted_p": 0.6201,
+      "label": "No clear change"
+     }
+    },
+    "excluded": {
+     "y2016": 13.2,
+     "y2020": 6.0,
+     "change": {
+      "points": -7.2,
+      "ci_lower": -9.2,
+      "ci_upper": -5.2,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2016": 66.2,
+     "y2020": 71.8,
+     "change": {
+      "points": 5.6,
+      "ci_lower": 1.9,
+      "ci_upper": 9.3,
+      "holm_adjusted_p": 0.006,
+      "label": "Clear rise"
+     }
+    }
+   },
+   {
+    "province": "Western",
+    "sampleAdults2016": 2912,
+    "sampleAdults2020": 2912,
+    "banked": {
+     "y2016": 18.2,
+     "y2020": 19.8,
+     "change": {
+      "points": 1.6,
+      "ci_lower": -1.6,
+      "ci_upper": 4.8,
+      "holm_adjusted_p": 0.6386,
+      "label": "No clear change"
+     }
+    },
+    "other_formal": {
+     "y2016": 39.6,
+     "y2020": 49.0,
+     "change": {
+      "points": 9.4,
+      "ci_lower": 5.7,
+      "ci_upper": 13.1,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    },
+    "informal_only": {
+     "y2016": 23.0,
+     "y2020": 19.5,
+     "change": {
+      "points": -3.5,
+      "ci_lower": -6.6,
+      "ci_upper": -0.4,
+      "holm_adjusted_p": 0.0846,
+      "label": "Possible fall (not robust to testing 5 provinces)"
+     }
+    },
+    "excluded": {
+     "y2016": 19.2,
+     "y2020": 11.7,
+     "change": {
+      "points": -7.5,
+      "ci_lower": -10.1,
+      "ci_upper": -5.0,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear fall"
+     }
+    },
+    "formal": {
+     "y2016": 57.8,
+     "y2020": 68.8,
+     "change": {
+      "points": 11.0,
+      "ci_lower": 6.9,
+      "ci_upper": 15.1,
+      "holm_adjusted_p": 0.0,
+      "label": "Clear rise"
+     }
+    }
+   }
+  ],
+  "limitations": [
+   "Banked changed definition between the 2020 and 2024 reports (36% originally in 2020, restated to 22%). 2016 and 2020 share the original definition, so banked can be compared between them but not with 2024.",
+   "The 2016 district field is only a number within each province and has no labels, so 2016 is used nationally and by province, not by district.",
+   "The 2016 file has no cluster field, so 2016 intervals use weights only and are likely too narrow.",
+   "The 2016 excluded share (11.9%) is about one point above the 11% NISR reported; the file's `AS_revised` strand is the closest of the three strand variables it holds.",
+   "FinScope 2012 holds no NISR strand variable and has not been added yet."
+  ]
+ },
+ "national": {
+  "oldSeries": [
+   {
+    "round": "EICV3",
+    "period": "2010/11",
+    "published": 44.9,
+    "pct": 46.0,
+    "ci_lower": 44.4,
+    "ci_upper": 47.7
+   },
+   {
+    "round": "EICV4",
+    "period": "2013/14",
+    "published": 39.1,
+    "pct": 39.1,
+    "ci_lower": 37.8,
+    "ci_upper": 40.5
+   },
+   {
+    "round": "EICV5",
+    "period": "2016/17",
+    "published": 38.2,
+    "pct": 38.2,
+    "ci_lower": 36.8,
+    "ci_upper": 39.6
+   }
+  ],
+  "modelled2016_17": 39.8,
+  "eicv7": 27.4,
+  "checks": [
+   {
+    "round": "EICV3",
+    "calculated": 46.0,
+    "published": 44.9,
+    "matches": false
+   },
+   {
+    "round": "EICV4",
+    "calculated": 39.1,
+    "published": 39.1,
+    "matches": true
+   },
+   {
+    "round": "EICV5",
+    "calculated": 38.2,
+    "published": 38.2,
+    "matches": true
+   },
+   {
+    "round": "EICV7",
+    "calculated": 27.4,
+    "published": 27.4,
+    "matches": true
+   }
+  ]
+ },
+ "districts": [
+  {
+   "name": "Bugesera",
+   "rates": {
+    "eicv3": {
+     "pct": 49.5,
+     "ci_lower": 39.6,
+     "ci_upper": 59.4
+    },
+    "eicv4": {
+     "pct": 34.4,
+     "ci_lower": 28.5,
+     "ci_upper": 40.2
+    },
+    "eicv5": {
+     "pct": 40.3,
+     "ci_lower": 33.2,
+     "ci_upper": 47.4
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -15.1,
+     "ci_lower": -26.6,
+     "ci_upper": -3.6,
+     "holm_adjusted_p": 0.2324,
+     "label": "Possible improvement (not robust to testing 30 districts)"
+    },
+    "2013_14_to_2016_17": {
+     "points": 5.9,
+     "ci_lower": -3.2,
+     "ci_upper": 15.1,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 23.7
+  },
+  {
+   "name": "Burera",
+   "rates": {
+    "eicv3": {
+     "pct": 59.7,
+     "ci_lower": 53.4,
+     "ci_upper": 66.0
+    },
+    "eicv4": {
+     "pct": 50.2,
+     "ci_lower": 42.8,
+     "ci_upper": 57.7
+    },
+    "eicv5": {
+     "pct": 49.8,
+     "ci_lower": 43.4,
+     "ci_upper": 56.2
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -9.5,
+     "ci_lower": -19.3,
+     "ci_upper": 0.3,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -0.4,
+     "ci_lower": -10.2,
+     "ci_upper": 9.4,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 22.0
+  },
+  {
+   "name": "Gakenke",
+   "rates": {
+    "eicv3": {
+     "pct": 68.0,
+     "ci_lower": 62.0,
+     "ci_upper": 74.0
+    },
+    "eicv4": {
+     "pct": 41.8,
+     "ci_lower": 36.6,
+     "ci_upper": 47.1
+    },
+    "eicv5": {
+     "pct": 34.2,
+     "ci_lower": 29.0,
+     "ci_upper": 39.5
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -26.1,
+     "ci_lower": -34.1,
+     "ci_upper": -18.2,
+     "holm_adjusted_p": 0.0,
+     "label": "Clear improvement"
+    },
+    "2013_14_to_2016_17": {
+     "points": -7.6,
+     "ci_lower": -15.0,
+     "ci_upper": -0.2,
+     "holm_adjusted_p": 1.0,
+     "label": "Possible improvement (not robust to testing 30 districts)"
+    }
+   },
+   "poverty2023_24": 24.5
+  },
+  {
+   "name": "Gasabo",
+   "rates": {
+    "eicv3": {
+     "pct": 36.5,
+     "ci_lower": 27.7,
+     "ci_upper": 45.4
+    },
+    "eicv4": {
+     "pct": 23.4,
+     "ci_lower": 16.7,
+     "ci_upper": 30.0
+    },
+    "eicv5": {
+     "pct": 15.8,
+     "ci_lower": 11.3,
+     "ci_upper": 20.2
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -13.2,
+     "ci_lower": -24.3,
+     "ci_upper": -2.1,
+     "holm_adjusted_p": 0.4202,
+     "label": "Possible improvement (not robust to testing 30 districts)"
+    },
+    "2013_14_to_2016_17": {
+     "points": -7.6,
+     "ci_lower": -15.6,
+     "ci_upper": 0.5,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 11.1
+  },
+  {
+   "name": "Gatsibo",
+   "rates": {
+    "eicv3": {
+     "pct": 41.7,
+     "ci_lower": 33.8,
+     "ci_upper": 49.6
+    },
+    "eicv4": {
+     "pct": 43.7,
+     "ci_lower": 38.5,
+     "ci_upper": 48.9
+    },
+    "eicv5": {
+     "pct": 42.1,
+     "ci_lower": 35.6,
+     "ci_upper": 48.5
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 2.0,
+     "ci_lower": -7.4,
+     "ci_upper": 11.5,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -1.7,
+     "ci_lower": -9.9,
+     "ci_upper": 6.6,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 18.4
+  },
+  {
+   "name": "Gicumbi",
+   "rates": {
+    "eicv3": {
+     "pct": 59.4,
+     "ci_lower": 43.3,
+     "ci_upper": 75.6
+    },
+    "eicv4": {
+     "pct": 55.1,
+     "ci_lower": 48.9,
+     "ci_upper": 61.3
+    },
+    "eicv5": {
+     "pct": 34.7,
+     "ci_lower": 29.4,
+     "ci_upper": 40.0
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -4.4,
+     "ci_lower": -21.7,
+     "ci_upper": 13.0,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -20.4,
+     "ci_lower": -28.6,
+     "ci_upper": -12.2,
+     "holm_adjusted_p": 0.0,
+     "label": "Clear improvement"
+    }
+   },
+   "poverty2023_24": 13.3
+  },
+  {
+   "name": "Gisagara",
+   "rates": {
+    "eicv3": {
+     "pct": 52.9,
+     "ci_lower": 46.0,
+     "ci_upper": 59.8
+    },
+    "eicv4": {
+     "pct": 53.1,
+     "ci_lower": 46.1,
+     "ci_upper": 60.2
+    },
+    "eicv5": {
+     "pct": 55.6,
+     "ci_lower": 50.3,
+     "ci_upper": 60.8
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 0.2,
+     "ci_lower": -9.7,
+     "ci_upper": 10.1,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 2.5,
+     "ci_lower": -6.3,
+     "ci_upper": 11.2,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 45.6
+  },
+  {
+   "name": "Huye",
+   "rates": {
+    "eicv3": {
+     "pct": 39.8,
+     "ci_lower": 33.0,
+     "ci_upper": 46.6
+    },
+    "eicv4": {
+     "pct": 32.4,
+     "ci_lower": 26.0,
+     "ci_upper": 38.8
+    },
+    "eicv5": {
+     "pct": 40.2,
+     "ci_lower": 33.7,
+     "ci_upper": 46.8
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -7.4,
+     "ci_lower": -16.7,
+     "ci_upper": 1.9,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 7.9,
+     "ci_lower": -1.3,
+     "ci_upper": 17.0,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 24.2
+  },
+  {
+   "name": "Kamonyi",
+   "rates": {
+    "eicv3": {
+     "pct": 39.8,
+     "ci_lower": 33.4,
+     "ci_upper": 46.1
+    },
+    "eicv4": {
+     "pct": 25.7,
+     "ci_lower": 20.8,
+     "ci_upper": 30.7
+    },
+    "eicv5": {
+     "pct": 22.3,
+     "ci_lower": 17.4,
+     "ci_upper": 27.2
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -14.1,
+     "ci_lower": -22.1,
+     "ci_upper": -6.0,
+     "holm_adjusted_p": 0.016,
+     "label": "Clear improvement"
+    },
+    "2013_14_to_2016_17": {
+     "points": -3.4,
+     "ci_lower": -10.4,
+     "ci_upper": 3.6,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 39.7
+  },
+  {
+   "name": "Karongi",
+   "rates": {
+    "eicv3": {
+     "pct": 57.7,
+     "ci_lower": 51.4,
+     "ci_upper": 64.1
+    },
+    "eicv4": {
+     "pct": 45.6,
+     "ci_lower": 38.4,
+     "ci_upper": 52.7
+    },
+    "eicv5": {
+     "pct": 52.7,
+     "ci_lower": 46.2,
+     "ci_upper": 59.2
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -12.2,
+     "ci_lower": -21.7,
+     "ci_upper": -2.6,
+     "holm_adjusted_p": 0.2729,
+     "label": "Possible improvement (not robust to testing 30 districts)"
+    },
+    "2013_14_to_2016_17": {
+     "points": 7.2,
+     "ci_lower": -2.5,
+     "ci_upper": 16.8,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 38.2
+  },
+  {
+   "name": "Kayonza",
+   "rates": {
+    "eicv3": {
+     "pct": 45.6,
+     "ci_lower": 39.6,
+     "ci_upper": 51.6
+    },
+    "eicv4": {
+     "pct": 26.5,
+     "ci_lower": 20.8,
+     "ci_upper": 32.3
+    },
+    "eicv5": {
+     "pct": 26.7,
+     "ci_lower": 20.6,
+     "ci_upper": 32.8
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -19.1,
+     "ci_lower": -27.4,
+     "ci_upper": -10.8,
+     "holm_adjusted_p": 0.0002,
+     "label": "Clear improvement"
+    },
+    "2013_14_to_2016_17": {
+     "points": 0.2,
+     "ci_lower": -8.2,
+     "ci_upper": 8.6,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 36.6
+  },
+  {
+   "name": "Kicukiro",
+   "rates": {
+    "eicv3": {
+     "pct": 19.6,
+     "ci_lower": 12.8,
+     "ci_upper": 26.4
+    },
+    "eicv4": {
+     "pct": 16.8,
+     "ci_lower": 11.7,
+     "ci_upper": 21.9
+    },
+    "eicv5": {
+     "pct": 11.4,
+     "ci_lower": 7.0,
+     "ci_upper": 15.9
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -2.8,
+     "ci_lower": -11.4,
+     "ci_upper": 5.7,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -5.4,
+     "ci_lower": -12.2,
+     "ci_upper": 1.4,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 6.9
+  },
+  {
+   "name": "Kirehe",
+   "rates": {
+    "eicv3": {
+     "pct": 51.2,
+     "ci_lower": 45.2,
+     "ci_upper": 57.2
+    },
+    "eicv4": {
+     "pct": 41.9,
+     "ci_lower": 35.8,
+     "ci_upper": 47.9
+    },
+    "eicv5": {
+     "pct": 44.6,
+     "ci_lower": 38.5,
+     "ci_upper": 50.7
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -9.3,
+     "ci_lower": -17.9,
+     "ci_upper": -0.8,
+     "holm_adjusted_p": 0.6467,
+     "label": "Possible improvement (not robust to testing 30 districts)"
+    },
+    "2013_14_to_2016_17": {
+     "points": 2.7,
+     "ci_lower": -5.9,
+     "ci_upper": 11.3,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 14.2
+  },
+  {
+   "name": "Muhanga",
+   "rates": {
+    "eicv3": {
+     "pct": 49.0,
+     "ci_lower": 42.1,
+     "ci_upper": 55.8
+    },
+    "eicv4": {
+     "pct": 30.5,
+     "ci_lower": 24.0,
+     "ci_upper": 37.0
+    },
+    "eicv5": {
+     "pct": 32.6,
+     "ci_lower": 27.4,
+     "ci_upper": 37.9
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -18.4,
+     "ci_lower": -27.9,
+     "ci_upper": -9.0,
+     "holm_adjusted_p": 0.0034,
+     "label": "Clear improvement"
+    },
+    "2013_14_to_2016_17": {
+     "points": 2.1,
+     "ci_lower": -6.2,
+     "ci_upper": 10.5,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 15.0
+  },
+  {
+   "name": "Musanze",
+   "rates": {
+    "eicv3": {
+     "pct": 33.7,
+     "ci_lower": 27.4,
+     "ci_upper": 39.9
+    },
+    "eicv4": {
+     "pct": 34.8,
+     "ci_lower": 28.8,
+     "ci_upper": 40.8
+    },
+    "eicv5": {
+     "pct": 40.7,
+     "ci_lower": 34.0,
+     "ci_upper": 47.4
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 1.2,
+     "ci_lower": -7.5,
+     "ci_upper": 9.8,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 5.9,
+     "ci_lower": -3.1,
+     "ci_upper": 14.9,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 21.0
+  },
+  {
+   "name": "Ngoma",
+   "rates": {
+    "eicv3": {
+     "pct": 48.9,
+     "ci_lower": 43.4,
+     "ci_upper": 54.4
+    },
+    "eicv4": {
+     "pct": 46.9,
+     "ci_lower": 40.6,
+     "ci_upper": 53.2
+    },
+    "eicv5": {
+     "pct": 37.8,
+     "ci_lower": 31.7,
+     "ci_upper": 43.9
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -2.0,
+     "ci_lower": -10.3,
+     "ci_upper": 6.3,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -9.1,
+     "ci_lower": -17.8,
+     "ci_upper": -0.4,
+     "holm_adjusted_p": 1.0,
+     "label": "Possible improvement (not robust to testing 30 districts)"
+    }
+   },
+   "poverty2023_24": 30.9
+  },
+  {
+   "name": "Ngororero",
+   "rates": {
+    "eicv3": {
+     "pct": 50.3,
+     "ci_lower": 43.9,
+     "ci_upper": 56.6
+    },
+    "eicv4": {
+     "pct": 49.6,
+     "ci_lower": 42.9,
+     "ci_upper": 56.3
+    },
+    "eicv5": {
+     "pct": 47.7,
+     "ci_lower": 40.6,
+     "ci_upper": 54.8
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -0.7,
+     "ci_lower": -9.9,
+     "ci_upper": 8.6,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -1.9,
+     "ci_lower": -11.7,
+     "ci_upper": 7.9,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 30.2
+  },
+  {
+   "name": "Nyabihu",
+   "rates": {
+    "eicv3": {
+     "pct": 25.0,
+     "ci_lower": 19.1,
+     "ci_upper": 31.0
+    },
+    "eicv4": {
+     "pct": 39.5,
+     "ci_lower": 32.8,
+     "ci_upper": 46.1
+    },
+    "eicv5": {
+     "pct": 46.8,
+     "ci_lower": 41.3,
+     "ci_upper": 52.3
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 14.4,
+     "ci_lower": 5.5,
+     "ci_upper": 23.3,
+     "holm_adjusted_p": 0.0357,
+     "label": "Clear worsening"
+    },
+    "2013_14_to_2016_17": {
+     "points": 7.4,
+     "ci_lower": -1.2,
+     "ci_upper": 16.0,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 20.2
+  },
+  {
+   "name": "Nyagatare",
+   "rates": {
+    "eicv3": {
+     "pct": 39.2,
+     "ci_lower": 32.7,
+     "ci_upper": 45.7
+    },
+    "eicv4": {
+     "pct": 44.2,
+     "ci_lower": 37.5,
+     "ci_upper": 50.8
+    },
+    "eicv5": {
+     "pct": 44.8,
+     "ci_lower": 37.0,
+     "ci_upper": 52.7
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 5.0,
+     "ci_lower": -4.3,
+     "ci_upper": 14.3,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 0.7,
+     "ci_lower": -9.7,
+     "ci_upper": 11.0,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 36.4
+  },
+  {
+   "name": "Nyamagabe",
+   "rates": {
+    "eicv3": {
+     "pct": 64.7,
+     "ci_lower": 58.2,
+     "ci_upper": 71.3
+    },
+    "eicv4": {
+     "pct": 41.8,
+     "ci_lower": 35.9,
+     "ci_upper": 47.7
+    },
+    "eicv5": {
+     "pct": 48.6,
+     "ci_lower": 41.7,
+     "ci_upper": 55.6
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -22.9,
+     "ci_lower": -31.7,
+     "ci_upper": -14.1,
+     "holm_adjusted_p": 0.0,
+     "label": "Clear improvement"
+    },
+    "2013_14_to_2016_17": {
+     "points": 6.8,
+     "ci_lower": -2.3,
+     "ci_upper": 15.9,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 51.4
+  },
+  {
+   "name": "Nyamasheke",
+   "rates": {
+    "eicv3": {
+     "pct": 61.1,
+     "ci_lower": 54.5,
+     "ci_upper": 67.7
+    },
+    "eicv4": {
+     "pct": 62.0,
+     "ci_lower": 55.9,
+     "ci_upper": 68.0
+    },
+    "eicv5": {
+     "pct": 69.3,
+     "ci_lower": 64.3,
+     "ci_upper": 74.3
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 0.8,
+     "ci_lower": -8.1,
+     "ci_upper": 9.8,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 7.3,
+     "ci_lower": -0.5,
+     "ci_upper": 15.2,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 42.8
+  },
+  {
+   "name": "Nyanza",
+   "rates": {
+    "eicv3": {
+     "pct": 43.8,
+     "ci_lower": 36.9,
+     "ci_upper": 50.8
+    },
+    "eicv4": {
+     "pct": 37.8,
+     "ci_lower": 31.5,
+     "ci_upper": 44.0
+    },
+    "eicv5": {
+     "pct": 46.5,
+     "ci_lower": 40.4,
+     "ci_upper": 52.6
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -6.1,
+     "ci_lower": -15.4,
+     "ci_upper": 3.3,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 8.7,
+     "ci_lower": -0.0,
+     "ci_upper": 17.4,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 43.3
+  },
+  {
+   "name": "Nyarugenge",
+   "rates": {
+    "eicv3": {
+     "pct": 20.2,
+     "ci_lower": 13.2,
+     "ci_upper": 27.2
+    },
+    "eicv4": {
+     "pct": 20.2,
+     "ci_lower": 13.3,
+     "ci_upper": 27.2
+    },
+    "eicv5": {
+     "pct": 11.8,
+     "ci_lower": 6.8,
+     "ci_upper": 16.8
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 0.0,
+     "ci_lower": -9.8,
+     "ci_upper": 9.9,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -8.4,
+     "ci_lower": -17.0,
+     "ci_upper": 0.1,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 6.8
+  },
+  {
+   "name": "Nyaruguru",
+   "rates": {
+    "eicv3": {
+     "pct": 54.6,
+     "ci_lower": 49.0,
+     "ci_upper": 60.3
+    },
+    "eicv4": {
+     "pct": 47.9,
+     "ci_lower": 43.1,
+     "ci_upper": 52.7
+    },
+    "eicv5": {
+     "pct": 52.4,
+     "ci_lower": 47.2,
+     "ci_upper": 57.7
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -6.7,
+     "ci_lower": -14.2,
+     "ci_upper": 0.7,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 4.5,
+     "ci_lower": -2.6,
+     "ci_upper": 11.6,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 39.7
+  },
+  {
+   "name": "Rubavu",
+   "rates": {
+    "eicv3": {
+     "pct": 31.4,
+     "ci_lower": 24.4,
+     "ci_upper": 38.5
+    },
+    "eicv4": {
+     "pct": 35.7,
+     "ci_lower": 29.1,
+     "ci_upper": 42.2
+    },
+    "eicv5": {
+     "pct": 35.7,
+     "ci_lower": 27.4,
+     "ci_upper": 44.0
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 4.2,
+     "ci_lower": -5.4,
+     "ci_upper": 13.9,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 0.0,
+     "ci_lower": -10.5,
+     "ci_upper": 10.6,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 38.8
+  },
+  {
+   "name": "Ruhango",
+   "rates": {
+    "eicv3": {
+     "pct": 53.1,
+     "ci_lower": 46.7,
+     "ci_upper": 59.4
+    },
+    "eicv4": {
+     "pct": 38.1,
+     "ci_lower": 31.6,
+     "ci_upper": 44.6
+    },
+    "eicv5": {
+     "pct": 38.0,
+     "ci_lower": 31.5,
+     "ci_upper": 44.5
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -14.9,
+     "ci_lower": -24.0,
+     "ci_upper": -5.9,
+     "holm_adjusted_p": 0.0302,
+     "label": "Clear improvement"
+    },
+    "2013_14_to_2016_17": {
+     "points": -0.1,
+     "ci_lower": -9.3,
+     "ci_upper": 9.0,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 15.0
+  },
+  {
+   "name": "Rulindo",
+   "rates": {
+    "eicv3": {
+     "pct": 55.9,
+     "ci_lower": 50.4,
+     "ci_upper": 61.3
+    },
+    "eicv4": {
+     "pct": 48.1,
+     "ci_lower": 41.1,
+     "ci_upper": 55.1
+    },
+    "eicv5": {
+     "pct": 54.2,
+     "ci_lower": 47.8,
+     "ci_upper": 60.5
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -7.8,
+     "ci_lower": -16.6,
+     "ci_upper": 1.1,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": 6.1,
+     "ci_lower": -3.3,
+     "ci_upper": 15.5,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 21.6
+  },
+  {
+   "name": "Rusizi",
+   "rates": {
+    "eicv3": {
+     "pct": 40.9,
+     "ci_lower": 33.2,
+     "ci_upper": 48.6
+    },
+    "eicv4": {
+     "pct": 35.2,
+     "ci_lower": 28.0,
+     "ci_upper": 42.3
+    },
+    "eicv5": {
+     "pct": 33.5,
+     "ci_lower": 27.9,
+     "ci_upper": 39.0
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -5.7,
+     "ci_lower": -16.3,
+     "ci_upper": 4.8,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -1.7,
+     "ci_lower": -10.7,
+     "ci_upper": 7.4,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 44.2
+  },
+  {
+   "name": "Rutsiro",
+   "rates": {
+    "eicv3": {
+     "pct": 46.8,
+     "ci_lower": 40.5,
+     "ci_upper": 53.1
+    },
+    "eicv4": {
+     "pct": 51.0,
+     "ci_lower": 43.4,
+     "ci_upper": 58.6
+    },
+    "eicv5": {
+     "pct": 49.5,
+     "ci_lower": 44.4,
+     "ci_upper": 54.6
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": 4.2,
+     "ci_lower": -5.7,
+     "ci_upper": 14.1,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -1.5,
+     "ci_lower": -10.7,
+     "ci_upper": 7.7,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 40.8
+  },
+  {
+   "name": "Rwamagana",
+   "rates": {
+    "eicv3": {
+     "pct": 33.4,
+     "ci_lower": 27.3,
+     "ci_upper": 39.5
+    },
+    "eicv4": {
+     "pct": 25.5,
+     "ci_lower": 19.1,
+     "ci_upper": 31.9
+    },
+    "eicv5": {
+     "pct": 18.9,
+     "ci_lower": 13.1,
+     "ci_upper": 24.7
+    }
+   },
+   "changes": {
+    "2010_11_to_2013_14": {
+     "points": -7.9,
+     "ci_lower": -16.7,
+     "ci_upper": 0.9,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    },
+    "2013_14_to_2016_17": {
+     "points": -6.6,
+     "ci_lower": -15.3,
+     "ci_upper": 2.0,
+     "holm_adjusted_p": 1.0,
+     "label": "No clear change"
+    }
+   },
+   "poverty2023_24": 23.8
+  }
+ ],
+ "changeCounts": {
+  "2010_11_to_2013_14": {
+   "clearImprovement": 6,
+   "clearWorsening": 1,
+   "possible": 4,
+   "noClearChange": 19
+  },
+  "2013_14_to_2016_17": {
+   "clearImprovement": 1,
+   "clearWorsening": 0,
+   "possible": 2,
+   "noClearChange": 27
+  }
+ },
+ "panel": {
+  "people": 8310,
+  "households": 2423,
+  "shares": {
+   "stayed_poor": 30.0,
+   "escaped": 15.9,
+   "fell_back": 10.5,
+   "never_poor": 43.6
+  },
+  "escaped": {
+   "pct": 34.6,
+   "ci_lower": 29.8,
+   "ci_upper": 39.4
+  },
+  "fellInto": {
+   "pct": 19.4,
+   "ci_lower": 15.6,
+   "ci_upper": 23.2
+  },
+  "byProvince": [
+   {
+    "province": "Kigali City",
+    "people": 1432,
+    "shares": {
+     "stayed_poor": 19.0,
+     "escaped": 8.2,
+     "fell_back": 8.4,
+     "never_poor": 64.4
+    },
+    "escaped": {
+     "pct": 30.2,
+     "ci_lower": 13.0,
+     "ci_upper": 47.5
+    },
+    "fellInto": {
+     "pct": 11.5,
+     "ci_lower": 5.2,
+     "ci_upper": 17.9
+    }
+   },
+   {
+    "province": "Southern",
+    "people": 2010,
+    "shares": {
+     "stayed_poor": 31.9,
+     "escaped": 21.2,
+     "fell_back": 8.1,
+     "never_poor": 38.8
+    },
+    "escaped": {
+     "pct": 39.9,
+     "ci_lower": 31.1,
+     "ci_upper": 48.6
+    },
+    "fellInto": {
+     "pct": 17.2,
+     "ci_lower": 8.7,
+     "ci_upper": 25.7
+    }
+   },
+   {
+    "province": "Western",
+    "people": 1825,
+    "shares": {
+     "stayed_poor": 29.5,
+     "escaped": 10.9,
+     "fell_back": 12.7,
+     "never_poor": 46.9
+    },
+    "escaped": {
+     "pct": 26.9,
+     "ci_lower": 16.7,
+     "ci_upper": 37.2
+    },
+    "fellInto": {
+     "pct": 21.3,
+     "ci_lower": 14.5,
+     "ci_upper": 28.2
+    }
+   },
+   {
+    "province": "Northern",
+    "people": 1287,
+    "shares": {
+     "stayed_poor": 38.6,
+     "escaped": 22.7,
+     "fell_back": 9.3,
+     "never_poor": 29.4
+    },
+    "escaped": {
+     "pct": 37.0,
+     "ci_lower": 27.8,
+     "ci_upper": 46.2
+    },
+    "fellInto": {
+     "pct": 24.0,
+     "ci_lower": 11.0,
+     "ci_upper": 37.1
+    }
+   },
+   {
+    "province": "Eastern",
+    "people": 1756,
+    "shares": {
+     "stayed_poor": 27.7,
+     "escaped": 14.6,
+     "fell_back": 12.3,
+     "never_poor": 45.3
+    },
+    "escaped": {
+     "pct": 34.5,
+     "ci_lower": 23.6,
+     "ci_upper": 45.5
+    },
+    "fellInto": {
+     "pct": 21.4,
+     "ci_lower": 13.3,
+     "ci_upper": 29.5
+    }
+   }
+  ]
+ },
+ "access": {
+  "national": {
+   "banked": 22,
+   "other_formal": 70,
+   "informal_only": 4,
+   "excluded": 4
+  },
+  "districts": [
+   {
+    "name": "Bugesera",
+    "published": {
+     "banked": 23,
+     "otherFormal": 71,
+     "informalOnly": 5,
+     "excluded": 2
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 88.7,
+    "sampleAdults": 560,
+    "poverty": 23.7
+   },
+   {
+    "name": "Burera",
+    "published": {
+     "banked": 11,
+     "otherFormal": 87,
+     "informalOnly": 2,
+     "excluded": 1
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 92.9,
+    "sampleAdults": 416,
+    "poverty": 22.0
+   },
+   {
+    "name": "Gakenke",
+    "published": {
+     "banked": 18,
+     "otherFormal": 69,
+     "informalOnly": 5,
+     "excluded": 8
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 74.2,
+    "sampleAdults": 447,
+    "poverty": 24.5
+   },
+   {
+    "name": "Gasabo",
+    "published": {
+     "banked": 51,
+     "otherFormal": 46,
+     "informalOnly": 2,
+     "excluded": 1
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 94.5,
+    "sampleAdults": 848,
+    "poverty": 11.1
+   },
+   {
+    "name": "Gatsibo",
+    "published": {
+     "banked": 23,
+     "otherFormal": 73,
+     "informalOnly": 3,
+     "excluded": 1
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 85.7,
+    "sampleAdults": 400,
+    "poverty": 18.4
+   },
+   {
+    "name": "Gicumbi",
+    "published": {
+     "banked": 8,
+     "otherFormal": 75,
+     "informalOnly": 11,
+     "excluded": 7
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 74.1,
+    "sampleAdults": 512,
+    "poverty": 13.3
+   },
+   {
+    "name": "Gisagara",
+    "published": {
+     "banked": 10,
+     "otherFormal": 77,
+     "informalOnly": 9,
+     "excluded": 4
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 77.6,
+    "sampleAdults": 400,
+    "poverty": 45.6
+   },
+   {
+    "name": "Huye",
+    "published": {
+     "banked": 15,
+     "otherFormal": 73,
+     "informalOnly": 6,
+     "excluded": 6
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 77.7,
+    "sampleAdults": 480,
+    "poverty": 24.2
+   },
+   {
+    "name": "Kamonyi",
+    "published": {
+     "banked": 16,
+     "otherFormal": 76,
+     "informalOnly": 4,
+     "excluded": 3
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 84.2,
+    "sampleAdults": 623,
+    "poverty": 39.7
+   },
+   {
+    "name": "Karongi",
+    "published": {
+     "banked": 8,
+     "otherFormal": 83,
+     "informalOnly": 6,
+     "excluded": 3
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 73.3,
+    "sampleAdults": 399,
+    "poverty": 38.2
+   },
+   {
+    "name": "Kayonza",
+    "published": {
+     "banked": 11,
+     "otherFormal": 76,
+     "informalOnly": 8,
+     "excluded": 5
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 82.0,
+    "sampleAdults": 448,
+    "poverty": 36.6
+   },
+   {
+    "name": "Kicukiro",
+    "published": {
+     "banked": 62,
+     "otherFormal": 35,
+     "informalOnly": 2,
+     "excluded": 2
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 94.4,
+    "sampleAdults": 607,
+    "poverty": 6.9
+   },
+   {
+    "name": "Kirehe",
+    "published": {
+     "banked": 7,
+     "otherFormal": 86,
+     "informalOnly": 5,
+     "excluded": 3
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 80.5,
+    "sampleAdults": 464,
+    "poverty": 14.2
+   },
+   {
+    "name": "Muhanga",
+    "published": {
+     "banked": 17,
+     "otherFormal": 76,
+     "informalOnly": 5,
+     "excluded": 2
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 84.3,
+    "sampleAdults": 400,
+    "poverty": 15.0
+   },
+   {
+    "name": "Musanze",
+    "published": {
+     "banked": 24,
+     "otherFormal": 71,
+     "informalOnly": 5,
+     "excluded": 1
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 83.8,
+    "sampleAdults": 399,
+    "poverty": 21.0
+   },
+   {
+    "name": "Ngoma",
+    "published": {
+     "banked": 9,
+     "otherFormal": 77,
+     "informalOnly": 6,
+     "excluded": 8
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 73.4,
+    "sampleAdults": 400,
+    "poverty": 30.9
+   },
+   {
+    "name": "Ngororero",
+    "published": {
+     "banked": 10,
+     "otherFormal": 78,
+     "informalOnly": 5,
+     "excluded": 7
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 82.0,
+    "sampleAdults": 400,
+    "poverty": 30.2
+   },
+   {
+    "name": "Nyabihu",
+    "published": {
+     "banked": 13,
+     "otherFormal": 74,
+     "informalOnly": 5,
+     "excluded": 8
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 77.2,
+    "sampleAdults": 400,
+    "poverty": 20.2
+   },
+   {
+    "name": "Nyagatare",
+    "published": {
+     "banked": 17,
+     "otherFormal": 77,
+     "informalOnly": 4,
+     "excluded": 3
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 86.8,
+    "sampleAdults": 639,
+    "poverty": 36.4
+   },
+   {
+    "name": "Nyamagabe",
+    "published": {
+     "banked": 11,
+     "otherFormal": 84,
+     "informalOnly": 4,
+     "excluded": 1
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 87.1,
+    "sampleAdults": 400,
+    "poverty": 51.4
+   },
+   {
+    "name": "Nyamasheke",
+    "published": {
+     "banked": 13,
+     "otherFormal": 78,
+     "informalOnly": 3,
+     "excluded": 6
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 83.0,
+    "sampleAdults": 432,
+    "poverty": 42.8
+   },
+   {
+    "name": "Nyanza",
+    "published": {
+     "banked": 17,
+     "otherFormal": 74,
+     "informalOnly": 4,
+     "excluded": 4
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 82.4,
+    "sampleAdults": 400,
+    "poverty": 43.3
+   },
+   {
+    "name": "Nyarugenge",
+    "published": {
+     "banked": 59,
+     "otherFormal": 40,
+     "informalOnly": 1,
+     "excluded": 0
+    },
+    "excludedPrinted": false,
+    "mobileMoneyEstimated": 95.6,
+    "sampleAdults": 448,
+    "poverty": 6.8
+   },
+   {
+    "name": "Nyaruguru",
+    "published": {
+     "banked": 6,
+     "otherFormal": 78,
+     "informalOnly": 5,
+     "excluded": 10
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 56.7,
+    "sampleAdults": 400,
+    "poverty": 39.7
+   },
+   {
+    "name": "Rubavu",
+    "published": {
+     "banked": 22,
+     "otherFormal": 71,
+     "informalOnly": 4,
+     "excluded": 3
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 75.4,
+    "sampleAdults": 512,
+    "poverty": 38.8
+   },
+   {
+    "name": "Ruhango",
+    "published": {
+     "banked": 22,
+     "otherFormal": 70,
+     "informalOnly": 5,
+     "excluded": 3
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 85.3,
+    "sampleAdults": 416,
+    "poverty": 15.0
+   },
+   {
+    "name": "Rulindo",
+    "published": {
+     "banked": 13,
+     "otherFormal": 74,
+     "informalOnly": 4,
+     "excluded": 8
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 72.5,
+    "sampleAdults": 400,
+    "poverty": 21.6
+   },
+   {
+    "name": "Rusizi",
+    "published": {
+     "banked": 22,
+     "otherFormal": 68,
+     "informalOnly": 5,
+     "excluded": 6
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 85.3,
+    "sampleAdults": 480,
+    "poverty": 44.2
+   },
+   {
+    "name": "Rutsiro",
+    "published": {
+     "banked": 9,
+     "otherFormal": 78,
+     "informalOnly": 6,
+     "excluded": 6
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 72.7,
+    "sampleAdults": 400,
+    "poverty": 40.8
+   },
+   {
+    "name": "Rwamagana",
+    "published": {
+     "banked": 27,
+     "otherFormal": 68,
+     "informalOnly": 3,
+     "excluded": 2
+    },
+    "excludedPrinted": true,
+    "mobileMoneyEstimated": 90.4,
+    "sampleAdults": 464,
+    "poverty": 23.8
+   }
+  ],
+  "links": {
+   "excludedPublished": {
+    "spearman_rho": 0.33,
+    "bootstrap_95_interval": [
+     -0.06,
+     0.64
+    ]
+   },
+   "bankedPublished": {
+    "spearman_rho": -0.38,
+    "bootstrap_95_interval": [
+     -0.69,
+     0.02
+    ]
+   },
+   "mobileMoneyEstimated": {
+    "spearman_rho": -0.33,
+    "bootstrap_95_interval": [
+     -0.65,
+     0.07
+    ]
+   }
+  }
+ }
+}

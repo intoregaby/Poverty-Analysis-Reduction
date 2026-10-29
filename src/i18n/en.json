@@ -1,0 +1,673 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "loading": "Loading…",
+    "logOut": "Log out",
+    "settings": "Settings",
+    "takeTour": "Take a tour",
+    "programMember": "Program Member",
+    "programMembers": "Program Members"
+  },
+  "navGroups": {
+    "Analysis": "Analysis",
+    "Operations": "Operations",
+    "People": "People",
+    "Insights": "Insights",
+    "Data": "Data"
+  },
+  "nav": {
+    "other-analysis": "Other Analysis",
+    "poverty-analysis": "Poverty Analysis",
+    "investigations": "District Investigation",
+    "nst2": "National Goals",
+    "evidence": "Programme Results",
+    "programmes": "Programme Management",
+    "cooperatives": "Cooperatives",
+    "cooperative": "Cooperative Panel",
+    "government": "Government",
+    "agent": "Field Work",
+    "beneficiary": "Program Member",
+    "jobs": "Find a Job",
+    "map": "District Map",
+    "datasets": "Data Sources",
+    "ussd-control": "USSD Control"
+  },
+  "tour": {
+    "stepOf": "Step {{current}} of {{total}}",
+    "close": "Close the tour",
+    "back": "Back",
+    "skip": "Skip",
+    "next": "Next",
+    "finish": "Finish",
+    "welcome": "Welcome to {{page}}",
+    "intro": {
+      "other-analysis": "This page keeps the earlier analysis: social support, programme delivery, district needs and priority districts. It uses older methods and data that are not the latest survey.",
+      "poverty-analysis": "This page shows how many people are poor in each part of Rwanda. You can see where help is needed most.",
+      "investigations": "Pick a district and the computer will study it for you. It reads the data, checks the sources, and writes a report.",
+      "nst2": "This page shows Rwanda's goals for 2024 to 2029 and how close the country is to reaching them.",
+      "evidence": "This page shows how the aid programmes are doing: money sent, families reached, and results.",
+      "programmes": "This is the place to manage a programme: field agents, program members, jobs, and payments.",
+      "cooperatives": "Find cooperatives near you. A cooperative is a group of people who work together. You can ask to join one.",
+      "cooperative": "This is the place to manage your cooperative. You can answer join requests and see your members.",
+      "government": "This page shows the numbers for your area. Use it to see where people need help.",
+      "agent": "This page shows your work for today: the visits to make and the problems to report.",
+      "beneficiary": "This is your own panel. See your family, your cooperatives and your vote, your agent and visits, and your health insurance.",
+      "jobs": "This page shows jobs you can apply for, and how your application is going.",
+      "map": "This map shows Rwanda's 30 districts. Darker colours mean a higher number. Click a district to learn more.",
+      "datasets": "This page shows where every number comes from, and what each number means.",
+      "ussd-control": "See who uses the phone service, how it is going, and any problems. You can end a session or block a number. Every action is logged."
+    },
+    "menu": {
+      "title": "The menu",
+      "text": "Use this menu to go to another page: {{pages}}.",
+      "textAlone": "Use this menu to move between pages."
+    },
+    "again": {
+      "title": "See this tour again",
+      "text": "Press Take a tour any time. You will see the tour for the page you are on."
+    },
+    "steps": {
+      "analysis-filter": {
+        "title": "Choose a place",
+        "text": "Choose All Rwanda or one province. The district charts and the Export file follow your choice. Numbers marked National always stay for the whole country."
+      },
+      "analysis-findings": {
+        "title": "Read the main numbers",
+        "text": "These boxes give the big picture. They show poverty in Rwanda, the district with the most poverty, and how many districts are above the national rate."
+      },
+      "analysis-poverty-chart": {
+        "title": "Poverty by District",
+        "text": "Each bar is one district. A longer bar means a higher share of people below the poverty line. The dashed line is the rate for all of Rwanda."
+      },
+      "analysis-chart-eye": {
+        "title": "The eye icon",
+        "text": "Look for the eye next to a chart name. Click it to read, in simple words, what the chart shows and what to be careful about."
+      },
+      "analysis-chart-ai": {
+        "title": "The sparkles icon",
+        "text": "Click the purple sparkles to ask the AI a question about the chart. Always check the answer against the source."
+      },
+      "analysis-changes": {
+        "title": "Poverty Changes",
+        "text": "The empty dot is the rate in 2016/17. The full dot is the rate in 2023/24. The space between them shows how much poverty went up or down."
+      },
+      "analysis-finance": {
+        "title": "Financial Inclusion",
+        "text": "Imagine 100 adults in Rwanda. Each slice shows how many use banks or other money services. These numbers are for the whole country."
+      },
+      "analysis-support": {
+        "title": "Poverty & Social Support",
+        "text": "This part compares poverty with VUP. VUP is a government programme that helps poor families. Poverty counts people. VUP counts poor households. So do not subtract one from the other."
+      },
+      "support-views": {
+        "title": "Three ways to look",
+        "text": "Compare shows every district in rows. Prioritize shows districts on one chart, so you can find which ones to study first. Districts shows a table you can search and sort."
+      },
+      "support-scatter": {
+        "title": "Read the Prioritize chart",
+        "text": "Each dot is a district. Dots higher up have more poverty. Dots further right have more VUP. The top-left area, Review first, has high poverty and low VUP. Click a dot to see more and to start an investigation."
+      },
+      "analysis-needs": {
+        "title": "Compare a district with Rwanda",
+        "text": "Choose a district here. The dark mark shows the number for all of Rwanda, so you can see if the district is better or worse."
+      },
+      "analysis-priority": {
+        "title": "Priority Districts",
+        "text": "These districts have the highest poverty. They are a good place to start looking. They are not a final decision about who gets help."
+      },
+      "analysis-sources": {
+        "title": "Check the sources",
+        "text": "Use these links to see where each number comes from, which year it is from, and who was counted."
+      },
+      "analysis-export": {
+        "title": "Export",
+        "text": "Click Export to save the district numbers as a file. Keep the year and the source with the numbers when you share them."
+      },
+      "inv-form": {
+        "title": "Choose a district",
+        "text": "Pick a district from the list, then press the purple button. The computer starts to study that district."
+      },
+      "inv-tabs": {
+        "title": "Read the results",
+        "text": "When the study ends, use these tabs. They show the main findings, the causes that may matter, a comparison with other districts, and the data used."
+      },
+      "inv-history": {
+        "title": "Earlier studies",
+        "text": "Your earlier studies are saved. Open one to read it again."
+      },
+      "nst2-intro": {
+        "title": "The big goals",
+        "text": "Rwanda wrote goals for 2024 to 2029. This page asks: are we reaching them?"
+      },
+      "nst2-latest": {
+        "title": "Latest numbers",
+        "text": "These are the newest numbers from the national survey."
+      },
+      "nst2-targets": {
+        "title": "Targets",
+        "text": "These are the official goals. Compare them with the latest numbers to see how far we still need to go."
+      },
+      "ev-payments": {
+        "title": "Payments sent",
+        "text": "This chart shows the money sent to families each month."
+      },
+      "ev-journey": {
+        "title": "Payment journey",
+        "text": "This shows the steps from joining a programme to getting money. Look for the step where families are lost."
+      },
+      "ev-mix": {
+        "title": "Programme mix",
+        "text": "This shows which programmes reach the most families."
+      },
+      "ev-table": {
+        "title": "Programme table",
+        "text": "This table shows each programme's budget, delivery, and status."
+      },
+      "pm-programme-select": {
+        "title": "Choose a programme",
+        "text": "Choose which programme to look at, or look at all of them."
+      },
+      "coop-mine": {
+        "title": "Your cooperative",
+        "text": "If you are in a cooperative, you will see it here."
+      },
+      "coop-requests": {
+        "title": "Your requests",
+        "text": "See if your requests were accepted, refused, or are still waiting."
+      },
+      "coopp-requests": {
+        "title": "Join requests",
+        "text": "People who want to join are listed here. Press Accept, or say No and give a reason."
+      },
+      "coopp-members": {
+        "title": "Members",
+        "text": "These are the people in your cooperative."
+      },
+      "coopp-about": {
+        "title": "Your cooperative",
+        "text": "If you are in a cooperative, you will see it here."
+      },
+      "coopp-activity": {
+        "title": "Recent activity",
+        "text": "See what happened lately in your cooperative."
+      },
+      "agent-day": {
+        "title": "Your day",
+        "text": "See the people you must visit and the problems to report."
+      },
+      "agent-visits": {
+        "title": "Visits",
+        "text": "This is your list of visits for today."
+      },
+      "agent-record": {
+        "title": "Record a visit",
+        "text": "After a visit, write down what happened here."
+      },
+      "agent-problems": {
+        "title": "Problems",
+        "text": "Problems you sent to the office are listed here."
+      },
+      "me-payment": {
+        "title": "Next payment",
+        "text": "See how much money you will get and when."
+      },
+      "me-programmes": {
+        "title": "Your programmes",
+        "text": "These are the programmes you are in."
+      },
+      "me-complaint": {
+        "title": "Send a complaint",
+        "text": "Something wrong? Write it here and send it. You will get an answer in 5 working days."
+      },
+      "job-application": {
+        "title": "Your application",
+        "text": "See how your application is going."
+      },
+      "job-open": {
+        "title": "Open jobs",
+        "text": "These jobs are open now. Press the button on a job to apply."
+      },
+      "map-layers": {
+        "title": "Choose what to show",
+        "text": "Pick one number to colour the map: poverty, extreme poverty, how many poor households report VUP, or money access."
+      },
+      "map-canvas": {
+        "title": "The map",
+        "text": "Each shape is a district. A darker colour means a higher number. Click a district to open it. You can also zoom with the + and - buttons."
+      },
+      "map-legend": {
+        "title": "The colour key",
+        "text": "This key tells you what each colour means."
+      },
+      "map-detail": {
+        "title": "District details",
+        "text": "The numbers for the district you chose appear here. If you did not choose one, you see numbers for all of Rwanda."
+      },
+      "map-list": {
+        "title": "Districts to look at",
+        "text": "This list shows districts to study first. Click a name to find it on the map."
+      },
+      "ds-intro": {
+        "title": "Data sources",
+        "text": "Every number in this app comes from one of these files."
+      },
+      "ds-list": {
+        "title": "Dataset list",
+        "text": "Click a dataset to read about it: who made it and which year it is from."
+      },
+      "ds-dictionary": {
+        "title": "Word list",
+        "text": "Not sure what a word or number means? Look it up here."
+      },
+      "programmes-subnav": {
+        "title": "Tabs",
+        "text": "Use these tabs to move between agents, program members, jobs, payments, and skills."
+      },
+      "government-subnav": {
+        "title": "Sections",
+        "text": "Use the menu to move between the overview, program members, delivery problems, field reports, programme requests and cooperatives for your area."
+      },
+      "gov-content": {
+        "title": "Your area",
+        "text": "You only see information for the area you look after."
+      },
+      "member-profile": {
+        "title": "Your details",
+        "text": "Your own details, your household and the services you receive."
+      },
+      "member-coop-switcher": {
+        "title": "Choose a cooperative",
+        "text": "You can be in more than one cooperative. Choose which one to look at."
+      },
+      "member-coop-360": {
+        "title": "Your cooperative",
+        "text": "Everything a member may see about the cooperative. You can look, but you cannot change anything."
+      },
+      "member-coop-members": {
+        "title": "Members",
+        "text": "All the members of the cooperative."
+      },
+      "member-space": {
+        "title": "Cooperative Space",
+        "text": "A light page for your cooperative: voting, news and meetings."
+      },
+      "member-vote": {
+        "title": "Vote",
+        "text": "See where and when to vote. You can vote once. You will be asked to confirm."
+      },
+      "member-announcements": {
+        "title": "News from leaders",
+        "text": "Messages from your cooperative leaders."
+      },
+      "member-agent": {
+        "title": "Your agent",
+        "text": "The agent who looks after you and your family, and how to reach them."
+      },
+      "member-visits": {
+        "title": "Your visits",
+        "text": "The visits planned for you, with a short list to help you get ready."
+      },
+      "member-insurance": {
+        "title": "Health insurance",
+        "text": "See if your insurance is paid, how much you must pay, and by when."
+      },
+      "gov-members": {
+        "title": "Program members",
+        "text": "The people in your area, with their health insurance status. Open a name to see the full picture."
+      },
+      "gov-360": {
+        "title": "The full picture",
+        "text": "Insurance, household, agent, cooperatives and family for one person."
+      },
+      "gov-coop-leaders": {
+        "title": "Cooperative leaders",
+        "text": "The leaders of this cooperative and how to reach them."
+      },
+      "agent-open": {
+        "title": "Open an agent",
+        "text": "Click an agent's name to see when they joined and the history of their application."
+      },
+      "ussd-stats": {
+        "title": "Usage at a glance",
+        "text": "How many sessions there were, how many are live now, and how many ended with an error."
+      },
+      "ussd-sessions": {
+        "title": "Sessions",
+        "text": "Each row is one phone session with the number hidden. You can see the menu path, language and status, and end or block it."
+      },
+      "ussd-errors": {
+        "title": "Errors",
+        "text": "The latest problems, so you can fix them quickly."
+      },
+      "ussd-blocked": {
+        "title": "Blocked numbers",
+        "text": "Numbers that cannot use the service. You can unblock them here."
+      },
+      "ussd-audit": {
+        "title": "Admin log",
+        "text": "A record of everything an administrator did here."
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "intro": "Your profile, language, notifications and security.",
+    "tabs": {
+      "profile": "Profile",
+      "language": "Language",
+      "notifications": "Notifications",
+      "security": "Security"
+    },
+    "profile": {
+      "title": "Your profile",
+      "name": "Name",
+      "role": "Role",
+      "area": "Area",
+      "email": "Email",
+      "note": "Your details are managed by your administrator."
+    },
+    "language": {
+      "title": "Language",
+      "help": "The whole app changes straight away. Your choice is saved on your profile.",
+      "saved": "Language saved.",
+      "previewTitle": "How things look in this language",
+      "date": "Date",
+      "number": "Number",
+      "money": "Money"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "help": "Choose how you hear about visits, votes and payments.",
+      "app": "In the app",
+      "sms": "SMS to my phone",
+      "email": "Email"
+    },
+    "security": {
+      "title": "Security",
+      "help": "Sign out of this device. Passwords are managed by the sign-in service.",
+      "signOut": "Sign out"
+    }
+  },
+  "member": {
+    "panel": "Program Member",
+    "noSession": "Sign in again to see your records.",
+    "noMember": "This account is not linked to a Program Member record.",
+    "tabs": {
+      "overview": "Benefits",
+      "profile": "Me and my family",
+      "cooperatives": "My cooperatives",
+      "space": "Cooperative Space",
+      "agent": "My agent and visits",
+      "insurance": "Health insurance"
+    },
+    "profile": {
+      "title": "My details",
+      "name": "Name",
+      "phone": "Phone",
+      "area": "Where I live",
+      "household": "Household",
+      "householdOf": "{{count}} people",
+      "category": "Insurance category",
+      "programme": "Programme",
+      "services": "Services",
+      "servicesHelp": "What you and your family receive",
+      "protection": "Protection",
+      "family": "My family",
+      "familyHelp": "The people in your household",
+      "noFamily": "No family members are recorded.",
+      "age": "{{count}} years"
+    },
+    "coops": {
+      "switcher": "Cooperative",
+      "none": "You are not in a cooperative yet.",
+      "readOnly": "You can see everything a member may see here. You cannot add, change or remove people.",
+      "yourRole": "My role",
+      "memberCount": "Members",
+      "founded": "Founded",
+      "votingStarts": "Voting starts",
+      "votingEnds": "Voting ends",
+      "leaders": "Leaders",
+      "leadersHelp": "The cooperative leaders and how to reach them",
+      "members": "All members ({{count}})",
+      "roles": {
+        "member": "Member",
+        "secretary": "Secretary",
+        "treasurer": "Treasurer",
+        "vice_leader": "Vice leader",
+        "leader": "Leader"
+      }
+    },
+    "space": {
+      "voteTitle": "Vote",
+      "noElection": "There is no election at the moment.",
+      "where": "Where to vote",
+      "when": "When to vote",
+      "state": {
+        "open": "Voting is open",
+        "upcoming": "Voting has not started",
+        "closed": "Voting is closed"
+      },
+      "cannot": {
+        "upcoming": "You can vote once voting opens.",
+        "closed": "Voting has ended."
+      },
+      "pick": "Choose one candidate",
+      "voted": "You have voted. Thank you.",
+      "confirmTitle": "Confirm your vote",
+      "confirmText": "You are voting for {{name}}. You can vote only once and cannot change it.",
+      "confirmVote": "Yes, cast my vote",
+      "announcements": "Announcements from leaders",
+      "meetings": "Upcoming meetings",
+      "contacts": "Leader contacts",
+      "memberList": "See the member list",
+      "none": "Nothing yet."
+    },
+    "agent": {
+      "title": "My agent",
+      "help": "The agent in charge of you and your family",
+      "none": "No agent has been assigned to you yet.",
+      "phone": "Phone",
+      "area": "Area covered",
+      "proximity": {
+        "cell": "Works in your cell",
+        "sector": "Works in your sector",
+        "district": "Works in your district"
+      },
+      "visits": "My visits",
+      "nextVisit": "Next visit: {{when}}",
+      "noVisits": "No visits are scheduled.",
+      "purpose": "Purpose",
+      "prepare": "How to prepare",
+      "status": {
+        "Scheduled": "Scheduled",
+        "Done": "Done",
+        "Missed": "Missed",
+        "Cancelled": "Cancelled"
+      },
+      "history": "Agent history",
+      "reason": {
+        "auto_assigned": "Assigned by the system",
+        "agent_unavailable": "Agent was unavailable"
+      }
+    },
+    "insurance": {
+      "title": "Health insurance",
+      "none": "No insurance record for this year yet.",
+      "status": {
+        "paid": "Paid",
+        "partial": "Partly paid",
+        "unpaid": "Not paid"
+      },
+      "overdue": "The payment period has ended and a balance remains.",
+      "due": "Amount to pay",
+      "paid": "Already paid",
+      "balance": "Still to pay",
+      "dueDate": "Pay by",
+      "period": "Period: {{start}} to {{end}}",
+      "how": "How the amount is worked out",
+      "howHelp": "It depends on your category and your household",
+      "calc": "{{category}}: {{rate}} per person, for {{count}} people = {{total}} per year.",
+      "categories": {
+        "mutuelle_1": "Mutuelle de Santé, category 1",
+        "mutuelle_2": "Mutuelle de Santé, category 2",
+        "mutuelle_3": "Mutuelle de Santé, category 3",
+        "rama": "RAMA"
+      }
+    }
+  },
+  "gov": {
+    "membersHelp": "People enrolled in programmes in {{area}}. You see no one outside your area.",
+    "search": "Search by name",
+    "noMembers": "No program members match.",
+    "count": "{{count}} people",
+    "unpaidCount": "{{count}} program members have a health insurance balance to pay.",
+    "sectorCell": "Sector · cell",
+    "who": "Who and where",
+    "agent": "Agent",
+    "noLeaders": "No leaders are recorded for this cooperative.",
+    "insurance": {
+      "title": "Health insurance",
+      "any": "Any insurance status",
+      "paid": "Paid",
+      "partial": "Partly paid",
+      "unpaid": "Not paid",
+      "none": "No record"
+    },
+    "area": "Location",
+    "coops": "Cooperatives",
+    "noCoop": "Not in a cooperative.",
+    "family": "Family"
+  },
+  "agent360": {
+    "joined": "Joined",
+    "basedOn": "Date and time of their application",
+    "noApplication": "No application is on record for this agent.",
+    "history": "Application history",
+    "work": "Work",
+    "members": "Program members in charge",
+    "visitsDone": "Visits done",
+    "note": "Joined date and history come from the agent's application record.",
+    "status": {
+      "label": "Status",
+      "Submitted": "Submitted",
+      "Under review": "Under review",
+      "Accepted": "Accepted",
+      "Rejected": "Rejected"
+    }
+  },
+  "ussd": {
+    "menu": "Ireme: {{name}}\n1 Insurance\n2 Next visit\n3 My agent\n4 Voting\n5 Language\n0 Exit",
+    "back": "0 Back",
+    "bye": "Thank you. Goodbye.",
+    "invalid": "Wrong choice.",
+    "notRegistered": "This number is not registered as a Program Member.",
+    "blocked": "This service is not available for your number.",
+    "expired": "Your session ended. Please dial again.",
+    "tooMany": "Too many requests. Try again in a minute.",
+    "error": "Sorry, something went wrong. Try again later.",
+    "insurance": "Insurance: {{status}}\nTo pay: {{due}}\nPaid: {{paid}}\nPay by: {{date}}",
+    "insuranceNone": "No insurance record yet.",
+    "status": {
+      "paid": "Paid",
+      "partial": "Partly paid",
+      "unpaid": "Not paid"
+    },
+    "visit": "Next visit:\n{{when}}\n{{purpose}}",
+    "visitNone": "No visit is scheduled.",
+    "agent": "Your agent:\n{{name}}\n{{phone}}",
+    "agentNone": "No agent is assigned yet.",
+    "voting": "{{title}}\nWhere: {{venue}}\nWhen: {{from}} to {{to}}\nStatus: {{state}}\n{{voted}}",
+    "votingNone": "There is no election for you now.",
+    "state": {
+      "open": "Open",
+      "upcoming": "Not started",
+      "closed": "Closed"
+    },
+    "voted": "You have voted.",
+    "notVoted": "You have not voted yet.",
+    "language": "Language\n1 English\n2 Kinyarwanda",
+    "languageSaved": "Language saved."
+  },
+  "ussdSim": {
+    "title": "USSD simulator",
+    "help": "Try the phone service without a phone line. Demo members only.",
+    "idle": "Dial {{code}} and press Dial.",
+    "dial": "Dial",
+    "yourNumber": "Your phone number",
+    "code": "Code to dial",
+    "reply": "Your answer",
+    "send": "Send",
+    "cancel": "Cancel the session",
+    "timeLeft": "Session ends in {{seconds}} s without an answer",
+    "timedOut": "Your session ended. Please dial again.",
+    "badCode": "Connection problem or invalid code.",
+    "network": "The service could not be reached. Try again.",
+    "demoOnly": "Demo only. Real phone numbers are not served here."
+  },
+  "ussdAdmin": {
+    "title": "USSD Control",
+    "needAdmin": "Sign in as an administrator to see USSD activity.",
+    "noData": "No data yet.",
+    "noErrors": "No errors.",
+    "noSessions": "No sessions yet.",
+    "noBlocked": "No blocked numbers.",
+    "noAudit": "No actions yet.",
+    "stats": {
+      "total": "Sessions",
+      "today": "Today",
+      "active": "Live now",
+      "timedOut": "Timed out",
+      "errors": "Errors",
+      "blocked": "Blocked"
+    },
+    "byLanguage": "Language",
+    "byScreen": "Most used screens",
+    "byScreenHelp": "Counted from each request",
+    "recentErrors": "Recent errors",
+    "sessions": "Sessions",
+    "sessionsHelp": "Phone numbers are hidden. Refreshes every 10 seconds.",
+    "col": {
+      "phone": "Number",
+      "member": "Member",
+      "language": "Lang",
+      "path": "Menu path",
+      "status": "Status",
+      "source": "Source",
+      "lastSeen": "Last seen"
+    },
+    "status": {
+      "active": "Active",
+      "ended": "Ended",
+      "timed_out": "Timed out",
+      "blocked": "Blocked",
+      "error": "Error"
+    },
+    "errorsShort": "errors",
+    "end": "End",
+    "block": "Block",
+    "unblock": "Unblock",
+    "blockedTitle": "Blocked numbers",
+    "auditTitle": "Admin log",
+    "auditHelp": "Every action here is recorded.",
+    "blockTitle": "Block {{phone}}?",
+    "blockText": "This number will not be able to use the USSD service until you unblock it. Its live session ends.",
+    "reason": "Reason (optional)",
+    "actions": {
+      "end_session": "Ended a session",
+      "block_number": "Blocked a number",
+      "unblock_number": "Unblocked a number"
+    }
+  },
+  "login": {
+    "ussd": {
+      "title": "Try the USSD phone service",
+      "text": "No phone line needed. Dial {{code}} in the simulator with the demo number {{phone}}, then press the numbers to move around the menu.",
+      "open": "Open the USSD simulator",
+      "admin": "Administrators: sign in as the Platform Admin below, then open USSD Control in the menu to see sessions, errors and the admin log."
+    }
+  }
+}

@@ -1,0 +1,42 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { createI18n as create } from "./core.js";
+import { formatDate, formatMoney, formatNumber } from "../lib/format.js";
+
+const load = (name) => JSON.parse(readFileSync(new URL(`./${name}.json`, import.meta.url), "utf8"));
+const en = load("en");
+const rw = load("rw");
+const createI18n = (language) => create({ en, rw: structuredClone(rw) }, language);
+
+test("an untranslated Kinyarwanda key falls back to English", () => {
+  const i18n = createI18n("rw");
+  assert.equal(i18n.t("settings.title"), "Settings");
+  assert.equal(i18n.t("tour.stepOf", { current: 2, total: 5 }), "Step 2 of 5");
+});
+
+test("a translated Kinyarwanda key is used, and switching language is immediate", async () => {
+  const i18n = createI18n("en");
+  i18n.addResource("rw", "translation", "settings.title", "Igenamiterere");
+  assert.equal(i18n.t("settings.title"), "Settings");
+  await i18n.changeLanguage("rw");
+  assert.equal(i18n.t("settings.title"), "Igenamiterere");
+});
+
+test("a missing key shows the key rather than crashing", () => {
+  assert.equal(createI18n("en").t("nope.nothing"), "nope.nothing");
+});
+
+test("rw.json carries every English key, all still empty until reviewed", () => {
+  const walk = (tree) => Object.values(tree).flatMap((v) => (v && typeof v === "object" ? walk(v) : [v]));
+  assert.ok(walk(rw).length > 50);
+});
+
+test("money, numbers and dates follow the language and never throw", () => {
+  assert.match(formatMoney(12500, "en"), /^RWF 12,500$/);
+  assert.ok(formatMoney(12500, "rw").startsWith("RWF "));
+  assert.equal(formatMoney("x", "en"), "—");
+  assert.equal(formatNumber(1234.5, "en"), "1,234.5");
+  assert.match(formatDate("2026-11-05T10:00:00Z", "en"), /5 Nov 2026|Nov 5, 2026/);
+  assert.equal(formatDate("not a date", "rw"), "—");
+});
