@@ -1,13 +1,13 @@
 # Investigation verification
 
-Verification completed on 26 October 2026 (Africa/Johannesburg). These results cover the local analytical worker and existing National Analyst demo interface. They do not certify a hosted Base44 backend or operational authorization.
+Verification completed on 26 October 2026 (Africa/Johannesburg). These results cover the local analytical worker and existing National Analyst demo interface. They do not certify a hosted backend or operational authorization.
 
 | Check executed | Result |
 | --- | --- |
 | Python investigation suite | 18 tests passed, including identified provider client header, clustered survey variance and analyst-brief coverage |
 | Node local API and existing Groq client suites | 5 tests passed |
 | ESLint on changed investigation frontend files | Passed |
-| Production build | Passed; existing large-bundle and missing Base44 configuration warnings remain |
+| Production build | Passed; existing large-bundle and missing configuration warnings remain |
 | Full-project lint | Failed with 12 pre-existing unused-import errors in unrelated programme/government components |
 | Full-project typecheck | Failed with 84 existing errors; zero errors mention DistrictInvestigation or FindingGraphic |
 | Gisagara actual processing | Completed with explicit catalog and published-source warnings |
@@ -29,7 +29,7 @@ Commands executed:
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest tools.investigation.test_investigation -q
-node --test tools/investigation/vite-api.test.mjs base44/functions/chart-insight/groq.test.mjs
+node --test tools/investigation/vite-api.test.mjs supabase/functions/chart-insight/groq.test.mjs
 npx eslint src/pages/DistrictInvestigation.jsx src/pages/AnalystDashboard.jsx src/components/investigation/FindingGraphic.jsx --quiet
 npm run lint
 npm run typecheck

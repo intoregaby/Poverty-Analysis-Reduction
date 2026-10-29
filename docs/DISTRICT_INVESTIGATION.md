@@ -216,7 +216,7 @@ npm run typecheck
 npm run build
 ```
 
-Manually verify the full Gisagara scenario in the intended local Base44 environment: start a run, observe persisted events, inspect the catalog, open both report formats, save an analyst review note, confirm the operational endpoints reject unauthorized writes, reopen history, repeat with unchanged data, then add a valid local file and confirm it produces a new catalog signature. Repeat the calculation for another EICV7 district without altering analytical code.
+Manually verify the full Gisagara scenario in the intended local environment: start a run, observe persisted events, inspect the catalog, open both report formats, save an analyst review note, confirm the operational endpoints reject unauthorized writes, reopen history, repeat with unchanged data, then add a valid local file and confirm it produces a new catalog signature. Repeat the calculation for another EICV7 district without altering analytical code.
 
 ## Current limitations and integration boundaries
 

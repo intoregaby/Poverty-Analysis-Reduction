@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { supabase } from '@/lib/supabaseClient';
 import { useQuery } from '@tanstack/react-query';
 
 
@@ -11,8 +11,8 @@ export default function PageNotFound({}) {
         queryKey: ['user'],
         queryFn: async () => {
             try {
-                const user = await base44.auth.me();
-                return { user, isAuthenticated: true };
+                const { data } = await supabase.auth.getUser();
+                return { user: data.user, isAuthenticated: Boolean(data.user) };
             } catch (error) {
                 return { user: null, isAuthenticated: false };
             }
@@ -40,7 +40,7 @@ export default function PageNotFound({}) {
                     </div>
                     
                     {/* Admin Note */}
-                    {isFetched && authData.isAuthenticated && authData.user?.role === 'admin' && (
+                    {isFetched && authData.isAuthenticated && authData.user?.app_metadata?.role === 'platform_admin' && (
                         <div className="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200">
                             <div className="flex items-start space-x-3">
                                 <div className="flex-shrink-0 w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center mt-0.5">
@@ -49,7 +49,7 @@ export default function PageNotFound({}) {
                                 <div className="text-left space-y-1">
                                     <p className="text-sm font-medium text-slate-700">Admin Note</p>
                                     <p className="text-sm text-slate-600 leading-relaxed">
-                                        This could mean that the AI hasn't implemented this page yet. Ask it to implement it in the chat.
+                                        This address does not match any page in the app. Check the link or the route list in App.jsx.
                                     </p>
                                 </div>
                             </div>

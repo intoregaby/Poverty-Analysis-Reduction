@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { base44 } from "@/api/base44Client";
+import { supabase } from "@/lib/supabaseClient";
 
 export async function askChartQuestion(input) {
   if (import.meta.env.DEV) {
@@ -13,8 +13,12 @@ export async function askChartQuestion(input) {
     return result.answer;
   }
 
-  const result = await base44.functions.invoke("chart-insight", input);
-  const value = result?.data ?? result;
-  if (typeof value?.answer !== "string") throw new Error(value?.error || "Could not answer the question.");
-  return value.answer;
+  if (!supabase) throw new Error("Chart AI is not configured.");
+  const { data, error } = await supabase.functions.invoke("chart-insight", { body: input });
+  if (error) {
+    const body = await error.context?.json?.().catch(() => null);
+    throw new Error(body?.error || "Could not answer the question.");
+  }
+  if (typeof data?.answer !== "string") throw new Error(data?.error || "Could not answer the question.");
+  return data.answer;
 }

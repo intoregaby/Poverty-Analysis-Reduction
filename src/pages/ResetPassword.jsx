@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "@/lib/supabaseClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,8 +8,16 @@ import { Lock, Loader2, AlertTriangle } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout";
 
 export default function ResetPassword() {
-  const [searchParams] = useSearchParams();
-  const resetToken = searchParams.get("token");
+  // The emailed link signs the person in with a short recovery session; the form works only while that exists.
+  const [hasRecoverySession, setHasRecoverySession] = useState(null);
+  useEffect(() => {
+    if (!supabase) { setHasRecoverySession(false); return undefined; }
+    supabase.auth.getSession().then(({ data }) => setHasRecoverySession(Boolean(data.session)));
+    const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") setHasRecoverySession(true);
+    });
+    return () => data.subscription.unsubscribe();
+  }, []);
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -25,8 +33,9 @@ export default function ResetPassword() {
     }
     setLoading(true);
     try {
-      await base44.auth.resetPassword({ resetToken, newPassword });
-      window.location.href = "/login";
+      const { error: updateError } = await supabase.auth.updateUser({ password: newPassword });
+      if (updateError) throw updateError;
+      window.location.href = "/";
     } catch (err) {
       setError(err.message || "Failed to reset password");
     } finally {
@@ -34,7 +43,9 @@ export default function ResetPassword() {
     }
   };
 
-  if (!resetToken) {
+  if (hasRecoverySession === null) return null;
+
+  if (!hasRecoverySession) {
     return (
       <AuthLayout
         icon={AlertTriangle}

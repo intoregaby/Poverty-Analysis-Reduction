@@ -37,13 +37,10 @@ dist-ssr
 .env
 .vite
 
-# Local link to a Base44 app, written by `base44 link`
-base44/.app.jsonc
 
 # Local-only: NISR microdata (licensed to NISR, ~425 MB), worker outputs, exports, tooling
 /Data/
 /investigations/
-/base44-full-export.zip
 /docs/audits/artifacts/build/
 /.agents/
 /.claude/

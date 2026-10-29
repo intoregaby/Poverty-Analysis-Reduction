@@ -12,7 +12,7 @@ def digest(path):
     return h.hexdigest()
 def baseline():
     files=[]
-    for directory in ['src','tools','base44','Data','investigations']:
+    for directory in ['src','tools','Data','investigations']:
         for p in (ROOT/directory).rglob('*'):
             if p.is_file() and '__pycache__' not in p.parts: files.append(p)
     files += [p for p in ROOT.iterdir() if p.is_file()]
