@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { CartesianGrid, LabelList, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Card from "@/components/analyst/Card";
+import DataNote from "@/components/analyst/support/DataNote";
 import { Basis, Legend, Segmented, ViewTable, tooltipStyle } from "@/components/analyst/TrendBits";
 import { DASHBOARD_SOURCES } from "@/data/dashboardEvidence";
 import { FINSCOPE_SERIES, SERIES_PROVINCES } from "@/data/dashboardTrends";
@@ -21,6 +22,15 @@ const DATA = comparable.map((year) => {
   const item = FINSCOPE_SERIES.series.find((entry) => entry.key === year);
   return { year, formal: item.formal, informal_only: item.informal_only, excluded: item.excluded };
 });
+function Finscope2012Note() {
+  return (
+    <>
+      <p>FinScope 2012 is in the supplied data but is not plotted. Its file has no NISR access-strand variable, so we rebuilt the groups from the questionnaire.</p>
+      <p className="mt-1.5">The rebuild did not reproduce NISR's published 2012 results (23% banked, 42% formally served, 28% excluded): our banked share stayed about 3.5 points low, outside our 1-point tolerance.</p>
+      <p className="mt-1.5">We show 2016, 2020 and 2024 only, rather than force a match.</p>
+    </>
+  );
+}
 const signed = (value) => `${value > 0 ? "+" : ""}${value.toFixed(1)}`;
 const sourceOf = (year) => (year === "2024" ? "NISR published" : "NISR microdata");
 const tone = (label = "") => (label.startsWith("Clear") ? "bg-emerald-50 text-emerald-700" : label.startsWith("Possible") ? "bg-amber-50 text-amber-700" : "bg-slate-100 text-slate-600");
@@ -59,7 +69,7 @@ export default function FinanceSeriesCard({ rows }) {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <p className="text-[10.5px] text-[#8A94A6]">Rwanda, % of adults. 2016 and 2020: NISR microdata; 2024: NISR published. The three groups add up to 100 in each year. In 2024 informal only and excluded are both 4%, so their points overlap.</p>
+      <p className="text-[10.5px] text-[#8A94A6]">Rwanda, % of adults. 2016 and 2020: NISR microdata; 2024: NISR published. The three groups add up to 100 in each year. <DataNote label="Why 2012 is not shown"><Finscope2012Note /></DataNote> In 2024 informal only and excluded are both 4%, so their points overlap.</p>
       <ViewTable head={["Year", "Source", "Formally served %", "Informal only %", "Excluded %"]} rows={DATA.map((item) => [item.year, sourceOf(item.year), item.formal, item.informal_only, item.excluded])} />
 
       <div className="mt-5 border-t border-hairline pt-3">

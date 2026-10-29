@@ -42,7 +42,7 @@ export default function AnalystDashboard() {
     <div className="pb-14">
       <AnalystTopbar province={province} onProvinceChange={setProvince} onExport={handleExport} />
       <PanelGuide id="analyst-dashboard" title="Poverty Analysis">
-        Use the province filter to compare districts. The eye icon explains each chart; the sparkles icon opens the existing AI preview. National-only figures stay labelled as national.
+        Use the province filter to compare districts. The eye icon explains each chart; the amber triangle opens a data note where our figure differs from NISR's; the sparkles icon opens the existing AI preview. National-only figures stay labelled as national.
       </PanelGuide>
 
       <main className="mx-auto max-w-[1440px] space-y-4 px-4 py-5 sm:px-6 lg:px-8">

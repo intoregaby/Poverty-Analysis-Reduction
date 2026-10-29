@@ -1,4 +1,4 @@
-import { Eye, Sparkles } from "lucide-react";
+import { Eye, Sparkles, TriangleAlert } from "lucide-react";
 import { navSlug } from "../../lib/roles.js";
 
 // The guided tour is described here as data only. Three rules keep it from breaking again:
@@ -15,7 +15,9 @@ const ANALYSIS_STEPS = [
   step("analysis-filter"), step("analysis-findings"), step("analysis-poverty-chart"),
   step("analysis-chart-eye", "analysis-poverty-chart", { selector: '[data-tour="chart-explanation"]', icon: Eye }),
   step("analysis-chart-ai", "analysis-poverty-chart", { selector: '[data-tour="chart-ai"]', icon: Sparkles }),
-  step("analysis-changes"), step("analysis-finance"), step("analysis-sources"), step("analysis-export"),
+  step("analysis-changes"), step("analysis-finance"),
+  step("analysis-data-note", "analysis-trends", { selector: '[data-tour="data-note"]', icon: TriangleAlert }),
+  step("analysis-sources"), step("analysis-export"),
 ];
 
 const OTHER_ANALYSIS_STEPS = [

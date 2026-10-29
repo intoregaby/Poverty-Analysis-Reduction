@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { CartesianGrid, Legend as ChartLegend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Card from "@/components/analyst/Card";
+import DataNote from "@/components/analyst/support/DataNote";
 import { Basis, Legend, Segmented, ViewTable, tooltipStyle } from "@/components/analyst/TrendBits";
 import { TREND_CHANGE_COUNTS, TREND_DISTRICTS, TREND_NATIONAL, TREND_PERIODS, TREND_SOURCES } from "@/data/dashboardTrends";
 
@@ -11,6 +12,17 @@ const NATIONAL_LINE = [
   { period: "2016/17", oldMethod: TREND_NATIONAL.oldSeries[2].published, currentMethod: TREND_NATIONAL.modelled2016_17 },
   { period: "2023/24", currentMethod: TREND_NATIONAL.eicv7 },
 ];
+function Eicv3Note() {
+  const check = TREND_NATIONAL.checks.find((item) => item.round === "EICV3");
+  const series = TREND_NATIONAL.oldSeries[0];
+  return (
+    <>
+      <p>The 2010/11 point on this chart is NISR's published <strong>{check.published.toFixed(1)}%</strong>. Recalculated from the supplied EICV3 microdata we get <strong>{check.calculated.toFixed(1)}%</strong> (95% interval {series.ci_lower.toFixed(1)} to {series.ci_upper.toFixed(1)}).</p>
+      <p className="mt-1.5">The published figure sits inside our interval, so the two agree within survey error, but they do not match exactly as 2013/14 and 2016/17 do. We have not found the reason.</p>
+      <p className="mt-1.5">Read small district changes between 2010/11 and 2013/14 with care.</p>
+    </>
+  );
+}
 const kind = (label = "") => label.startsWith("Clear improvement") ? "improve" : label.startsWith("Clear worsening") ? "worsen" : label.startsWith("Possible") ? (label.includes("worsening") ? "worsen" : "improve") : "none";
 const signed = (value) => `${value > 0 ? "+" : ""}${value.toFixed(1)}`;
 
@@ -28,6 +40,7 @@ export default function TrendChangeCard({ rows }) {
   return (
     <Card
       title="Poverty Trends 2010/11 to 2016/17"
+      tour="analysis-trends"
       subtitle="See which districts clearly improved or worsened, with the uncertainty shown."
       info="Each dot is the change in a district's poverty rate between two surveys, in percentage points. The thin line is the 95% interval: if it crosses zero, the survey cannot tell a real change from chance. A change is called clear only after allowing for comparing 30 districts at once. Different households are interviewed in each survey, so this describes change and does not explain it."
       aiInsight={`${counts.clearImprovement} districts clearly improved and ${counts.clearWorsening} clearly worsened between ${info.label}; ${counts.noClearChange + counts.possible} show no clear change.`}
@@ -49,7 +62,7 @@ export default function TrendChangeCard({ rows }) {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <p className="text-[10.5px] text-[#8A94A6]">Rwanda, % of people. NISR changed the poverty method for EICV7, so the two lines are not joined.</p>
+      <p className="text-[10.5px] text-[#8A94A6]">Rwanda, % of people. NISR changed the poverty method for EICV7, so the two lines are not joined. <DataNote label="2010/11 national figure"><Eicv3Note /></DataNote></p>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
         <p className="text-[11px] text-sub"><strong className="text-ink">{info.label}:</strong> {counts.clearImprovement} clearly improved · {counts.clearWorsening} clearly worsened · {counts.possible} possible · {counts.noClearChange} no clear change (of 30 districts)</p>

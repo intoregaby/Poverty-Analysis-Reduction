@@ -99,6 +99,10 @@
         "title": "Financial Inclusion",
         "text": "Imagine 100 adults in Rwanda. Each slice shows how many use banks or other money services. These numbers are for the whole country."
       },
+      "analysis-data-note": {
+        "title": "The amber warning icon",
+        "text": "An amber triangle under a chart opens a data note. It tells you, in plain words, where our figure differs from the one NISR published, or why a year is missing, so you know how far to trust it. Click it to read the note."
+      },
       "analysis-support": {
         "title": "Poverty & Social Support",
         "text": "This part compares poverty with VUP. VUP is a government programme that helps poor families. Poverty counts people. VUP counts poor households. So do not subtract one from the other."
