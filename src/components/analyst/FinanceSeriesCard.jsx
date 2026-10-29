@@ -27,7 +27,7 @@ function Finscope2012Note() {
     <>
       <p>FinScope 2012 is in the supplied data but is not plotted. Its file has no NISR access-strand variable, so we rebuilt the groups from the questionnaire.</p>
       <p className="mt-1.5">The rebuild did not reproduce NISR's published 2012 results (23% banked, 42% formally served, 28% excluded): our banked share stayed about 3.5 points low, outside our 1-point tolerance.</p>
-      <p className="mt-1.5">We show 2016, 2020 and 2024 only, rather than force a match.</p>
+      <p className="mt-1.5">We asked NISR for the 2012 definition, and it could not be confirmed before submission. We show 2016, 2020 and 2024 only, rather than force a match.</p>
     </>
   );
 }

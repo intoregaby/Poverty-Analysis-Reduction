@@ -14,3 +14,14 @@ We use the data only for aggregate analysis (district and national figures) and 
 
 Thank you,
 [Name, team, contact]
+
+## Questions asked through the hackathon organisers (29 October 2026)
+
+Asked of the NISR hackathon organisers and the two survey experts they named (FinScope, poverty computation). Aggregate figures only; no household records were shared.
+
+| # | Question | Our numbers | Status |
+|---|---|---|---|
+| 3 | **FinScope 2012:** which products count as banked and as other formal, and are any respondent filters applied? The 2012 file has no access-strand variable. | We rebuilt 19.5% banked, 21.2% other formal, 29.4% informal only, 29.8% excluded. NISR published 23%, 19%, 30%, 28%. | **No definition received before submission.** The organisers said NISR applies filters we may not have applied. The FinScope expert said the analysts who built the 2012 groups have left NISR and that they would follow up after the submission date. 2012 stays out of the financial inclusion chart. |
+| 4 | **EICV3:** is `EICV3-Poverty-file_Jan-2014.sav` a January 2014 re-estimate, and which figure should be used for trends? | The file gives 46.0% poor (weights `pop_wt`; 95% interval 44.4 to 47.7). NISR published 44.9% for 2010/11. EICV4, EICV5 and EICV7 reproduce the published figures exactly with the same method. | **Awaiting a reply from the poverty computation expert.** Until then the chart shows NISR's published 44.9%, the district changes use the supplied file, and the dashboard says so in a data note. |
+
+We have not tuned any filter to match a published figure: without NISR's definition that would make an unverified number look validated.
