@@ -18,7 +18,7 @@ function Eicv3Note() {
   return (
     <>
       <p>The 2010/11 point on this chart is NISR's published <strong>{check.published.toFixed(1)}%</strong>. Recalculated from the supplied EICV3 microdata we get <strong>{check.calculated.toFixed(1)}%</strong> (95% interval {series.ci_lower.toFixed(1)} to {series.ci_upper.toFixed(1)}).</p>
-      <p className="mt-1.5">The published figure sits inside our interval, so the two agree within survey error, but they do not match exactly as 2013/14 and 2016/17 do. We have not found the reason.</p>
+      <p className="mt-1.5">The published figure sits inside our interval, so the two agree within survey error, but they do not match exactly as 2013/14 and 2016/17 do. The file NISR supplied is named a January 2014 re-estimate, which is the most likely reason; we have not confirmed this with NISR.</p>
       <p className="mt-1.5">Read small district changes between 2010/11 and 2013/14 with care.</p>
     </>
   );
