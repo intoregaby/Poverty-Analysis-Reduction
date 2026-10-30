@@ -19,6 +19,7 @@ from . import agents, auth
 from .catalog import Catalog, CatalogIntegrityError
 from .gateway import PolicyDenied, has_configured_keys
 from .jobs import JobStore
+from .profiles import get_config, ProfileConfig
 from .reports import ReportAccessDenied, ReportStore
 from .research import HypothesisLedger, LedgerWrite, ResearchConflict, ResearchInvalid
 
@@ -55,7 +56,9 @@ class ReportPublishRequest(BaseModel):
 
 
 def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_clearance=None, report_path=None,
-               artifact_path=None):
+               artifact_path=None, profile: ProfileConfig = None):
+    if profile is None:
+        profile = get_config()
     app = FastAPI(title='Ireme governed research API', version='1.0', docs_url=None,
                   redoc_url=None, openapi_url=None)
 
@@ -103,7 +106,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
     def permitted_run(request, run_id, district):
         principal = request.state.principal
         geography = district or 'Rwanda'
-        auth.authorize(principal, 'investigation:read', principal.tenant, geography)
+        auth.authorize(principal, 'investigation:read', principal.tenant, geography, profile=profile)
         if not re.fullmatch(r'[A-Za-z0-9_-]{1,128}', run_id):
             raise ApiError(404, 'NOT_FOUND', 'Investigation unavailable')
         catalog = Catalog(catalog_path, principal.tenant, principal.subject)
@@ -206,7 +209,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
         principal = request.state.principal
         geography = district or 'Rwanda'
         # Running an agent consumes provider budget, so require the creation permission in scope.
-        auth.authorize(principal, 'investigation:create', principal.tenant, geography)
+        auth.authorize(principal, 'investigation:create', principal.tenant, geography, profile=profile)
         catalog, _record, geography = permitted_run(request, run_id, geography)
         try:
             context = agents.context_for_investigation(
@@ -262,7 +265,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
             if body.report_ast_sha256 != rec.ast_sha256:
                 raise ApiError(409, 'REPORT_CHANGED', 'Report snapshot changed; review the current version')
             principal = request.state.principal
-            auth.authorize(principal, 'report:review', rec.tenant, rec.geography, author=rec.author)
+            auth.authorize(principal, 'report:review', rec.tenant, rec.geography, author=rec.author, profile=profile)
             try:
                 decision = store.review(report_id, body.version, principal.subject, principal.roles,
                                         body.decision, body.reason)
@@ -291,10 +294,10 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
         try:
             rec = store.get(report_id, body.version)
             principal = request.state.principal
-            auth.authorize(principal, 'report:publish', rec.tenant, rec.geography, author=rec.author)
+            auth.authorize(principal, 'report:publish', rec.tenant, rec.geography, author=rec.author, profile=profile)
             try:
                 store.publish(report_id, body.version, principal.subject, principal.roles,
-                              artifacts=artifact_store())
+                              artifacts=artifact_store(), profile=profile)
             except ReportAccessDenied:
                 audit_event(principal.subject, 'report.publish_denied', {
                     'report_id': report_id, 'version': body.version, 'trace_id': request.state.trace_id})
@@ -320,10 +323,10 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
             if principal.tenant != rec.tenant:
                 # Cross-tenant access must be indistinguishable from a missing report.
                 raise ApiError(404, 'NOT_FOUND', 'Report unavailable')
-            auth.authorize(principal, 'investigation:read', rec.tenant, district or rec.geography)
+            auth.authorize(principal, 'investigation:read', rec.tenant, district or rec.geography, profile=profile)
             try:
                 body, media_type = store.export(report_id, version, principal, format,
-                                                artifacts=artifact_store())
+                                                artifacts=artifact_store(), profile=profile)
             except ReportAccessDenied:
                 audit_event(principal.subject, 'report.export_denied', {
                     'report_id': report_id, 'version': version, 'format': format,

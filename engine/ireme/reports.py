@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Callable
 
 from . import contracts, release_gate, report
+from .profiles import get_config, ProfileConfig
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS reports(
@@ -35,7 +36,9 @@ CREATE TABLE IF NOT EXISTS report_artifacts(
 """
 
 REVIEW_ROLES = frozenset(release_gate.REQUIRED_ROLES)
+DEMO_REVIEW_ROLES = frozenset({"statistical_reviewer", "privacy_reviewer", "release_reviewer", "test-statistician", "test-privacy-officer", "test-release-authority"})
 PUBLISH_ROLES = frozenset({"publication_authority", "release_reviewer"})
+DEMO_PUBLISH_ROLES = frozenset({"publication_authority", "release_reviewer", "test-release-authority"})
 FORMATS = {"html": "text/html; charset=utf-8", "pdf": "application/pdf",
            "xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
            "json": "application/json; charset=utf-8"}
@@ -139,14 +142,15 @@ class ReportStore:
         return _row(row)
 
     def review(self, report_id: str, version: str, reviewer_id: str, roles, action: str,
-               reason: str = "", checks: dict | None = None) -> release_gate.Decision:
+               reason: str = "", checks: dict | None = None, profile: ProfileConfig = None) -> release_gate.Decision:
         """Record one independent reviewer signature and re-evaluate the release gate.
 
         `checks` may only be refined by the server pipeline; HTTP callers never supply it.
         """
         if action not in ("approve", "reject"):
             raise ValueError("review action must be approve or reject")
-        held = REVIEW_ROLES.intersection(roles)
+        review_roles = DEMO_REVIEW_ROLES if (profile and profile.name.value == "HACKATHON_DEMO") else REVIEW_ROLES
+        held = review_roles.intersection(roles)
         if len(held) != 1:
             raise ReportAccessDenied("AMBIGUOUS_ROLE", "a reviewer must hold exactly one review role")
         role = next(iter(held))
@@ -164,7 +168,7 @@ class ReportStore:
         signatures = [s for s in rec.signatures if s["reviewer_id"] != reviewer_id]
         signatures.append({"reviewer_id": reviewer_id, "role": role, "at": self.clock()})
         effective = dict(rec.checks, **(checks or {}))
-        decision = release_gate.evaluate(effective, set(rec.flags), signatures, rec.author)
+        decision = release_gate.evaluate(effective, set(rec.flags), signatures, rec.author, profile=profile)
         status = {"publish": "approved", "restricted_draft": "restricted_draft", "deny": "qa_failed"}[decision.status]
         # A single signature alone cannot publish: the gate already requires all three roles.
         con.execute("UPDATE reports SET status=?, signatures=?, updated=? WHERE report_id=? AND version=?",
@@ -173,8 +177,9 @@ class ReportStore:
         return decision
 
     def publish(self, report_id: str, version: str, publisher_id: str, roles,
-                artifacts=None) -> None:
-        if not PUBLISH_ROLES.intersection(roles):
+                artifacts=None, profile: ProfileConfig = None) -> None:
+        publish_roles = DEMO_PUBLISH_ROLES if (profile and profile.name.value == "HACKATHON_DEMO") else PUBLISH_ROLES
+        if not publish_roles.intersection(roles):
             raise ReportAccessDenied("FORBIDDEN", "publication authority required")
         rec = self.get(report_id, version)
         if rec.status == "published":
@@ -228,7 +233,8 @@ class ReportStore:
             raise ReportAccessDenied("INTEGRITY", "stored hashes disagree")
         return rec
 
-    def export(self, report_id: str, version: str, principal, fmt: str, artifacts=None) -> tuple[bytes, str]:
+    def export(self, report_id: str, version: str, principal, fmt: str, artifacts=None,
+               profile: ProfileConfig = None) -> tuple[bytes, str]:
         rec = self.authorise_export(report_id, version, principal)
         if fmt not in FORMATS:
             raise ValueError("unsupported format")
@@ -240,4 +246,16 @@ class ReportStore:
                 # Served from the content-addressed artifact written at publication time.
                 return artifacts.get(row["sha256"], namespace="reports"), FORMATS[fmt]
         rendered = RENDERERS[fmt](rec.ast)
+        # Add demonstration label for hackathon demo exports
+        if profile and profile.allow_demonstration_exports and profile.demonstration_label:
+            # Add watermark/header to rendered content
+            if fmt == "json":
+                import json
+                data = json.loads(rendered)
+                data["_demonstration_label"] = profile.demonstration_label
+                rendered = json.dumps(data, sort_keys=True, indent=2, ensure_ascii=False).encode("utf-8")
+            elif fmt in ("html", "pdf", "xlsx"):
+                # For non-JSON formats, prepend a header
+                prefix = f"{profile.hackathon_label}: {profile.demonstration_label}\n\n".encode("utf-8")
+                rendered = prefix + rendered
         return rendered, FORMATS[fmt]

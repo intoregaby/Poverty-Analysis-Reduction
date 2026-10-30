@@ -3,9 +3,12 @@
 Issuer, audience and JWKS URL are deployment configuration, never request fields.
 Only server-managed app_metadata grants roles/scopes. Hosted identity-provider
 configuration, revocation infrastructure and penetration tests remain required.
+
+Supports two profiles: HACKATHON_DEMO (test identities allowed) and GOVERNED_PRODUCTION.
 """
 from dataclasses import dataclass
 import json
+import os
 import re
 import threading
 import time
@@ -13,6 +16,8 @@ from urllib.parse import urlsplit
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 
 import jwt
+
+from .profiles import get_config, is_test_identity, ProfileConfig
 
 
 class AuthenticationError(PermissionError):
@@ -141,6 +146,7 @@ class TokenVerifier:
             raise AuthenticationError('Invalid or expired bearer token') from None
 
 
+# Base permissions (production)
 PERMISSIONS = {
     'investigation:create': {'nisr_analyst', 'platform_admin'},
     'investigation:read': {'nisr_analyst', 'platform_admin', 'gov_district', 'statistical_reviewer', 'privacy_reviewer', 'release_reviewer'},
@@ -149,19 +155,113 @@ PERMISSIONS = {
     'provider:health': {'platform_admin'},
 }
 
+# Hackathon demo adds test roles
+DEMO_PERMISSIONS = {
+    **PERMISSIONS,
+    'investigation:create': {'nisr_analyst', 'platform_admin', 'test-statistician', 'test-privacy-officer', 'test-release-authority'},
+    'investigation:read': {'nisr_analyst', 'platform_admin', 'gov_district', 'statistical_reviewer', 'privacy_reviewer', 'release_reviewer', 'test-statistician', 'test-privacy-officer', 'test-release-authority', 'hackathon-viewer'},
+    'report:review': {'statistical_reviewer', 'privacy_reviewer', 'release_reviewer', 'test-statistician', 'test-privacy-officer', 'test-release-authority'},
+    'report:publish': {'publication_authority', 'test-release-authority'},
+}
 
-def authorize(principal, action, tenant, district=None, author=None):
+
+def _get_permissions(profile: ProfileConfig) -> dict:
+    """Get permissions for the active profile."""
+    if profile.name.value == "HACKATHON_DEMO":
+        return DEMO_PERMISSIONS
+    return PERMISSIONS
+
+
+def authorize(principal, action, tenant, district=None, author=None, profile: ProfileConfig = None):
+    """Authorize a principal for an action under the given profile."""
+    if profile is None:
+        profile = get_config()
+    
     if principal.expires_at <= time.time():
         raise AuthorizationError('Session expired')
     if principal.tenant != tenant:
         raise AuthorizationError('Resource unavailable')
-    if action not in PERMISSIONS or not principal.roles.intersection(PERMISSIONS[action]):
+    
+    permissions = _get_permissions(profile)
+    if action not in permissions or not principal.roles.intersection(permissions[action]):
         raise AuthorizationError('Permission denied')
+    
     if district is not None and not principal.national_scope and district not in principal.districts:
         raise AuthorizationError('District scope denied')
+    
+    # AAL2 requirement - relaxed for demo test identities
     if action in ('report:review', 'report:publish'):
-        if principal.assurance != 'aal2':
-            raise AuthorizationError('Elevated authentication required')
-        if author is None or principal.subject == author:
+        is_test = is_test_identity(principal, profile)
+        if profile.require_aal2_for_review and not is_test and principal.assurance != 'aal2':
+            raise AuthorizationError('Elevated authentication required (AAL2)')
+        # In demo mode, test identities can review with aal1
+        if is_test and profile.allow_test_identities:
+            pass  # Allow test identities to bypass AAL2
+        elif author is None or principal.subject == author:
             raise AuthorizationError('Independent reviewer required')
+    
     return principal
+
+
+def create_test_identities() -> list[dict]:
+    """Create test identities for hackathon demo testing.
+    
+    Returns a list of test identity configurations that can be used to
+    create JWT tokens for testing the review workflow.
+    """
+    return [
+        {
+            "subject": "test-statistician",
+            "tenant": "nisr-hackathon",
+            "roles": ["test-statistician"],
+            "districts": ["Rwanda", "Gasabo", "Kicukiro", "Nyarugenge"],
+            "national_scope": True,
+            "assurance": "aal1",
+            "expires_at": int(time.time()) + 3600,
+        },
+        {
+            "subject": "test-privacy-officer",
+            "tenant": "nisr-hackathon",
+            "roles": ["test-privacy-officer"],
+            "districts": ["Rwanda"],
+            "national_scope": True,
+            "assurance": "aal1",
+            "expires_at": int(time.time()) + 3600,
+        },
+        {
+            "subject": "test-release-authority",
+            "tenant": "nisr-hackathon",
+            "roles": ["test-release-authority"],
+            "districts": ["Rwanda"],
+            "national_scope": True,
+            "assurance": "aal1",
+            "expires_at": int(time.time()) + 3600,
+        },
+        {
+            "subject": "hackathon-viewer",
+            "tenant": "nisr-hackathon",
+            "roles": ["hackathon-viewer"],
+            "districts": ["Rwanda"],
+            "national_scope": True,
+            "assurance": "aal1",
+            "expires_at": int(time.time()) + 3600,
+        },
+    ]
+
+
+def create_test_jwt(identity: dict, issuer: str, audience: str, private_key_pem: str) -> str:
+    """Create a JWT for a test identity (for hackathon demo only)."""
+    import jwt
+    payload = {
+        "sub": identity["subject"],
+        "tenant_id": identity["tenant"],
+        "roles": identity["roles"],
+        "districts": identity["districts"],
+        "national_scope": identity["national_scope"],
+        "aal": identity["assurance"],
+        "exp": identity["expires_at"],
+        "iat": int(time.time()),
+        "iss": issuer,
+        "aud": audience,
+    }
+    return jwt.encode(payload, private_key_pem, algorithm="RS256")

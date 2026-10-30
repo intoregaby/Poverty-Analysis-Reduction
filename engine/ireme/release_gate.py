@@ -1,7 +1,10 @@
 """Server-side release policy evaluator (EP-08), driven by the kit's release_gate.yaml.
 
 Default is deny. The evaluator is the single place publication is decided; renderers and
-download endpoints call `require_publishable` and never re-implement the checks."""
+download endpoints call `require_publishable` and never re-implement the checks.
+
+Supports HACKATHON_DEMO profile with test roles.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -9,8 +12,11 @@ from pathlib import Path
 
 import yaml
 
+from .profiles import get_config, ProfileConfig
+
 POLICY_FILE = Path(__file__).resolve().parents[2] / "IREME_INSIGHT_FULL_ENGINE_KIT" / "09_MACHINE_CONTRACTS" / "policies" / "release_gate.yaml"
 REQUIRED_ROLES = ("statistical_reviewer", "privacy_reviewer", "release_reviewer")
+DEMO_REQUIRED_ROLES = ("test-statistician", "test-privacy-officer", "test-release-authority")
 
 
 class ReleaseDenied(PermissionError):
@@ -29,7 +35,7 @@ def load_policy() -> dict:
     return yaml.safe_load(POLICY_FILE.read_text(encoding="utf-8"))
 
 
-def evaluate(checks: dict, blocking_flags: set, signatures: list, author_id: str, policy: dict | None = None) -> Decision:
+def evaluate(checks: dict, blocking_flags: set, signatures: list, author_id: str, policy: dict | None = None, profile: ProfileConfig = None):
     """checks: {policy_required_name: True/False}; blocking_flags: names from never_allow/allow_restricted lists;
     signatures: [{'reviewer_id','role'}] recorded by the approval service (not by the report author)."""
     p = policy or load_policy()
@@ -43,8 +49,10 @@ def evaluate(checks: dict, blocking_flags: set, signatures: list, author_id: str
             continue
         if checks.get(name) is not True:
             reasons.append(f"required check not passed: {name}")
+    # Use demo roles for hackathon demo profile
+    required_roles = DEMO_REQUIRED_ROLES if (profile and profile.name.value == "HACKATHON_DEMO") else REQUIRED_ROLES
     roles = {s["role"] for s in signatures if s.get("reviewer_id") and s["reviewer_id"] != author_id}
-    missing = [r for r in REQUIRED_ROLES if r not in roles]
+    missing = [r for r in required_roles if r not in roles]
     if any(s.get("reviewer_id") == author_id for s in signatures):
         reasons.append("author cannot sign their own report")
     if missing:
@@ -57,6 +65,6 @@ def evaluate(checks: dict, blocking_flags: set, signatures: list, author_id: str
     return Decision("deny", tuple(reasons))
 
 
-def require_publishable(decision: Decision) -> None:
+def require_publishable(decision):
     if decision.status != "publish":
         raise ReleaseDenied(decision)
