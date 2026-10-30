@@ -55,6 +55,11 @@ class ReportPublishRequest(BaseModel):
     version: str = Field(min_length=1, max_length=64)
 
 
+class MfaToggleRequest(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    enabled: bool
+
+
 def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_clearance=None, report_path=None,
                artifact_path=None, profile: ProfileConfig = None):
     if profile is None:
@@ -229,7 +234,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
         except CatalogIntegrityError:
             raise ApiError(409, 'INTEGRITY_FAILED', 'Research evidence requires integrity review') from None
         except PermissionError:
-            raise ApiError(403, 'FORBIDDEN', 'Permission denied') from None
+            raise auth.AuthorizationError('Permission denied') from None
         finally:
             catalog.close()
 
@@ -268,7 +273,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
             auth.authorize(principal, 'report:review', rec.tenant, rec.geography, author=rec.author, profile=profile)
             try:
                 decision = store.review(report_id, body.version, principal.subject, principal.roles,
-                                        body.decision, body.reason)
+                                        body.decision, body.reason, profile=profile)
             finally:
                 audit_event(principal.subject, 'report.review', {
                     'report_id': report_id, 'version': body.version, 'action': body.decision,
@@ -355,6 +360,41 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
                     'FORBIDDEN': 'Permission denied', 'AMBIGUOUS_ROLE': 'Reviewer role is ambiguous',
                     'IMMUTABLE': 'Report version is immutable'}
         return ApiError(status, exc.code, messages.get(exc.code, 'Report request denied'))
+
+    # Admin endpoints for MFA Toggle (HACKATHON_DEMO only)
+    class MfaToggleRequest(BaseModel):
+        model_config = ConfigDict(extra='forbid')
+        enabled: bool
+
+
+    def _require_admin(principal, profile: ProfileConfig):
+        """Check if principal has admin permission for MFA toggle."""
+        if not profile.admin_mfa_toggle:
+            raise ApiError(403, 'ADMIN_TOGGLE_NOT_ALLOWED', 'Admin MFA toggle not allowed for this profile')
+        # Check for platform_admin role or specific admin role
+        if 'platform_admin' not in principal.roles and 'admin' not in principal.roles:
+            raise ApiError(403, 'FORBIDDEN', 'Admin permission required for MFA toggle')
+
+
+    @app.get('/admin/mfa/status')
+    async def mfa_status(request: Request):
+        """Get current MFA status for admin panel."""
+        profile = get_config()
+        principal = request.state.principal
+        _require_admin(principal, profile)
+        return auth.get_mfa_status(profile)
+
+
+    @app.post('/admin/mfa/toggle')
+    async def mfa_toggle(request: Request, body: MfaToggleRequest):
+        """Admin toggle to enable/disable MFA (HACKATHON_DEMO only)."""
+        profile = get_config()
+        principal = request.state.principal
+        _require_admin(principal, profile)
+        result = auth.set_mfa_enabled(body.enabled, profile)
+        if not result['success']:
+            raise ApiError(403, 'ADMIN_TOGGLE_FAILED', result['error'])
+        return result
 
     return app
 

@@ -9,6 +9,7 @@ HACKATHON_DEMO:
 - Does NOT enable public access to private datasets or confidential microdata
 - Uses test identities for MFA/role separation testing
 - Test signatures are kept separate from real approval records
+- Includes Admin MFA Toggle: MFA disabled by default for quick testing, admin can toggle ON for strict testing
 
 GOVERNED_PRODUCTION:
 - Full production governance gates remain mandatory
@@ -67,6 +68,10 @@ class ProfileConfig:
     # Verification
     skip_external_approvals_in_verification: bool
 
+    # MFA Configuration
+    mfa_enabled: bool = True
+    admin_mfa_toggle: bool = False  # Allow admin to toggle MFA ON/OFF via admin panel
+
 
 # =============================================================================
 # Profile definitions
@@ -77,7 +82,8 @@ HACKATHON_DEMO_CONFIG = ProfileConfig(
     description=(
         "NISR 2026 Hackathon demonstration profile. "
         "Allows validated, authorized, non-sensitive outputs with DEMONSTRATION labels. "
-        "Uses test identities. Does NOT grant production certification."
+        "Uses test identities. Does NOT grant production certification. "
+        "MFA is disabled by default for quick testing; admin can toggle ON via admin panel."
     ),
 
     # Report/review gates - relaxed for demo
@@ -92,6 +98,10 @@ HACKATHON_DEMO_CONFIG = ProfileConfig(
     allow_test_identities=True,
     test_identity_prefix="test-,hackathon-",
     separate_test_signatures=True,
+
+    # MFA Configuration - disabled by default for demo, but admin can toggle
+    mfa_enabled=False,
+    admin_mfa_toggle=True,  # Allow admin to toggle MFA ON/OFF via admin panel
 
     # Infrastructure - allow local dev
     require_production_infrastructure=False,
@@ -129,6 +139,10 @@ GOVERNED_PRODUCTION_CONFIG = ProfileConfig(
     allow_test_identities=False,
     test_identity_prefix="",
     separate_test_signatures=False,
+
+    # MFA Configuration - always enabled in production
+    mfa_enabled=True,
+    admin_mfa_toggle=False,  # No toggle in production
 
     # Infrastructure - production required
     require_production_infrastructure=True,
@@ -238,3 +252,30 @@ def verification_skip_external(profile: Optional[ProfileConfig] = None) -> bool:
     if profile is None:
         profile = get_config()
     return profile.skip_external_approvals_in_verification
+
+
+def is_mfa_enabled(profile: Optional[ProfileConfig] = None) -> bool:
+    """Check if MFA is currently enabled for the profile."""
+    if profile is None:
+        profile = get_config()
+    return profile.mfa_enabled
+
+
+def set_mfa_enabled(enabled: bool, profile: Optional[ProfileConfig] = None) -> bool:
+    """Set MFA enabled state (only works if admin_mfa_toggle is enabled)."""
+    if profile is None:
+        profile = get_config()
+    if not profile.admin_mfa_toggle:
+        return False  # Cannot change MFA state if toggle not allowed
+    # Note: Since ProfileConfig is frozen, this would require a mutable state store
+    # For now, we track MFA state separately in auth module
+    from .auth import _set_mfa_state
+    _set_mfa_state(enabled)
+    return True
+
+
+def get_admin_mfa_toggle_allowed(profile: Optional[ProfileConfig] = None) -> bool:
+    """Check if admin MFA toggle is allowed for the profile."""
+    if profile is None:
+        profile = get_config()
+    return profile.admin_mfa_toggle

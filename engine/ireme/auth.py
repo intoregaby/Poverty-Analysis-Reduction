@@ -5,6 +5,8 @@ Only server-managed app_metadata grants roles/scopes. Hosted identity-provider
 configuration, revocation infrastructure and penetration tests remain required.
 
 Supports two profiles: HACKATHON_DEMO (test identities allowed) and GOVERNED_PRODUCTION.
+Includes Admin MFA Toggle for HACKATHON_DEMO: MFA disabled by default for quick testing,
+admin can toggle ON via admin panel for strict MFA enforcement testing.
 """
 from dataclasses import dataclass
 import json
@@ -17,7 +19,7 @@ from urllib.request import Request, build_opener, HTTPRedirectHandler
 
 import jwt
 
-from .profiles import get_config, is_test_identity, ProfileConfig
+from .profiles import get_config, is_test_identity, ProfileConfig, get_admin_mfa_toggle_allowed, is_mfa_enabled
 
 
 class AuthenticationError(PermissionError):
@@ -172,6 +174,62 @@ def _get_permissions(profile: ProfileConfig) -> dict:
     return PERMISSIONS
 
 
+# MFA state management for Admin MFA Toggle
+_mfa_state_lock = threading.Lock()
+_mfa_enabled_override: bool | None = None  # None = use profile default, True/False = override
+
+
+def _get_mfa_state(profile: ProfileConfig) -> bool:
+    """Get current MFA enabled state, considering override."""
+    global _mfa_enabled_override
+    with _mfa_state_lock:
+        if _mfa_enabled_override is not None:
+            return _mfa_enabled_override
+        return profile.mfa_enabled
+
+
+def _set_mfa_state(enabled: bool) -> bool:
+    """Set MFA enabled override state (for admin toggle)."""
+    global _mfa_enabled_override
+    with _mfa_state_lock:
+        _mfa_enabled_override = enabled
+    return True
+
+
+def get_mfa_status(profile: ProfileConfig = None) -> dict:
+    """Get current MFA status for admin panel."""
+    if profile is None:
+        profile = get_config()
+    from .profiles import get_admin_mfa_toggle_allowed, is_mfa_enabled
+    current_enabled = _get_mfa_state(profile)
+    return {
+        "mfa_enabled": current_enabled,
+        "profile_default": profile.mfa_enabled,
+        "admin_toggle_allowed": profile.admin_mfa_toggle,
+        "profile": profile.name.value
+    }
+
+
+def set_mfa_enabled(enabled: bool, profile: ProfileConfig = None) -> dict:
+    """Admin toggle to enable/disable MFA (only works if admin_mfa_toggle is allowed)."""
+    if profile is None:
+        profile = get_config()
+    
+    if not profile.admin_mfa_toggle:
+        return {
+            "success": False,
+            "error": "Admin MFA toggle not allowed for this profile",
+            "mfa_enabled": _get_mfa_state(profile)
+        }
+    
+    _set_mfa_state(enabled)
+    return {
+        "success": True,
+        "mfa_enabled": enabled,
+        "message": f"MFA {'enabled' if enabled else 'disabled'} via admin toggle"
+    }
+
+
 def authorize(principal, action, tenant, district=None, author=None, profile: ProfileConfig = None):
     """Authorize a principal for an action under the given profile."""
     if profile is None:
@@ -189,18 +247,48 @@ def authorize(principal, action, tenant, district=None, author=None, profile: Pr
     if district is not None and not principal.national_scope and district not in principal.districts:
         raise AuthorizationError('District scope denied')
     
-    # AAL2 requirement - relaxed for demo test identities
+    # AAL2 requirement - controlled by MFA toggle state
     if action in ('report:review', 'report:publish'):
         is_test = is_test_identity(principal, profile)
-        if profile.require_aal2_for_review and not is_test and principal.assurance != 'aal2':
+        mfa_enabled = _get_mfa_state(profile)
+        
+        # If MFA is enabled (either by profile default or admin toggle), enforce AAL2
+        if mfa_enabled and not is_test and principal.assurance != 'aal2':
             raise AuthorizationError('Elevated authentication required (AAL2)')
-        # In demo mode, test identities can review with aal1
-        if is_test and profile.allow_test_identities:
-            pass  # Allow test identities to bypass AAL2
+        
+        # In demo mode, test identities can review with aal1 when MFA is disabled
+        if is_test and profile.allow_test_identities and not mfa_enabled:
+            pass  # Allow test identities to bypass AAL2 when MFA is off
         elif author is None or principal.subject == author:
             raise AuthorizationError('Independent reviewer required')
     
     return principal
+
+
+# Base permissions (production)
+PERMISSIONS = {
+    'investigation:create': {'nisr_analyst', 'platform_admin'},
+    'investigation:read': {'nisr_analyst', 'platform_admin', 'gov_district', 'statistical_reviewer', 'privacy_reviewer', 'release_reviewer'},
+    'report:review': {'statistical_reviewer', 'privacy_reviewer', 'release_reviewer'},
+    'report:publish': {'publication_authority'},
+    'provider:health': {'platform_admin'},
+}
+
+# Hackathon demo adds test roles
+DEMO_PERMISSIONS = {
+    **PERMISSIONS,
+    'investigation:create': {'nisr_analyst', 'platform_admin', 'test-statistician', 'test-privacy-officer', 'test-release-authority'},
+    'investigation:read': {'nisr_analyst', 'platform_admin', 'gov_district', 'statistical_reviewer', 'privacy_reviewer', 'release_reviewer', 'test-statistician', 'test-privacy-officer', 'test-release-authority', 'hackathon-viewer'},
+    'report:review': {'statistical_reviewer', 'privacy_reviewer', 'release_reviewer', 'test-statistician', 'test-privacy-officer', 'test-release-authority'},
+    'report:publish': {'publication_authority', 'test-release-authority'},
+}
+
+
+def _get_permissions(profile: ProfileConfig) -> dict:
+    """Get permissions for the active profile."""
+    if profile.name.value == "HACKATHON_DEMO":
+        return DEMO_PERMISSIONS
+    return PERMISSIONS
 
 
 def create_test_identities() -> list[dict]:
