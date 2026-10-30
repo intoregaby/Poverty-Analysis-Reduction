@@ -131,6 +131,23 @@ def implementation_digest() -> str:
     return digest.hexdigest()
 
 
+def run_cmd(args: list[str], cwd: Path, timeout: int = 900) -> dict:
+    t0 = time.time()
+    try:
+        p = subprocess.run(args, cwd=cwd, capture_output=True, text=True, encoding="utf-8", errors="replace",
+                           timeout=timeout, shell=(sys.platform == "win32"))
+        return {"cmd": " ".join(args), "exit": p.returncode, "seconds": round(time.time() - t0, 1), "tail": (p.stdout + p.stderr)[-1500:]}
+    except Exception as e:  # noqa: BLE001
+        return {"cmd": " ".join(args), "exit": -1, "seconds": round(time.time() - t0, 1), "tail": repr(e)}
+
+
+def git_head() -> str:
+    try:
+        return subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    except Exception:  # noqa: BLE001
+        return "unknown"
+
+
 def evaluate_scenario(linked, outcomes, require_real=False, acceptance_tests=()):
     """Passing tagged tests establish component evidence, not automatic acceptance.
 
@@ -139,22 +156,32 @@ def evaluate_scenario(linked, outcomes, require_real=False, acceptance_tests=())
     """
     statuses = [outcomes.get(tid, 'missing') for tid, _ in linked]
     if not linked:
-        component = 'NOT_RUN'
+        component = 'NOT RUN'
     elif all(s == 'pass' for s in statuses):
         component = 'PASS'
     else:
         component = 'FAIL'
     has_real = any(kind == 'real' for _, kind in linked)
-    if require_real and not has_real:
+    if not linked:
+        verdict, reason = 'NOT RUN', 'No acceptance-scoped tests linked to this scenario'
+    elif require_real and not has_real:
         verdict, reason = 'BLOCKED', 'Required real evidence unavailable'
     elif not acceptance_tests:
         verdict, reason = 'COMPONENT_ONLY', 'Acceptance-scoped integration mapping not established'
     elif not set(acceptance_tests).issubset({tid for tid, _ in linked}):
         verdict, reason = 'FAIL', 'Acceptance mapping contains tests not linked to this scenario'
-    elif not all(outcomes.get(tid) == 'pass' for tid in acceptance_tests):
-        verdict, reason = 'BLOCKED', 'Acceptance-scoped test has not passed'
     else:
-        verdict, reason = 'PASS', ''
+        # Check acceptance test outcomes
+        fail_outcomes = [tid for tid in acceptance_tests if outcomes.get(tid) in ('fail', 'error')]
+        skip_outcomes = [tid for tid in acceptance_tests if outcomes.get(tid) in ('skip', 'missing')]
+        if fail_outcomes:
+            verdict, reason = 'FAIL', f'Acceptance-scoped test failed: {fail_outcomes}'
+        elif skip_outcomes:
+            verdict, reason = 'BLOCKED', f'Acceptance-scoped test skipped/missing: {skip_outcomes}'
+        elif not all(outcomes.get(tid) == 'pass' for tid in acceptance_tests):
+            verdict, reason = 'BLOCKED', 'Acceptance-scoped test has not passed'
+        else:
+            verdict, reason = 'PASS', ''
     return {'verdict': verdict, 'component_verdict': component, 'reason': reason,
             'tests': [tid for tid, _ in linked], 'acceptance_tests': list(acceptance_tests),
             'evidence_classes': sorted({kind for _, kind in linked}), 'real_evidence_required': require_real}
