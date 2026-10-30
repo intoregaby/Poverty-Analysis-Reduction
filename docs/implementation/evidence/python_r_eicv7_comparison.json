@@ -1,0 +1,288 @@
+{
+  "status": "DIAGNOSTIC_ONLY_PENDING_SCIENTIFIC_APPROVAL",
+  "dataset_sha256": "f7279fa071cba2cd3c2f7dfb43bcdf7139431d010c039a0fec75449185f0f755",
+  "r_code_sha256": "e1d1f1ecaa0f5696d360f5db9f10a205c7e4e52e51d75b62aa266828057acfdf",
+  "max_point_difference": 1.1102230246251565e-16,
+  "max_se_difference": 1.0408340855860843e-17,
+  "domains": [
+    {
+      "geography": "Rwanda",
+      "python_point": 0.2737056732799129,
+      "r_point": 0.2737056732799129,
+      "point_difference": 0.0,
+      "python_se": 0.004967140457475254,
+      "r_se": 0.004967140457475255,
+      "se_difference": -8.673617379884035e-19
+    },
+    {
+      "geography": "Bugesera",
+      "python_point": 0.23698645176490346,
+      "r_point": 0.23698645176490346,
+      "point_difference": 0.0,
+      "python_se": 0.026259443355730445,
+      "r_se": 0.026259443355730445,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Burera",
+      "python_point": 0.22036511576572076,
+      "r_point": 0.22036511576572076,
+      "point_difference": 0.0,
+      "python_se": 0.018311094729047808,
+      "r_se": 0.018311094729047808,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Gakenke",
+      "python_point": 0.24473967753574655,
+      "r_point": 0.24473967753574655,
+      "point_difference": 0.0,
+      "python_se": 0.028944211035034178,
+      "r_se": 0.028944211035034178,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Gasabo",
+      "python_point": 0.11058701583614018,
+      "r_point": 0.1105870158361402,
+      "point_difference": -1.3877787807814457e-17,
+      "python_se": 0.01846539312364514,
+      "r_se": 0.018465393123645143,
+      "se_difference": -3.469446951953614e-18
+    },
+    {
+      "geography": "Gatsibo",
+      "python_point": 0.18406204261258938,
+      "r_point": 0.18406204261258938,
+      "point_difference": 0.0,
+      "python_se": 0.026318002540724177,
+      "r_se": 0.02631800254072418,
+      "se_difference": -3.469446951953614e-18
+    },
+    {
+      "geography": "Gicumbi",
+      "python_point": 0.1331140616273047,
+      "r_point": 0.1331140616273047,
+      "point_difference": 0.0,
+      "python_se": 0.02099069105973295,
+      "r_se": 0.02099069105973295,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Gisagara",
+      "python_point": 0.4564426733497465,
+      "r_point": 0.4564426733497465,
+      "point_difference": 0.0,
+      "python_se": 0.026881311874575157,
+      "r_se": 0.026881311874575157,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Huye",
+      "python_point": 0.24190701339070184,
+      "r_point": 0.24190701339070184,
+      "point_difference": 0.0,
+      "python_se": 0.02701125167213431,
+      "r_se": 0.02701125167213431,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Kamonyi",
+      "python_point": 0.3969507670450771,
+      "r_point": 0.3969507670450771,
+      "point_difference": 0.0,
+      "python_se": 0.033433603956381786,
+      "r_se": 0.033433603956381786,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Karongi",
+      "python_point": 0.3818939347027438,
+      "r_point": 0.3818939347027438,
+      "point_difference": 0.0,
+      "python_se": 0.03358343566552372,
+      "r_se": 0.03358343566552373,
+      "se_difference": -6.938893903907228e-18
+    },
+    {
+      "geography": "Kayonza",
+      "python_point": 0.3655439676151857,
+      "r_point": 0.3655439676151857,
+      "point_difference": 0.0,
+      "python_se": 0.0323110248196993,
+      "r_se": 0.0323110248196993,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Kicukiro",
+      "python_point": 0.06925051391175593,
+      "r_point": 0.06925051391175593,
+      "point_difference": 0.0,
+      "python_se": 0.013370090751048409,
+      "r_se": 0.01337009075104841,
+      "se_difference": -1.734723475976807e-18
+    },
+    {
+      "geography": "Kirehe",
+      "python_point": 0.14237073445161913,
+      "r_point": 0.14237073445161913,
+      "point_difference": 0.0,
+      "python_se": 0.02128490527000083,
+      "r_se": 0.02128490527000083,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Muhanga",
+      "python_point": 0.14951667489644227,
+      "r_point": 0.14951667489644227,
+      "point_difference": 0.0,
+      "python_se": 0.02187025949881582,
+      "r_se": 0.021870259498815818,
+      "se_difference": 3.469446951953614e-18
+    },
+    {
+      "geography": "Musanze",
+      "python_point": 0.20980727500084795,
+      "r_point": 0.20980727500084795,
+      "point_difference": 0.0,
+      "python_se": 0.027026744674018135,
+      "r_se": 0.027026744674018135,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Ngoma",
+      "python_point": 0.3089743735055124,
+      "r_point": 0.3089743735055124,
+      "point_difference": 0.0,
+      "python_se": 0.025996051822540826,
+      "r_se": 0.025996051822540833,
+      "se_difference": -6.938893903907228e-18
+    },
+    {
+      "geography": "Ngororero",
+      "python_point": 0.3024444374128455,
+      "r_point": 0.3024444374128455,
+      "point_difference": 0.0,
+      "python_se": 0.026947489535697696,
+      "r_se": 0.026947489535697706,
+      "se_difference": -1.0408340855860843e-17
+    },
+    {
+      "geography": "Nyabihu",
+      "python_point": 0.20206908043864527,
+      "r_point": 0.2020690804386453,
+      "point_difference": -2.7755575615628914e-17,
+      "python_se": 0.02250294216841468,
+      "r_se": 0.022502942168414676,
+      "se_difference": 3.469446951953614e-18
+    },
+    {
+      "geography": "Nyagatare",
+      "python_point": 0.3636640511331785,
+      "r_point": 0.3636640511331785,
+      "point_difference": 0.0,
+      "python_se": 0.027897853056270218,
+      "r_se": 0.027897853056270218,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Nyamagabe",
+      "python_point": 0.5139408818367712,
+      "r_point": 0.5139408818367711,
+      "point_difference": 1.1102230246251565e-16,
+      "python_se": 0.032140169282663195,
+      "r_se": 0.032140169282663195,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Nyamasheke",
+      "python_point": 0.4280502986544177,
+      "r_point": 0.4280502986544177,
+      "point_difference": 0.0,
+      "python_se": 0.02573417049290654,
+      "r_se": 0.025734170492906543,
+      "se_difference": -3.469446951953614e-18
+    },
+    {
+      "geography": "Nyanza",
+      "python_point": 0.4327198723363891,
+      "r_point": 0.4327198723363891,
+      "point_difference": 0.0,
+      "python_se": 0.02824219359930666,
+      "r_se": 0.02824219359930666,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Nyarugenge",
+      "python_point": 0.06799930094970696,
+      "r_point": 0.06799930094970696,
+      "point_difference": 0.0,
+      "python_se": 0.01202686646836078,
+      "r_se": 0.01202686646836078,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Nyaruguru",
+      "python_point": 0.3969854915694444,
+      "r_point": 0.3969854915694444,
+      "point_difference": 0.0,
+      "python_se": 0.02536878760927107,
+      "r_se": 0.025368787609271075,
+      "se_difference": -3.469446951953614e-18
+    },
+    {
+      "geography": "Rubavu",
+      "python_point": 0.38806887932963463,
+      "r_point": 0.38806887932963463,
+      "point_difference": 0.0,
+      "python_se": 0.030969092258838885,
+      "r_se": 0.030969092258838888,
+      "se_difference": -3.469446951953614e-18
+    },
+    {
+      "geography": "Ruhango",
+      "python_point": 0.14993299314885092,
+      "r_point": 0.14993299314885092,
+      "point_difference": 0.0,
+      "python_se": 0.02437918759234182,
+      "r_se": 0.024379187592341815,
+      "se_difference": 6.938893903907228e-18
+    },
+    {
+      "geography": "Rulindo",
+      "python_point": 0.21637385467650525,
+      "r_point": 0.21637385467650525,
+      "point_difference": 0.0,
+      "python_se": 0.020890506686497286,
+      "r_se": 0.020890506686497286,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Rusizi",
+      "python_point": 0.4416310614235404,
+      "r_point": 0.4416310614235404,
+      "point_difference": 0.0,
+      "python_se": 0.034346451130299556,
+      "r_se": 0.034346451130299556,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Rutsiro",
+      "python_point": 0.40777692709802144,
+      "r_point": 0.40777692709802144,
+      "point_difference": 0.0,
+      "python_se": 0.029913275270138675,
+      "r_se": 0.029913275270138675,
+      "se_difference": 0.0
+    },
+    {
+      "geography": "Rwamagana",
+      "python_point": 0.23832625437421603,
+      "r_point": 0.23832625437421603,
+      "point_difference": 0.0,
+      "python_se": 0.026571539469846864,
+      "r_se": 0.02657153946984686,
+      "se_difference": 3.469446951953614e-18
+    }
+  ]
+}

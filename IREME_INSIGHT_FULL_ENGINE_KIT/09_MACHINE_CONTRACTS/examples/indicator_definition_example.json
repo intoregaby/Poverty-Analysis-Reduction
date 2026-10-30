@@ -1,0 +1,17 @@
+{
+  "indicator_id": "pov_rate_person",
+  "definition_version": "eicv7-2023-24-v1",
+  "concept": "poverty headcount",
+  "unit": "percent",
+  "population": "persons in EICV7 survey frame",
+  "numerator": "population-weighted persons below harmonized wave-specific poverty line",
+  "denominator": "population-weighted eligible persons",
+  "survey_wave": "EICV7-2023/24",
+  "geography_version": "district-boundaries-version-reviewed",
+  "weight_variable": "pop_wt",
+  "strata_variable": "strata_id",
+  "psu_variable": "clust",
+  "missing_rule": "exclude ineligible/missing with documented rule",
+  "method_version": "survey-ratio-taylor-v1",
+  "notes": "ILLUSTRATIVE CONTRACT: field names require verification against actual EICV dictionary"
+}

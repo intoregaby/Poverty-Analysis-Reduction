@@ -1,0 +1,24 @@
+digraph Ireme {
+ graph [rankdir=TB, bgcolor="white", fontname="DejaVu Sans", fontsize=20, pad="0.3", nodesep="0.26", ranksep="0.48", label="Ireme Insight — Research-Grade AI Engine (Target Architecture)", labelloc=t, labeljust=l];
+ node [shape=box, style="rounded,filled", fillcolor="#f0f6fb", color="#aac3d8", fontname="DejaVu Sans", fontsize=11, margin="0.17,0.12"];
+ edge [color="#718a9a", arrowsize=.7];
+ user[label="Analysts • Administrators • Public • Programme Researchers", fillcolor="#ffffff"];
+ ui[label="React Workspaces and National Dashboard"];
+ api[label="OIDC + RBAC / ABAC + Secure Backend API"];
+ wf[label="Durable Investigation & Approval Workflows", fillcolor="#e4eefa"];
+ data[label="Licensed Data, Semantics & Immutable Snapshots"];
+ science[label="Survey-aware Python Statistics", fillcolor="#e9f7ed"];
+ independent[label="Independent R Scientific Validation", fillcolor="#e9f7ed"];
+ facts[label="Validated Facts + Reliability & Uncertainty", fillcolor="#d6f5e2"];
+ official[label="NISR PDF / XLSX / API Evidence Extraction", fillcolor="#fff7dd"];
+ semantic[label="Versioned Official Facts + Semantic Comparisons", fillcolor="#fff7dd"];
+ ai[label="Multi-Model AI Gateway: Groq, NVIDIA, Ollama", fillcolor="#ede5fd"];
+ claims[label="Typed Claims + Deterministic Rendering", fillcolor="#ede5fd"];
+ research[label="Hypothesis, Causal & Intervention Research", fillcolor="#ede5fd"];
+ gate[label="Policy QA • Privacy • Publication Gate", fillcolor="#fde6e6"];
+ human[label="Independent Scientific and Publication Approvals", fillcolor="#fde6e6"];
+ reports[label="Frozen Reports: HTML • PDF • XLSX • Maps • API", fillcolor="#d6f5e2"];
+ monitoring[label="Quality Monitoring • Audit • Supersession"];
+ user->ui->api->wf; wf->data; data->science;data->independent;science->facts;independent->facts;
+ wf->official;official->semantic;facts->semantic; facts->ai;semantic->ai;ai->claims;facts->claims;semantic->claims;claims->research;research->gate;claims->gate;gate->human->reports->monitoring;
+}

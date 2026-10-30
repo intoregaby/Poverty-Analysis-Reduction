@@ -1,0 +1,14 @@
+flowchart TD
+  STAGE["Versioned workflow stage with idempotency key"] --> RUN["Execute approved activity"]
+  RUN --> TYPE{"Outcome class"}
+  TYPE -->|Success| HASH["Commit output and provenance hash"]
+  TYPE -->|Transient outage| RETRY["Bounded backoff, verified cache or provider fallback"]
+  RETRY --> REST{"Recovered within policy?"}
+  REST -->|Yes| HASH
+  REST -->|No| FAIL["Explicit unavailable stage and alert"]
+  TYPE -->|Scientific invalidity| BLOCK["Fail closed; method review required"]
+  TYPE -->|Disclosure violation| SECURITY["Security incident and stop external processing"]
+  TYPE -->|Revoked source| REVAL["Create new version and revalidate impacted reports"]
+  HASH --> NEXT["Next durable stage"]
+  FAIL --> DRAFT["Restricted draft and evidence gap"]
+  BLOCK --> DRAFT

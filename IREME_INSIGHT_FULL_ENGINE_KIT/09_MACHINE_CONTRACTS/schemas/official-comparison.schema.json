@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ireme.example/spec/official-comparison",
+  "title": "Official Comparison",
+  "description": "Semantically validated official comparison with mandatory origin independence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "comparison_id",
+    "fact_id",
+    "official_fact_id",
+    "status",
+    "concept_match",
+    "geography_match",
+    "population_match",
+    "unit_match",
+    "period_match",
+    "method_match",
+    "origins_independent",
+    "difference",
+    "registered_tolerance",
+    "reviewer_id"
+  ],
+  "properties": {
+    "comparison_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "official_fact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "externally_matched",
+        "external_mismatch",
+        "not_comparable",
+        "retrieval_failed",
+        "reference_not_found",
+        "source_conflict",
+        "self_match_rejected"
+      ]
+    },
+    "concept_match": {
+      "type": "boolean"
+    },
+    "geography_match": {
+      "type": "boolean"
+    },
+    "population_match": {
+      "type": "boolean"
+    },
+    "unit_match": {
+      "type": "boolean"
+    },
+    "period_match": {
+      "type": "boolean"
+    },
+    "method_match": {
+      "type": "boolean"
+    },
+    "origins_independent": {
+      "type": "boolean"
+    },
+    "difference": {
+      "type": "number"
+    },
+    "registered_tolerance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

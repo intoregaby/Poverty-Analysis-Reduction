@@ -1,0 +1,19 @@
+flowchart TB
+  TASK["Evidence bound typed AI task"] --> PRIV["Authorize data and sensitivity classification"]
+  PRIV --> SAFE{"Remote data permitted?"}
+  SAFE -->|No| LOCAL["Local deterministic or approved local model"]
+  SAFE -->|Yes| CAP["Model capability and task quality filter"]
+  CAP --> BUDGET["Rate, latency, model version, cost and context budget"]
+  BUDGET --> ROUTE["Policy driven provider router"]
+  ROUTE --> GROQ["Groq adapter"]
+  ROUTE --> NVIDIA["NVIDIA adapter"]
+  ROUTE --> OC["Ollama Cloud adapter"]
+  ROUTE --> OL["Ollama local adapter"]
+  GROQ --> STRUCT["Typed response schema"]
+  NVIDIA --> STRUCT
+  OC --> STRUCT
+  OL --> STRUCT
+  LOCAL --> STRUCT
+  STRUCT --> VALID{"Schema and fact IDs valid?"}
+  VALID -->|Yes| CLAIM["Claim compilation and evidence QA"]
+  VALID -->|No| BOUND["Bounded retry or human review"]

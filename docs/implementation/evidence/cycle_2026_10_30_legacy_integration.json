@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-30",
+  "legacy_source_integration": {
+    "result": "PASS",
+    "tests": 4,
+    "real_evidence": "Cached NISR EICV7 main report under injected outage"
+  },
+  "legacy_modelled_origin_integration": {
+    "result": "PASS",
+    "tests": 1,
+    "real_evidence": "NISR poverty profile PDF"
+  },
+  "engine_excluding_live_providers": {
+    "result": "PASS",
+    "tests": 122,
+    "seconds": 115.11
+  },
+  "npm_test": {
+    "result": "PASS",
+    "tests": 100,
+    "exit": 0
+  },
+  "npm_lint": {
+    "result": "PASS",
+    "exit": 0
+  },
+  "npm_build": {
+    "result": "PASS",
+    "exit": 0,
+    "modules_transformed": 2928
+  },
+  "completion": "INCOMPLETE"
+}

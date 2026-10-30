@@ -1,0 +1,12 @@
+schema_version: "1.0"
+principle: "Pre-register tolerances by quantity and method; never relax them in response to a failed test"
+# Example preliminary tolerances for tiny test fixtures only. Production acceptance
+# values MUST be approved by a survey statistician before real EICV runs.
+fixture_only:
+  weighted_rate_absolute_percent_points: 1.0e-10
+  standard_error_absolute_percent_points: 1.0e-8
+  decomposition_arithmetic_absolute_points: 1.0e-8
+production:
+  approved: false
+  reason: "Requires method- and indicator-specific scientific signoff and independent benchmarking"
+  tolerances: []

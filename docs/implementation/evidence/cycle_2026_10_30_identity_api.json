@@ -1,0 +1,36 @@
+{
+  "scope": "JWT verification and governed API read boundary",
+  "implementation_sha256": "80f1174bd9a488976170d4d1886368f34fc0649e5ac2d748f5848b9b213bcf99",
+  "engine_tests_executed": 159,
+  "engine_test_counts": {
+    "pass": 154,
+    "skip": 5
+  },
+  "repo_suites": [
+    {
+      "cmd": "npm test",
+      "exit": 0,
+      "seconds": 15.7,
+      "tail": "and never invents them (1.7722ms)\n\u2714 grid electricity is reported as a methodology mismatch with both published tables named, not as an error (1.7612ms)\n\u2714 the section says what was confirmed, what could not be compared and what is unverified (0.9716ms)\n\u2714 a report from before verification existed claims nothing was checked (28.0617ms)\n\u2714 a failed verification run reads as not run, never as verified (58.0686ms)\n\u2714 an unresolved discrepancy is carried into the summary so it can be flagged before export (3.3055ms)\n\u2714 data sources separate what the figures come from from what was merely available (2.5042ms)\n\u2714 the Markdown export contains the verification table, the correction and the sources (53.6017ms)\n\u2714 dialling shows the main menu in the member's language (29.6434ms)\n\u2714 insurance, visit, agent and voting screens show this member's data, then go back (192.1178ms)\n\u2714 every screen fits the USSD length limit (8.0797ms)\n\u2714 a wrong choice keeps the menu; 0 exits and ends the session (1.098ms)\n\u2714 changing language is saved and applies at once (2.6513ms)\n\u2714 a session that sits idle for too long times out (0.7105ms)\n\u2714 unregistered and blocked numbers get nothing (0.6857ms)\n\u2714 a failing database never throws: it is logged and the caller sees a polite END (1.0581ms)\n\u2714 too many requests in a minute are refused (0.7576ms)\n\u2714 gateway adapters speak their own formats and share the same core (2.0375ms)\n\u2139 tests 100\n\u2139 suites 0\n\u2139 pass 100\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 13914.0931\n"
+    },
+    {
+      "cmd": "npm run lint",
+      "exit": 0,
+      "seconds": 72.7,
+      "tail": "\n> poverty-analysis-reduction@0.0.0 lint\n> eslint . --quiet\n\n"
+    },
+    {
+      "cmd": "npm run build",
+      "exit": 0,
+      "seconds": 180.6,
+      "tail": " environment for production...\ntransforming...\n\u2713 2928 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                           0.76 kB \u2502 gzip:   0.42 kB\ndist/assets/index-Cw7ZPgqp.css          109.26 kB \u2502 gzip:  23.55 kB\ndist/assets/purify.es-Dqk5qvad.js        29.02 kB \u2502 gzip:  11.45 kB\ndist/assets/index.es-CcQ_TFur.js        151.41 kB \u2502 gzip:  48.90 kB\ndist/assets/html2canvas-DvPXUmDW.js     199.39 kB \u2502 gzip:  46.73 kB\ndist/assets/jspdf.es.min-D953fmhQ.js    399.67 kB \u2502 gzip: 129.90 kB\ndist/assets/index-B8ytCMkt.js         2,166.71 kB \u2502 gzip: 586.27 kB\n\n\u2713 built in 2m 49s\n[plugin builtin:vite-reporter] \n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n\u001b[33m[PLUGIN_TIMINGS] \u001b[0mJavaScript callbacks ran for 19.7s of this 167.8s build (12%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin vite:css-post renderChunk (7%, 11.1s, 5 calls)\n  - plugin vite:css transform (4%, 6.8s, 2 calls)\n  - plugin vite:build-html transform (1%, 1.4s, 1 call)\nAdditional callback time came from callbacks under 1s.\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n"
+    }
+  ],
+  "acceptance_counts": {
+    "BLOCKED": 13,
+    "NOT RUN": 5,
+    "PASS": 77
+  },
+  "completion_success": false,
+  "hosted_identity_validation": "PENDING_EXTERNAL_VALIDATION"
+}

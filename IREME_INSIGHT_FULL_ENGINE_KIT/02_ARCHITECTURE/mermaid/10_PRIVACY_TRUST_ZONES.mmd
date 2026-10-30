@@ -1,0 +1,12 @@
+flowchart TB
+  INPUT["Licensed survey microdata and programme records"] --> CLASS["Classify confidentiality, license, purpose and consent"]
+  CLASS --> SEC["Restricted encrypted storage and scientific compute"]
+  SEC --> AGG["Validated aggregate generation"]
+  AGG --> SUP["Minimum cell, complementary suppression, differencing risk"]
+  SUP --> POLICY{"Authorized for hosted AI?"}
+  POLICY -->|No| LOCAL["Local approved compute or no AI"]
+  POLICY -->|Yes| REMOTE["Sanitized bounded external model request"]
+  SUP --> PUBPOL{"Authorized for public report?"}
+  PUBPOL -->|Yes| PUBLIC["Versioned published aggregates"]
+  PUBPOL -->|No| DRAFT["Restricted release and audit"]
+  SEC --> MICRO["Only approved secure analyst access"]

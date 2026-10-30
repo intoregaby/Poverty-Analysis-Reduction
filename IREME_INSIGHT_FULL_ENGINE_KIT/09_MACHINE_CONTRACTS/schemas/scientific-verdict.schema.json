@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ireme.example/spec/scientific-verdict",
+  "title": "Scientific Verdict",
+  "description": "Scientific reconciliation between separately maintained estimator implementations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "verdict_id",
+    "fact_id",
+    "primary_estimator",
+    "reference_estimator",
+    "reference_code_sha256",
+    "point_difference",
+    "point_tolerance",
+    "decision",
+    "reviewer_independence"
+  ],
+  "properties": {
+    "verdict_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_estimator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_estimator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_code_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "point_difference": {
+      "type": "number"
+    },
+    "point_tolerance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "standard_error_difference": {
+      "type": "number"
+    },
+    "se_tolerance": {
+      "type": "number"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "independently_validated",
+        "validation_failed",
+        "methodology_review_required"
+      ]
+    },
+    "reviewer_independence": {
+      "type": "boolean"
+    },
+    "test_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "methods_note": {
+      "type": "string"
+    }
+  }
+}

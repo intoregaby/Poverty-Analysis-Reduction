@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: Ireme Insight Statistical Intelligence API (target contract)
+  version: '1.0.0-proposed'
+  description: Proposed API design, not implemented or deployed.
+servers:
+  - url: https://api.example.invalid/v1
+security:
+  - bearerAuth: []
+paths:
+  /investigations:
+    post:
+      operationId: createInvestigation
+      description: Starts a durable investigation with authorization and Idempotency-Key.
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: {type: string}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [district_id, question, purpose]
+              properties:
+                district_id: {type: string}
+                question: {type: string}
+                purpose: {type: string}
+      responses:
+        '202':
+          description: Accepted asynchronous job
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [investigation_id, state]
+                properties:
+                  investigation_id: {type: string, format: uuid}
+                  state: {type: string}
+        '403': {description: Not authorized}
+  /investigations/{investigation_id}:
+    get:
+      operationId: getInvestigation
+      parameters:
+        - in: path
+          name: investigation_id
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '200': {description: Authorized run manifest}
+        '403': {description: Forbidden}
+  /reports/{report_id}/review:
+    post:
+      operationId: reviewReport
+      parameters:
+        - in: path
+          name: report_id
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [decision, report_ast_sha256]
+              properties:
+                decision: {type: string, enum: [approve, reject]}
+                report_ast_sha256: {type: string}
+                reason: {type: string}
+      responses:
+        '200': {description: Authenticated signed review outcome}
+        '403': {description: Reviewer lacks authority}
+  /reports/{report_id}/export:
+    get:
+      operationId: authorizedExport
+      parameters:
+        - in: path
+          name: report_id
+          required: true
+          schema: {type: string, format: uuid}
+        - in: query
+          name: format
+          required: true
+          schema: {type: string, enum: [pdf, html, xlsx, json]}
+      responses:
+        '200': {description: Authorized immutable published report or restricted draft export per policy}
+        '403': {description: Release or data access denial}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

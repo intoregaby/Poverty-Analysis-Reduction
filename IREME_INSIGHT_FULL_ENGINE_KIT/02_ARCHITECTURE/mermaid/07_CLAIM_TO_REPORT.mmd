@@ -1,0 +1,17 @@
+flowchart TD
+  F["Immutable validated facts and reliability"] --> COMPILER["Deterministic claim compiler"]
+  E["Provenance, official comparisons and citations"] --> COMPILER
+  C["LLM typed claim proposal without numeric text"] --> COMPILER
+  COMPILER --> SCHEMA{"Fact IDs, denominators, direction and causal tier valid?"}
+  SCHEMA -->|No| FAIL["Claim rejected with error code"]
+  SCHEMA -->|Yes| TEXT["Approved textual templates and numeric formatting"]
+  TEXT --> AST["Versioned canonical report AST"]
+  AST --> QA["Cross format and disclosure QA"]
+  QA --> GATE{"Release policy passes?"}
+  GATE -->|No| DRAFT["Restricted draft, missing items"]
+  GATE -->|Yes| REVIEW["Authorized independent human approval"]
+  REVIEW --> PUB["Signed versioned release"]
+  PUB --> HTML["Accessible HTML"]
+  PUB --> PDF["Searchable PDF"]
+  PUB --> XLSX["Excel with data-linked native charts"]
+  PUB --> API["Versioned analytics API and maps"]

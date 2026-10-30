@@ -1,0 +1,1931 @@
+{
+  "audit_defects": [
+    {
+      "component_regression_passed": true,
+      "id": "W1",
+      "integration_verified": true,
+      "resolved": true,
+      "severity": "Critical"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W2",
+      "integration_verified": true,
+      "resolved": true,
+      "severity": "Critical"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W3",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "High"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W4",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "High"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W5",
+      "integration_verified": true,
+      "resolved": true,
+      "severity": "High"
+    },
+    {
+      "component_regression_passed": false,
+      "id": "W6",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "High"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W7",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "High"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W8",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "High"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W9",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "Medium"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W10",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "Medium"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W11",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "Medium"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W12",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "Medium"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W13",
+      "integration_verified": true,
+      "resolved": true,
+      "severity": "Medium"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W14",
+      "integration_verified": true,
+      "resolved": true,
+      "severity": "Medium"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W15",
+      "integration_verified": true,
+      "resolved": true,
+      "severity": "Medium"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W16",
+      "integration_verified": false,
+      "resolved": false,
+      "severity": "Low"
+    },
+    {
+      "component_regression_passed": true,
+      "id": "W17",
+      "integration_verified": true,
+      "resolved": true,
+      "severity": "Low"
+    }
+  ],
+  "engine_test_log": "----------------------------------------------------------------------\nRan 223 tests in 229.037s\n\nOK (skipped=5)\n",
+  "engine_test_outcomes": {
+    "test_agents.AgentApi.test_authenticated_agent_run_is_journalled_and_never_persists_proposals": "pass",
+    "test_agents.AgentApi.test_missing_provider_and_insufficient_role_fail_closed": "pass",
+    "test_agents.ContextFromCatalog.test_context_is_permission_and_lineage_bound": "pass",
+    "test_agents.Orchestration.test_agent_run_is_recorded_in_the_durable_audit_chain": "pass",
+    "test_agents.Orchestration.test_audit_pins_template_schema_evidence_and_result_hashes": "pass",
+    "test_agents.Orchestration.test_claims_must_reference_permitted_facts_and_evidence": "pass",
+    "test_agents.Orchestration.test_model_agreement_is_not_independent_corroboration": "pass",
+    "test_agents.Orchestration.test_model_cannot_assert_status_or_state_numeric_results": "pass",
+    "test_agents.Orchestration.test_planner_can_only_propose_competing_hypotheses_for_human_review": "pass",
+    "test_agents.Orchestration.test_provider_outage_yields_deterministic_competing_fallback": "pass",
+    "test_agents.Orchestration.test_retrieved_document_text_is_data_and_cannot_grant_tool_permissions": "pass",
+    "test_agents.Orchestration.test_role_cannot_propose_claims_or_hypotheses_it_does_not_own": "pass",
+    "test_agents.Orchestration.test_step_and_token_budgets_stop_the_loop": "pass",
+    "test_agents.Orchestration.test_time_and_cost_budgets_are_enforced": "pass",
+    "test_agents.Orchestration.test_tool_allowlist_rejects_shell_and_unregistered_capabilities": "pass",
+    "test_agents.Promotion.test_promotion_is_a_separate_human_write_with_explicit_unknowns": "pass",
+    "test_agents.Promotion.test_promotion_refuses_non_proposals_and_injected_verdicts": "pass",
+    "test_api_auth.GovernedApi.test_cross_tenant_and_other_owner_are_inaccessible": "pass",
+    "test_api_auth.GovernedApi.test_every_route_requires_signature_not_browser_roles": "pass",
+    "test_api_auth.GovernedApi.test_framework_errors_use_contract_without_echoing_inputs": "pass",
+    "test_api_auth.GovernedApi.test_framework_validation_error_does_not_disclose_bad_value": "pass",
+    "test_api_auth.GovernedApi.test_identity_outage_has_retryable_error_without_token_echo": "pass",
+    "test_api_auth.GovernedApi.test_scoped_read_filters_other_districts_and_does_not_expose_code_or_stage_data": "pass",
+    "test_api_auth.GovernedApi.test_unapproved_facts_and_revoked_dataset_cannot_bypass_read_boundary": "pass",
+    "test_auth.JwtAuthorization.test_elevated_review_requires_mfa_and_independent_subject": "pass",
+    "test_auth.JwtAuthorization.test_empty_scope_is_not_implicit_national_access": "pass",
+    "test_auth.JwtAuthorization.test_expired_key_cache_never_uses_stale_keys_during_outage": "pass",
+    "test_auth.JwtAuthorization.test_signature_audience_issuer_expiry_and_headers_fail_closed": "pass",
+    "test_auth.JwtAuthorization.test_signed_scopes_are_verified_and_cached": "pass",
+    "test_auth.JwtAuthorization.test_user_editable_metadata_cannot_elevate_authority": "pass",
+    "test_catalog.PersistentCatalog.test_forward_backward_lineage_and_wrong_dataset_license": "pass",
+    "test_catalog.PersistentCatalog.test_missing_license_and_schema_errors_fail_closed": "pass",
+    "test_catalog.PersistentCatalog.test_restart_and_immutable_definition_versions": "pass",
+    "test_catalog.PersistentCatalog.test_tenant_scope_and_purpose_expiry_revocation": "pass",
+    "test_ci_gate.CiGate.test_a_failing_critical_test_can_never_pass": "pass",
+    "test_ci_gate.CiGate.test_component_tests_and_unmapped_claims_do_not_pass": "pass",
+    "test_completion_scope.AcceptanceScope.test_component_success_is_not_acceptance": "pass",
+    "test_completion_scope.AcceptanceScope.test_explicit_executed_scope_can_pass": "pass",
+    "test_completion_scope.AcceptanceScope.test_failures_skips_and_missing_results_cannot_be_masked": "pass",
+    "test_completion_scope.AcceptanceScope.test_fixture_evidence_cannot_satisfy_real_requirement": "pass",
+    "test_completion_scope.AcceptanceScope.test_mapping_to_unrelated_test_is_rejected": "pass",
+    "test_completion_scope.AcceptanceScope.test_real_evidence_still_requires_scope_mapping": "pass",
+    "test_contrast_claims.ContrastClaims.test_context_and_point_mismatch_are_rejected": "pass",
+    "test_contrast_claims.ContrastClaims.test_equivalence_needs_registered_margin_and_validated_tost": "pass",
+    "test_contrast_claims.ContrastClaims.test_low_degrees_of_freedom_uses_t_instead_of_normal_threshold": "pass",
+    "test_contrast_claims.ContrastClaims.test_no_joint_evidence_never_uses_independent_sample_formula": "pass",
+    "test_contrast_claims.ContrastClaims.test_non_significance_is_not_equivalence": "pass",
+    "test_contrast_claims.ContrastClaims.test_stale_or_revoked_contrast_cannot_support_claim": "pass",
+    "test_contrast_claims.ContrastClaims.test_validated_joint_contrast_controls_sampling_claim_and_lineage": "pass",
+    "test_extract.RealOfficialPdf.test_all_30_districts_plus_national_extracted_with_page_provenance": "pass",
+    "test_extract.RealOfficialPdf.test_corrupted_row_is_not_table_verified": "pass",
+    "test_extract.RealOfficialPdf.test_extracted_facts_satisfy_the_official_fact_contract": "pass",
+    "test_extract.Xlsx.test_malicious_formulas_are_inert_and_reported": "pass",
+    "test_extract.Xlsx.test_xlsx_cell_value_and_coordinate": "pass",
+    "test_extract.Xlsx.test_zip_slip_symlink_and_bomb_rejected": "pass",
+    "test_gateway.FrontendBundle.test_no_secret_patterns_in_frontend_source_or_built_bundle": "pass",
+    "test_gateway.Gateway.test_benchmark_evaluation_drives_routing": "pass",
+    "test_gateway.Gateway.test_cloud_unavailable_all_providers_gives_explicit_exhaustion_not_invented_answer": "pass",
+    "test_gateway.Gateway.test_confidential_microdata_never_leaves_for_a_remote_provider": "pass",
+    "test_gateway.Gateway.test_invalid_model_output_fails_over_then_is_rejected": "pass",
+    "test_gateway.Gateway.test_local_only_never_touches_a_cloud_provider": "pass",
+    "test_gateway.Gateway.test_missing_capability_excludes_provider_and_none_means_denied": "pass",
+    "test_gateway.Gateway.test_policy_errors_are_never_retried": "pass",
+    "test_gateway.Gateway.test_prompt_data_and_schema_hashes_are_pinned_in_audit": "pass",
+    "test_gateway.Gateway.test_provider_secrets_never_leak_into_prompts_errors_or_audit": "pass",
+    "test_gateway.Gateway.test_quota_429_fails_over_without_hammering_same_provider": "pass",
+    "test_gateway.Gateway.test_translation_must_preserve_every_number": "pass",
+    "test_gateway.MultiKeyCredentials.test_all_keys_exhausted_is_explicit_and_never_echoes_a_key": "pass",
+    "test_gateway.MultiKeyCredentials.test_key_names_and_configured_keys_are_ordered_and_deduplicated": "pass",
+    "test_gateway.MultiKeyCredentials.test_local_env_file_uses_canonical_names_only": "pass",
+    "test_gateway.MultiKeyCredentials.test_provider_base_name_groups_secondary_keys_with_their_provider": "pass",
+    "test_gateway.MultiKeyCredentials.test_quota_on_first_key_fails_over_to_the_second_key": "pass",
+    "test_gateway.MultiKeyCredentials.test_real_env_local_builds_one_routing_slot_per_configured_key": "pass",
+    "test_gateway.MultiKeyCredentials.test_revoked_key_fails_over_and_audit_records_each_attempt": "pass",
+    "test_gateway.MultiKeyCredentials.test_secrets_are_redacted_even_without_key_expansion": "pass",
+    "test_governed_data.GovernedData.test_missing_permission_denies_before_opening_nonexistent_archive": "pass",
+    "test_governed_data.GovernedData.test_real_archive_hash_binding_with_fixture_permission_and_revocation": "pass",
+    "test_jobs.AuditAndStorage.test_audit_log_tampering_is_detected_at_the_exact_record": "pass",
+    "test_jobs.AuditAndStorage.test_audit_never_stores_secrets": "pass",
+    "test_jobs.AuditAndStorage.test_backup_restore_verifies_integrity_and_audit_chain": "pass",
+    "test_jobs.AuditAndStorage.test_schema_migration_preserves_old_data_and_refuses_newer_schema": "pass",
+    "test_jobs.ConcurrentDistricts.test_30_real_districts_run_concurrently_under_a_global_cap": "pass",
+    "test_jobs.Durability.test_duplicate_submission_is_idempotent_and_conflicting_reuse_rejected": "pass",
+    "test_jobs.Durability.test_model_release_change_reruns_narrative_but_not_statistics": "pass",
+    "test_jobs.Durability.test_runs_are_pinned_to_their_worker_version_and_rollback_keeps_them_resumable": "pass",
+    "test_jobs.Durability.test_same_inputs_give_identical_trace_hash_and_changed_inputs_differ": "pass",
+    "test_jobs.Durability.test_source_change_invalidates_dependent_stages_only": "pass",
+    "test_jobs.Durability.test_source_outage_run_replays_to_completion_when_source_returns": "pass",
+    "test_jobs.Durability.test_worker_killed_mid_run_resumes_from_checkpoint": "pass",
+    "test_lab_policy.Lab.test_decomposition_identity_and_reference_sensitivity": "pass",
+    "test_lab_policy.Lab.test_prediction_requires_out_of_time_split_and_blocks_leakage": "pass",
+    "test_lab_policy.Lab.test_real_nisr_statement_of_new_series_and_modelled_2016_17_rate": "pass",
+    "test_lab_policy.Lab.test_synthetic_methodology_break_blocks_naive_trend": "pass",
+    "test_lab_policy.Lab.test_unsupported_small_domains_refused_and_ranks_carry_uncertainty": "pass",
+    "test_lab_policy.Policy.test_analysis_cannot_initiate_transfers_or_ingest_beneficiary_fields": "pass",
+    "test_lab_policy.Policy.test_association_cannot_be_labelled_causal_or_a_trial_result": "pass",
+    "test_lab_policy.Policy.test_competing_hypotheses_cannot_be_silently_discarded": "pass",
+    "test_lab_policy.Policy.test_draft_recommendation_cannot_be_shared_as_official": "pass",
+    "test_lab_policy.Policy.test_equity_risk_is_mandatory_and_exclusion_is_surfaced": "pass",
+    "test_lab_policy.Policy.test_invented_budget_cannot_be_labelled_actual": "pass",
+    "test_lab_policy.Policy.test_post_hoc_outcome_cannot_be_declared_success": "pass",
+    "test_lab_policy.Policy.test_scale_requires_a_complete_monitoring_plan_with_sourced_baselines": "pass",
+    "test_lab_policy.Policy.test_underpowered_programme_inference_abstains": "pass",
+    "test_legacy_source_integration.CacheIntegration.test_304_revalidates_scope_and_preserves_original_retrieval_date": "pass",
+    "test_legacy_source_integration.CacheIntegration.test_corruption_and_invalid_metadata_never_supply_evidence": "pass",
+    "test_legacy_source_integration.CacheIntegration.test_missing_or_corrupt_manifest_preserves_failure": "pass",
+    "test_legacy_source_integration.CacheIntegration.test_real_cached_pdf_without_any_prior_run": "pass",
+    "test_legacy_verification_integration.OfficialOriginIntegration.test_modelled_reference_is_never_counted_as_independent_match": "pass",
+    "test_live_providers.Live.test_live_capability_probe_for_structured_output_each_provider": "skip",
+    "test_live_providers.Live.test_live_error_paths_do_not_echo_keys": "pass",
+    "test_live_providers.Live.test_live_local_only_never_calls_a_remote_provider": "skip",
+    "test_live_providers.Live.test_live_rejected_key_fails_over_to_the_configured_second_key": "pass",
+    "test_live_providers.Live.test_live_unavailable_primary_model_fails_over_to_real_second_provider": "pass",
+    "test_r_reference.RReference.test_missing_runtime_has_explicit_failure": "skip",
+    "test_r_reference.RReference.test_r_raw_archive_path_calculates_national_and_district_se": "skip",
+    "test_r_reference.RReference.test_real_r_vs_python_agreement_within_registered_tolerance": "skip",
+    "test_real_contrasts.RealJointContrasts.test_python_and_r_joint_contrasts_all_districts": "pass",
+    "test_real_eicv7.CoverageSimulation.test_ci_coverage_close_to_nominal_under_repeated_sampling": "pass",
+    "test_real_eicv7.RealEicv7.test_entire_30_district_batch_runs_and_cross_validates": "pass",
+    "test_real_eicv7.RealEicv7.test_published_standard_errors_corroborated_for_all_domains": "pass",
+    "test_real_eicv7.RealEicv7.test_real_design_has_no_singleton_strata_and_expected_structure": "pass",
+    "test_registry_preservation.RegistryPreservation.test_regeneration_preserves_engineering_history_and_evidence_mappings": "pass",
+    "test_report.ReportTests.test_cross_format_round_trip": "pass",
+    "test_report.ReportTests.test_frozen_snapshot_does_not_alias_input": "pass",
+    "test_report.ReportTests.test_native_chart_links_to_numeric_cells": "pass",
+    "test_report.ReportTests.test_pdf_extra_numeric_claim_is_detected": "pass",
+    "test_report.ReportTests.test_restricted_and_revoked_statuses_survive_pdf": "pass",
+    "test_report.ReportTests.test_snapshot_mutation_blocks_every_renderer": "pass",
+    "test_report_service.T.test_ast_modified_after_freeze_is_refused": "pass",
+    "test_report_service.T.test_cross_tenant_access_looks_like_not_found": "pass",
+    "test_report_service.T.test_district_scope_enforced": "pass",
+    "test_report_service.T.test_expired_link_denied": "pass",
+    "test_report_service.T.test_failed_gate_leaves_report_blocked_and_released_one_exports": "pass",
+    "test_report_service.T.test_forged_and_tampered_tokens_rejected": "pass",
+    "test_report_service.T.test_revoked_link_and_revoked_report_denied": "pass",
+    "test_report_service.T.test_stale_signed_report_view_after_new_version": "pass",
+    "test_report_service.T.test_unreleased_report_cannot_be_exported_or_linked": "pass",
+    "test_report_service.T.test_weak_signing_key_refused": "pass",
+    "test_reports_api.ReportLifecycle.test_author_cannot_review_and_low_assurance_cannot_sign": "pass",
+    "test_reports_api.ReportLifecycle.test_client_cannot_supply_checks_or_skip_review": "pass",
+    "test_reports_api.ReportLifecycle.test_district_scope_and_cross_tenant_are_enforced_on_export": "pass",
+    "test_reports_api.ReportLifecycle.test_draft_export_is_denied_audited_and_returns_no_bytes": "pass",
+    "test_reports_api.ReportLifecycle.test_failed_check_blocks_publication_and_report_stays_draft": "pass",
+    "test_reports_api.ReportLifecycle.test_full_review_publishes_and_all_formats_carry_the_same_ast": "pass",
+    "test_reports_api.ReportLifecycle.test_one_reviewer_cannot_publish_alone": "pass",
+    "test_reports_api.ReportLifecycle.test_stale_ast_hash_is_refused_before_any_signature": "pass",
+    "test_reports_api.ReportLifecycle.test_superseded_version_is_not_exportable": "pass",
+    "test_reports_api.ReportLifecycle.test_unauthenticated_unknown_version_and_bad_format": "pass",
+    "test_research_ledger.ResearchLedgerTests.test_authenticated_api_persists_versions_and_rejects_conflicting_or_invalid_writes": "pass",
+    "test_research_ledger.ResearchLedgerTests.test_competing_explanations_and_original_questions_cannot_be_erased": "pass",
+    "test_research_ledger.ResearchLedgerTests.test_database_update_and_delete_are_rejected": "pass",
+    "test_research_ledger.ResearchLedgerTests.test_evidence_is_hash_bound_scoped_and_retained_after_rejection": "pass",
+    "test_research_ledger.ResearchLedgerTests.test_restart_idempotency_and_atomic_write_audit": "pass",
+    "test_research_ledger.ResearchLedgerTests.test_revocation_role_and_district_checks_apply_on_replay": "pass",
+    "test_research_ledger.ResearchLedgerTests.test_stale_revisions_and_changed_replay_are_conflicts": "pass",
+    "test_research_ledger.ResearchLedgerTests.test_unsupported_confidence_causality_and_inference_are_denied": "pass",
+    "test_retention_and_storage.ObjectStoreOutage.test_outage_retries_then_fails_without_leaving_a_partial_object": "pass",
+    "test_retention_and_storage.ObjectStoreOutage.test_publication_survives_an_object_store_outage_without_stale_state": "pass",
+    "test_retention_and_storage.ObjectStoreOutage.test_recovery_is_content_addressed_and_verified": "pass",
+    "test_retention_and_storage.Retention.test_expired_retention_denies_every_use_and_is_reported": "pass",
+    "test_retention_and_storage.Retention.test_retention_boundary_must_be_timezone_aware_and_exact": "pass",
+    "test_retention_and_storage.Retention.test_unexpired_and_unbounded_datasets_remain_usable": "pass",
+    "test_science_workflow.ScienceWorkflow.test_definition_unit_substitution_blocked_before_raw_read": "pass",
+    "test_science_workflow.ScienceWorkflow.test_modified_checkpoint_blocks_instead_of_feeding_downstream_stage": "pass",
+    "test_science_workflow.ScienceWorkflow.test_real_governed_run_resume_lineage_and_revocation": "pass",
+    "test_science_workflow.ScienceWorkflow.test_unlicensed_run_blocks_before_any_data_or_job_creation": "pass",
+    "test_sources.Retrieval.test_corrupted_cache_is_rejected_not_used": "pass",
+    "test_sources.Retrieval.test_outage_with_cache_serves_verified_cache": "pass",
+    "test_sources.Retrieval.test_outage_without_cache_is_explicit_not_a_verified_headline": "pass",
+    "test_sources.Retrieval.test_path_traversal_source_id_refused": "pass",
+    "test_sources.Retrieval.test_ssrf_urls_blocked": "pass",
+    "test_sources.Retrieval.test_timeout_is_not_reported_as_not_published": "pass",
+    "test_sources.Rollups.test_boundary_version_mismatch_is_not_comparable": "pass",
+    "test_sources.Rollups.test_dataset_licence_checks": "pass",
+    "test_sources.Rollups.test_newest_publication_wins_and_older_is_superseded": "pass",
+    "test_sources.Rollups.test_same_day_disagreement_is_a_conflict_not_a_pick": "pass",
+    "test_sources.Rollups.test_tolerance_registered_before_use_and_rounding_aware": "pass",
+    "test_sources.Rollups.test_unconsulted_official_paper_cannot_be_cited": "pass",
+    "test_sources.Rollups.test_verification_row_counts_always_reconcile": "pass",
+    "test_survey.SurveyTests.test_bad_weights_rejected_and_zero_weights_counted": "pass",
+    "test_survey.SurveyTests.test_bootstrap_reproducible_with_fixed_seed": "pass",
+    "test_survey.SurveyTests.test_ci_uses_t_with_design_df_and_logit_stays_in_bounds": "pass",
+    "test_survey.SurveyTests.test_district_vs_national_covariance": "pass",
+    "test_survey.SurveyTests.test_domain_sample_sufficiency": "pass",
+    "test_survey.SurveyTests.test_fgt1_fgt2_hand_computed": "pass",
+    "test_survey.SurveyTests.test_fpc_reduces_variance": "pass",
+    "test_survey.SurveyTests.test_gate_rejects_hard_coded_constant_and_shared_code_path": "pass",
+    "test_survey.SurveyTests.test_household_rows_cannot_answer_person_claim": "pass",
+    "test_survey.SurveyTests.test_production_tolerances_unapproved_blocks": "pass",
+    "test_survey.SurveyTests.test_reference_mismatch_blocks": "pass",
+    "test_survey.SurveyTests.test_singleton_strata_explicit_policy": "pass",
+    "test_survey.SurveyTests.test_taylor_variance_hand_derived": "pass",
+    "test_survey.SurveyTests.test_taylor_vs_jackknife_on_simulated_design": "pass",
+    "test_survey.SurveyTests.test_weighted_headcount_hand_computed": "pass",
+    "test_trust.ClaimCompilation.test_causal_claim_needs_approved_study": "pass",
+    "test_trust.ClaimCompilation.test_direction_negative_test": "pass",
+    "test_trust.ClaimCompilation.test_free_text_numbers_rejected_by_schema_and_prose_scan": "pass",
+    "test_trust.ClaimCompilation.test_model_agreement_cannot_substitute_for_validation": "pass",
+    "test_trust.ClaimCompilation.test_precision_grade_propagates_to_rendered_claim": "pass",
+    "test_trust.ClaimCompilation.test_prompt_injection_in_official_pdf_is_quarantined": "pass",
+    "test_trust.ClaimCompilation.test_rendering_is_deterministic": "pass",
+    "test_trust.ClaimCompilation.test_small_numbers_years_and_number_words_in_prose_are_caught": "pass",
+    "test_trust.ClaimCompilation.test_strict_schema_output_rejects_malformed_proposals": "pass",
+    "test_trust.ClaimCompilation.test_true_vup_style_sentence_not_miscorrected_and_no_new_claim_introduced": "pass",
+    "test_trust.ClaimCompilation.test_wrong_district_fact_is_rejected": "pass",
+    "test_trust.ClaimCompilation.test_wrong_wave_fact_is_rejected": "pass",
+    "test_trust.EvidenceOrigin.test_equivalence_requires_named_reviewer": "pass",
+    "test_trust.EvidenceOrigin.test_grid_connection_is_not_electricity_for_lighting": "pass",
+    "test_trust.EvidenceOrigin.test_independent_official_fact_matches_only_when_everything_agrees": "pass",
+    "test_trust.EvidenceOrigin.test_missing_reference_is_reference_not_found_not_a_match": "pass",
+    "test_trust.EvidenceOrigin.test_numeric_difference_beyond_tolerance_is_mismatch": "pass",
+    "test_trust.EvidenceOrigin.test_numerical_coincidence_is_not_a_semantic_match": "pass",
+    "test_trust.EvidenceOrigin.test_self_comparison_is_rejected_and_never_counts_as_match": "pass",
+    "test_trust.EvidenceOrigin.test_vup_participation_is_not_vup_eligibility": "pass",
+    "test_trust.ReleaseAndDisclosure.test_each_never_allow_condition_blocks_even_with_signatures": "pass",
+    "test_trust.ReleaseAndDisclosure.test_full_set_publishes_and_defaults_deny": "pass",
+    "test_trust.ReleaseAndDisclosure.test_repeated_differencing_attack_is_blocked": "pass",
+    "test_trust.ReleaseAndDisclosure.test_self_approval_prevented": "pass",
+    "test_trust.ReleaseAndDisclosure.test_small_cells_and_complementary_suppression": "pass",
+    "test_trust.ReleaseAndDisclosure.test_soft_conditions_allow_restricted_draft_only": "pass",
+    "test_validation_safety.ValidationSafety.test_negative_se_invalid_scale_and_unknown_tier_block": "pass",
+    "test_validation_safety.ValidationSafety.test_nonfinite_quantities_cannot_validate": "pass",
+    "test_validation_safety.ValidationSafety.test_nonfinite_values_cannot_enter_machine_contract_or_snapshot_hash": "pass"
+  },
+  "engine_tests_executed": 223,
+  "evidence_digest": "3c48596344b2830965e79a81642e0af26963dd8d01c0e7b662b18a5dbf84d371",
+  "failures": [
+    "12/95 acceptance scenarios not PASS",
+    "audit defect W3 unresolved (regression AI-01)",
+    "audit defect W4 unresolved (regression AI-02)",
+    "audit defect W6 unresolved (regression SCI-09)",
+    "audit defect W7 unresolved (regression EVD-06)",
+    "audit defect W8 unresolved (regression SCI-05)",
+    "audit defect W9 unresolved (regression AI-12)",
+    "audit defect W10 unresolved (regression AI-18)",
+    "audit defect W11 unresolved (regression EVD-13)",
+    "audit defect W12 unresolved (regression AI-08)",
+    "audit defect W16 unresolved (regression OPS-10)",
+    "workstream EP-01 integration not verified",
+    "workstream EP-02 integration not verified",
+    "workstream EP-03 integration not verified",
+    "workstream EP-04 integration not verified",
+    "workstream EP-05 integration not verified",
+    "workstream EP-06 integration not verified",
+    "workstream EP-07 integration not verified",
+    "workstream EP-08 integration not verified",
+    "workstream EP-09 integration not verified",
+    "workstream EP-10 integration not verified",
+    "workstream EP-11 integration not verified",
+    "workstream EP-12 integration not verified",
+    "workstream EP-13 integration not verified",
+    "workstream EP-14 integration not verified",
+    "workstream EP-15 integration not verified",
+    "workstream EP-16 integration not verified",
+    "open blockers: BLK-R, BLK-NISR, BLK-APPROVALS, BLK-INFRA",
+    "required human approvals missing or not bound to the current evidence digest"
+  ],
+  "git_head": "18d455f87f6086f8cfbb0775a76f816b7b979a20",
+  "implementation_sha256": "d20f8e62471c56cc8453939ddd5036af0068f865896b8f2f665163de16d4e021",
+  "open_blockers": [
+    "BLK-R",
+    "BLK-NISR",
+    "BLK-APPROVALS",
+    "BLK-INFRA"
+  ],
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "repo_suites": [
+    {
+      "cmd": "npm test",
+      "exit": 0,
+      "seconds": 75.0,
+      "tail": "e, and never invents them (1.343ms)\n\u2714 grid electricity is reported as a methodology mismatch with both published tables named, not as an error (0.8606ms)\n\u2714 the section says what was confirmed, what could not be compared and what is unverified (1.6315ms)\n\u2714 a report from before verification existed claims nothing was checked (8.3013ms)\n\u2714 a failed verification run reads as not run, never as verified (31.9647ms)\n\u2714 an unresolved discrepancy is carried into the summary so it can be flagged before export (2.749ms)\n\u2714 data sources separate what the figures come from from what was merely available (20.7302ms)\n\u2714 the Markdown export contains the verification table, the correction and the sources (5.4177ms)\n\u2714 dialling shows the main menu in the member's language (6.5364ms)\n\u2714 insurance, visit, agent and voting screens show this member's data, then go back (104.0685ms)\n\u2714 every screen fits the USSD length limit (35.2914ms)\n\u2714 a wrong choice keeps the menu; 0 exits and ends the session (4.6198ms)\n\u2714 changing language is saved and applies at once (7.426ms)\n\u2714 a session that sits idle for too long times out (0.8025ms)\n\u2714 unregistered and blocked numbers get nothing (0.6577ms)\n\u2714 a failing database never throws: it is logged and the caller sees a polite END (3.456ms)\n\u2714 too many requests in a minute are refused (33.5016ms)\n\u2714 gateway adapters speak their own formats and share the same core (1.9182ms)\n\u2139 tests 105\n\u2139 suites 0\n\u2139 pass 105\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 63460.5556\n"
+    },
+    {
+      "cmd": "npm run lint",
+      "exit": 0,
+      "seconds": 94.1,
+      "tail": "\n> poverty-analysis-reduction@0.0.0 lint\n> eslint . --quiet\n\n"
+    },
+    {
+      "cmd": "npm run build",
+      "exit": 0,
+      "seconds": 63.8,
+      "tail": "-reduction@0.0.0 build\n> vite build\n\n\u001b[36mvite v8.3.5 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u2713 2929 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                           0.76 kB \u2502 gzip:   0.42 kB\ndist/assets/index-Cw7ZPgqp.css          109.26 kB \u2502 gzip:  23.55 kB\ndist/assets/purify.es-Dqk5qvad.js        29.02 kB \u2502 gzip:  11.45 kB\ndist/assets/index.es-BC1uuWNV.js        151.41 kB \u2502 gzip:  48.90 kB\ndist/assets/html2canvas-DumhGn4R.js     199.39 kB \u2502 gzip:  46.73 kB\ndist/assets/jspdf.es.min-C5kzDufY.js    399.67 kB \u2502 gzip: 129.90 kB\ndist/assets/index-CxH1RMGD.js         2,169.42 kB \u2502 gzip: 587.51 kB\n\n\u001b[32m\u2713 built in 52.65s\u001b[39m\n\u001b[33m[plugin builtin:vite-reporter] \n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\u001b[39m\n\u001b[33m\u001b[33m[PLUGIN_TIMINGS] \u001b[0mJavaScript callbacks ran for 10.4s of this 52.6s build (20%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin vite:css transform (17%, 9.0s, 2 calls)\nAdditional callback time came from callbacks under 1s.\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\u001b[39m\n"
+    }
+  ],
+  "scenario_verdicts": {
+    "BLOCKED": 12,
+    "PASS": 83
+  },
+  "scenarios": {
+    "AI-01": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_true_vup_style_sentence_not_miscorrected_and_no_new_claim_introduced"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_true_vup_style_sentence_not_miscorrected_and_no_new_claim_introduced"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-02": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_free_text_numbers_rejected_by_schema_and_prose_scan"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_free_text_numbers_rejected_by_schema_and_prose_scan"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-03": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_small_numbers_years_and_number_words_in_prose_are_caught"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_small_numbers_years_and_number_words_in_prose_are_caught"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-04": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_wrong_district_fact_is_rejected"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_wrong_district_fact_is_rejected"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-05": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_wrong_wave_fact_is_rejected"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_wrong_wave_fact_is_rejected"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-06": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_causal_claim_needs_approved_study"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_causal_claim_needs_approved_study"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-07": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_direction_negative_test"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_direction_negative_test"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-08": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_precision_grade_propagates_to_rendered_claim"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_precision_grade_propagates_to_rendered_claim"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-09": {
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_prompt_injection_in_official_pdf_is_quarantined"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ClaimCompilation.test_prompt_injection_in_official_pdf_is_quarantined"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-10": {
+      "acceptance_tests": [
+        "test_agents.Orchestration.test_model_agreement_is_not_independent_corroboration",
+        "test_trust.ClaimCompilation.test_model_agreement_cannot_substitute_for_validation"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_agents.Orchestration.test_model_agreement_is_not_independent_corroboration",
+        "test_trust.ClaimCompilation.test_model_agreement_cannot_substitute_for_validation"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-11": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_invalid_model_output_fails_over_then_is_rejected",
+        "test_trust.ClaimCompilation.test_strict_schema_output_rejects_malformed_proposals",
+        "test_trust.ClaimCompilation.test_rendering_is_deterministic"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_invalid_model_output_fails_over_then_is_rejected",
+        "test_trust.ClaimCompilation.test_rendering_is_deterministic",
+        "test_trust.ClaimCompilation.test_strict_schema_output_rejects_malformed_proposals"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-12": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_quota_429_fails_over_without_hammering_same_provider",
+        "test_gateway.Gateway.test_benchmark_evaluation_drives_routing"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_benchmark_evaluation_drives_routing",
+        "test_gateway.Gateway.test_quota_429_fails_over_without_hammering_same_provider",
+        "test_live_providers.Live.test_live_rejected_key_fails_over_to_the_configured_second_key"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-13": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_cloud_unavailable_all_providers_gives_explicit_exhaustion_not_invented_answer",
+        "test_gateway.Gateway.test_policy_errors_are_never_retried"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_cloud_unavailable_all_providers_gives_explicit_exhaustion_not_invented_answer",
+        "test_gateway.Gateway.test_policy_errors_are_never_retried",
+        "test_live_providers.Live.test_live_unavailable_primary_model_fails_over_to_real_second_provider"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-14": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_local_only_never_touches_a_cloud_provider"
+      ],
+      "component_verdict": "BLOCKED",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_local_only_never_touches_a_cloud_provider",
+        "test_live_providers.Live.test_live_local_only_never_calls_a_remote_provider"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "AI-15": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_provider_secrets_never_leak_into_prompts_errors_or_audit"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_provider_secrets_never_leak_into_prompts_errors_or_audit",
+        "test_live_providers.Live.test_live_error_paths_do_not_echo_keys"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-16": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_missing_capability_excludes_provider_and_none_means_denied"
+      ],
+      "component_verdict": "BLOCKED",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_missing_capability_excludes_provider_and_none_means_denied",
+        "test_live_providers.Live.test_live_capability_probe_for_structured_output_each_provider"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "AI-17": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_translation_must_preserve_every_number"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_translation_must_preserve_every_number"
+      ],
+      "verdict": "PASS"
+    },
+    "AI-18": {
+      "acceptance_tests": [
+        "test_agents.Orchestration.test_audit_pins_template_schema_evidence_and_result_hashes",
+        "test_gateway.Gateway.test_prompt_data_and_schema_hashes_are_pinned_in_audit"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_agents.Orchestration.test_audit_pins_template_schema_evidence_and_result_hashes",
+        "test_gateway.Gateway.test_prompt_data_and_schema_hashes_are_pinned_in_audit"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-01": {
+      "acceptance_tests": [
+        "test_legacy_verification_integration.OfficialOriginIntegration.test_modelled_reference_is_never_counted_as_independent_match",
+        "test_trust.EvidenceOrigin.test_self_comparison_is_rejected_and_never_counts_as_match",
+        "test_trust.EvidenceOrigin.test_independent_official_fact_matches_only_when_everything_agrees",
+        "test_trust.EvidenceOrigin.test_numeric_difference_beyond_tolerance_is_mismatch",
+        "test_trust.EvidenceOrigin.test_equivalence_requires_named_reviewer",
+        "test_trust.EvidenceOrigin.test_missing_reference_is_reference_not_found_not_a_match"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_legacy_verification_integration.OfficialOriginIntegration.test_modelled_reference_is_never_counted_as_independent_match",
+        "test_trust.EvidenceOrigin.test_equivalence_requires_named_reviewer",
+        "test_trust.EvidenceOrigin.test_independent_official_fact_matches_only_when_everything_agrees",
+        "test_trust.EvidenceOrigin.test_missing_reference_is_reference_not_found_not_a_match",
+        "test_trust.EvidenceOrigin.test_numeric_difference_beyond_tolerance_is_mismatch",
+        "test_trust.EvidenceOrigin.test_self_comparison_is_rejected_and_never_counts_as_match"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-02": {
+      "acceptance_tests": [
+        "test_legacy_source_integration.CacheIntegration.test_real_cached_pdf_without_any_prior_run",
+        "test_sources.Retrieval.test_outage_with_cache_serves_verified_cache"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_legacy_source_integration.CacheIntegration.test_real_cached_pdf_without_any_prior_run",
+        "test_sources.Retrieval.test_outage_with_cache_serves_verified_cache"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-03": {
+      "acceptance_tests": [
+        "test_sources.Retrieval.test_outage_without_cache_is_explicit_not_a_verified_headline"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_sources.Retrieval.test_outage_without_cache_is_explicit_not_a_verified_headline"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-04": {
+      "acceptance_tests": [
+        "test_extract.Xlsx.test_xlsx_cell_value_and_coordinate"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "Required real evidence unavailable",
+      "tests": [
+        "test_extract.Xlsx.test_xlsx_cell_value_and_coordinate"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "EVD-05": {
+      "acceptance_tests": [
+        "test_extract.RealOfficialPdf.test_all_30_districts_plus_national_extracted_with_page_provenance",
+        "test_extract.RealOfficialPdf.test_extracted_facts_satisfy_the_official_fact_contract",
+        "test_extract.RealOfficialPdf.test_corrupted_row_is_not_table_verified"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_extract.RealOfficialPdf.test_all_30_districts_plus_national_extracted_with_page_provenance",
+        "test_extract.RealOfficialPdf.test_corrupted_row_is_not_table_verified",
+        "test_extract.RealOfficialPdf.test_extracted_facts_satisfy_the_official_fact_contract"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-06": {
+      "acceptance_tests": [
+        "test_trust.EvidenceOrigin.test_numerical_coincidence_is_not_a_semantic_match"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.EvidenceOrigin.test_numerical_coincidence_is_not_a_semantic_match"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-07": {
+      "acceptance_tests": [
+        "test_trust.EvidenceOrigin.test_grid_connection_is_not_electricity_for_lighting"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.EvidenceOrigin.test_grid_connection_is_not_electricity_for_lighting"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-08": {
+      "acceptance_tests": [
+        "test_trust.EvidenceOrigin.test_vup_participation_is_not_vup_eligibility"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.EvidenceOrigin.test_vup_participation_is_not_vup_eligibility"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-09": {
+      "acceptance_tests": [
+        "test_sources.Rollups.test_newest_publication_wins_and_older_is_superseded"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_sources.Rollups.test_newest_publication_wins_and_older_is_superseded"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-10": {
+      "acceptance_tests": [
+        "test_sources.Rollups.test_same_day_disagreement_is_a_conflict_not_a_pick"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_sources.Rollups.test_same_day_disagreement_is_a_conflict_not_a_pick"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-11": {
+      "acceptance_tests": [
+        "test_sources.Retrieval.test_corrupted_cache_is_rejected_not_used"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_sources.Retrieval.test_corrupted_cache_is_rejected_not_used"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-12": {
+      "acceptance_tests": [
+        "test_sources.Retrieval.test_timeout_is_not_reported_as_not_published"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_sources.Retrieval.test_timeout_is_not_reported_as_not_published"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-13": {
+      "acceptance_tests": [
+        "test_sources.Rollups.test_verification_row_counts_always_reconcile"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_sources.Rollups.test_verification_row_counts_always_reconcile"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-14": {
+      "acceptance_tests": [
+        "test_sources.Rollups.test_unconsulted_official_paper_cannot_be_cited"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "Required real evidence unavailable",
+      "tests": [
+        "test_sources.Rollups.test_unconsulted_official_paper_cannot_be_cited"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "EVD-15": {
+      "acceptance_tests": [
+        "test_sources.Rollups.test_tolerance_registered_before_use_and_rounding_aware"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_sources.Rollups.test_tolerance_registered_before_use_and_rounding_aware"
+      ],
+      "verdict": "PASS"
+    },
+    "EVD-16": {
+      "acceptance_tests": [
+        "test_sources.Rollups.test_dataset_licence_checks"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "Required real evidence unavailable",
+      "tests": [
+        "test_sources.Rollups.test_dataset_licence_checks"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "EVD-17": {
+      "acceptance_tests": [
+        "test_sources.Rollups.test_boundary_version_mismatch_is_not_comparable"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "Required real evidence unavailable",
+      "tests": [
+        "test_sources.Rollups.test_boundary_version_mismatch_is_not_comparable"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "OPS-01": {
+      "acceptance_tests": [
+        "test_jobs.Durability.test_worker_killed_mid_run_resumes_from_checkpoint"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.Durability.test_worker_killed_mid_run_resumes_from_checkpoint"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-02": {
+      "acceptance_tests": [
+        "test_jobs.Durability.test_duplicate_submission_is_idempotent_and_conflicting_reuse_rejected"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.Durability.test_duplicate_submission_is_idempotent_and_conflicting_reuse_rejected"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-03": {
+      "acceptance_tests": [
+        "test_jobs.Durability.test_source_outage_run_replays_to_completion_when_source_returns"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.Durability.test_source_outage_run_replays_to_completion_when_source_returns"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-04": {
+      "acceptance_tests": [
+        "test_reports_api.ReportLifecycle.test_full_review_publishes_and_all_formats_carry_the_same_ast"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_reports_api.ReportLifecycle.test_full_review_publishes_and_all_formats_carry_the_same_ast"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-05": {
+      "acceptance_tests": [
+        "test_report.ReportTests.test_native_chart_links_to_numeric_cells"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "Required real evidence unavailable",
+      "tests": [
+        "test_report.ReportTests.test_native_chart_links_to_numeric_cells"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "OPS-06": {
+      "acceptance_tests": [
+        "test_jobs.Durability.test_source_change_invalidates_dependent_stages_only"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.Durability.test_source_change_invalidates_dependent_stages_only"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-07": {
+      "acceptance_tests": [
+        "test_jobs.Durability.test_model_release_change_reruns_narrative_but_not_statistics"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.Durability.test_model_release_change_reruns_narrative_but_not_statistics"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-08": {
+      "acceptance_tests": [
+        "test_jobs.AuditAndStorage.test_backup_restore_verifies_integrity_and_audit_chain"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "Required real evidence unavailable",
+      "tests": [
+        "test_jobs.AuditAndStorage.test_backup_restore_verifies_integrity_and_audit_chain"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "OPS-09": {
+      "acceptance_tests": [
+        "test_retention_and_storage.ObjectStoreOutage.test_publication_survives_an_object_store_outage_without_stale_state"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "Required real evidence unavailable",
+      "tests": [
+        "test_retention_and_storage.ObjectStoreOutage.test_publication_survives_an_object_store_outage_without_stale_state"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "OPS-10": {
+      "acceptance_tests": [
+        "test_ci_gate.CiGate.test_a_failing_critical_test_can_never_pass",
+        "test_ci_gate.CiGate.test_component_tests_and_unmapped_claims_do_not_pass"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_ci_gate.CiGate.test_a_failing_critical_test_can_never_pass",
+        "test_ci_gate.CiGate.test_component_tests_and_unmapped_claims_do_not_pass"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-11": {
+      "acceptance_tests": [
+        "test_jobs.AuditAndStorage.test_audit_log_tampering_is_detected_at_the_exact_record"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.AuditAndStorage.test_audit_log_tampering_is_detected_at_the_exact_record"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-12": {
+      "acceptance_tests": [
+        "test_jobs.AuditAndStorage.test_schema_migration_preserves_old_data_and_refuses_newer_schema"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.AuditAndStorage.test_schema_migration_preserves_old_data_and_refuses_newer_schema"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-13": {
+      "acceptance_tests": [
+        "test_jobs.ConcurrentDistricts.test_30_real_districts_run_concurrently_under_a_global_cap"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_jobs.ConcurrentDistricts.test_30_real_districts_run_concurrently_under_a_global_cap"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-14": {
+      "acceptance_tests": [
+        "test_report_service.T.test_stale_signed_report_view_after_new_version",
+        "test_reports_api.ReportLifecycle.test_superseded_version_is_not_exportable"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_report_service.T.test_stale_signed_report_view_after_new_version",
+        "test_reports_api.ReportLifecycle.test_superseded_version_is_not_exportable"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-15": {
+      "acceptance_tests": [
+        "test_jobs.Durability.test_same_inputs_give_identical_trace_hash_and_changed_inputs_differ"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.Durability.test_same_inputs_give_identical_trace_hash_and_changed_inputs_differ"
+      ],
+      "verdict": "PASS"
+    },
+    "OPS-16": {
+      "acceptance_tests": [
+        "test_jobs.Durability.test_runs_are_pinned_to_their_worker_version_and_rollback_keeps_them_resumable"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_jobs.Durability.test_runs_are_pinned_to_their_worker_version_and_rollback_keeps_them_resumable"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-01": {
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_association_cannot_be_labelled_causal_or_a_trial_result"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Policy.test_association_cannot_be_labelled_causal_or_a_trial_result"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-02": {
+      "acceptance_tests": [
+        "test_agents.Orchestration.test_planner_can_only_propose_competing_hypotheses_for_human_review",
+        "test_lab_policy.Policy.test_competing_hypotheses_cannot_be_silently_discarded"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_agents.Orchestration.test_planner_can_only_propose_competing_hypotheses_for_human_review",
+        "test_lab_policy.Policy.test_competing_hypotheses_cannot_be_silently_discarded"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-03": {
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_association_cannot_be_labelled_causal_or_a_trial_result",
+        "test_lab_policy.Policy.test_scale_requires_a_complete_monitoring_plan_with_sourced_baselines"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Policy.test_association_cannot_be_labelled_causal_or_a_trial_result",
+        "test_lab_policy.Policy.test_scale_requires_a_complete_monitoring_plan_with_sourced_baselines"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-04": {
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_invented_budget_cannot_be_labelled_actual"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Policy.test_invented_budget_cannot_be_labelled_actual"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-05": {
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_analysis_cannot_initiate_transfers_or_ingest_beneficiary_fields"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Policy.test_analysis_cannot_initiate_transfers_or_ingest_beneficiary_fields"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-06": {
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_post_hoc_outcome_cannot_be_declared_success"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Policy.test_post_hoc_outcome_cannot_be_declared_success"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-07": {
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_equity_risk_is_mandatory_and_exclusion_is_surfaced",
+        "test_lab_policy.Policy.test_scale_requires_a_complete_monitoring_plan_with_sourced_baselines"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Policy.test_equity_risk_is_mandatory_and_exclusion_is_surfaced",
+        "test_lab_policy.Policy.test_scale_requires_a_complete_monitoring_plan_with_sourced_baselines"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-08": {
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_underpowered_programme_inference_abstains"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Policy.test_underpowered_programme_inference_abstains"
+      ],
+      "verdict": "PASS"
+    },
+    "POL-09": {
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_draft_recommendation_cannot_be_shared_as_official"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Policy.test_draft_recommendation_cannot_be_shared_as_official"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-01": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_confidential_microdata_never_leaves_for_a_remote_provider"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_confidential_microdata_never_leaves_for_a_remote_provider"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-02": {
+      "acceptance_tests": [
+        "test_trust.ReleaseAndDisclosure.test_small_cells_and_complementary_suppression"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ReleaseAndDisclosure.test_small_cells_and_complementary_suppression"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-03": {
+      "acceptance_tests": [
+        "test_trust.ReleaseAndDisclosure.test_repeated_differencing_attack_is_blocked"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ReleaseAndDisclosure.test_repeated_differencing_attack_is_blocked"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-04": {
+      "acceptance_tests": [
+        "test_report_service.T.test_unreleased_report_cannot_be_exported_or_linked",
+        "test_report_service.T.test_failed_gate_leaves_report_blocked_and_released_one_exports",
+        "test_report_service.T.test_forged_and_tampered_tokens_rejected",
+        "test_report_service.T.test_ast_modified_after_freeze_is_refused",
+        "test_reports_api.ReportLifecycle.test_draft_export_is_denied_audited_and_returns_no_bytes",
+        "test_reports_api.ReportLifecycle.test_client_cannot_supply_checks_or_skip_review"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_report_service.T.test_ast_modified_after_freeze_is_refused",
+        "test_report_service.T.test_failed_gate_leaves_report_blocked_and_released_one_exports",
+        "test_report_service.T.test_forged_and_tampered_tokens_rejected",
+        "test_report_service.T.test_unreleased_report_cannot_be_exported_or_linked",
+        "test_reports_api.ReportLifecycle.test_client_cannot_supply_checks_or_skip_review",
+        "test_reports_api.ReportLifecycle.test_draft_export_is_denied_audited_and_returns_no_bytes"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-05": {
+      "acceptance_tests": [
+        "test_report_service.T.test_revoked_link_and_revoked_report_denied",
+        "test_report_service.T.test_expired_link_denied"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_report_service.T.test_expired_link_denied",
+        "test_report_service.T.test_revoked_link_and_revoked_report_denied"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-06": {
+      "acceptance_tests": [
+        "test_trust.ReleaseAndDisclosure.test_full_set_publishes_and_defaults_deny",
+        "test_trust.ReleaseAndDisclosure.test_self_approval_prevented",
+        "test_trust.ReleaseAndDisclosure.test_each_never_allow_condition_blocks_even_with_signatures",
+        "test_trust.ReleaseAndDisclosure.test_soft_conditions_allow_restricted_draft_only"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_trust.ReleaseAndDisclosure.test_each_never_allow_condition_blocks_even_with_signatures",
+        "test_trust.ReleaseAndDisclosure.test_full_set_publishes_and_defaults_deny",
+        "test_trust.ReleaseAndDisclosure.test_self_approval_prevented",
+        "test_trust.ReleaseAndDisclosure.test_soft_conditions_allow_restricted_draft_only"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-07": {
+      "acceptance_tests": [
+        "test_report_service.T.test_district_scope_enforced",
+        "test_reports_api.ReportLifecycle.test_district_scope_and_cross_tenant_are_enforced_on_export"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_report_service.T.test_district_scope_enforced",
+        "test_reports_api.ReportLifecycle.test_district_scope_and_cross_tenant_are_enforced_on_export"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-08": {
+      "acceptance_tests": [
+        "test_report_service.T.test_cross_tenant_access_looks_like_not_found"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_report_service.T.test_cross_tenant_access_looks_like_not_found"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-09": {
+      "acceptance_tests": [
+        "test_sources.Retrieval.test_ssrf_urls_blocked"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_sources.Retrieval.test_ssrf_urls_blocked"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-10": {
+      "acceptance_tests": [
+        "test_extract.Xlsx.test_malicious_formulas_are_inert_and_reported"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_extract.Xlsx.test_malicious_formulas_are_inert_and_reported"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-11": {
+      "acceptance_tests": [
+        "test_extract.Xlsx.test_zip_slip_symlink_and_bomb_rejected"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_extract.Xlsx.test_zip_slip_symlink_and_bomb_rejected"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-12": {
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_provider_secrets_never_leak_into_prompts_errors_or_audit",
+        "test_jobs.AuditAndStorage.test_audit_never_stores_secrets"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_gateway.Gateway.test_provider_secrets_never_leak_into_prompts_errors_or_audit",
+        "test_jobs.AuditAndStorage.test_audit_never_stores_secrets"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-13": {
+      "acceptance_tests": [
+        "test_auth.JwtAuthorization.test_elevated_review_requires_mfa_and_independent_subject"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "Required real evidence unavailable",
+      "tests": [
+        "test_auth.JwtAuthorization.test_elevated_review_requires_mfa_and_independent_subject"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "PRIV-14": {
+      "acceptance_tests": [
+        "test_gateway.FrontendBundle.test_no_secret_patterns_in_frontend_source_or_built_bundle"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_gateway.FrontendBundle.test_no_secret_patterns_in_frontend_source_or_built_bundle"
+      ],
+      "verdict": "PASS"
+    },
+    "PRIV-15": {
+      "acceptance_tests": [
+        "test_retention_and_storage.Retention.test_expired_retention_denies_every_use_and_is_reported"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_retention_and_storage.Retention.test_expired_retention_denies_every_use_and_is_reported"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-01": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_weighted_headcount_hand_computed"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_weighted_headcount_hand_computed"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-02": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_household_rows_cannot_answer_person_claim"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_household_rows_cannot_answer_person_claim"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-03": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_bad_weights_rejected_and_zero_weights_counted"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_bad_weights_rejected_and_zero_weights_counted"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-04": {
+      "acceptance_tests": [
+        "test_real_eicv7.RealEicv7.test_real_design_has_no_singleton_strata_and_expected_structure",
+        "test_survey.SurveyTests.test_taylor_variance_hand_derived",
+        "test_survey.SurveyTests.test_taylor_vs_jackknife_on_simulated_design",
+        "test_survey.SurveyTests.test_fpc_reduces_variance"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_real_eicv7.RealEicv7.test_real_design_has_no_singleton_strata_and_expected_structure",
+        "test_survey.SurveyTests.test_fpc_reduces_variance",
+        "test_survey.SurveyTests.test_taylor_variance_hand_derived",
+        "test_survey.SurveyTests.test_taylor_vs_jackknife_on_simulated_design"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-05": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_singleton_strata_explicit_policy"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_singleton_strata_explicit_policy"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-06": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_district_vs_national_covariance"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_district_vs_national_covariance"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-07": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_ci_uses_t_with_design_df_and_logit_stays_in_bounds"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_ci_uses_t_with_design_df_and_logit_stays_in_bounds"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-08": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_gate_rejects_hard_coded_constant_and_shared_code_path"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_gate_rejects_hard_coded_constant_and_shared_code_path"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-09": {
+      "acceptance_tests": [
+        "test_r_reference.RReference.test_r_raw_archive_path_calculates_national_and_district_se"
+      ],
+      "component_verdict": "BLOCKED",
+      "evidence_classes": [
+        "real"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_r_reference.RReference.test_r_raw_archive_path_calculates_national_and_district_se"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "SCI-10": {
+      "acceptance_tests": [
+        "test_r_reference.RReference.test_real_r_vs_python_agreement_within_registered_tolerance",
+        "test_survey.SurveyTests.test_reference_mismatch_blocks",
+        "test_survey.SurveyTests.test_production_tolerances_unapproved_blocks"
+      ],
+      "component_verdict": "BLOCKED",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_r_reference.RReference.test_real_r_vs_python_agreement_within_registered_tolerance",
+        "test_survey.SurveyTests.test_production_tolerances_unapproved_blocks",
+        "test_survey.SurveyTests.test_reference_mismatch_blocks"
+      ],
+      "verdict": "BLOCKED"
+    },
+    "SCI-11": {
+      "acceptance_tests": [
+        "test_real_eicv7.RealEicv7.test_published_standard_errors_corroborated_for_all_domains"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_real_eicv7.RealEicv7.test_published_standard_errors_corroborated_for_all_domains"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-12": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_domain_sample_sufficiency"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_domain_sample_sufficiency"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-13": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_fgt1_fgt2_hand_computed"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_fgt1_fgt2_hand_computed"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-14": {
+      "acceptance_tests": [
+        "test_lab_policy.Lab.test_decomposition_identity_and_reference_sensitivity"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Lab.test_decomposition_identity_and_reference_sensitivity"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-15": {
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_bootstrap_reproducible_with_fixed_seed"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_survey.SurveyTests.test_bootstrap_reproducible_with_fixed_seed"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-16": {
+      "acceptance_tests": [
+        "test_lab_policy.Lab.test_synthetic_methodology_break_blocks_naive_trend",
+        "test_lab_policy.Lab.test_real_nisr_statement_of_new_series_and_modelled_2016_17_rate"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real",
+        "synthetic"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Lab.test_real_nisr_statement_of_new_series_and_modelled_2016_17_rate",
+        "test_lab_policy.Lab.test_synthetic_methodology_break_blocks_naive_trend"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-17": {
+      "acceptance_tests": [
+        "test_lab_policy.Lab.test_unsupported_small_domains_refused_and_ranks_carry_uncertainty"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Lab.test_unsupported_small_domains_refused_and_ranks_carry_uncertainty"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-18": {
+      "acceptance_tests": [
+        "test_lab_policy.Lab.test_prediction_requires_out_of_time_split_and_blocks_leakage"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_lab_policy.Lab.test_prediction_requires_out_of_time_split_and_blocks_leakage"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-19": {
+      "acceptance_tests": [
+        "test_real_eicv7.CoverageSimulation.test_ci_coverage_close_to_nominal_under_repeated_sampling"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "synthetic"
+      ],
+      "real_evidence_required": false,
+      "reason": "",
+      "tests": [
+        "test_real_eicv7.CoverageSimulation.test_ci_coverage_close_to_nominal_under_repeated_sampling"
+      ],
+      "verdict": "PASS"
+    },
+    "SCI-20": {
+      "acceptance_tests": [
+        "test_real_eicv7.RealEicv7.test_entire_30_district_batch_runs_and_cross_validates"
+      ],
+      "component_verdict": "PASS",
+      "evidence_classes": [
+        "real"
+      ],
+      "real_evidence_required": true,
+      "reason": "",
+      "tests": [
+        "test_real_eicv7.RealEicv7.test_entire_30_district_batch_runs_and_cross_validates"
+      ],
+      "verdict": "PASS"
+    }
+  },
+  "success": false
+}

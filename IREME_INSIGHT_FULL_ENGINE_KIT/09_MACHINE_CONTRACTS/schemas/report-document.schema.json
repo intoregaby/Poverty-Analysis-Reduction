@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ireme.example/spec/report-document",
+  "title": "Report Document",
+  "description": "Canonical immutable AST manifest used by every report renderer.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "report_version",
+    "investigation_id",
+    "fact_snapshot_sha256",
+    "comparison_snapshot_sha256",
+    "policy_version",
+    "status",
+    "audience",
+    "sections",
+    "claim_ids",
+    "warnings",
+    "approval_ids"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "report_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "investigation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fact_snapshot_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "comparison_snapshot_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "restricted_draft",
+        "qa_failed",
+        "awaiting_review",
+        "approved",
+        "published",
+        "superseded",
+        "revoked"
+      ]
+    },
+    "audience": {
+      "type": "string",
+      "enum": [
+        "public",
+        "analyst",
+        "programme",
+        "admin"
+      ]
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "section_id",
+          "claim_ids"
+        ],
+        "properties": {
+          "section_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approval_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approved_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_sensitivity": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

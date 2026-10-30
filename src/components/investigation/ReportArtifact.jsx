@@ -5,6 +5,7 @@ import ReportChart from "./ReportCharts";
 import Md from "./Markdown";
 import { fallbackReport } from "./reportData";
 import { REPORT_VERSION, SECTION_TITLES } from "@/lib/reportTemplate";
+import { exportDecision } from "@/lib/exportPolicy";
 import VerificationSection, { VerificationSummary } from "./VerificationSection";
 import { downloadHtml, downloadMarkdown, downloadPdf, reportToMarkdown } from "./reportExport";
 
@@ -24,7 +25,7 @@ function useReport(ai, result, district) {
   return { report, automated: !current, outdated: Boolean(ai.data?.report) && !current };
 }
 
-function DownloadMenu({ onPdf, onHtml, onMarkdown, onCopy, busy, warning }) {
+function DownloadMenu({ onPdf, onHtml, onMarkdown, onCopy, busy, warning, disabled }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const ref = useRef(null);
@@ -36,10 +37,10 @@ function DownloadMenu({ onPdf, onHtml, onMarkdown, onCopy, busy, warning }) {
   }, [open]);
   const items = [["PDF document", ".pdf", onPdf], ["Web page", ".html", onHtml], ["Markdown", ".md", onMarkdown]];
   return <div className="flex items-center gap-1.5" ref={ref}>
-    <button type="button" onClick={async () => { await onCopy(); setCopied(true); setTimeout(() => setCopied(false), 1500); }} className="inline-flex h-8 items-center gap-1.5 rounded-md border border-hairline bg-white px-2.5 text-[11.5px] font-medium text-ink hover:bg-canvas">{copied ? <Check className="h-3.5 w-3.5 text-[#147D4B]" /> : <Copy className="h-3.5 w-3.5" />}{copied ? "Copied" : "Copy"}</button>
+    <button type="button" disabled={disabled} title={disabled ? warning : undefined} onClick={async () => { await onCopy(); setCopied(true); setTimeout(() => setCopied(false), 1500); }} className="inline-flex h-8 items-center gap-1.5 rounded-md border border-hairline bg-white px-2.5 text-[11.5px] font-medium text-ink hover:bg-canvas disabled:opacity-60">{copied ? <Check className="h-3.5 w-3.5 text-[#147D4B]" /> : <Copy className="h-3.5 w-3.5" />}{copied ? "Copied" : "Copy"}</button>
     <div className="relative">
-      <button type="button" disabled={busy} onClick={() => setOpen((value) => !value)} aria-haspopup="menu" aria-expanded={open} className="inline-flex h-8 items-center gap-1.5 rounded-md bg-brand px-2.5 text-[11.5px] font-medium text-white hover:bg-[#524BE0] disabled:opacity-60">{busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />}Download</button>
-      {open && <div role="menu" className="absolute right-0 top-9 z-20 w-60 overflow-hidden rounded-lg border border-hairline bg-white py-1 shadow-[0_8px_24px_rgba(10,37,64,0.14)]">{warning && <p className="border-b border-hairline bg-red-50 px-3 py-2 text-[11px] leading-snug text-red-800">{warning}</p>}{items.map(([label, ext, action]) => <button key={ext} role="menuitem" type="button" onClick={() => { setOpen(false); action(); }} className="flex w-full items-center justify-between px-3 py-2 text-left text-[12px] text-ink hover:bg-canvas">{label}<span className="text-[10.5px] text-sub">{ext}</span></button>)}</div>}
+      <button type="button" disabled={busy || disabled} title={disabled ? warning : undefined} onClick={() => setOpen((value) => !value)} aria-haspopup="menu" aria-expanded={open} className="inline-flex h-8 items-center gap-1.5 rounded-md bg-brand px-2.5 text-[11.5px] font-medium text-white hover:bg-[#524BE0] disabled:opacity-60">{busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />}Download</button>
+      {open && !disabled && <div role="menu" className="absolute right-0 top-9 z-20 w-60 overflow-hidden rounded-lg border border-hairline bg-white py-1 shadow-[0_8px_24px_rgba(10,37,64,0.14)]">{warning && <p className="border-b border-hairline bg-red-50 px-3 py-2 text-[11px] leading-snug text-red-800">{warning}</p>}{items.map(([label, ext, action]) => <button key={ext} role="menuitem" type="button" onClick={() => { setOpen(false); action(); }} className="flex w-full items-center justify-between px-3 py-2 text-left text-[12px] text-ink hover:bg-canvas">{label}<span className="text-[10.5px] text-sub">{ext}</span></button>)}</div>}
     </div>
   </div>;
 }
@@ -54,10 +55,14 @@ export function ReportPanel({ ai, result, district, onClose }) {
   const note = automated ? "Automated summary built from the verified findings. The AI writer was unavailable." : "Written by AI from verified survey calculations. Check the source before acting.";
   const footer = `${note} Source: NISR EICV7 2023/24. Associations do not establish causes or programme effects.`;
   const file = `${district}-investigation-report`;
+  const decision = exportDecision({ ...report, automated });
+  const watermarkNote = decision.mode === "restricted_draft"
+    ? `${decision.watermark}.${decision.blockers.length ? ` Checks not passed: ${decision.blockers.join(", ")}.` : ""}`
+    : decision.reason;
   const run = (job) => async () => { setExporting(true); setExportError(""); try { await job(); } catch (failure) { setExportError(failure.message || "The download failed."); } finally { setExporting(false); } };
 
   return <SidePanel wide title={report.title} subtitle={automated ? "Automated summary" : `AI report · ${dateLabel(ai.data?.generated_at)}`} icon={FileText} onClose={onClose}
-    actions={<DownloadMenu busy={exporting} onPdf={run(() => downloadPdf(docRef.current, file))} onHtml={run(async () => downloadHtml(docRef.current, report.title, file))} onMarkdown={run(async () => downloadMarkdown(report, { note, footer }, file))} warning={report.verification?.available && report.verification.unresolved ? `${report.verification.unresolved} evidence issue${report.verification.unresolved === 1 ? " is" : "s are"} unresolved. The exported report lists them in section 5.` : ""} onCopy={() => navigator.clipboard?.writeText(reportToMarkdown(report, { note, footer })).catch(() => {})} />}>
+    actions={<DownloadMenu busy={exporting} disabled={decision.mode !== "restricted_draft"} onPdf={run(() => downloadPdf(docRef.current, file, decision))} onHtml={run(async () => downloadHtml(docRef.current, report.title, file, decision))} onMarkdown={run(async () => downloadMarkdown(report, { note, footer, decision }, file))} warning={watermarkNote} onCopy={() => navigator.clipboard?.writeText(reportToMarkdown(report, { note, footer })).catch(() => {})} />}>
     <div className="bg-canvas p-3 sm:p-4">
       {exportError && <p role="alert" className="mb-3 flex items-start gap-2 rounded-md border border-red-200 bg-red-50 p-2.5 text-[11.5px] text-red-700"><AlertCircle className="h-3.5 w-3.5 shrink-0" />{exportError}</p>}
       {outdated && <div role="status" className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-md border border-amber-200 bg-amber-50 p-2.5 text-[11.5px] text-amber-800"><span>This saved report uses the older layout. The new layout is shown from the verified findings.</span><button type="button" onClick={ai.regenerate} className="inline-flex items-center gap-1 font-medium underline"><RefreshCw className="h-3 w-3" />Write a new AI version</button></div>}

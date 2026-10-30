@@ -1,0 +1,37 @@
+{
+  "scope": "Joint contrast claims and raw R reference",
+  "implementation_sha256": "9db255b86f122fde52201e54e06ef9ee6d53d916c47dc01f39701826232c2d41",
+  "engine_test_counts": {
+    "pass": 139,
+    "skip": 5
+  },
+  "engine_tests_executed": 144,
+  "repo_suites": [
+    {
+      "cmd": "npm test",
+      "exit": 0,
+      "seconds": 5.5,
+      "tail": " time, and never invents them (1.185ms)\n\u2714 grid electricity is reported as a methodology mismatch with both published tables named, not as an error (0.9099ms)\n\u2714 the section says what was confirmed, what could not be compared and what is unverified (0.6444ms)\n\u2714 a report from before verification existed claims nothing was checked (2.4852ms)\n\u2714 a failed verification run reads as not run, never as verified (0.6193ms)\n\u2714 an unresolved discrepancy is carried into the summary so it can be flagged before export (2.8688ms)\n\u2714 data sources separate what the figures come from from what was merely available (2.4826ms)\n\u2714 the Markdown export contains the verification table, the correction and the sources (5.4935ms)\n\u2714 dialling shows the main menu in the member's language (6.9754ms)\n\u2714 insurance, visit, agent and voting screens show this member's data, then go back (92.4076ms)\n\u2714 every screen fits the USSD length limit (10.626ms)\n\u2714 a wrong choice keeps the menu; 0 exits and ends the session (1.2998ms)\n\u2714 changing language is saved and applies at once (2.6283ms)\n\u2714 a session that sits idle for too long times out (0.6923ms)\n\u2714 unregistered and blocked numbers get nothing (0.6518ms)\n\u2714 a failing database never throws: it is logged and the caller sees a polite END (0.9452ms)\n\u2714 too many requests in a minute are refused (0.6124ms)\n\u2714 gateway adapters speak their own formats and share the same core (1.7979ms)\n\u2139 tests 100\n\u2139 suites 0\n\u2139 pass 100\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 4267.855\n"
+    },
+    {
+      "cmd": "npm run lint",
+      "exit": 0,
+      "seconds": 20.2,
+      "tail": "\n> poverty-analysis-reduction@0.0.0 lint\n> eslint . --quiet\n\n"
+    },
+    {
+      "cmd": "npm run build",
+      "exit": 0,
+      "seconds": 8.1,
+      "tail": "\n> poverty-analysis-reduction@0.0.0 build\n> vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n\u2713 2928 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                           0.76 kB \u2502 gzip:   0.42 kB\ndist/assets/index-Cw7ZPgqp.css          109.26 kB \u2502 gzip:  23.55 kB\ndist/assets/purify.es-Dqk5qvad.js        29.02 kB \u2502 gzip:  11.45 kB\ndist/assets/index.es-CcQ_TFur.js        151.41 kB \u2502 gzip:  48.90 kB\ndist/assets/html2canvas-DvPXUmDW.js     199.39 kB \u2502 gzip:  46.73 kB\ndist/assets/jspdf.es.min-D953fmhQ.js    399.67 kB \u2502 gzip: 129.90 kB\ndist/assets/index-B8ytCMkt.js         2,166.71 kB \u2502 gzip: 586.27 kB\n\n\u2713 built in 6.09s\n[plugin builtin:vite-reporter] \n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n"
+    }
+  ],
+  "acceptance_counts": {
+    "BLOCKED": 12,
+    "NOT RUN": 6,
+    "PASS": 77
+  },
+  "completion_success": false,
+  "scientific_status": "PENDING_INDEPENDENT_REVIEW",
+  "evidence": "python_r_joint_contrasts.json"
+}

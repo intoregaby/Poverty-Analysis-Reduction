@@ -21,7 +21,10 @@ npm run dev -- --host 127.0.0.1
 
 Checks: `npm test`, `npm run lint`, `npm run build`.
 
-Chart AI needs `GROQ_API_KEY` in `.env.local` (never committed). The district investigation worker needs the NISR microdata in `Data/` (not included) and Python:
+Chart AI needs `GROQ_API_KEY` in `.env.local` (never committed); `.env.example` documents every
+variable, including the `_2`…`_9` suffixes for using several authorized keys per provider (tried in
+order, quota-neutral). The district investigation worker needs the NISR microdata in `Data/` (not
+included) and Python:
 
 ```powershell
 python -m venv .venv

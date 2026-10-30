@@ -1,0 +1,14 @@
+flowchart TD
+  CF["Independently calculated fact with origin hash"] --> MATCH["Semantic registry match"]
+  OF["Official table cell with independent origin hash"] --> MATCH
+  MATCH --> DEFIN{"Same concept, unit, universe, period, geography and method?"}
+  DEFIN -->|No| NC["not_comparable"]
+  DEFIN -->|Unknown| REVIEW["definition_incomplete and human review"]
+  DEFIN -->|Yes| INDEPENDENT{"Independent origin and no copying?"}
+  INDEPENDENT -->|No| FALSE["self_match_rejected"]
+  INDEPENDENT -->|Yes| REFSTATUS{"Reference source current and conflict free?"}
+  REFSTATUS -->|No| CONFLICT["source_conflict"]
+  REFSTATUS -->|Yes| NUM["Precision specific numerical comparison"]
+  NUM --> RESULT{"Within declared tolerance?"}
+  RESULT -->|Yes| GOOD["externally_matched"]
+  RESULT -->|No| BAD["external_mismatch"]

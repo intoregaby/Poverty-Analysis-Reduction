@@ -1,0 +1,624 @@
+{
+  "status": "restricted_draft",
+  "certified_fact_ids": [],
+  "dataset_sha256": "f7279fa071cba2cd3c2f7dfb43bcdf7139431d010c039a0fec75449185f0f755",
+  "code_sha256": "a8761e42065798411a279ba0e610b709a89697723f2d8e06f4b88b0f7b072140",
+  "differences": [
+    {
+      "quantity": "estimates",
+      "geography": "Rwanda",
+      "point_difference": 0.0,
+      "se_difference": -8.673617379884035e-19,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Bugesera",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Burera",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Gakenke",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Gasabo",
+      "point_difference": -1.3877787807814457e-17,
+      "se_difference": -3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Gatsibo",
+      "point_difference": 0.0,
+      "se_difference": -3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Gicumbi",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Gisagara",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Huye",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Kamonyi",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Karongi",
+      "point_difference": 0.0,
+      "se_difference": -6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Kayonza",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Kicukiro",
+      "point_difference": 0.0,
+      "se_difference": -1.734723475976807e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Kirehe",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Muhanga",
+      "point_difference": 0.0,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Musanze",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Ngoma",
+      "point_difference": 0.0,
+      "se_difference": -6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Ngororero",
+      "point_difference": 0.0,
+      "se_difference": -1.0408340855860843e-17,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Nyabihu",
+      "point_difference": -2.7755575615628914e-17,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Nyagatare",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Nyamagabe",
+      "point_difference": 1.1102230246251565e-16,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Nyamasheke",
+      "point_difference": 0.0,
+      "se_difference": -3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Nyanza",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Nyarugenge",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Nyaruguru",
+      "point_difference": 0.0,
+      "se_difference": -3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Rubavu",
+      "point_difference": 0.0,
+      "se_difference": -3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Ruhango",
+      "point_difference": 0.0,
+      "se_difference": 6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Rulindo",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Rusizi",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Rutsiro",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "estimates",
+      "geography": "Rwamagana",
+      "point_difference": 0.0,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "survey-svymean-t-domain-df"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Bugesera",
+      "point_difference": 0.0,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Burera",
+      "point_difference": -2.7755575615628914e-17,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Gakenke",
+      "point_difference": -2.7755575615628914e-17,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Gasabo",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Gatsibo",
+      "point_difference": 0.0,
+      "se_difference": -1.0408340855860843e-17,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Gicumbi",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Gisagara",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Huye",
+      "point_difference": 0.0,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Kamonyi",
+      "point_difference": -5.551115123125783e-17,
+      "se_difference": -6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Karongi",
+      "point_difference": 0.0,
+      "se_difference": -6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Kayonza",
+      "point_difference": 5.551115123125783e-17,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Kicukiro",
+      "point_difference": 0.0,
+      "se_difference": 1.734723475976807e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Kirehe",
+      "point_difference": 2.7755575615628914e-17,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Muhanga",
+      "point_difference": 0.0,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Musanze",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Ngoma",
+      "point_difference": 0.0,
+      "se_difference": -6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Ngororero",
+      "point_difference": 0.0,
+      "se_difference": 6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Nyabihu",
+      "point_difference": 0.0,
+      "se_difference": 6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Nyagatare",
+      "point_difference": 0.0,
+      "se_difference": -3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Nyamagabe",
+      "point_difference": 1.1102230246251565e-16,
+      "se_difference": -6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Nyamasheke",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Nyanza",
+      "point_difference": 0.0,
+      "se_difference": 6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Nyarugenge",
+      "point_difference": 0.0,
+      "se_difference": -1.734723475976807e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Nyaruguru",
+      "point_difference": 0.0,
+      "se_difference": -6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Rubavu",
+      "point_difference": 5.551115123125783e-17,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Ruhango",
+      "point_difference": 0.0,
+      "se_difference": 1.0408340855860843e-17,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Rulindo",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Rusizi",
+      "point_difference": 0.0,
+      "se_difference": -6.938893903907228e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Rutsiro",
+      "point_difference": 0.0,
+      "se_difference": 0.0,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    },
+    {
+      "quantity": "contrasts",
+      "geography": "Rwamagana",
+      "point_difference": -2.7755575615628914e-17,
+      "se_difference": 3.469446951953614e-18,
+      "ci_methods": {
+        "python": "t",
+        "r": "joint-design-delta-t"
+      }
+    }
+  ],
+  "resumed_stages": [
+    "primary",
+    "reference",
+    "reconciliation"
+  ],
+  "permission_evidence": "SYNTHETIC_FIXTURE_NOT_ACTUAL_DATASET_LICENCE"
+}

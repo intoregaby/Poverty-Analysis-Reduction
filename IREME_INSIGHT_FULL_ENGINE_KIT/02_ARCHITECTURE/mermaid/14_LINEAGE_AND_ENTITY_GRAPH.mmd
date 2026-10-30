@@ -1,0 +1,15 @@
+flowchart LR
+  SOURCE["SourceDataset and license"] --> RAW["Raw file hash"]
+  RAW --> FRAME["Analysis frame and join manifest"]
+  FRAME --> EST["Estimator run"]
+  EST --> FACT["CalculatedFact"]
+  FACT --> SCI["ScientificVerdict"]
+  DOC["OfficialDocument hash"] --> TABLE["Table cell with coordinates"]
+  TABLE --> REF["OfficialFact"]
+  SCI --> COMP["ExternalComparison"]
+  REF --> COMP
+  COMP --> CLAIM["TypedClaim"]
+  SCI --> CLAIM
+  CLAIM --> REP["CanonicalReportVersion"]
+  REP --> APPROVAL["Review signatures"]
+  APPROVAL --> ARTI["Published artifacts and checksums"]

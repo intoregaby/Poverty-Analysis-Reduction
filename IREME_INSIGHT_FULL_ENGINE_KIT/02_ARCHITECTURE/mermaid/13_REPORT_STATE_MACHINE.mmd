@@ -1,0 +1,15 @@
+stateDiagram-v2
+  [*] --> draft
+  draft --> restricted_draft: critical check or missing required evidence
+  draft --> qa_failed: invalid calculation or disclosure risk
+  draft --> awaiting_review: automated QA passes
+  restricted_draft --> draft: new version after remediation
+  qa_failed --> draft: new version after correction
+  awaiting_review --> approved: authorized reviewers sign
+  awaiting_review --> restricted_draft: reviewer rejects
+  approved --> published: publication authority confirms
+  approved --> revoked: critical defect detected
+  published --> superseded: new version published
+  published --> revoked: critical defect or legal removal
+  superseded --> [*]
+  revoked --> [*]

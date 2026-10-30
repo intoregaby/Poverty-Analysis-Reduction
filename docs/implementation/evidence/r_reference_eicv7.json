@@ -1,0 +1,360 @@
+{
+  "schema": "ireme-r-reference/1",
+  "dataset_sha256": "f7279fa071cba2cd3c2f7dfb43bcdf7139431d010c039a0fec75449185f0f755",
+  "source_member_sha256": {
+    "Cross_Section/CS_EICV7_poverty_file.dta": "3de4e5579b3681f6422ac4432fd7ca7411759991082e4de418eff031875d23d3",
+    "Cross_Section/CS_S01_S5_S7_Household.dta": "202da2d223594d8ab06dbf9eaf84d00b819e9cc3527c36097f2e87ff7c778270"
+  },
+  "packages": {
+    "survey": "4.5",
+    "haven": "2.5.5",
+    "digest": "0.6.39",
+    "jsonlite": "2.0.0"
+  },
+  "r_version": "R version 4.6.1 (2026-06-24 ucrt)",
+  "estimates": [
+    {
+      "geography": "Rwanda",
+      "point": 0.2737056732799129,
+      "se": 0.004967140457475255,
+      "df": 1614,
+      "ci_lower": 0.2639629507459969,
+      "ci_upper": 0.2834483958138289,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Bugesera",
+      "point": 0.23698645176490346,
+      "se": 0.026259443355730445,
+      "df": 52,
+      "ci_lower": 0.18429302365242858,
+      "ci_upper": 0.2896798798773783,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Burera",
+      "point": 0.22036511576572076,
+      "se": 0.018311094729047808,
+      "df": 52,
+      "ci_lower": 0.18362121603049508,
+      "ci_upper": 0.25710901550094645,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Gakenke",
+      "point": 0.24473967753574655,
+      "se": 0.028944211035034178,
+      "df": 52,
+      "ci_lower": 0.18665886893726397,
+      "ci_upper": 0.3028204861342291,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Gasabo",
+      "point": 0.1105870158361402,
+      "se": 0.018465393123645143,
+      "df": 70,
+      "ci_lower": 0.07375895050689785,
+      "ci_upper": 0.14741508116538254,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Gatsibo",
+      "point": 0.18406204261258938,
+      "se": 0.02631800254072418,
+      "df": 52,
+      "ci_lower": 0.1312511068986398,
+      "ci_upper": 0.23687297832653895,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Gicumbi",
+      "point": 0.1331140616273047,
+      "se": 0.02099069105973295,
+      "df": 52,
+      "ci_lower": 0.09099315847625462,
+      "ci_upper": 0.17523496477835476,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Gisagara",
+      "point": 0.4564426733497465,
+      "se": 0.026881311874575157,
+      "df": 52,
+      "ci_lower": 0.4025013747607634,
+      "ci_upper": 0.5103839719387295,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Huye",
+      "point": 0.24190701339070184,
+      "se": 0.02701125167213431,
+      "df": 52,
+      "ci_lower": 0.18770497152209636,
+      "ci_upper": 0.2961090552593073,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Kamonyi",
+      "point": 0.3969507670450771,
+      "se": 0.033433603956381786,
+      "df": 52,
+      "ci_lower": 0.32986133248430577,
+      "ci_upper": 0.4640402016058484,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Karongi",
+      "point": 0.3818939347027438,
+      "se": 0.03358343566552373,
+      "df": 52,
+      "ci_lower": 0.3145038408215259,
+      "ci_upper": 0.4492840285839617,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Kayonza",
+      "point": 0.3655439676151857,
+      "se": 0.0323110248196993,
+      "df": 52,
+      "ci_lower": 0.3007071528924672,
+      "ci_upper": 0.4303807823379042,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Kicukiro",
+      "point": 0.06925051391175593,
+      "se": 0.01337009075104841,
+      "df": 70,
+      "ci_lower": 0.04258470873011629,
+      "ci_upper": 0.09591631909339557,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Kirehe",
+      "point": 0.14237073445161913,
+      "se": 0.02128490527000083,
+      "df": 52,
+      "ci_lower": 0.09965944729553128,
+      "ci_upper": 0.18508202160770698,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Muhanga",
+      "point": 0.14951667489644227,
+      "se": 0.021870259498815818,
+      "df": 52,
+      "ci_lower": 0.10563078854727348,
+      "ci_upper": 0.19340256124561106,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Musanze",
+      "point": 0.20980727500084795,
+      "se": 0.027026744674018135,
+      "df": 52,
+      "ci_lower": 0.15557414414951148,
+      "ci_upper": 0.2640404058521844,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Ngoma",
+      "point": 0.3089743735055124,
+      "se": 0.025996051822540833,
+      "df": 52,
+      "ci_lower": 0.25680947917159275,
+      "ci_upper": 0.361139267839432,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Ngororero",
+      "point": 0.3024444374128455,
+      "se": 0.026947489535697706,
+      "df": 52,
+      "ci_lower": 0.24837034363160443,
+      "ci_upper": 0.35651853119408655,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Nyabihu",
+      "point": 0.2020690804386453,
+      "se": 0.022502942168414676,
+      "df": 52,
+      "ci_lower": 0.15691362343190807,
+      "ci_upper": 0.24722453744538253,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Nyagatare",
+      "point": 0.3636640511331785,
+      "se": 0.027897853056270218,
+      "df": 52,
+      "ci_lower": 0.3076829134297334,
+      "ci_upper": 0.4196451888366236,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Nyamagabe",
+      "point": 0.5139408818367711,
+      "se": 0.032140169282663195,
+      "df": 52,
+      "ci_lower": 0.4494469138315732,
+      "ci_upper": 0.578434849841969,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Nyamasheke",
+      "point": 0.4280502986544177,
+      "se": 0.025734170492906543,
+      "df": 52,
+      "ci_lower": 0.376410907653914,
+      "ci_upper": 0.47968968965492137,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Nyanza",
+      "point": 0.4327198723363891,
+      "se": 0.02824219359930666,
+      "df": 52,
+      "ci_lower": 0.37604776478240676,
+      "ci_upper": 0.4893919798903714,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Nyarugenge",
+      "point": 0.06799930094970696,
+      "se": 0.01202686646836078,
+      "df": 70,
+      "ci_lower": 0.044012472126891765,
+      "ci_upper": 0.09198612977252216,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Nyaruguru",
+      "point": 0.3969854915694444,
+      "se": 0.025368787609271075,
+      "df": 52,
+      "ci_lower": 0.34607929496501205,
+      "ci_upper": 0.44789168817387676,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Rubavu",
+      "point": 0.38806887932963463,
+      "se": 0.030969092258838888,
+      "df": 52,
+      "ci_lower": 0.32592484929277493,
+      "ci_upper": 0.45021290936649433,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Ruhango",
+      "point": 0.14993299314885092,
+      "se": 0.024379187592341815,
+      "df": 52,
+      "ci_lower": 0.10101257425667867,
+      "ci_upper": 0.19885341204102316,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Rulindo",
+      "point": 0.21637385467650525,
+      "se": 0.020890506686497286,
+      "df": 52,
+      "ci_lower": 0.17445398617792562,
+      "ci_upper": 0.25829372317508487,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Rusizi",
+      "point": 0.4416310614235404,
+      "se": 0.034346451130299556,
+      "df": 52,
+      "ci_lower": 0.3727098649977174,
+      "ci_upper": 0.5105522578493634,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Rutsiro",
+      "point": 0.40777692709802144,
+      "se": 0.029913275270138675,
+      "df": 52,
+      "ci_lower": 0.34775154884826687,
+      "ci_upper": 0.467802305347776,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    },
+    {
+      "geography": "Rwamagana",
+      "point": 0.23832625437421603,
+      "se": 0.02657153946984686,
+      "df": 52,
+      "ci_lower": 0.1850065595914773,
+      "ci_upper": 0.2916459491569548,
+      "ci_method": "survey-svymean-t-domain-df",
+      "unit": "person",
+      "measure": "poverty_headcount"
+    }
+  ],
+  "certification": "PENDING_INDEPENDENT_OWNERSHIP_AND_SCIENTIFIC_REVIEW",
+  "reference_code_sha256": "e1d1f1ecaa0f5696d360f5db9f10a205c7e4e52e51d75b62aa266828057acfdf"
+}

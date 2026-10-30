@@ -1,0 +1,248 @@
+{
+  "status": "DIAGNOSTIC_ONLY_PENDING_INDEPENDENT_REVIEW",
+  "dataset_sha256": "f7279fa071cba2cd3c2f7dfb43bcdf7139431d010c039a0fec75449185f0f755",
+  "r_code_sha256": "d2117790a5d629af2f0be476d4d03e92f2a1ae64129178208fa5ab67cfd2fcb2",
+  "reference_code_utf8": "# Separate raw-data reference calculation using R's survey package.\n# Ownership/definition/tolerance review is mandatory before production certification.\n# Usage: Rscript eicv7_survey.R ARCHIVE.zip OUTPUT.json\nargs <- commandArgs(trailingOnly = TRUE)\nif (length(args) != 2L) stop(\"Expected archive and output paths\")\nfor (pkg in c(\"haven\", \"survey\", \"digest\", \"jsonlite\")) {\n  if (!requireNamespace(pkg, quietly = TRUE)) stop(paste(\"Missing R package\", pkg))\n}\narchive <- normalizePath(args[1], mustWork = TRUE)\nmembers <- c(\"Cross_Section/CS_EICV7_poverty_file.dta\", \"Cross_Section/CS_S01_S5_S7_Household.dta\")\nlisting <- utils::unzip(archive, list = TRUE)$Name\nif (any(vapply(members, function(m) sum(listing == m) != 1L, logical(1)))) {\n  stop(\"Approved archive members must each occur exactly once\")\n}\nwork <- tempfile(\"ireme-r-reference-\")\ndir.create(work)\nrun <- function() {\n  on.exit(unlink(work, recursive = TRUE), add = TRUE)\n  utils::unzip(archive, files = members, exdir = work)\n  poverty <- haven::read_dta(file.path(work, members[1]))\n  housing <- haven::read_dta(file.path(work, members[2]))\n  if (anyDuplicated(poverty$hhid) || anyDuplicated(housing$hhid)) stop(\"Duplicate household identifiers\")\n  required <- c(\"hhid\", \"pop_wt\", \"clust\", \"district\", \"pov_jan\")\n  if (!all(required %in% names(poverty)) || !\"strata_id\" %in% names(housing)) stop(\"Missing design fields\")\n  index <- match(poverty$hhid, housing$hhid)\n  if (anyNA(index)) stop(\"Incomplete household design join\")\n  poverty$stratum <- housing$strata_id[index]\n  if (anyNA(poverty[, required]) || anyNA(poverty$stratum)) stop(\"Missing values in required fields\")\n  if (any(!is.finite(poverty$pop_wt)) || any(poverty$pop_wt <= 0)) stop(\"Invalid person weights\")\n  poverty$district_name <- as.character(haven::as_factor(poverty$district, levels = \"labels\"))\n  classification <- as.character(haven::as_factor(poverty$pov_jan, levels = \"labels\"))\n  if (!all(classification %in% c(\"Poor\", \"Non Poor\"))) stop(\"Unrecognised poverty classification\")\n  poverty$is_poor <- as.numeric(classification == \"Poor\")\n  options(survey.lonely.psu = \"fail\", survey.adjust.domain.lonely = FALSE)\n  design <- survey::svydesign(ids = ~clust, strata = ~stratum, weights = ~pop_wt,\n                              data = poverty, nest = TRUE)\n  geographies <- c(\"Rwanda\", sort(unique(poverty$district_name)))\n  estimates <- lapply(geographies, function(geography) {\n    domain <- if (geography == \"Rwanda\") design else subset(design, district_name == geography)\n    estimate <- survey::svymean(~is_poor, domain, na.rm = FALSE)\n    degrees <- survey::degf(domain)\n    # Method is explicit; no normal CI is silently compared with a t interval.\n    interval <- confint(estimate, level = 0.95, df = degrees)\n    list(geography = geography, point = unname(coef(estimate)[1]),\n         se = unname(survey::SE(estimate)[1]), df = degrees,\n         ci_lower = interval[1, 1], ci_upper = interval[1, 2],\n         ci_method = \"survey-svymean-t-domain-df\", unit = \"person\", measure = \"poverty_headcount\")\n  })\n  contrasts <- lapply(setdiff(geographies, \"Rwanda\"), function(geography) {\n    joint_design <- update(design,\n       domain_indicator = as.numeric(district_name == geography),\n       domain_poor = is_poor * as.numeric(district_name == geography))\n    joint_means <- survey::svymean(~domain_poor + domain_indicator + is_poor, joint_design)\n    contrast <- survey::svycontrast(joint_means, quote(domain_poor / domain_indicator - is_poor))\n    interval <- confint(contrast, level = 0.95, df = survey::degf(design))\n    list(geography = geography, comparator = \"Rwanda\", point = unname(coef(contrast)[1]),\n         se = unname(survey::SE(contrast)[1]), df = survey::degf(design),\n         ci_lower = interval[1, 1], ci_upper = interval[1, 2],\n         ci_method = \"joint-design-delta-t\", unit = \"fraction\")\n  })\n  list(schema = \"ireme-r-reference/1\", dataset_sha256 = digest::digest(file = archive, algo = \"sha256\"),\n       source_member_sha256 = setNames(lapply(members, function(m) digest::digest(file = file.path(work, m), algo = \"sha256\")), members),\n       packages = setNames(lapply(c(\"survey\", \"haven\", \"digest\", \"jsonlite\"), function(p) as.character(utils::packageVersion(p))),\n                           c(\"survey\", \"haven\", \"digest\", \"jsonlite\")),\n       r_version = R.version.string, estimates = estimates, contrasts = contrasts,\n       certification = \"PENDING_INDEPENDENT_OWNERSHIP_AND_SCIENTIFIC_REVIEW\")\n}\nresult <- run()\njsonlite::write_json(result, args[2], auto_unbox = TRUE, digits = 17, pretty = TRUE, na = \"null\")\n",
+  "contrasts": [
+    {
+      "geography": "Bugesera",
+      "python_point": -0.03671922151500945,
+      "r_point": -0.03671922151500945,
+      "python_joint_se": 0.0256163352337515,
+      "r_joint_se": 0.025616335233751498,
+      "wrong_independent_se": 0.026725097748691272
+    },
+    {
+      "geography": "Burera",
+      "python_point": -0.053340557514192144,
+      "r_point": -0.053340557514192116,
+      "python_joint_se": 0.018471753428223752,
+      "r_joint_se": 0.01847175342822375,
+      "wrong_independent_se": 0.018972840443656557
+    },
+    {
+      "geography": "Gakenke",
+      "python_point": -0.028965995744166362,
+      "r_point": -0.028965995744166334,
+      "python_joint_se": 0.028572422456974358,
+      "r_joint_se": 0.028572422456974358,
+      "wrong_independent_se": 0.029367326006377936
+    },
+    {
+      "geography": "Gasabo",
+      "python_point": -0.16311865744377274,
+      "r_point": -0.16311865744377274,
+      "python_joint_se": 0.017869725891907502,
+      "r_joint_se": 0.017869725891907502,
+      "wrong_independent_se": 0.019121799798529654
+    },
+    {
+      "geography": "Gatsibo",
+      "python_point": -0.08964363066732353,
+      "r_point": -0.08964363066732353,
+      "python_joint_se": 0.025704745632649736,
+      "r_joint_se": 0.025704745632649746,
+      "wrong_independent_se": 0.026782638818045018
+    },
+    {
+      "geography": "Gicumbi",
+      "python_point": -0.14059161165260822,
+      "r_point": -0.14059161165260822,
+      "python_joint_se": 0.020839242491085142,
+      "r_joint_se": 0.020839242491085142,
+      "wrong_independent_se": 0.021570387003701168
+    },
+    {
+      "geography": "Gisagara",
+      "python_point": 0.18273700006983357,
+      "r_point": 0.18273700006983357,
+      "python_joint_se": 0.026516016121698866,
+      "r_joint_se": 0.026516016121698866,
+      "wrong_independent_se": 0.02733637526122406
+    },
+    {
+      "geography": "Huye",
+      "python_point": -0.03179865988921107,
+      "r_point": -0.03179865988921107,
+      "python_joint_se": 0.02673177771550952,
+      "r_joint_se": 0.026731777715509518,
+      "wrong_independent_se": 0.027464162124843094
+    },
+    {
+      "geography": "Kamonyi",
+      "python_point": 0.12324509376516418,
+      "r_point": 0.12324509376516424,
+      "python_joint_se": 0.03255833799168442,
+      "r_joint_se": 0.03255833799168443,
+      "wrong_independent_se": 0.03380056741885371
+    },
+    {
+      "geography": "Karongi",
+      "python_point": 0.10818826142283089,
+      "r_point": 0.10818826142283089,
+      "python_joint_se": 0.033013450578087064,
+      "r_joint_se": 0.03301345057808707,
+      "wrong_independent_se": 0.03394877958667525
+    },
+    {
+      "geography": "Kayonza",
+      "python_point": 0.0918382943352728,
+      "r_point": 0.09183829433527274,
+      "python_joint_se": 0.03144019600325631,
+      "r_joint_se": 0.03144019600325631,
+      "wrong_independent_se": 0.032690592059849755
+    },
+    {
+      "geography": "Kicukiro",
+      "python_point": -0.20445515936815697,
+      "r_point": -0.20445515936815697,
+      "python_joint_se": 0.013795323535057148,
+      "r_joint_se": 0.013795323535057146,
+      "wrong_independent_se": 0.014262952394772889
+    },
+    {
+      "geography": "Kirehe",
+      "python_point": -0.13133493882829378,
+      "r_point": -0.1313349388282938,
+      "python_joint_se": 0.021196813766211218,
+      "r_joint_se": 0.021196813766211214,
+      "wrong_independent_se": 0.021856799323716102
+    },
+    {
+      "geography": "Muhanga",
+      "python_point": -0.12418899838347064,
+      "r_point": -0.12418899838347064,
+      "python_joint_se": 0.02187437360468677,
+      "r_joint_se": 0.021874373604686765,
+      "wrong_independent_se": 0.02242723199304433
+    },
+    {
+      "geography": "Musanze",
+      "python_point": -0.06389839827906496,
+      "r_point": -0.06389839827906496,
+      "python_joint_se": 0.026483585394491686,
+      "r_joint_se": 0.026483585394491686,
+      "wrong_independent_se": 0.027479399775083426
+    },
+    {
+      "geography": "Ngoma",
+      "python_point": 0.03526870022559947,
+      "r_point": 0.03526870022559947,
+      "python_joint_se": 0.025676817717921838,
+      "r_joint_se": 0.025676817717921845,
+      "wrong_independent_se": 0.026466340787583684
+    },
+    {
+      "geography": "Ngororero",
+      "python_point": 0.02873876413293258,
+      "r_point": 0.02873876413293258,
+      "python_joint_se": 0.02670460137043129,
+      "r_joint_se": 0.026704601370431284,
+      "wrong_independent_se": 0.02740145391399559
+    },
+    {
+      "geography": "Nyabihu",
+      "python_point": -0.07163659284126764,
+      "r_point": -0.07163659284126764,
+      "python_joint_se": 0.022514771679969934,
+      "r_joint_se": 0.022514771679969927,
+      "wrong_independent_se": 0.023044628236517574
+    },
+    {
+      "geography": "Nyagatare",
+      "python_point": 0.0899583778532656,
+      "r_point": 0.0899583778532656,
+      "python_joint_se": 0.026943024981993614,
+      "r_joint_se": 0.026943024981993618,
+      "wrong_independent_se": 0.02833659629301891
+    },
+    {
+      "geography": "Nyamagabe",
+      "python_point": 0.24023520855685832,
+      "r_point": 0.2402352085568582,
+      "python_joint_se": 0.03163483601082663,
+      "r_joint_se": 0.03163483601082664,
+      "wrong_independent_se": 0.03252173067108413
+    },
+    {
+      "geography": "Nyamasheke",
+      "python_point": 0.15434462537450477,
+      "r_point": 0.15434462537450477,
+      "python_joint_se": 0.025343710789215945,
+      "r_joint_se": 0.025343710789215945,
+      "wrong_independent_se": 0.026209158996088926
+    },
+    {
+      "geography": "Nyanza",
+      "python_point": 0.15901419905647618,
+      "r_point": 0.15901419905647618,
+      "python_joint_se": 0.02791123406884552,
+      "r_joint_se": 0.027911234068845513,
+      "wrong_independent_se": 0.028675668843551067
+    },
+    {
+      "geography": "Nyarugenge",
+      "python_point": -0.20570637233020594,
+      "r_point": -0.20570637233020594,
+      "python_joint_se": 0.012709563417855674,
+      "r_joint_se": 0.012709563417855676,
+      "wrong_independent_se": 0.013012225073832238
+    },
+    {
+      "geography": "Nyaruguru",
+      "python_point": 0.1232798182895315,
+      "r_point": 0.1232798182895315,
+      "python_joint_se": 0.02522331269060087,
+      "r_joint_se": 0.025223312690600876,
+      "wrong_independent_se": 0.025850490693381294
+    },
+    {
+      "geography": "Rubavu",
+      "python_point": 0.11436320604972172,
+      "r_point": 0.11436320604972167,
+      "python_joint_se": 0.030101102884742933,
+      "r_joint_se": 0.03010110288474293,
+      "wrong_independent_se": 0.03136490331024092
+    },
+    {
+      "geography": "Ruhango",
+      "python_point": -0.12377268013106199,
+      "r_point": -0.12377268013106199,
+      "python_joint_se": 0.0242489040352261,
+      "r_joint_se": 0.02424890403522609,
+      "wrong_independent_se": 0.024880057716711205
+    },
+    {
+      "geography": "Rulindo",
+      "python_point": -0.057331818603407664,
+      "r_point": -0.057331818603407664,
+      "python_joint_se": 0.020912296214735848,
+      "r_joint_se": 0.020912296214735848,
+      "wrong_independent_se": 0.021472907440374143
+    },
+    {
+      "geography": "Rusizi",
+      "python_point": 0.1679253881436275,
+      "r_point": 0.1679253881436275,
+      "python_joint_se": 0.03336244984720392,
+      "r_joint_se": 0.03336244984720393,
+      "wrong_independent_se": 0.03470376333440428
+    },
+    {
+      "geography": "Rutsiro",
+      "python_point": 0.13407125381810853,
+      "r_point": 0.13407125381810853,
+      "python_joint_se": 0.02948763702640282,
+      "r_joint_se": 0.02948763702640282,
+      "wrong_independent_se": 0.0303228712643011
+    },
+    {
+      "geography": "Rwamagana",
+      "python_point": -0.035379418905696874,
+      "r_point": -0.03537941890569685,
+      "python_joint_se": 0.02602676060226889,
+      "r_joint_se": 0.026026760602268887,
+      "wrong_independent_se": 0.027031818180098748
+    }
+  ]
+}

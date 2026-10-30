@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ireme.example/spec/official-fact",
+  "title": "Official Fact",
+  "description": "Table-coordinate-backed official reference figure; origin independent of computed fact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "official_fact_id",
+    "source_document_id",
+    "source_sha256",
+    "publisher",
+    "publication_date",
+    "table_location",
+    "indicator_id",
+    "concept",
+    "geography_id",
+    "period",
+    "population",
+    "unit",
+    "point_estimate",
+    "origin_type",
+    "origin_artifact_hash",
+    "extraction_status"
+  ],
+  "properties": {
+    "official_fact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publication_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "table_location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "indicator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "concept": {
+      "type": "string",
+      "minLength": 1
+    },
+    "geography_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period": {
+      "type": "string",
+      "minLength": 1
+    },
+    "population": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "point_estimate": {
+      "type": "number"
+    },
+    "standard_error": {
+      "type": "number"
+    },
+    "ci_lower": {
+      "type": "number"
+    },
+    "ci_upper": {
+      "type": "number"
+    },
+    "origin_type": {
+      "const": "independent_official_document"
+    },
+    "origin_artifact_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extraction_status": {
+      "type": "string",
+      "enum": [
+        "table_verified",
+        "needs_review"
+      ]
+    },
+    "retrieved_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_version": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

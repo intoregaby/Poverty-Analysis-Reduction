@@ -1,0 +1,13 @@
+flowchart TD
+  REG["Allowlisted official source registry"] --> FETCH["HTTPS retrieval with retries"]
+  FETCH --> OK{"Successful, trusted bytes?"}
+  OK -->|Yes| HASH["Content SHA256 and metadata snapshot"]
+  OK -->|No| CACHE["Inspect source cache by document ID and hash"]
+  CACHE --> VALID{"Acceptable verified cached copy?"}
+  VALID -->|Yes| HASH
+  VALID -->|No| FAIL["retrieval_failed with complete diagnostics"]
+  HASH --> PARSE["PDF/XLSX/API extraction and coordinates"]
+  PARSE --> QA["Source table and cell verification"]
+  QA --> FACT["Immutable official reference fact"]
+  FACT --> VERSION["Version, release precedence and conflicts"]
+  VERSION --> REF["Reference set for semantic comparison"]

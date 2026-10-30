@@ -1,0 +1,16 @@
+digraph Gate {
+ graph [rankdir=LR, bgcolor="white", fontname="DejaVu Sans", labelloc=t, label="Report Publication — Zero Tolerance for Known Critical Failures", pad="0.3", nodesep=.35, ranksep=.4];
+ node [shape=box, style="filled,rounded", fillcolor="#f4f7fb", color="#b2c3d3", fontname="DejaVu Sans", fontsize=12, margin="0.13,0.15"];
+ edge [color="#617a8e", arrowsize=.6];
+ facts[label="Independent Science\nConfirmed"];
+ ref[label="Official References\nHonestly Classified"];
+ claim[label="All Claims\nTyped and Bound"];
+ privacy[label="Privacy, Security\nand Licensing Pass"];
+ ast[label="Frozen Canonical\nReport Version"];
+ g[label="Server-Side\nRelease Policy", fillcolor="#fff0c2"];
+ review[label="Qualified Human\nApprovals", fillcolor="#dcf7e7"];
+ pub[label="Immutable Published\nArtifacts", fillcolor="#d6f5e2"];
+ deny[label="Restricted Draft\nwith Error Codes", fillcolor="#ffe0e0"];
+ {rank=same;facts;ref;claim;privacy;ast;}
+ facts->g;ref->g;claim->g;privacy->g;ast->g;g->review[label="pass"];review->pub[label="approve"];g->deny[label="fail",color="#bd5858"];review->deny[label="reject",color="#bd5858"];
+}

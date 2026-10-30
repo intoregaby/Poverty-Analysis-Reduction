@@ -123,6 +123,7 @@ def verify_source(source: dict, cache: Path) -> dict:
         return result
     if source.get("kind") == "worldbank-api":
         return _fetch_world_bank(source, result)
+    previous = {}
     try:
         metadata_file = cache / f"{source['id']}.json"
         previous = json.loads(metadata_file.read_text(encoding="utf-8")) if metadata_file.exists() else {}
@@ -181,33 +182,64 @@ def verify_source(source: dict, cache: Path) -> dict:
         temporary.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         replace_file(temporary, metadata_file)
     except HTTPError as error:
-        if error.code == 304 and previous.get("version") and Path(previous.get("local_cache", "")).is_file():
-            cached = Path(previous["local_cache"])
-            if hashlib.sha256(cached.read_bytes()).hexdigest() == previous["version"]:
-                return {**previous, "retrieved_at": result["retrieved_at"], "update_check": "Not modified (HTTP 304); cached content hash revalidated"}
+        if error.code == 304:
+            verified = _verified_cached_source(previous, source, cache)
+            if verified:
+                return {**verified, "evidence_state": "Cached copy revalidated by HTTP 304",
+                        "update_check": "Not modified (HTTP 304); cached content hash revalidated"}
         result["error"] = f"HTTPError: HTTP {error.code}"
     except (URLError, TimeoutError, ValueError, OSError) as error:
         result["error"] = f"{type(error).__name__}: {error}"
     if result["status"] == "Failed":
         # A failed update never becomes a successful retrieval. Previously verified
         # public documents may still support their original historical period.
+        # The cache manifest exists independently of any completed investigation run.
+        # Inspect it first: a run can fail after acquisition and before writing its register.
+        direct = _verified_cached_source(previous, source, cache)
+        if direct:
+            result["cached_evidence"] = direct
+            result["cache_used"] = True
+            result["limitations"] += " A hash-verified cached document is available for its original data period; a newer version could not be checked."
+            return result
         for register in sorted((cache.parent / "runs").glob("*/02-checking-sources.json"), key=lambda item: item.stat().st_mtime, reverse=True):
             try:
                 old = next((item for item in json.loads(register.read_text(encoding="utf-8"))["sources"]
                             if item.get("url") == url and item.get("status") == "Completed"), None)
-                if not old or not old.get("local_cache") or not old.get("version"):
+                verified = _verified_cached_source(old, source, cache)
+                if not verified:
                     continue
-                file = Path(old["local_cache"]).resolve()
-                if not file.is_relative_to(cache.resolve()) or not file.is_file():
-                    continue
-                if hashlib.sha256(file.read_bytes()).hexdigest() != old["version"]:
-                    continue
-                result["cached_evidence"] = {**old, "evidence_state": "Previously verified copy; latest update check failed"}
+                result["cached_evidence"] = verified
+                result["cache_used"] = True
                 result["limitations"] += " A hash-verified cached document is available for its original data period; a newer version could not be checked."
                 break
             except (OSError, ValueError, KeyError):
                 continue
     return result
+
+
+def _verified_cached_source(candidate: dict | None, source: dict, cache: Path) -> dict | None:
+    """Revalidate historical bytes; never convert the failed live check into a live success."""
+    if not candidate or candidate.get("id") != source["id"] or candidate.get("url") != source["url"]:
+        return None
+    if candidate.get("status") != "Completed" or not candidate.get("version") or not candidate.get("local_cache"):
+        return None
+    if candidate.get("superseded_by") or candidate.get("revoked"):
+        return None
+    try:
+        if candidate.get("expires_at"):
+            expires = datetime.fromisoformat(candidate["expires_at"].replace("Z", "+00:00"))
+            if expires.tzinfo is None or expires <= datetime.now(timezone.utc):
+                return None
+        file = Path(candidate["local_cache"]).resolve()
+        if not file.is_relative_to(cache.resolve()) or not file.is_file():
+            return None
+        content = file.read_bytes()
+        if not content.startswith(b"%PDF") or hashlib.sha256(content).hexdigest() != candidate["version"]:
+            return None
+    except (OSError, ValueError, TypeError):
+        return None
+    return {**candidate, "validated_at": datetime.now(timezone.utc).isoformat(), "cache_used": True,
+            "evidence_state": "Previously verified copy; latest update check failed"}
 
 
 def evidence_source(records: dict, source_id: str) -> dict | None:

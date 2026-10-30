@@ -1,0 +1,18 @@
+flowchart LR
+  USERS["Browser clients"] --> WAF["TLS ingress, WAF and session/auth"]
+  WAF --> API["FastAPI services"]
+  API --> AUTH["OIDC and policy decision service"]
+  API --> TEMP["Durable workflow orchestration"]
+  TEMP --> PY["Python statistical worker pool"]
+  TEMP --> R["Independent R validator pool"]
+  TEMP --> SOURCE["Official document extraction workers"]
+  TEMP --> AI["AI gateway and local model workers"]
+  TEMP --> OUT["Canonical report render workers"]
+  API --> PG["PostgreSQL metadata and approvals"]
+  PY --> OBJ["Encrypted object storage"]
+  R --> OBJ
+  SOURCE --> OBJ
+  OUT --> OBJ
+  AI --> VENDOR["Approved hosted provider APIs"]
+  TEMP --> OBS["Protected tracing, metrics and events"]
+  API --> OBS

@@ -1,0 +1,2 @@
+Markdown documents: 44 Mermaid sources: 14 JSON Schemas: 9 Acceptance planned cases: 95
+PASS: design bundle structure and schema fixtures. No production engine tests were performed.

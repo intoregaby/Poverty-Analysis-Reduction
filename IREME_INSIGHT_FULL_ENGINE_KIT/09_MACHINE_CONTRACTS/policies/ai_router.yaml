@@ -1,0 +1,30 @@
+schema_version: '1.0'
+default_deny: true
+remote_data_policy:
+  allowed_sensitivity: [public, restricted_aggregate]
+  require_explicit_disclosure_clearance: true
+  forbidden: [confidential_microdata, beneficiary_operational, secrets]
+providers:
+  groq:
+    enabled_when_configured: true
+    per_provider_rate_limits: use_current_account_limits
+  nvidia:
+    enabled_when_configured: true
+    data_terms: verify_current_contract
+  ollama_cloud:
+    enabled_when_configured: true
+    base_url: https://ollama.com/v1
+    key_env: OLLAMA_API_KEY
+  ollama_local:
+    enabled_when_configured: true
+    base_url: http://127.0.0.1:11434/v1
+    cloud_proxy_disabled_for_local_only: true
+retry_policy:
+  maximum_total_provider_attempts: 3
+  never_retry_on: [policy_denied, invalid_scientific_fact, claim_causal_violation]
+  retryable: [connection_timeout, transient_502, transient_503, transient_429]
+  respect_retry_after: true
+response:
+  output_mode: typed_claim_proposals_only
+  server_side_schema_validation: true
+  stop_on_unsupported_claim: true

@@ -1,0 +1,14 @@
+{
+  "claim_id": "claim-example-01",
+  "claim_type": "comparison",
+  "fact_ids": [
+    "fact-EXAMPLE-kamonyi-pov",
+    "fact-EXAMPLE-national-pov"
+  ],
+  "relation": "above",
+  "qualification_code": "descriptive_noncausal",
+  "evidence_ids": [
+    "comparison-EXAMPLE-01"
+  ],
+  "section": "executive_summary"
+}

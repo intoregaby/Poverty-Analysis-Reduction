@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ireme.example/spec/calculated-fact",
+  "title": "Calculated Fact",
+  "description": "Immutably calculated statistical fact. Never fill from an official reference number.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fact_id",
+    "indicator_id",
+    "definition_version",
+    "geography_id",
+    "period",
+    "dataset_sha256",
+    "estimator_version",
+    "unit",
+    "point_estimate",
+    "sample_unit",
+    "valid_n",
+    "reliability",
+    "scientific_verdict_id",
+    "origin_type",
+    "origin_artifact_hash"
+  ],
+  "properties": {
+    "fact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "indicator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "definition_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "geography_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dataset_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "estimator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "point_estimate": {
+      "type": "number"
+    },
+    "standard_error": {
+      "type": "number"
+    },
+    "confidence_level": {
+      "type": "number"
+    },
+    "ci_lower": {
+      "type": "number"
+    },
+    "ci_upper": {
+      "type": "number"
+    },
+    "sample_unit": {
+      "type": "string",
+      "enum": [
+        "person",
+        "household",
+        "adult",
+        "programme_record"
+      ]
+    },
+    "valid_n": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "psu_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "strata_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reliability": {
+      "type": "string",
+      "enum": [
+        "reliable",
+        "use_with_caution",
+        "unreliable",
+        "not_estimable"
+      ]
+    },
+    "scientific_verdict_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origin_type": {
+      "const": "computed_microdata"
+    },
+    "origin_artifact_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": [
+        "public",
+        "restricted_aggregate",
+        "confidential_microdata"
+      ]
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

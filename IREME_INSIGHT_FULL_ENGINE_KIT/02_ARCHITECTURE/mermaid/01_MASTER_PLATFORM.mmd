@@ -1,0 +1,51 @@
+flowchart TB
+  HUMAN["Public / Analyst / Admin / Programme Reviewer"]
+  APP["React Portal, National Dashboard and District Workspace"]
+  API["OIDC, ABAC, rate limiting and secure API"]
+  FLOW["Durable Investigation and Approval Orchestrator"]
+  subgraph DATA["Governed data and scientific computing"]
+    SOURCE["EICV, FinScope, authorized programme sources"]
+    CATALOG["Licensed data catalog and semantic contracts"]
+    STORE["Immutable encrypted dataset snapshots"]
+    PRIMARY["Python primary survey estimators"]
+    SECOND["Independent R scientific estimators"]
+    SCIQA["Scientific reconciliation and reliability"]
+    FACTS["Certified calculated fact registry"]
+  end
+  subgraph OFFICIAL["Official reference evidence"]
+    DISC["NISR approved source discovery"]
+    CACHE["Hash verified PDF, XLSX and API retrieval"]
+    EXTRACT["Table and cell level extraction QA"]
+    OFFFACT["Official reference fact registry"]
+    SEM["Semantic comparability and conflict resolution"]
+    COMPARISON["Immutable external comparison verdicts"]
+  end
+  subgraph AI["Controlled AI research"]
+    PLAN["Hypotheses and research planning"]
+    ROUTER["Privacy and capability aware gateway"]
+    PROVIDERS["Groq / NVIDIA / Ollama Cloud / local Ollama"]
+    CLAIM["Typed claim proposals"]
+    COMPILER["Deterministic claim validator and renderer"]
+    POLICY["Intervention and evaluation research"]
+  end
+  subgraph RELEASE["Trust, review and publication"]
+    AST["Frozen canonical report document"]
+    GATE["Server side release quality gate"]
+    REVIEW["Independent analyst approvals"]
+    OUTPUT["Published HTML, PDF, Excel, API and maps"]
+    MONITOR["Monitoring, incidents and new version triggers"]
+  end
+  HUMAN --> APP --> API --> FLOW
+  FLOW --> CATALOG
+  SOURCE --> CATALOG --> STORE
+  STORE --> PRIMARY --> SCIQA
+  STORE --> SECOND --> SCIQA --> FACTS
+  FLOW --> DISC --> CACHE --> EXTRACT --> OFFFACT --> SEM
+  FACTS --> SEM --> COMPARISON
+  FACTS --> PLAN
+  COMPARISON --> PLAN --> ROUTER --> PROVIDERS --> CLAIM --> COMPILER
+  FACTS --> COMPILER
+  COMPARISON --> COMPILER
+  COMPILER --> POLICY --> AST
+  COMPILER --> AST
+  AST --> GATE --> REVIEW --> OUTPUT --> MONITOR

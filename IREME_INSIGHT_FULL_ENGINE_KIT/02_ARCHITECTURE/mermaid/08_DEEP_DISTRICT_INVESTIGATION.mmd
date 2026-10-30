@@ -1,0 +1,15 @@
+flowchart TB
+  S0["S0 Authorization and purpose"] --> S1["S1 Research questions and estimands"]
+  S1 --> S2["S2 Licensed data readiness and joins"]
+  S2 --> S3["S3 Survey estimates and independent validation"]
+  S3 --> S4["S4 External official comparison"]
+  S4 --> S5["S5 District, national and peer comparisons"]
+  S5 --> S6["S6 Competing hypotheses and robustness"]
+  S6 --> IDENT{"Causal identification defensible?"}
+  IDENT -->|Yes| CAUSAL["Registered causal study and sensitivity"]
+  IDENT -->|No| ASSOC["Association only with explicit limitations"]
+  CAUSAL --> S7["S7 Intervention evidence and feasibility"]
+  ASSOC --> S7
+  S7 --> S8["S8 Plans, monitoring indicators and risks"]
+  S8 --> S9["S9 Typed reports, privacy and quality gate"]
+  S9 --> S10["S10 Human review, release and lifecycle monitoring"]

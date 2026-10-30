@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ireme.example/spec/indicator-definition",
+  "title": "Indicator Definition",
+  "description": "Scientific definition of an estimand, required before calculating or comparing figures.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "indicator_id",
+    "definition_version",
+    "concept",
+    "unit",
+    "population",
+    "numerator",
+    "denominator",
+    "survey_wave",
+    "geography_version",
+    "weight_variable",
+    "strata_variable",
+    "psu_variable",
+    "missing_rule",
+    "method_version"
+  ],
+  "properties": {
+    "indicator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "definition_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "concept": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "percent",
+        "fraction",
+        "count",
+        "currency",
+        "index",
+        "years",
+        "days"
+      ]
+    },
+    "population": {
+      "type": "string",
+      "minLength": 1
+    },
+    "numerator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "denominator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "survey_wave": {
+      "type": "string",
+      "minLength": 1
+    },
+    "geography_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "weight_variable": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strata_variable": {
+      "type": "string",
+      "minLength": 1
+    },
+    "psu_variable": {
+      "type": "string",
+      "minLength": 1
+    },
+    "missing_rule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "method_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_dictionary_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

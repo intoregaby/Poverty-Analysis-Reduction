@@ -287,12 +287,13 @@ def modelled_claim(district: str, records: dict, findings: list, audit: list) ->
     info = _source_info(records, "eicv7-poverty")
     audit.append({"at": now(), "step": "retrieve", "indicator_id": "poverty_2016_17_modelled", "detail": "eicv7-poverty annex read"})
     return {"indicator_id": "poverty_2016_17_modelled", "indicator": "Poverty rate in 2016/17, modelled to the EICV7 method", "district": district, "survey_period": "2016/17 (modelled)",
-            "internal_value": row["earlier_modelled"], "published_value": row["earlier_modelled"], "unit": "percent of people", "source_organization": info.get("organization"),
+            "internal_value": None, "published_value": row["earlier_modelled"], "unit": "percent of people", "source_organization": info.get("organization"),
             "source_document": info.get("title"), "source_url": row["url"], "source_page_or_table": "Poverty Profile, annex table of modelled and observed district rates",
-            "verification_status": STATUS_VERIFIED, "status_label": STATUS_LABELS[STATUS_VERIFIED], "methodology_comparable": False,
+            "verification_status": STATUS_UNVERIFIED, "status_label": "Published reference; no independent calculation", "methodology_comparable": False,
             "verification_notes": f"This is a modelled estimate, not an observed one. The engine reproduces NISR's published figure ({row['earlier_modelled']}%); it is copied, not recalculated. Observed EICV5 and EICV7 rates must not be subtracted directly; NISR's published decrease is {row['published_decrease_points']} points and district significance is not established.",
             "retrieved_at": info.get("retrieved_at"), "source_version": (info.get("version") or "")[:12], "published_standard_error": None, "published_interval": None,
-            "estimate_type": "modelled", "difference": 0.0, "internal_definition": "Published modelled value, reproduced.", "published_definition": "Multiple-imputation modelled 2016/17 headcount.", "other_published": []}
+            "estimate_type": "modelled", "difference": None, "internal_definition": "No independent modelled estimate computed.", "published_definition": "Multiple-imputation modelled 2016/17 headcount.", "other_published": [],
+            "origin_type": "independent_official_document", "independent_comparison": False}
 
 
 def original_entries(district: str, analysis: dict, drivers: dict | None) -> list[dict]:

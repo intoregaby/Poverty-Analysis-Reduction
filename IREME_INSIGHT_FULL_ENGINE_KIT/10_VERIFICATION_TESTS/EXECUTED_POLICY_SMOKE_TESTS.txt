@@ -1,0 +1,15 @@
+test_author_cannot_independently_approve (test_reference_policies.ReferencePolicyTest.test_author_cannot_independently_approve) ... ok
+test_failed_privacy_blocks_publication (test_reference_policies.ReferencePolicyTest.test_failed_privacy_blocks_publication) ... ok
+test_fake_self_comparison_is_rejected (test_reference_policies.ReferencePolicyTest.test_fake_self_comparison_is_rejected) ... ok
+test_mismatched_meaning_is_rejected (test_reference_policies.ReferencePolicyTest.test_mismatched_meaning_is_rejected) ... ok
+test_release_without_reviewer_is_rejected (test_reference_policies.ReferencePolicyTest.test_release_without_reviewer_is_rejected) ... ok
+test_typed_claim_shape_allowed (test_reference_policies.ReferencePolicyTest.test_typed_claim_shape_allowed) ... ok
+test_unbound_numeric_prose_is_rejected (test_reference_policies.ReferencePolicyTest.test_unbound_numeric_prose_is_rejected) ... ok
+test_unverified_extraction_is_rejected (test_reference_policies.ReferencePolicyTest.test_unverified_extraction_is_rejected) ... ok
+test_valid_independent_comparison (test_reference_policies.ReferencePolicyTest.test_valid_independent_comparison) ... ok
+test_wrong_number_is_rejected (test_reference_policies.ReferencePolicyTest.test_wrong_number_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.000s
+
+OK

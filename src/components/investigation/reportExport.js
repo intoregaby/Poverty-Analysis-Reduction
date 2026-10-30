@@ -1,5 +1,6 @@
 import { SECTION_TITLES } from "../../lib/reportTemplate.js";
 import { choosePageCuts } from "../../lib/pdfPagination.js";
+import { exportBanner, requireExportable } from "../../lib/exportPolicy.js";
 
 const slug = (value) => String(value || "report").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -63,20 +64,31 @@ export function reportToMarkdown(report, meta = {}) {
 }
 
 export function downloadMarkdown(report, meta, name) {
-  save(new Blob([reportToMarkdown(report, meta)], { type: "text/markdown;charset=utf-8" }), `${slug(name)}.md`);
+  requireExportable(meta?.decision);
+  const body = reportToMarkdown(report, meta);
+  const banner = exportBanner(meta.decision);
+  save(new Blob([`${banner}\n\n${body}`], { type: "text/markdown;charset=utf-8" }), `${slug(name)}.md`);
 }
 
 // Self-contained page: the rendered document plus the stylesheets currently applied to it.
-export function downloadHtml(element, title, name) {
+export function downloadHtml(element, title, name, decision) {
+  requireExportable(decision);
   const css = [...document.styleSheets].map((sheet) => { try { return [...sheet.cssRules].map((rule) => rule.cssText).join("\n"); } catch { return ""; } }).join("\n");
   const clone = element.cloneNode(true);
   clone.querySelectorAll("[data-export-hide]").forEach((node) => node.remove());
+  const banner = document.createElement("div");
+  banner.setAttribute("data-export-status", decision.mode);
+  banner.setAttribute("style", "margin:0;padding:12px 16px;background:#FFF4E5;border-bottom:2px solid #B54708;color:#7A2E0E;font:600 12px/1.5 Inter,ui-sans-serif,system-ui,sans-serif");
+  banner.textContent = `${decision.watermark}. Analyst draft produced without a server-side release decision; do not publish or cite as official.`
+    + (decision.blockers.length ? ` Checks not passed: ${decision.blockers.join(", ")}.` : "");
+  clone.prepend(banner);
   const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title.replace(/[<&]/g, "")}</title><style>${css}</style><style>body{margin:0;background:#F7F9FC;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#0A2540}.report-shell{max-width:760px;margin:32px auto;background:#fff;border:1px solid #E3E8EE;border-radius:12px}</style></head><body><div class="report-shell">${clone.outerHTML}</div></body></html>`;
   save(new Blob([html], { type: "text/html;charset=utf-8" }), `${slug(name)}.html`);
 }
 
 // Each block is rendered on its own so charts and paragraphs are never cut in half across pages.
-export async function downloadPdf(element, name) {
+export async function downloadPdf(element, name, decision) {
+  requireExportable(decision);
   const [{ default: html2canvas }, { jsPDF }] = await Promise.all([import("html2canvas"), import("jspdf")]);
   const pdf = new jsPDF({ unit: "pt", format: "a4" });
   const pageW = pdf.internal.pageSize.getWidth();
@@ -125,8 +137,14 @@ export async function downloadPdf(element, name) {
     });
   }
   const total = pdf.getNumberOfPages();
+  pdf.setProperties({ title: `${name} (${decision.watermark})`, subject: decision.watermark,
+    creator: "Ireme Insight legacy browser export", keywords: decision.blockers.join(",") });
   for (let page = 1; page <= total; page += 1) {
     pdf.setPage(page);
+    pdf.setFontSize(7);
+    pdf.setTextColor(180, 71, 8);
+    pdf.text(decision.watermark, margin, 18);
+    if (decision.blockers.length) pdf.text(`Checks not passed: ${decision.blockers.join(", ")}`, margin, 27);
     pdf.setFontSize(8);
     pdf.setTextColor(105, 115, 134);
     pdf.text(`Page ${page} of ${total}`, pageW - margin, pageH - 16, { align: "right" });

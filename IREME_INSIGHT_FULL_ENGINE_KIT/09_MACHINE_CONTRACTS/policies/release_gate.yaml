@@ -1,0 +1,28 @@
+schema_version: '1.0'
+default: deny_publication
+required:
+  - dataset_license_permits_purpose
+  - complete_indicator_definitions
+  - independent_statistical_validation
+  - required_precision_and_reliability_or_explicit_unestimable_reason
+  - accurate_official_comparison_statuses
+  - self_match_prohibition
+  - fully_bound_claims
+  - causal_claim_study_approval
+  - citation_lineage_integrity
+  - privacy_and_disclosure_clearance
+  - report_ast_frozen
+  - cross_format_consistency
+  - non_conflicted_required_evidence
+  - authorized_reviewer_signatures
+allow_restricted_draft_when:
+  - missing_external_reference
+  - research_inconclusive
+  - temporary_source_outage
+never_allow_publication_when:
+  - independent_estimator_disagreement
+  - self_match_detected
+  - fabricated_or_unbound_number
+  - privacy_violation
+  - malformed_or_tampered_provenance
+  - missing_critical_review

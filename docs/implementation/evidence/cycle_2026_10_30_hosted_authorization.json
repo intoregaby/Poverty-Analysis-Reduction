@@ -1,0 +1,69 @@
+{
+  "git_head": "18d455f87f6086f8cfbb0775a76f816b7b979a20",
+  "implementation_sha256": "ddf0057a6c01380dba0426847a2b3539adcaaa10d05119887422cfe0ed980573",
+  "engine_tests_executed": 168,
+  "scenario_verdicts": {
+    "BLOCKED": 13,
+    "COMPONENT_ONLY": 75,
+    "NOT RUN": 5,
+    "PASS": 2
+  },
+  "failures": [
+    "live provider evidence skipped (--offline)",
+    "93/95 acceptance scenarios not PASS",
+    "audit defect W2 unresolved (regression PRIV-04)",
+    "audit defect W3 unresolved (regression AI-01)",
+    "audit defect W4 unresolved (regression AI-02)",
+    "audit defect W6 unresolved (regression SCI-09)",
+    "audit defect W7 unresolved (regression EVD-06)",
+    "audit defect W8 unresolved (regression SCI-05)",
+    "audit defect W9 unresolved (regression AI-12)",
+    "audit defect W10 unresolved (regression AI-18)",
+    "audit defect W11 unresolved (regression EVD-13)",
+    "audit defect W12 unresolved (regression AI-08)",
+    "audit defect W13 unresolved (regression OPS-13)",
+    "audit defect W14 unresolved (regression OPS-15)",
+    "audit defect W15 unresolved (regression PRIV-07)",
+    "audit defect W16 unresolved (regression OPS-10)",
+    "audit defect W17 unresolved (regression OPS-01)",
+    "workstream EP-01 integration not verified",
+    "workstream EP-02 integration not verified",
+    "workstream EP-03 integration not verified",
+    "workstream EP-04 integration not verified",
+    "workstream EP-05 integration not verified",
+    "workstream EP-06 integration not verified",
+    "workstream EP-07 integration not verified",
+    "workstream EP-08 integration not verified",
+    "workstream EP-09 integration not verified",
+    "workstream EP-10 integration not verified",
+    "workstream EP-11 integration not verified",
+    "workstream EP-12 integration not verified",
+    "workstream EP-13 integration not verified",
+    "workstream EP-14 integration not verified",
+    "workstream EP-15 integration not verified",
+    "workstream EP-16 integration not verified",
+    "open blockers: BLK-R, BLK-PROVIDERS, BLK-NISR, BLK-APPROVALS, BLK-INFRA",
+    "required human approvals missing or not bound to the current evidence digest"
+  ],
+  "success": false,
+  "engine_test_counts": {
+    "pass": 163,
+    "skip": 5
+  },
+  "repo_suites": [
+    {
+      "cmd": "npm test",
+      "exit": 0
+    },
+    {
+      "cmd": "npm run lint",
+      "exit": 0
+    },
+    {
+      "cmd": "npm run build",
+      "exit": 0
+    }
+  ],
+  "hosted_evidence": "supabase_authorization_cycle_2026_10_30.json",
+  "completion_exit": 1
+}

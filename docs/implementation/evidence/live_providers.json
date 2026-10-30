@@ -1,0 +1,45 @@
+{
+ "failover": {
+  "attempts": [
+   {
+    "detail": "HTTP 404: {\"error\":{\"message\":\"The model `no-such-model-ireme-probe` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}\n",
+    "outcome": "fatal:http_404",
+    "provider": "groq"
+   },
+   {
+    "outcome": "ok",
+    "provider": "groq#2"
+   }
+  ]
+ },
+ "groq_json_schema_probe": {
+  "model": "openai/gpt-oss-120b",
+  "ok": true
+ },
+ "invalid_key_failover": {
+  "attempts": [
+   {
+    "detail": "HTTP 401: {\"error\":{\"message\":\"Invalid API Key\",\"type\":\"invalid_request_error\",\"code\":\"invalid_api_key\"}}\n",
+    "outcome": "fatal:http_401",
+    "provider": "groq"
+   },
+   {
+    "outcome": "ok",
+    "provider": "groq#2"
+   }
+  ]
+ },
+ "local_only": {
+  "unavailable": [
+   {
+    "detail": "model list unreachable",
+    "outcome": "connection_timeout",
+    "provider": "ollama_local"
+   }
+  ]
+ },
+ "nvidia_json_schema_probe": {
+  "model": "openai/gpt-oss-20b",
+  "ok": true
+ }
+}

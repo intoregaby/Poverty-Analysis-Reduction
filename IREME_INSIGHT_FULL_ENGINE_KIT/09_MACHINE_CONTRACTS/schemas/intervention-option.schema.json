@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ireme.example/spec/intervention-option",
+  "title": "Intervention Option",
+  "description": "Research recommendation, not an automated grant or payment authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "option_id",
+    "district_id",
+    "problem_fact_ids",
+    "intervention_name",
+    "evidence_grade",
+    "causal_status",
+    "cost_status",
+    "equity_risks",
+    "implementation_owner",
+    "monitoring_plan_id",
+    "decision"
+  ],
+  "properties": {
+    "option_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "district_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "problem_fact_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "intervention_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_grade": {
+      "type": "string",
+      "enum": [
+        "strong",
+        "moderate",
+        "limited",
+        "unknown"
+      ]
+    },
+    "causal_status": {
+      "type": "string",
+      "enum": [
+        "identified",
+        "association_only",
+        "not_established"
+      ]
+    },
+    "cost_status": {
+      "type": "string",
+      "enum": [
+        "validated",
+        "estimated",
+        "unknown"
+      ]
+    },
+    "equity_risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "implementation_owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "monitoring_plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "investigate_more",
+        "audit_programme_delivery",
+        "pilot_and_evaluate",
+        "consider_scale",
+        "do_not_recommend"
+      ]
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

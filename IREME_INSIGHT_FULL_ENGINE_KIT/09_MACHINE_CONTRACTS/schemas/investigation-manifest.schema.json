@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ireme.example/spec/investigation-manifest",
+  "title": "Investigation Manifest",
+  "description": "Run lineage and durable stage states, never plain success without evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "investigation_id",
+    "district_id",
+    "purpose",
+    "created_at",
+    "data_snapshot_sha256",
+    "indicator_registry_sha256",
+    "code_commit",
+    "workflow_version",
+    "stages",
+    "status"
+  ],
+  "properties": {
+    "investigation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "district_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_snapshot_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "indicator_registry_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "code_commit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "workflow_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "stage_id",
+          "status",
+          "input_sha256"
+        ],
+        "properties": {
+          "stage_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string"
+          },
+          "input_sha256": {
+            "type": "string",
+            "minLength": 1
+          },
+          "output_sha256": {
+            "type": "string",
+            "minLength": 1
+          },
+          "error_code": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string"
+    },
+    "random_seed": {
+      "type": "integer"
+    },
+    "source_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "prompt_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_versions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "science_environment_sha256": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

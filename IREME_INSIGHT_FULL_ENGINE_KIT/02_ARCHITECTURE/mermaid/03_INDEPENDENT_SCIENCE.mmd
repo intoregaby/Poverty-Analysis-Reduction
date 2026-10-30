@@ -1,0 +1,12 @@
+flowchart LR
+  RAW["Immutable raw survey snapshot"] --> CONTRACT["Approved estimand and survey design contract"]
+  CONTRACT --> P["Python implementation maintained by primary team"]
+  CONTRACT --> R["Separate R survey implementation maintained by independent team"]
+  P --> PE["Primary point estimate and design SE"]
+  R --> RE["Reference point estimate and design SE"]
+  PE --> TEST["Registered tolerance reconciliation"]
+  RE --> TEST
+  TEST --> DEC{"Agreement and completeness?"}
+  DEC -->|Yes| FACT["Versioned scientifically validated fact"]
+  DEC -->|No| BLOCK["Statistical review and restricted draft"]
+  TEST --> BENCH["Coverage and reproducibility benchmark log"]

@@ -1,0 +1,53 @@
+sequenceDiagram
+  autonumber
+  actor Analyst
+  participant UI as React UI
+  participant API as Secure API
+  participant W as Durable Workflow
+  participant D as Data Catalog
+  participant PY as Primary Python
+  participant R as Independent R
+  participant S as Scientific QA
+  participant E as Official Evidence
+  participant AI as AI Gateway
+  participant C as Claim Compiler
+  participant G as Release Gate
+  participant H as Human Reviewer
+  Analyst->>UI: define district and investigation question
+  UI->>API: POST investigation with idempotency key
+  API->>W: authorize and start versioned run
+  W->>D: pin licensed data and indicator contract
+  par independent science
+    W->>PY: compute estimates and SE
+    PY-->>S: computed inputs and results
+  and reference science
+    W->>R: independently compute estimates and SE
+    R-->>S: independent results and provenance
+  end
+  S->>S: reconcile with registered tolerances
+  alt scientific failure
+    S-->>W: scientific validation failed
+    W-->>UI: restricted draft with defect
+  else science validated
+    W->>E: independently fetch and compare official facts
+    alt source unavailable
+      E-->>W: retrieval failed or hash verified cache result
+    else source available
+      E-->>W: comparable verified references or conflicts
+    end
+    W->>AI: provide suppression checked aggregate evidence
+    AI-->>W: typed claim proposals and hypotheses
+    W->>C: validate claim IDs and deterministic rendering
+    C-->>G: frozen report version and checks
+    alt failed gate
+      G-->>UI: restricted draft with reasons
+    else eligible for review
+      G->>H: request authorized review
+      alt approved
+        H->>G: signed approval
+        G-->>UI: approved version and authorized exports
+      else rejected
+        H-->>UI: review required and evidence gaps
+      end
+    end
+  end

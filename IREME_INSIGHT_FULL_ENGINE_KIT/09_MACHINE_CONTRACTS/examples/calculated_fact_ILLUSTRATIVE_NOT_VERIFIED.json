@@ -1,0 +1,25 @@
+{
+  "fact_id": "fact-EXAMPLE-kamonyi-pov",
+  "indicator_id": "pov_rate_person",
+  "definition_version": "eicv7-2023-24-v1",
+  "geography_id": "Kamonyi",
+  "period": "2023/24",
+  "dataset_sha256": "EXAMPLE-not-a-real-hash",
+  "estimator_version": "python-estimator-proposed-v1",
+  "unit": "percent",
+  "point_estimate": 39.7,
+  "standard_error": 3.34,
+  "confidence_level": 0.95,
+  "ci_lower": 33.0,
+  "ci_upper": 46.4,
+  "sample_unit": "person",
+  "valid_n": 484,
+  "reliability": "use_with_caution",
+  "scientific_verdict_id": "verdict-EXAMPLE",
+  "origin_type": "computed_microdata",
+  "origin_artifact_hash": "EXAMPLE-computed-hash",
+  "sensitivity": "restricted_aggregate",
+  "warnings": [
+    "ILLUSTRATIVE ONLY: numbers are placeholders from prior audit, not validated scientific records; valid_n deliberately needs person/household correction."
+  ]
+}

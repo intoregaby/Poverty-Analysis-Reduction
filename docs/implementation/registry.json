@@ -1,0 +1,2291 @@
+{
+  "schema": "ireme-implementation-registry/1",
+  "scenario_count_required": 95,
+  "workstream_dependency_order": [
+    "EP-01",
+    "EP-02",
+    "EP-03",
+    "EP-04",
+    "EP-05",
+    "EP-06",
+    "EP-07",
+    "EP-08",
+    "EP-09",
+    "EP-10",
+    "EP-11",
+    "EP-12",
+    "EP-13",
+    "EP-14",
+    "EP-15",
+    "EP-16"
+  ],
+  "requirements": [
+    {
+      "id": "EP-01",
+      "kind": "workstream",
+      "title": "Current code mapping, audit baseline, test harness",
+      "depends_on": [],
+      "owner_role": "Architect",
+      "notes": ""
+    },
+    {
+      "id": "EP-02",
+      "kind": "workstream",
+      "title": "Semantic indicator registry, dataset licensing, immutable catalog",
+      "depends_on": [
+        "EP-01"
+      ],
+      "owner_role": "Data steward",
+      "notes": ""
+    },
+    {
+      "id": "EP-03",
+      "kind": "workstream",
+      "title": "Primary survey estimation hardening",
+      "depends_on": [
+        "EP-02"
+      ],
+      "owner_role": "Survey statistician",
+      "notes": ""
+    },
+    {
+      "id": "EP-04",
+      "kind": "workstream",
+      "title": "Independent scientific reference (R/second code path)",
+      "depends_on": [
+        "EP-02"
+      ],
+      "owner_role": "Independent statistics lead",
+      "notes": ""
+    },
+    {
+      "id": "EP-05",
+      "kind": "workstream",
+      "title": "Official reference acquisition and verified cache",
+      "depends_on": [
+        "EP-01"
+      ],
+      "owner_role": "Evidence engineer",
+      "notes": ""
+    },
+    {
+      "id": "EP-06",
+      "kind": "workstream",
+      "title": "Structured XLSX/PDF extraction, semantics, conflict",
+      "depends_on": [
+        "EP-02",
+        "EP-05"
+      ],
+      "owner_role": "Evidence steward",
+      "notes": ""
+    },
+    {
+      "id": "EP-07",
+      "kind": "workstream",
+      "title": "Typed claim and deterministic renderer",
+      "depends_on": [
+        "EP-03",
+        "EP-04"
+      ],
+      "owner_role": "AI/data quality engineer",
+      "notes": ""
+    },
+    {
+      "id": "EP-08",
+      "kind": "workstream",
+      "title": "Backend release policy and approvals",
+      "depends_on": [
+        "EP-04",
+        "EP-06",
+        "EP-07"
+      ],
+      "owner_role": "Governance engineer",
+      "notes": ""
+    },
+    {
+      "id": "EP-09",
+      "kind": "workstream",
+      "title": "Multi-provider AI gateway with Ollama",
+      "depends_on": [
+        "EP-07"
+      ],
+      "owner_role": "AI engineer",
+      "notes": "Unified gateway exercised against live Groq/NVIDIA endpoints and a local Ollama daemon: structured-output capability probe, real-404 provider failover, real-401 credential failover to the second configured key, local-only routing with every cloud key present, and secret redaction. 11 configured credentials verified live (evidence: evidence/provider_credentials.json, evidence/live_providers.json). Live tests skip and the workstream stays unverified where credentials or the local daemon are absent.",
+      "status": "verified",
+      "integration_tests": [
+        "test_live_providers.Live.test_live_capability_probe_for_structured_output_each_provider",
+        "test_live_providers.Live.test_live_unavailable_primary_model_fails_over_to_real_second_provider",
+        "test_live_providers.Live.test_live_rejected_key_fails_over_to_the_configured_second_key",
+        "test_live_providers.Live.test_live_local_only_never_calls_a_remote_provider",
+        "test_live_providers.Live.test_live_error_paths_do_not_echo_keys",
+        "test_gateway.MultiKeyCredentials.test_quota_on_first_key_fails_over_to_the_second_key",
+        "test_gateway.MultiKeyCredentials.test_secrets_are_redacted_even_without_key_expansion"
+      ]
+    },
+    {
+      "id": "EP-10",
+      "kind": "workstream",
+      "title": "Research agent planner and hypothesis registry",
+      "depends_on": [
+        "EP-04",
+        "EP-06",
+        "EP-09"
+      ],
+      "owner_role": "Research engineer",
+      "notes": "Bounded roles with read-only tool allowlists, step/token/time/cost/repair budgets, typed hypothesis/claim proposals, injection quarantine and durable hashed audit implemented in engine/ireme/agents.py. Live models and human promotion pending."
+    },
+    {
+      "id": "EP-11",
+      "kind": "workstream",
+      "title": "Decomposition, causal, predictive and spatial lab",
+      "depends_on": [
+        "EP-03",
+        "EP-04"
+      ],
+      "owner_role": "Scientific team",
+      "notes": ""
+    },
+    {
+      "id": "EP-12",
+      "kind": "workstream",
+      "title": "Intervention research/evaluation and programme boundary",
+      "depends_on": [
+        "EP-10",
+        "EP-11"
+      ],
+      "owner_role": "Policy research lead",
+      "notes": "Evidence grading, cost provenance, equity/exclusion, preregistration, abstention and dissemination control exist in engine/ireme/policy.py. MonitoringPlan now requires sourced baselines, comparison strategy, evaluation date and success criteria before consider_scale."
+    },
+    {
+      "id": "EP-13",
+      "kind": "workstream",
+      "title": "Production secure API, durable workflow, data store",
+      "depends_on": [
+        "EP-01",
+        "EP-02"
+      ],
+      "owner_role": "Platform team",
+      "notes": ""
+    },
+    {
+      "id": "EP-14",
+      "kind": "workstream",
+      "title": "One report AST + PDF/HTML/XLSX exports",
+      "depends_on": [
+        "EP-07",
+        "EP-08"
+      ],
+      "owner_role": "Reporting lead",
+      "notes": ""
+    },
+    {
+      "id": "EP-15",
+      "kind": "workstream",
+      "title": "Privacy, security, observability, incident recovery",
+      "depends_on": [
+        "EP-13",
+        "EP-14"
+      ],
+      "owner_role": "Security/SRE",
+      "notes": ""
+    },
+    {
+      "id": "EP-16",
+      "kind": "workstream",
+      "title": "All-district / national acceptance and continuous validation",
+      "depends_on": [
+        "EP-03",
+        "EP-04",
+        "EP-05",
+        "EP-06",
+        "EP-07",
+        "EP-08",
+        "EP-09",
+        "EP-10",
+        "EP-11",
+        "EP-12",
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "owner_role": "QA and scientific leads",
+      "notes": ""
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SCI-01",
+      "domain": "SCI",
+      "name": "Weighted poverty headcount",
+      "fixture": "tiny hand-computed person weights",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_weighted_headcount_hand_computed"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-02",
+      "domain": "SCI",
+      "name": "Household/person universe isolation",
+      "fixture": "484 household rows vs individuals claim",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_household_rows_cannot_answer_person_claim"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-03",
+      "domain": "SCI",
+      "name": "Missing or zero weights",
+      "fixture": "zero, negative and null weights",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_bad_weights_rejected_and_zero_weights_counted"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-04",
+      "domain": "SCI",
+      "name": "Complex survey variance",
+      "fixture": "strata, PSU, Taylor reference sample",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_real_eicv7.RealEicv7.test_real_design_has_no_singleton_strata_and_expected_structure",
+        "test_survey.SurveyTests.test_taylor_variance_hand_derived",
+        "test_survey.SurveyTests.test_taylor_vs_jackknife_on_simulated_design",
+        "test_survey.SurveyTests.test_fpc_reduces_variance"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-05",
+      "domain": "SCI",
+      "name": "Singleton strata",
+      "fixture": "single PSU in design stratum",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_singleton_strata_explicit_policy"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-06",
+      "domain": "SCI",
+      "name": "District-national covariance",
+      "fixture": "district is contained in national",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_district_vs_national_covariance"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-07",
+      "domain": "SCI",
+      "name": "Confidence interval method",
+      "fixture": "normal vs t and design degrees of freedom",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_ci_uses_t_with_design_df_and_logit_stays_in_bounds"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-08",
+      "domain": "SCI",
+      "name": "National gate independence",
+      "fixture": "hard-coded 27.4 used as alleged second estimator",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_gate_rejects_hard_coded_constant_and_shared_code_path"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-09",
+      "domain": "SCI",
+      "name": "Independent R code path",
+      "fixture": "verify R computation shares no primary code",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_r_reference.RReference.test_r_raw_archive_path_calculates_national_and_district_se"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "SCI-10",
+      "domain": "SCI",
+      "name": "Reference estimator mismatch",
+      "fixture": "inject SE drift beyond approved tolerance",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_r_reference.RReference.test_real_r_vs_python_agreement_within_registered_tolerance",
+        "test_survey.SurveyTests.test_reference_mismatch_blocks",
+        "test_survey.SurveyTests.test_production_tolerances_unapproved_blocks"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "SCI-11",
+      "domain": "SCI",
+      "name": "Published standard error corroboration",
+      "fixture": "NISR interval available but current parser misses",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_real_eicv7.RealEicv7.test_published_standard_errors_corroborated_for_all_domains"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "SCI-12",
+      "domain": "SCI",
+      "name": "Domain sample sufficiency",
+      "fixture": "small subgroup n and PSU",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_domain_sample_sufficiency"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-13",
+      "domain": "SCI",
+      "name": "Poverty FGT1/2",
+      "fixture": "known tiny welfare fixture",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_fgt1_fgt2_hand_computed"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-14",
+      "domain": "SCI",
+      "name": "Decomposition ref-group sensitivity",
+      "fixture": "alternative reference group estimates",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Lab.test_decomposition_identity_and_reference_sensitivity"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-15",
+      "domain": "SCI",
+      "name": "Bootstrap reproducibility",
+      "fixture": "same seed and same dataset/code",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_survey.SurveyTests.test_bootstrap_reproducible_with_fixed_seed"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-16",
+      "domain": "SCI",
+      "name": "Historical poverty wave compatibility",
+      "fixture": "observed EICV5 vs modelled EICV7 method",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Lab.test_synthetic_methodology_break_blocks_naive_trend",
+        "test_lab_policy.Lab.test_real_nisr_statement_of_new_series_and_modelled_2016_17_rate"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "SCI-17",
+      "domain": "SCI",
+      "name": "Spatial sampling precision",
+      "fixture": "attempt sector-level map from insufficient district survey",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Lab.test_unsupported_small_domains_refused_and_ranks_carry_uncertainty"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-18",
+      "domain": "SCI",
+      "name": "Prediction temporal holdout",
+      "fixture": "future leakage and out-of-time test",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Lab.test_prediction_requires_out_of_time_split_and_blocks_leakage"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-19",
+      "domain": "SCI",
+      "name": "Coverage simulation",
+      "fixture": "repeated design sampling CI coverage",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_real_eicv7.CoverageSimulation.test_ci_coverage_close_to_nominal_under_repeated_sampling"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "SCI-20",
+      "domain": "SCI",
+      "name": "Entire district batch",
+      "fixture": "all 30 district + national real-data estimates",
+      "expected": "Exact estimand / uncertainty documented; independent validation or block",
+      "tier": "integration",
+      "workstreams": [
+        "EP-03",
+        "EP-04",
+        "EP-11"
+      ],
+      "acceptance_tests": [
+        "test_real_eicv7.RealEicv7.test_entire_30_district_batch_runs_and_cross_validates"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "EVD-01",
+      "domain": "EVD",
+      "name": "External source and computed origins separate",
+      "fixture": "same official cell copied both sides",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_legacy_verification_integration.OfficialOriginIntegration.test_modelled_reference_is_never_counted_as_independent_match",
+        "test_trust.EvidenceOrigin.test_self_comparison_is_rejected_and_never_counts_as_match",
+        "test_trust.EvidenceOrigin.test_independent_official_fact_matches_only_when_everything_agrees",
+        "test_trust.EvidenceOrigin.test_numeric_difference_beyond_tolerance_is_mismatch",
+        "test_trust.EvidenceOrigin.test_equivalence_requires_named_reviewer",
+        "test_trust.EvidenceOrigin.test_missing_reference_is_reference_not_found_not_a_match"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-02",
+      "domain": "EVD",
+      "name": "Source outage and direct cache",
+      "fixture": "20 of 24 source fetches fail and valid cached PDF exists",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_legacy_source_integration.CacheIntegration.test_real_cached_pdf_without_any_prior_run",
+        "test_sources.Retrieval.test_outage_with_cache_serves_verified_cache"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-03",
+      "domain": "EVD",
+      "name": "Source outage without cache",
+      "fixture": "no cached reference and timeout",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Retrieval.test_outage_without_cache_is_explicit_not_a_verified_headline"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-04",
+      "domain": "EVD",
+      "name": "Official XLSX extraction",
+      "fixture": "NISR authoritative workbook table and cell",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_extract.Xlsx.test_xlsx_cell_value_and_coordinate"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "EVD-05",
+      "domain": "EVD",
+      "name": "PDF extraction coverage",
+      "fixture": "NISR district uncertainty table",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_extract.RealOfficialPdf.test_all_30_districts_plus_national_extracted_with_page_provenance",
+        "test_extract.RealOfficialPdf.test_extracted_facts_satisfy_the_official_fact_contract",
+        "test_extract.RealOfficialPdf.test_corrupted_row_is_not_table_verified"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "EVD-06",
+      "domain": "EVD",
+      "name": "Numerical coincidence not semantic match",
+      "fixture": "same numeric value different concept",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_trust.EvidenceOrigin.test_numerical_coincidence_is_not_a_semantic_match"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-07",
+      "domain": "EVD",
+      "name": "Grid versus lighting",
+      "fixture": "grid connection vs lighting source",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_trust.EvidenceOrigin.test_grid_connection_is_not_electricity_for_lighting"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-08",
+      "domain": "EVD",
+      "name": "VUP versus eligibility",
+      "fixture": "poor-household self-report vs official administrative eligibility",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_trust.EvidenceOrigin.test_vup_participation_is_not_vup_eligibility"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-09",
+      "domain": "EVD",
+      "name": "Publication version precedence",
+      "fixture": "old and revised official PDF same URL",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Rollups.test_newest_publication_wins_and_older_is_superseded"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-10",
+      "domain": "EVD",
+      "name": "Conflicting sources",
+      "fixture": "two authorized official releases disagree",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Rollups.test_same_day_disagreement_is_a_conflict_not_a_pick"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-11",
+      "domain": "EVD",
+      "name": "Source hash corruption",
+      "fixture": "stored bytes do not match hash",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Retrieval.test_corrupted_cache_is_rejected_not_used"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-12",
+      "domain": "EVD",
+      "name": "Retrieval timeout status",
+      "fixture": "timeout reported as not published",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Retrieval.test_timeout_is_not_reported_as_not_published"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-13",
+      "domain": "EVD",
+      "name": "Verification row counts",
+      "fixture": "summary count inconsistent with comparison entries",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Rollups.test_verification_row_counts_always_reconcile"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-14",
+      "domain": "EVD",
+      "name": "Official paper unconsulted reference",
+      "fixture": "unread URL in bibliography",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Rollups.test_unconsulted_official_paper_cannot_be_cited"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "EVD-15",
+      "domain": "EVD",
+      "name": "Rounding tolerance registration",
+      "fixture": "0.1 points applied wrongly to SE",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Rollups.test_tolerance_registered_before_use_and_rounding_aware"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "EVD-16",
+      "domain": "EVD",
+      "name": "Dataset licence checks",
+      "fixture": "unapproved reuse of restricted survey",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Rollups.test_dataset_licence_checks"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "EVD-17",
+      "domain": "EVD",
+      "name": "Geographic boundary version",
+      "fixture": "renamed district and altered code",
+      "expected": "Correct source status, provenance and comparability; block false verified",
+      "tier": "integration",
+      "workstreams": [
+        "EP-05",
+        "EP-06"
+      ],
+      "acceptance_tests": [
+        "test_sources.Rollups.test_boundary_version_mismatch_is_not_comparable"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "AI-01",
+      "domain": "AI",
+      "name": "False VUP correction regression",
+      "fixture": "correct 9.2 poor-household sentence",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_true_vup_style_sentence_not_miscorrected_and_no_new_claim_introduced"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-02",
+      "domain": "AI",
+      "name": "Unsupported numeric claim",
+      "fixture": "model invents an unbound percentage",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_free_text_numbers_rejected_by_schema_and_prose_scan"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-03",
+      "domain": "AI",
+      "name": "Small-number hallucination",
+      "fixture": "invented number 4 to evade old threshold",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_small_numbers_years_and_number_words_in_prose_are_caught"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-04",
+      "domain": "AI",
+      "name": "Wrong district fact link",
+      "fixture": "Gisagara claim references Kamonyi",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_wrong_district_fact_is_rejected"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-05",
+      "domain": "AI",
+      "name": "Wrong wave fact link",
+      "fixture": "EICV7 source cited as EICV5",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_wrong_wave_fact_is_rejected"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-06",
+      "domain": "AI",
+      "name": "False causal decomposition claim",
+      "fixture": "model claims access change will reduce poverty",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_causal_claim_needs_approved_study"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-07",
+      "domain": "AI",
+      "name": "Numerical direction negative test",
+      "fixture": "lower source rate but relation above",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_direction_negative_test"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-08",
+      "domain": "AI",
+      "name": "Precision grade propagation",
+      "fixture": "reliability grade missing from AI digest",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_precision_grade_propagates_to_rendered_claim"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-09",
+      "domain": "AI",
+      "name": "Prompt injection in official PDF",
+      "fixture": "PDF instructs assistant to reveal secrets",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_trust.ClaimCompilation.test_prompt_injection_in_official_pdf_is_quarantined"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-10",
+      "domain": "AI",
+      "name": "Multi-model consensus fallacy",
+      "fixture": "3 models repeat wrong official figure",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_agents.Orchestration.test_model_agreement_is_not_independent_corroboration",
+        "test_trust.ClaimCompilation.test_model_agreement_cannot_substitute_for_validation"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-11",
+      "domain": "AI",
+      "name": "Strict JSON schema output",
+      "fixture": "free prose and malformed fields",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_invalid_model_output_fails_over_then_is_rejected",
+        "test_trust.ClaimCompilation.test_strict_schema_output_rejects_malformed_proposals",
+        "test_trust.ClaimCompilation.test_rendering_is_deterministic"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-12",
+      "domain": "AI",
+      "name": "Model fallback quota",
+      "fixture": "429 then bounded routing",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_quota_429_fails_over_without_hammering_same_provider",
+        "test_gateway.Gateway.test_benchmark_evaluation_drives_routing"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "AI-13",
+      "domain": "AI",
+      "name": "Cloud model unavailable",
+      "fixture": "deterministic fallback/human review",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_cloud_unavailable_all_providers_gives_explicit_exhaustion_not_invented_answer",
+        "test_gateway.Gateway.test_policy_errors_are_never_retried"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "AI-14",
+      "domain": "AI",
+      "name": "Local-only Ollama cloud leak",
+      "fixture": "local server logged in to cloud proxy",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_local_only_never_touches_a_cloud_provider"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "AI-15",
+      "domain": "AI",
+      "name": "Provider secret leak",
+      "fixture": "log/prompts contain key",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_provider_secrets_never_leak_into_prompts_errors_or_audit"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-16",
+      "domain": "AI",
+      "name": "Provider capability missing",
+      "fixture": "unsupported tool or JSON feature",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_missing_capability_excludes_provider_and_none_means_denied"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "AI-17",
+      "domain": "AI",
+      "name": "Translation numbers unchanged",
+      "fixture": "Kinyarwanda text with immutable numeric placeholders",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_translation_must_preserve_every_number"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "AI-18",
+      "domain": "AI",
+      "name": "Prompt/data hash pinning",
+      "fixture": "digest changes after report created",
+      "expected": "No unbound claims, unauthorized egress or fabricated evidence; bounded fallback",
+      "tier": "integration",
+      "workstreams": [
+        "EP-07",
+        "EP-09"
+      ],
+      "acceptance_tests": [
+        "test_agents.Orchestration.test_audit_pins_template_schema_evidence_and_result_hashes",
+        "test_gateway.Gateway.test_prompt_data_and_schema_hashes_are_pinned_in_audit"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-01",
+      "domain": "PRIV",
+      "name": "Raw microdata remote egress",
+      "fixture": "provider payload includes household row",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_confidential_microdata_never_leaves_for_a_remote_provider"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-02",
+      "domain": "PRIV",
+      "name": "Small-cell complementary suppression",
+      "fixture": "cross filters disclose individual",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_trust.ReleaseAndDisclosure.test_small_cells_and_complementary_suppression"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-03",
+      "domain": "PRIV",
+      "name": "Repeated differencing attack",
+      "fixture": "repeated subgroup queries reconstruct sensitive cells",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_trust.ReleaseAndDisclosure.test_repeated_differencing_attack_is_blocked"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-04",
+      "domain": "PRIV",
+      "name": "Direct report export bypass",
+      "fixture": "call PDF endpoint despite draft",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_report_service.T.test_unreleased_report_cannot_be_exported_or_linked",
+        "test_report_service.T.test_failed_gate_leaves_report_blocked_and_released_one_exports",
+        "test_report_service.T.test_forged_and_tampered_tokens_rejected",
+        "test_report_service.T.test_ast_modified_after_freeze_is_refused",
+        "test_reports_api.ReportLifecycle.test_draft_export_is_denied_audited_and_returns_no_bytes",
+        "test_reports_api.ReportLifecycle.test_client_cannot_supply_checks_or_skip_review"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-05",
+      "domain": "PRIV",
+      "name": "Revoked signed report URL",
+      "fixture": "old object URL remains accessible",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_report_service.T.test_revoked_link_and_revoked_report_denied",
+        "test_report_service.T.test_expired_link_denied"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-06",
+      "domain": "PRIV",
+      "name": "Self approval prevented",
+      "fixture": "author signs independent reviewer role",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_trust.ReleaseAndDisclosure.test_full_set_publishes_and_defaults_deny",
+        "test_trust.ReleaseAndDisclosure.test_self_approval_prevented",
+        "test_trust.ReleaseAndDisclosure.test_each_never_allow_condition_blocks_even_with_signatures",
+        "test_trust.ReleaseAndDisclosure.test_soft_conditions_allow_restricted_draft_only"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-07",
+      "domain": "PRIV",
+      "name": "Permission district scope",
+      "fixture": "role accesses unauthorized district",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_report_service.T.test_district_scope_enforced",
+        "test_reports_api.ReportLifecycle.test_district_scope_and_cross_tenant_are_enforced_on_export"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-08",
+      "domain": "PRIV",
+      "name": "Cross tenant data access",
+      "fixture": "token attempts another tenant",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_report_service.T.test_cross_tenant_access_looks_like_not_found"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-09",
+      "domain": "PRIV",
+      "name": "SSRF source URL",
+      "fixture": "fetch private IP from source registry",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_sources.Retrieval.test_ssrf_urls_blocked"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-10",
+      "domain": "PRIV",
+      "name": "Malicious XLSX formula",
+      "fixture": "spreadsheet injection",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_extract.Xlsx.test_malicious_formulas_are_inert_and_reported"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-11",
+      "domain": "PRIV",
+      "name": "Malicious ZIP path",
+      "fixture": "../ traversal on extraction",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_extract.Xlsx.test_zip_slip_symlink_and_bomb_rejected"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-12",
+      "domain": "PRIV",
+      "name": "Sensitive logs",
+      "fixture": "request metadata stores personal details",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_gateway.Gateway.test_provider_secrets_never_leak_into_prompts_errors_or_audit",
+        "test_jobs.AuditAndStorage.test_audit_never_stores_secrets"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-13",
+      "domain": "PRIV",
+      "name": "MFA and elevated approval",
+      "fixture": "publication officer without MFA",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_auth.JwtAuthorization.test_elevated_review_requires_mfa_and_independent_subject"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "PRIV-14",
+      "domain": "PRIV",
+      "name": "Secrets in frontend bundle",
+      "fixture": "provider keys in React env",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_gateway.FrontendBundle.test_no_secret_patterns_in_frontend_source_or_built_bundle"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "PRIV-15",
+      "domain": "PRIV",
+      "name": "Data retention enforcement",
+      "fixture": "expired licensed dataset available after retention",
+      "expected": "Deny, audit and contain sensitive data; no public release",
+      "tier": "integration",
+      "workstreams": [
+        "EP-08",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_retention_and_storage.Retention.test_expired_retention_denies_every_use_and_is_reported"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-01",
+      "domain": "OPS",
+      "name": "Worker crash checkpoint recovery",
+      "fixture": "worker dies mid variance calculation",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.Durability.test_worker_killed_mid_run_resumes_from_checkpoint"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-02",
+      "domain": "OPS",
+      "name": "Duplicate job idempotency",
+      "fixture": "identical POST run repeated",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.Durability.test_duplicate_submission_is_idempotent_and_conflicting_reuse_rejected"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-03",
+      "domain": "OPS",
+      "name": "Source outage replay",
+      "fixture": "cached retrieval and workflow resume",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.Durability.test_source_outage_run_replays_to_completion_when_source_returns"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-04",
+      "domain": "OPS",
+      "name": "Report export parity",
+      "fixture": "HTML vs PDF vs Excel value/CI/citation",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_reports_api.ReportLifecycle.test_full_review_publishes_and_all_formats_carry_the_same_ast"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-05",
+      "domain": "OPS",
+      "name": "Excel native chart linkage",
+      "fixture": "chart references real XLSX table cells",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_report.ReportTests.test_native_chart_links_to_numeric_cells"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "OPS-06",
+      "domain": "OPS",
+      "name": "Source change invalidation",
+      "fixture": "official PDF hash changed",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.Durability.test_source_change_invalidates_dependent_stages_only"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-07",
+      "domain": "OPS",
+      "name": "Model release change",
+      "fixture": "provider retired and reroute evaluation",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.Durability.test_model_release_change_reruns_narrative_but_not_statistics"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-08",
+      "domain": "OPS",
+      "name": "Database restore",
+      "fixture": "simulate backup recovery",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.AuditAndStorage.test_backup_restore_verifies_integrity_and_audit_chain"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "OPS-09",
+      "domain": "OPS",
+      "name": "Object store outage",
+      "fixture": "artifact cannot be saved",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_retention_and_storage.ObjectStoreOutage.test_publication_survives_an_object_store_outage_without_stale_state"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "OPS-10",
+      "domain": "OPS",
+      "name": "CI quality gate",
+      "fixture": "critical test fails during pull request",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_ci_gate.CiGate.test_a_failing_critical_test_can_never_pass",
+        "test_ci_gate.CiGate.test_component_tests_and_unmapped_claims_do_not_pass"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-11",
+      "domain": "OPS",
+      "name": "Audit log tampering",
+      "fixture": "append-only event checksum broken",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.AuditAndStorage.test_audit_log_tampering_is_detected_at_the_exact_record"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-12",
+      "domain": "OPS",
+      "name": "Schema migration compatibility",
+      "fixture": "new optional vs breaking required fields",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.AuditAndStorage.test_schema_migration_preserves_old_data_and_refuses_newer_schema"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-13",
+      "domain": "OPS",
+      "name": "Multiple concurrent districts",
+      "fixture": "30 runs with quotas",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.ConcurrentDistricts.test_30_real_districts_run_concurrently_under_a_global_cap"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release. This scenario also requires real evidence; the live reference is linked to the scenario and the verdict stays BLOCKED until that evidence exists."
+    },
+    {
+      "id": "OPS-14",
+      "domain": "OPS",
+      "name": "Stale signed report view",
+      "fixture": "old snapshot after re-run",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_report_service.T.test_stale_signed_report_view_after_new_version",
+        "test_reports_api.ReportLifecycle.test_superseded_version_is_not_exportable"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-15",
+      "domain": "OPS",
+      "name": "Run trace reproducibility",
+      "fixture": "data/code/config hash identical",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.Durability.test_same_inputs_give_identical_trace_hash_and_changed_inputs_differ"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "OPS-16",
+      "domain": "OPS",
+      "name": "Rollback worker version",
+      "fixture": "resume old workflow on new deploy",
+      "expected": "No duplicate effect, no stale approved content, verified recovery",
+      "tier": "integration",
+      "workstreams": [
+        "EP-13",
+        "EP-14",
+        "EP-15"
+      ],
+      "acceptance_tests": [
+        "test_jobs.Durability.test_runs_are_pinned_to_their_worker_version_and_rollback_keeps_them_resumable"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-01",
+      "domain": "POL",
+      "name": "Observational equals causal",
+      "fixture": "programme recommendation unsupported cause",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_association_cannot_be_labelled_causal_or_a_trial_result"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-02",
+      "domain": "POL",
+      "name": "Competing hypotheses retained",
+      "fixture": "AI discards alternative hypothesis",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_agents.Orchestration.test_planner_can_only_propose_competing_hypotheses_for_human_review",
+        "test_lab_policy.Policy.test_competing_hypotheses_cannot_be_silently_discarded"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-03",
+      "domain": "POL",
+      "name": "Intervention evidence quality",
+      "fixture": "association described as trial result",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_association_cannot_be_labelled_causal_or_a_trial_result",
+        "test_lab_policy.Policy.test_scale_requires_a_complete_monitoring_plan_with_sourced_baselines"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-04",
+      "domain": "POL",
+      "name": "Cost assumption trace",
+      "fixture": "invented budget falsely labelled actual",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_invented_budget_cannot_be_labelled_actual"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-05",
+      "domain": "POL",
+      "name": "Programme payment isolation",
+      "fixture": "analysis request directly initiates transfer",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_analysis_cannot_initiate_transfers_or_ingest_beneficiary_fields"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-06",
+      "domain": "POL",
+      "name": "Evaluation preregistration",
+      "fixture": "post-hoc outcome chosen as success",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_post_hoc_outcome_cannot_be_declared_success"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-07",
+      "domain": "POL",
+      "name": "Equity risk surfaced",
+      "fixture": "intervention excludes underserved area",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_equity_risk_is_mandatory_and_exclusion_is_surfaced",
+        "test_lab_policy.Policy.test_scale_requires_a_complete_monitoring_plan_with_sourced_baselines"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-08",
+      "domain": "POL",
+      "name": "Data insufficiency abstention",
+      "fixture": "programme inference underpowered",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_underpowered_programme_inference_abstains"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    },
+    {
+      "id": "POL-09",
+      "domain": "POL",
+      "name": "Dissemination approval",
+      "fixture": "draft recommendation shared as official",
+      "expected": "Clearly label evidence and uncertainty; block unauthorized action",
+      "tier": "integration",
+      "workstreams": [
+        "EP-10",
+        "EP-11",
+        "EP-12"
+      ],
+      "acceptance_tests": [
+        "test_lab_policy.Policy.test_draft_recommendation_cannot_be_shared_as_official"
+      ],
+      "acceptance_scope_note": "Author-mapped from the executed @acceptance test(s) that exercise this scenario; independent acceptance review is still required before release."
+    }
+  ],
+  "audit_defects": [
+    {
+      "id": "W1",
+      "severity": "Critical",
+      "title": "Self-comparison counted as verified match (verification.modelled_claim)",
+      "regression_scenario": "EVD-01",
+      "integration_tests": [
+        "test_legacy_verification_integration.OfficialOriginIntegration.test_modelled_reference_is_never_counted_as_independent_match"
+      ],
+      "notes": "Real NISR poverty profile through legacy modelled_claim and summarize: published figure has no computed value or numeric difference and never contributes an independent match."
+    },
+    {
+      "id": "W2",
+      "severity": "Critical",
+      "title": "Report/export proceed after total failure of official-source verification",
+      "regression_scenario": "PRIV-04",
+      "integration_tests": [
+        "test_report_service.T.test_failed_gate_leaves_report_blocked_and_released_one_exports",
+        "test_reports_api.ReportLifecycle.test_failed_check_blocks_publication_and_report_stays_draft",
+        "test_reports_api.ReportLifecycle.test_draft_export_is_denied_audited_and_returns_no_bytes"
+      ]
+    },
+    {
+      "id": "W3",
+      "severity": "High",
+      "title": "AI-text correction introduces new claim / mis-flags true VUP sentence",
+      "regression_scenario": "AI-01"
+    },
+    {
+      "id": "W4",
+      "severity": "High",
+      "title": "AI can state unsupported numbers; checks non-blocking",
+      "regression_scenario": "AI-02"
+    },
+    {
+      "id": "W5",
+      "severity": "High",
+      "title": "On-disk source cache not used when live fetch fails",
+      "regression_scenario": "EVD-02",
+      "integration_tests": [
+        "test_legacy_source_integration.CacheIntegration.test_real_cached_pdf_without_any_prior_run",
+        "test_legacy_source_integration.CacheIntegration.test_corruption_and_invalid_metadata_never_supply_evidence",
+        "test_legacy_source_integration.CacheIntegration.test_missing_or_corrupt_manifest_preserves_failure",
+        "test_legacy_source_integration.CacheIntegration.test_304_revalidates_scope_and_preserves_original_retrieval_date"
+      ],
+      "notes": "Actual legacy verify_source/evidence_source path exercised with real cached NISR PDF, injected HTTP outage, and no prior run registers. Expired/revoked/superseded/outside-cache/corrupt copies rejected."
+    },
+    {
+      "id": "W6",
+      "severity": "High",
+      "title": "No runtime independent statistical validation",
+      "regression_scenario": "SCI-09"
+    },
+    {
+      "id": "W7",
+      "severity": "High",
+      "title": "Equivalent-definition decisions are hand flags",
+      "regression_scenario": "EVD-06"
+    },
+    {
+      "id": "W8",
+      "severity": "High",
+      "title": "Partial complex-survey inference (no FPC, singleton abort)",
+      "regression_scenario": "SCI-05"
+    },
+    {
+      "id": "W9",
+      "severity": "Medium",
+      "title": "Inconsistent/duplicated multi-LLM provider logic",
+      "regression_scenario": "AI-12"
+    },
+    {
+      "id": "W10",
+      "severity": "Medium",
+      "title": "Weak narrative/external-evidence reproducibility",
+      "regression_scenario": "AI-18"
+    },
+    {
+      "id": "W11",
+      "severity": "Medium",
+      "title": "Source failures invisible in headline and citations",
+      "regression_scenario": "EVD-13"
+    },
+    {
+      "id": "W12",
+      "severity": "Medium",
+      "title": "Reliability/uncertainty absent from AI digest",
+      "regression_scenario": "AI-08"
+    },
+    {
+      "id": "W13",
+      "severity": "Medium",
+      "title": "District scale-out limited by dev-server design",
+      "regression_scenario": "OPS-13",
+      "integration_tests": [
+        "test_jobs.ConcurrentDistricts.test_30_real_districts_run_concurrently_under_a_global_cap"
+      ]
+    },
+    {
+      "id": "W14",
+      "severity": "Medium",
+      "title": "Weak runtime auditability",
+      "regression_scenario": "OPS-15",
+      "integration_tests": [
+        "test_jobs.Durability.test_same_inputs_give_identical_trace_hash_and_changed_inputs_differ"
+      ]
+    },
+    {
+      "id": "W15",
+      "severity": "Medium",
+      "title": "No authentication/authorisation on engine routes",
+      "regression_scenario": "PRIV-07",
+      "integration_tests": [
+        "test_reports_api.ReportLifecycle.test_district_scope_and_cross_tenant_are_enforced_on_export",
+        "test_report_service.T.test_district_scope_enforced"
+      ]
+    },
+    {
+      "id": "W16",
+      "severity": "Low",
+      "title": "Documentation and metadata drift",
+      "regression_scenario": "OPS-10"
+    },
+    {
+      "id": "W17",
+      "severity": "Low",
+      "title": "Stage structure inconsistencies",
+      "regression_scenario": "OPS-01",
+      "integration_tests": [
+        "test_jobs.Durability.test_worker_killed_mid_run_resumes_from_checkpoint"
+      ]
+    }
+  ],
+  "engine_author": "claude-code",
+  "real_evidence_required": [
+    "SCI-09",
+    "SCI-10",
+    "SCI-11",
+    "SCI-16",
+    "SCI-20",
+    "EVD-04",
+    "EVD-05",
+    "EVD-14",
+    "EVD-16",
+    "EVD-17",
+    "AI-12",
+    "AI-13",
+    "AI-14",
+    "AI-16",
+    "OPS-05",
+    "OPS-08",
+    "OPS-09",
+    "OPS-13",
+    "PRIV-13"
+  ],
+  "blockers": [
+    {
+      "id": "BLK-R",
+      "title": "Independent R ownership and scientific approval pending",
+      "detail": "R 4.6.1 installed for current user from CRAN; installer checksum and Authenticode signature verified. survey/haven/digest/jsonlite installed. Raw archive R calculation executed for 31 domains and compared with Python; evidence in r_reference_eicv7.json and python_r_eicv7_comparison.json. Independent reviewer ownership, approved definitions/tolerances and scientific approval remain pending.",
+      "status": "open",
+      "blocks": [
+        "SCI-09",
+        "SCI-10",
+        "SCI-19"
+      ]
+    },
+    {
+      "id": "BLK-PROVIDERS",
+      "title": "No provider credentials verified",
+      "detail": "11 provider credentials verified live (7 Groq, 3 NVIDIA, 1 Ollama Cloud): /models authentication plus a 1-token completion returned 200 for every key; Groq reported 999/1000 requests remaining, i.e. no account was out of credit. Local Ollama daemon reachable with llama3.2 and other models. Live tests AI-12/13/14/15/16 pass with evidence in docs/implementation/evidence/{live_providers,provider_credentials}.json. Keys rotate: rerun scripts/check_provider_accounts.py to re-verify.",
+      "status": "resolved",
+      "blocks": [
+        "AI-12",
+        "AI-13",
+        "AI-14",
+        "AI-16"
+      ]
+    },
+    {
+      "id": "BLK-NISR",
+      "title": "Official NISR reference artefacts and permissions",
+      "detail": "EP-16 cannot pass without actual NISR publication artefacts, dataset licences and permissions (kit WORK_BREAKDOWN).",
+      "status": "open",
+      "blocks": [
+        "EVD-04",
+        "EVD-05",
+        "EVD-16",
+        "SCI-11"
+      ]
+    },
+    {
+      "id": "BLK-APPROVALS",
+      "title": "Human reviewer sign-offs",
+      "detail": "Statistical, privacy and release reviewers must sign; tolerances for production need survey-statistician approval.",
+      "status": "open",
+      "blocks": [
+        "APPROVALS"
+      ]
+    },
+    {
+      "id": "BLK-INFRA",
+      "title": "Production infrastructure",
+      "detail": "Supabase plugin connected to repository project ywtxpsefbqzmgmdfzldp; hosted public schema and advisors inspected and assignment guard migration verified. Production scientific persistence adapters, encrypted object store, hosted identity/MFA/session verification, deployment and SLO evidence remain incomplete.",
+      "status": "open",
+      "blocks": [
+        "OPS-08",
+        "OPS-09",
+        "PRIV-13"
+      ]
+    }
+  ],
+  "required_approvals": [
+    {
+      "id": "APR-STAT",
+      "role": "statistical_reviewer",
+      "scope": "production tolerances and independent validation"
+    },
+    {
+      "id": "APR-PRIV",
+      "role": "privacy_reviewer",
+      "scope": "disclosure control and DPIA"
+    },
+    {
+      "id": "APR-RELEASE",
+      "role": "release_reviewer",
+      "scope": "release gate and publication policy"
+    }
+  ],
+  "decisions": [],
+  "engineering_cycles": [
+    {
+      "date": "2026-10-30",
+      "scope": "EP-14 snapshot integrity and export parity; completion evidence binding",
+      "status": "partial",
+      "tests": [
+        "test_report.ReportTests"
+      ],
+      "limitations": [
+        "Reporting unit tests are not full OPS-04/05 production acceptance",
+        "Legacy UI export paths remain to be integrated",
+        "PDF accessibility and multilingual rendering remain unverified"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Legacy source fallback W5 and modelled self-match W1",
+      "status": "partial",
+      "tests": [
+        "test_legacy_source_integration",
+        "test_legacy_verification_integration"
+      ],
+      "limitations": [
+        "Other audit defects and workstreams still need production integration evidence"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Finite statistical validation and raw-archive R reference path",
+      "status": "partial",
+      "tests": [
+        "test_validation_safety",
+        "test_r_reference"
+      ],
+      "blockers": [
+        "BLK-R",
+        "BLK-APPROVALS"
+      ],
+      "evidence": [
+        "evidence/r_reference_eicv7.json",
+        "evidence/python_r_eicv7_comparison.json",
+        "../../engine/reference/installed-packages.json"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "EP-02 persistent catalog, permission-bound raw loading, lineage",
+      "status": "partial",
+      "tests": [
+        "test_catalog",
+        "test_governed_data"
+      ],
+      "limitations": [
+        "SQLite local adapter requires production Postgres adapter and authenticated service boundary",
+        "Actual dataset licence approvals remain external",
+        "Existing exploratory loaders and legacy report paths are not yet governed end-to-end"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Joint-design contrast inference and deterministic claim rendering",
+      "status": "partial",
+      "tests": [
+        "test_contrast_claims",
+        "test_real_contrasts",
+        "test_validation_safety"
+      ],
+      "evidence": [
+        "evidence/python_r_joint_contrasts.json"
+      ],
+      "limitations": [
+        "No independent scientific reviewer ownership or production contrast approval yet",
+        "Governed run-to-fact pipeline remains to be integrated"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Governed persistent Python/R scientific research workflow",
+      "status": "partial",
+      "tests": [
+        "test_science_workflow",
+        "test_jobs"
+      ],
+      "evidence": [
+        "evidence/governed_science_workflow.json"
+      ],
+      "limitations": [
+        "Restricted draft only; no independently certified facts",
+        "Fixture permissions do not establish actual dataset licences",
+        "Legacy UI and production API integration remain incomplete"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "JWT authorization and governed research API read boundary",
+      "status": "partial",
+      "tests": [
+        "test_auth",
+        "test_api_auth"
+      ],
+      "limitations": [
+        "Ephemeral signing-authority fixtures are not hosted OIDC or real MFA evidence",
+        "Legacy UI/export migration, production Postgres/Temporal and complete API routes remain pending"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Separate component evidence from scoped acceptance evidence",
+      "status": "partial",
+      "tests": [
+        "test_completion_scope"
+      ],
+      "limitations": [
+        "Unmapped acceptance scenarios remain COMPONENT_ONLY even when tagged tests pass",
+        "Hosted Supabase tools still unavailable"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Hosted Supabase connection, null-safe assignment authorization and API error contracts",
+      "status": "partial",
+      "tests": [
+        "supabase/tests/assignment_authorization.sql",
+        "test_api_auth"
+      ],
+      "evidence": [
+        "evidence/supabase_authorization_cycle_2026_10_30.json"
+      ],
+      "limitations": [
+        "Hosted connection restored; six denial checks pass after real migration",
+        "Privileged mutation/MFA/session validation and scientific approvals remain pending",
+        "CLI history pull pending; see exact applied SQL evidence"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "EP-10 bounded research-agent orchestration and durable agent audit",
+      "status": "partial",
+      "tests": [
+        "test_agents.Orchestration",
+        "test_agents.ContextFromCatalog",
+        "test_agents.AgentApi",
+        "test_agents.Promotion"
+      ],
+      "limitations": [
+        "Scripted synthetic provider transcripts; live provider routing and model quality unverified (BLK-PROVIDERS)",
+        "Promotion into the immutable ledger is a separate human action; re-import of promoted revisions into further analysis cycles is not automated",
+        "No hosted IdP, production Postgres or deployed SLO evidence"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "EP-12 monitoring design for intervention options",
+      "status": "partial",
+      "tests": [
+        "test_lab_policy.Policy.test_scale_requires_a_complete_monitoring_plan_with_sourced_baselines"
+      ],
+      "limitations": [
+        "Monitoring plans are validated records, not a live monitoring system",
+        "No programme administrative data or evaluation field results are connected",
+        "Scale remains blocked by BLK-APPROVALS and real programme evidence"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "EP-08/EP-14 governed report review, publication and authorised export",
+      "status": "partial",
+      "tests": [
+        "test_reports_api.ReportLifecycle"
+      ],
+      "limitations": [
+        "SQLite report repository only; production Postgres report store and object storage are not deployed (BLK-INFRA)",
+        "Signatures come from independently authenticated principals in the fixture IdP; no hosted IdP/MFA evidence and no named human reviewer approvals (BLK-APPROVALS)",
+        "Legacy browser exports are watermarked restricted drafts; they are not released artifacts and still need migration to this service",
+        "Publication requires external scientific/privacy/release sign-off that this cycle cannot supply"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "PRIV-15 retention enforcement and OPS-09 object-store outage handling",
+      "status": "partial",
+      "tests": [
+        "test_retention_and_storage.Retention",
+        "test_retention_and_storage.ObjectStoreOutage"
+      ],
+      "limitations": [
+        "Local SQLite/filesystem adapters only; encrypted production object store, backup rotation and scheduled purge are not deployed (BLK-INFRA)",
+        "Retention dates are fixture values supplied by the caller; no external licence-management system is connected (BLK-NISR)",
+        "Publication still requires the independent human approvals this repository cannot supply (BLK-APPROVALS)"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "OPS-10 CI quality gate for critical test failures",
+      "status": "partial",
+      "tests": [
+        "test_ci_gate.CiGate"
+      ],
+      "limitations": [
+        "Workflow committed but not executed by a hosted CI runner; no branch-protection or merge-block evidence",
+        "Completion gate remains non-blocking in CI until real evidence, infrastructure and named approvals exist"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Kit OpenAPI alignment: hash-pinned report review and JSON export",
+      "status": "partial",
+      "tests": [
+        "test_reports_api.ReportLifecycle"
+      ],
+      "limitations": [
+        "Contract alignment only; publication still needs real reviewer identities and hosted MFA (BLK-APPROVALS)"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Canonical provider credentials with multi-key failover (EP-09)",
+      "status": "partial",
+      "tests": [
+        "test_gateway.MultiKeyCredentials",
+        "test_gateway.Gateway"
+      ],
+      "limitations": [
+        "Failover is proven against injected transports only; no live provider was called, so real account entitlements and quota behaviour remain unverified",
+        "Additional keys are limited to nine per provider and cannot increase provider-wide quotas",
+        ".env.local is normalised locally and git-ignored; provisioning the same names in hosted deployment configuration is still outstanding (BLK-INFRA)"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "scope": "Live provider evidence, local Ollama routing fixes, BLK-PROVIDERS closed (EP-09)",
+      "status": "partial",
+      "tests": [
+        "test_live_providers.Live",
+        "test_gateway.MultiKeyCredentials"
+      ],
+      "limitations": [
+        "Live evidence proves the accounts work at this timestamp; keys can rotate and Groq token budgets reset, so rerun scripts/check_provider_accounts.py",
+        "Local-only evidence needs the Ollama daemon and pulled models; without them AI-14 skips and EP-09 stays unverified",
+        "Hosted deployment still needs the same credential names provisioned as server secrets (BLK-INFRA)"
+      ]
+    }
+  ]
+}

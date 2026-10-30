@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-30",
+  "report_regression_tests": {
+    "count": 6,
+    "result": "PASS",
+    "seconds": 3.817
+  },
+  "engine_tests_excluding_live_providers": {
+    "count": 116,
+    "result": "PASS",
+    "seconds": 81.059
+  },
+  "npm_test": {
+    "result": "PASS",
+    "tests": 100,
+    "exit": 0
+  },
+  "npm_lint": {
+    "result": "PASS",
+    "exit": 0
+  },
+  "npm_build": {
+    "result": "PASS",
+    "exit": 0,
+    "modules_transformed": 2928
+  },
+  "completion": "INCOMPLETE"
+}
