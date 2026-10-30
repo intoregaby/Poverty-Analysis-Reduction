@@ -1,6 +1,14 @@
 {
   "status": "DIAGNOSTIC_ONLY_PENDING_SCIENTIFIC_APPROVAL",
   "dataset_sha256": "f7279fa071cba2cd3c2f7dfb43bcdf7139431d010c039a0fec75449185f0f755",
+  "source_licence": {
+    "type": "CC_BY_4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "source_url": "https://statistics.gov.rw/data-sources/surveys/EICV/integrated-household-living-conditions-survey-7-eicv-7/eicv7-poverty-profile-report-202324",
+    "acknowledgement": "National Institute of Statistics of Rwanda (NISR)",
+    "verified_at": "2026-10-30T00:00:00Z",
+    "notes": "NISR Terms of Use and Hackathon page confirm CC BY 4.0 for all published data and analysis unless otherwise indicated. Hackathon explicitly encourages using NISR data."
+  },
   "r_code_sha256": "e1d1f1ecaa0f5696d360f5db9f10a205c7e4e52e51d75b62aa266828057acfdf",
   "max_point_difference": 1.1102230246251565e-16,
   "max_se_difference": 1.0408340855860843e-17,

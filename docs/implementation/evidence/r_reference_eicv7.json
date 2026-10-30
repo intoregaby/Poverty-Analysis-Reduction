@@ -1,6 +1,14 @@
 {
   "schema": "ireme-r-reference/1",
   "dataset_sha256": "f7279fa071cba2cd3c2f7dfb43bcdf7139431d010c039a0fec75449185f0f755",
+  "source_licence": {
+    "type": "NISR_NADA_PUBLIC_USE",
+    "url": "https://microdata.statistics.gov.rw/index.php/catalog/119/accesspolicy",
+    "source_url": "https://microdata.statistics.gov.rw/index.php/catalog/119/get_microdata",
+    "acknowledgement": "National Institute of Statistics of Rwanda (NISR)",
+    "verified_at": "2026-10-30T00:00:00Z",
+    "notes": "Anonymized EICV7 microdata (v1: edited anonymous dataset for public distribution) from NISR NADA portal. Requires registration/login for download. Published tables derived from this data are CC BY 4.0 per NISR Terms of Use."
+  },
   "source_member_sha256": {
     "Cross_Section/CS_EICV7_poverty_file.dta": "3de4e5579b3681f6422ac4432fd7ca7411759991082e4de418eff031875d23d3",
     "Cross_Section/CS_S01_S5_S7_Household.dta": "202da2d223594d8ab06dbf9eaf84d00b819e9cc3527c36097f2e87ff7c778270"
