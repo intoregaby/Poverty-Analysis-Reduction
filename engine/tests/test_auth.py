@@ -15,6 +15,13 @@ from ireme import auth
 from acceptance import acceptance
 
 
+def _reset_mfa_override():
+    """Reset MFA override state to ensure test isolation."""
+    import ireme.auth as auth_module
+    with auth_module._mfa_state_lock:
+        auth_module._mfa_enabled_override = None
+
+
 class JwtAuthorization(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -38,6 +45,9 @@ class JwtAuthorization(unittest.TestCase):
     def token(self, payload=None, key=None, algorithm='RS256', **headers):
         return 'Bearer ' + jwt.encode(payload or self.payload, key or self.key, algorithm=algorithm,
                                       headers={'kid': 'test-key', **headers})
+
+    def tearDown(self):
+        _reset_mfa_override()
 
     def test_signed_scopes_are_verified_and_cached(self):
         principal = self.verifier.verify(self.token())
