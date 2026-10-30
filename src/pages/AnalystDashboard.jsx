@@ -18,7 +18,8 @@ import { Search, CircleHelp } from "lucide-react";
 const csvCell = (value) => `"${String(value).replaceAll('"', '""')}"`;
 
 export default function AnalystDashboard() {
-  const { startTour } = /** @type {{ startTour: () => void }} */ (useOutletContext());
+  const outletContext = useOutletContext();
+  const startTour = outletContext?.startTour;
   const [province, setProvince] = useState("all");
   const rows = useMemo(
     () => province === "all" ? DASHBOARD_DISTRICTS : DASHBOARD_DISTRICTS.filter((row) => row.province === province),
@@ -47,7 +48,7 @@ export default function AnalystDashboard() {
 
       <main className="mx-auto max-w-[1440px] space-y-4 px-4 py-5 sm:px-6 lg:px-8">
         <section aria-labelledby="main-findings-title" data-tour="analysis-findings">
-          <div className="flex flex-wrap items-center justify-between gap-2"><h2 id="main-findings-title" className="text-[20px] font-semibold tracking-tight text-ink">Poverty Analysis Dashboard</h2><div className="flex flex-wrap items-center gap-2"><button type="button" onClick={startTour} className="inline-flex items-center gap-1.5 rounded-md border border-hairline bg-white px-3 py-2 text-[12px] font-medium text-ink hover:bg-canvas"><CircleHelp className="h-3.5 w-3.5" aria-hidden="true" />How to read this page</button><Link to={`/investigations?district=${encodeURIComponent(investigationDistrict)}&autoStart=1`} className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-2 text-[12px] font-medium text-white hover:bg-[#524BE0]"><Search className="h-3.5 w-3.5" />Run Investigation · {investigationDistrict}</Link></div></div>
+          <div className="flex flex-wrap items-center justify-between gap-2"><h2 id="main-findings-title" className="text-[20px] font-semibold tracking-tight text-ink">Poverty Analysis Dashboard</h2><div className="flex flex-wrap items-center gap-2">{startTour && <button type="button" onClick={startTour} className="inline-flex items-center gap-1.5 rounded-md border border-hairline bg-white px-3 py-2 text-[12px] font-medium text-ink hover:bg-canvas"><CircleHelp className="h-3.5 w-3.5" aria-hidden="true" />How to read this page</button>}<Link to={`/investigations?district=${encodeURIComponent(investigationDistrict)}&autoStart=1`} className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-2 text-[12px] font-medium text-white hover:bg-[#524BE0]"><Search className="h-3.5 w-3.5" />Run Investigation · {investigationDistrict}</Link></div></div>
           <p className="mb-3 mt-0.5 text-[12px] text-sub">Dashboard shows which districts in Rwanda need support by comparing local poverty levels to the national average.</p>
           <KpiStrip rows={rows} province={province} />
         </section>
