@@ -44,6 +44,7 @@ function localChartInsight(apiKey) {
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: process.env.GITHUB_PAGES === 'true' ? '/Poverty-Analysis-Reduction/' : '/',
   resolve: {
     alias: { '@': path.resolve(process.cwd(), 'src') },
   },

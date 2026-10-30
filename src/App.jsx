@@ -62,6 +62,8 @@ const AuthenticatedApp = () => {
     <Routes>
       {/* Add your page Route elements here */}
       <Route path="/ussd-sim" element={<UssdSimulator />} />
+      {/* Public dashboard: aggregate NISR/FinScope evidence only; no household records. */}
+      <Route path="/" element={<AnalystDashboard />} />
       <Route element={<DashboardShell />}>
         <Route element={<RoleGuard roles={["platform_admin"]} />}>
           <Route path="/ussd-control" element={<UssdControl />} />
@@ -70,7 +72,6 @@ const AuthenticatedApp = () => {
           <Route path="/settings" element={<Settings />} />
         </Route>
         <Route element={<RoleGuard roles={["platform_admin", "nisr_analyst"]} />}>
-          <Route path="/" element={<AnalystDashboard />} />
           <Route path="/other-analysis" element={<OtherAnalysis />} />
           <Route path="/investigations" element={<DistrictInvestigation />} />
           <Route path="/nst2" element={<Nst2Indicators />} />
@@ -122,7 +123,7 @@ function App() {
     <AuthProvider>
       <DemoAuthProvider>
         <QueryClientProvider client={queryClientInstance}>
-          <Router>
+          <Router basename={import.meta.env.BASE_URL}>
             <ScrollToTop />
             <AuthenticatedApp />
           </Router>
