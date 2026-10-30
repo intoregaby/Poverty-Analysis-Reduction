@@ -27,9 +27,8 @@ jobs:
           enablement: true
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
+          node-version: 22
+      - run: npm install --no-audit --no-fund
       - name: Build web app
         run: npm run build
         env:
