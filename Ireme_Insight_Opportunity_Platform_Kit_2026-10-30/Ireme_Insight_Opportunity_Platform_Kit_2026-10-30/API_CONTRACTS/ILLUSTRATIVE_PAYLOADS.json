@@ -1,0 +1,44 @@
+{
+  "not_deployed": true,
+  "job_apply": {
+    "posting_id": "00000000-0000-4000-8000-000000000001",
+    "competency_statement": "Practical business-training skills demonstrated; references available",
+    "idempotency_key": "00000000-0000-4000-8000-000000000010"
+  },
+  "livelihood_milestone": {
+    "plan_id": "00000000-0000-4000-8000-000000000002",
+    "milestone_type": "first_activity",
+    "description": "Member started first supervised sample production (not earnings proof)",
+    "member_confirmed": false,
+    "evidence_refs": [],
+    "client_event_id": "00000000-0000-4000-8000-000000000011"
+  },
+  "support_payment_status": {
+    "instruction_id": "00000000-0000-4000-8000-000000000003",
+    "state": "submitted",
+    "source": "provider_pending",
+    "settled_at": null,
+    "warning": "Example only; not a bank transfer"
+  },
+  "government_aggregate": {
+    "programme_id": "00000000-0000-4000-8000-000000000004",
+    "district": "EXAMPLE_ONLY",
+    "reporting_period": "2026-10",
+    "measures": [
+      {
+        "name": "verified_activities",
+        "value": null,
+        "source": "none",
+        "status": "unavailable"
+      }
+    ]
+  },
+  "provider_disabled": {
+    "ok": false,
+    "error": {
+      "code": "PROVIDER_UNAVAILABLE",
+      "message": "No authorized bank/mobile money integration configured. No transfer was initiated.",
+      "retryable": false
+    }
+  }
+}

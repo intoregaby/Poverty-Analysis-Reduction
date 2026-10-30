@@ -1,0 +1,692 @@
+[
+  {
+    "scenario_id": "01-01",
+    "feature": "01_PROGRAMME_ORGANISATIONS_AND_MEMBERS",
+    "type": "functional",
+    "actor": "programme owner",
+    "expected": "A programme officer can create enrollment and reload it in another browser.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "01-02",
+    "feature": "01_PROGRAMME_ORGANISATIONS_AND_MEMBERS",
+    "type": "functional",
+    "actor": "programme owner",
+    "expected": "Member sees only their own actual approved status and can dispute errors.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "01-03",
+    "feature": "01_PROGRAMME_ORGANISATIONS_AND_MEMBERS",
+    "type": "functional",
+    "actor": "programme owner",
+    "expected": "Officer of a different programme cannot read the enrollment.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "01-04",
+    "feature": "01_PROGRAMME_ORGANISATIONS_AND_MEMBERS",
+    "type": "functional",
+    "actor": "programme owner",
+    "expected": "Demo enrollments never count as real coverage numbers.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "02-01",
+    "feature": "02_AGENT_JOBS_RECRUITMENT_AND_PAY",
+    "type": "functional",
+    "actor": "job applicant",
+    "expected": "A published position appears on job-seeker's portal with valid future deadlines and requirements.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "02-02",
+    "feature": "02_AGENT_JOBS_RECRUITMENT_AND_PAY",
+    "type": "functional",
+    "actor": "job applicant",
+    "expected": "Applicant can apply once and follow status; competing applicant cannot read records.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "02-03",
+    "feature": "02_AGENT_JOBS_RECRUITMENT_AND_PAY",
+    "type": "functional",
+    "actor": "job applicant",
+    "expected": "Recruiter can schedule assessment/interview and record human decision and reason.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "02-04",
+    "feature": "02_AGENT_JOBS_RECRUITMENT_AND_PAY",
+    "type": "functional",
+    "actor": "job applicant",
+    "expected": "Hiring creates a scoped agent assignment entitlement, not an unrestricted programme role.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "02-05",
+    "feature": "02_AGENT_JOBS_RECRUITMENT_AND_PAY",
+    "type": "functional",
+    "actor": "job applicant",
+    "expected": "Pay run approval and provider confirmation are independently visible; retry never duplicates a payment.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "03-01",
+    "feature": "03_FIELD_AGENT_TRAIN_IMPLEMENT_VERIFY",
+    "type": "functional",
+    "actor": "field agent",
+    "expected": "Assigned agent can see only own authorized member and action it.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "03-02",
+    "feature": "03_FIELD_AGENT_TRAIN_IMPLEMENT_VERIFY",
+    "type": "functional",
+    "actor": "field agent",
+    "expected": "Agent records skill training, helps create project and submits evidence; member can confirm/dispute.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "03-03",
+    "feature": "03_FIELD_AGENT_TRAIN_IMPLEMENT_VERIFY",
+    "type": "functional",
+    "actor": "field agent",
+    "expected": "Supervisor reviews as separate identity; agent cannot modify accepted evidence.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "03-04",
+    "feature": "03_FIELD_AGENT_TRAIN_IMPLEMENT_VERIFY",
+    "type": "functional",
+    "actor": "field agent",
+    "expected": "Government dashboard can count verified projects and skills, not private attachments.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "03-05",
+    "feature": "03_FIELD_AGENT_TRAIN_IMPLEMENT_VERIFY",
+    "type": "functional",
+    "actor": "field agent",
+    "expected": "Poor connectivity sync does not duplicate activity entries or lose confirmed evidence.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "04-01",
+    "feature": "04_FINANCIAL_INCLUSION_AND_PROVIDER_REFERRALS",
+    "type": "functional",
+    "actor": "member",
+    "expected": "Unbanked member can record 'needs help' and see clear next steps.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "04-02",
+    "feature": "04_FINANCIAL_INCLUSION_AND_PROVIDER_REFERRALS",
+    "type": "functional",
+    "actor": "member",
+    "expected": "Agent can submit scoped referral, not view secret financial credentials.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "04-03",
+    "feature": "04_FINANCIAL_INCLUSION_AND_PROVIDER_REFERRALS",
+    "type": "functional",
+    "actor": "member",
+    "expected": "Provider-confirmed opening and user-reported opening are separately labelled.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "04-04",
+    "feature": "04_FINANCIAL_INCLUSION_AND_PROVIDER_REFERRALS",
+    "type": "functional",
+    "actor": "member",
+    "expected": "Lender referral never shows automatically 'approved'.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "05-01",
+    "feature": "05_FINANCE_FUNDING_LEDGER_AND_GOVERNMENT",
+    "type": "functional",
+    "actor": "funder",
+    "expected": "Sample ledger totals reconcile; duplicate provider event posts only once.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "05-02",
+    "feature": "05_FINANCE_FUNDING_LEDGER_AND_GOVERNMENT",
+    "type": "functional",
+    "actor": "funder",
+    "expected": "A failed provider transfer remains failed and can be retried without duplicate settlement.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "05-03",
+    "feature": "05_FINANCE_FUNDING_LEDGER_AND_GOVERNMENT",
+    "type": "functional",
+    "actor": "funder",
+    "expected": "An unrelated organisation cannot access funder contracts or individual member payments.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "05-04",
+    "feature": "05_FINANCE_FUNDING_LEDGER_AND_GOVERNMENT",
+    "type": "functional",
+    "actor": "funder",
+    "expected": "Government report separates money committed, sent and settled and labels missing external visibility.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "06-01",
+    "feature": "06_COOPERATIVES_SAVINGS_AND_FARMER_RECORDS",
+    "type": "functional",
+    "actor": "cooperative leader, treasurer, member, programme specialist, supervised lender partner",
+    "expected": "Authorized treasurer records a contribution, member sees correct pending/verified status.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "06-02",
+    "feature": "06_COOPERATIVES_SAVINGS_AND_FARMER_RECORDS",
+    "type": "functional",
+    "actor": "cooperative leader, treasurer, member, programme specialist, supervised lender partner",
+    "expected": "Duplicate entry is detected, and correction adds an audit event.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "06-03",
+    "feature": "06_COOPERATIVES_SAVINGS_AND_FARMER_RECORDS",
+    "type": "functional",
+    "actor": "cooperative leader, treasurer, member, programme specialist, supervised lender partner",
+    "expected": "Member A cannot view member B's private diary.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "06-04",
+    "feature": "06_COOPERATIVES_SAVINGS_AND_FARMER_RECORDS",
+    "type": "functional",
+    "actor": "cooperative leader, treasurer, member, programme specialist, supervised lender partner",
+    "expected": "Existing cooperative elections and joining continue to work.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "07-01",
+    "feature": "07_SOCIAL_SUPPORT_ALLOCATION_LAB",
+    "type": "functional",
+    "actor": "NISR analyst",
+    "expected": "Same inputs reproduce same outputs; changes in budget reflect formula, audit and source.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "07-02",
+    "feature": "07_SOCIAL_SUPPORT_ALLOCATION_LAB",
+    "type": "functional",
+    "actor": "NISR analyst",
+    "expected": "One can compare five strategies with metadata and constraints.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "07-03",
+    "feature": "07_SOCIAL_SUPPORT_ALLOCATION_LAB",
+    "type": "functional",
+    "actor": "NISR analyst",
+    "expected": "Analyst can save and send aggregate, safe scenario to programme manager.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "07-04",
+    "feature": "07_SOCIAL_SUPPORT_ALLOCATION_LAB",
+    "type": "functional",
+    "actor": "NISR analyst",
+    "expected": "Unknown inputs produce explicit unavailable status, not invented numbers.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "08-01",
+    "feature": "08_HOUSEHOLD_RESILIENCE_AND_ENTERPRISE_DIARY",
+    "type": "functional",
+    "actor": "member, field agent helping with consent, authorised support coach",
+    "expected": "Member can enter and save a realistic budget and see arithmetic explained.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "08-02",
+    "feature": "08_HOUSEHOLD_RESILIENCE_AND_ENTERPRISE_DIARY",
+    "type": "functional",
+    "actor": "member, field agent helping with consent, authorised support coach",
+    "expected": "Other members and generic government officers cannot read the diary.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "08-03",
+    "feature": "08_HOUSEHOLD_RESILIENCE_AND_ENTERPRISE_DIARY",
+    "type": "functional",
+    "actor": "member, field agent helping with consent, authorised support coach",
+    "expected": "Sharing is selective, scoped, expiring and auditable.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "08-04",
+    "feature": "08_HOUSEHOLD_RESILIENCE_AND_ENTERPRISE_DIARY",
+    "type": "functional",
+    "actor": "member, field agent helping with consent, authorised support coach",
+    "expected": "Shock scenarios do not claim a forecast or causality.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "09-01",
+    "feature": "09_SKILLS_MARKETPLACE_AND_REAL_OPPORTUNITIES",
+    "type": "functional",
+    "actor": "programme member",
+    "expected": "Verified tailoring skill leads to relevant active opportunities; absence yields useful empty state.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "09-02",
+    "feature": "09_SKILLS_MARKETPLACE_AND_REAL_OPPORTUNITIES",
+    "type": "functional",
+    "actor": "programme member",
+    "expected": "Job is closed when filled; stale vacancies excluded.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "09-03",
+    "feature": "09_SKILLS_MARKETPLACE_AND_REAL_OPPORTUNITIES",
+    "type": "functional",
+    "actor": "programme member",
+    "expected": "Referrals have durable timeline and actual outcome or 'awaiting response'.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "10-01",
+    "feature": "10_GOVERNMENT_FUNDING_OPERATIONS_AND_POLICY",
+    "type": "functional",
+    "actor": "national authorized oversight officer",
+    "expected": "District officer sees only district-authorized programmes and correct funds statuses.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "10-02",
+    "feature": "10_GOVERNMENT_FUNDING_OPERATIONS_AND_POLICY",
+    "type": "functional",
+    "actor": "national authorized oversight officer",
+    "expected": "National analyst can request programme action without issuing payments.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "10-03",
+    "feature": "10_GOVERNMENT_FUNDING_OPERATIONS_AND_POLICY",
+    "type": "functional",
+    "actor": "national authorized oversight officer",
+    "expected": "Government report shows sources, period, reconciliation and missing data flags.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "10-04",
+    "feature": "10_GOVERNMENT_FUNDING_OPERATIONS_AND_POLICY",
+    "type": "functional",
+    "actor": "national authorized oversight officer",
+    "expected": "Two organisations' confidential investment agreements do not leak across user scopes.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "11-01",
+    "feature": "11_EVIDENCE_CASES_ACTIONS_AND_COMPLAINTS",
+    "type": "functional",
+    "actor": "analyst",
+    "expected": "A request by analyst appears for correct programme manager in a separate signed-in session.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "11-02",
+    "feature": "11_EVIDENCE_CASES_ACTIONS_AND_COMPLAINTS",
+    "type": "functional",
+    "actor": "analyst",
+    "expected": "Wrong programme and district actors cannot see it.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "11-03",
+    "feature": "11_EVIDENCE_CASES_ACTIONS_AND_COMPLAINTS",
+    "type": "functional",
+    "actor": "analyst",
+    "expected": "Visit evidence and supervisor decision appear on authorized timeline.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "11-04",
+    "feature": "11_EVIDENCE_CASES_ACTIONS_AND_COMPLAINTS",
+    "type": "functional",
+    "actor": "analyst",
+    "expected": "Reopening a closed case retains its full historical record.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "12-01",
+    "feature": "12_DATA_QUALITY_IMPACT_AND_EXPORTS",
+    "type": "functional",
+    "actor": "government reviewer",
+    "expected": "A chart and its exported table share same underlying figures and filters.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "12-02",
+    "feature": "12_DATA_QUALITY_IMPACT_AND_EXPORTS",
+    "type": "functional",
+    "actor": "government reviewer",
+    "expected": "Demo records do not appear in certified finance or poverty claims.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "12-03",
+    "feature": "12_DATA_QUALITY_IMPACT_AND_EXPORTS",
+    "type": "functional",
+    "actor": "government reviewer",
+    "expected": "Conflicting data raise source mismatch warning.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "12-04",
+    "feature": "12_DATA_QUALITY_IMPACT_AND_EXPORTS",
+    "type": "functional",
+    "actor": "government reviewer",
+    "expected": "Report by date and programme is reproducible and redaction tested.",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "SEC-001",
+    "feature": "cross-org denial",
+    "type": "SECURITY",
+    "actor": "authorized/unathorized split",
+    "expected": "Programme A cannot read Programme B jobs candidates or payment data",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "SEC-002",
+    "feature": "agent assignment isolation",
+    "type": "SECURITY",
+    "actor": "authorized/unathorized split",
+    "expected": "Agent A cannot view B family or private photo even with guessed UUID",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "SEC-003",
+    "feature": "demo role spoof",
+    "type": "SECURITY",
+    "actor": "authorized/unathorized split",
+    "expected": "Browser localStorage role cannot grant Supabase DB or Edge privileges",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "SEC-004",
+    "feature": "government aggregation",
+    "type": "SECURITY",
+    "actor": "authorized/unathorized split",
+    "expected": "District government role sees permitted aggregates, not unrelated personal accounts",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "SEC-005",
+    "feature": "private storage",
+    "type": "SECURITY",
+    "actor": "authorized/unathorized split",
+    "expected": "Evidence bucket rejects public listing and unauthorized signed reads",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "SEC-006",
+    "feature": "revoked role",
+    "type": "SECURITY",
+    "actor": "authorized/unathorized split",
+    "expected": "Revoked org membership immediately denies sensitive commands with appropriate policy",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "FIN-001",
+    "feature": "idempotent provider callback",
+    "type": "FINANCE",
+    "actor": "authorized/unathorized split",
+    "expected": "Same signed event twice posts one settlement only",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "FIN-002",
+    "feature": "out of order callback",
+    "type": "FINANCE",
+    "actor": "authorized/unathorized split",
+    "expected": "Out-of-order settlement does not create inconsistent state",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "FIN-003",
+    "feature": "balanced journal",
+    "type": "FINANCE",
+    "actor": "authorized/unathorized split",
+    "expected": "Every posted journal has equal debits and credits",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "FIN-004",
+    "feature": "payroll separated",
+    "type": "FINANCE",
+    "actor": "authorized/unathorized split",
+    "expected": "Agent wages and member support have distinct payable and reporting categories",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "FIN-005",
+    "feature": "no provider",
+    "type": "FINANCE",
+    "actor": "authorized/unathorized split",
+    "expected": "Missing provider integration never returns paid/settled",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "FIN-006",
+    "feature": "source restriction",
+    "type": "FINANCE",
+    "actor": "authorized/unathorized split",
+    "expected": "Funder restriction is enforced by approval and cannot be silently bypassed",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "OPS-001",
+    "feature": "offline no duplicate",
+    "type": "OPERATIONS",
+    "actor": "authorized/unathorized split",
+    "expected": "Agent queued evidence submitted twice creates one immutable milestone",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "OPS-002",
+    "feature": "consent alternative",
+    "type": "OPERATIONS",
+    "actor": "authorized/unathorized split",
+    "expected": "No photo consent permits alternate evidence path and no automatic denial",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "OPS-003",
+    "feature": "independent verifier",
+    "type": "OPERATIONS",
+    "actor": "authorized/unathorized split",
+    "expected": "Evidence submitter cannot approve same milestone",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "OPS-004",
+    "feature": "correction/appeal",
+    "type": "OPERATIONS",
+    "actor": "authorized/unathorized split",
+    "expected": "Beneficiary can dispute activity or support data, generating auditable follow-up",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "QA-001",
+    "feature": "source truth",
+    "type": "REPORTING",
+    "actor": "authorized/unathorized split",
+    "expected": "Government export distinguishes demo vs observed vs provider-confirmed figures",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "QA-002",
+    "feature": "missing denominator",
+    "type": "REPORTING",
+    "actor": "authorized/unathorized split",
+    "expected": "Unavailable denominator produces not-computable rather than percentage",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "QA-003",
+    "feature": "existing UI preserved",
+    "type": "FRONTEND",
+    "actor": "authorized/unathorized split",
+    "expected": "Existing routes and USSD remain functional and no new design system appears",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  },
+  {
+    "scenario_id": "QA-004",
+    "feature": "AI boundary",
+    "type": "INTEGRATION",
+    "actor": "authorized/unathorized split",
+    "expected": "No AI Engine report release or model logic rewritten by operational feature work",
+    "status": "NOT_RUN",
+    "level_required": "integration",
+    "evidence_path": ""
+  }
+]

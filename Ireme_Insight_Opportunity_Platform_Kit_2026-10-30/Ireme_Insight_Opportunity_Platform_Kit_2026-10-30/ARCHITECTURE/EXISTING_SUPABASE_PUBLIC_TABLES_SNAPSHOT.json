@@ -1,0 +1,38 @@
+{
+  "project_ref": "ywtxpsefbqzmgmdfzldp",
+  "project_name": "ireme-program",
+  "checked_on": "2026-10-30",
+  "scope": "read-only Supabase connector table metadata; not an RLS penetration test",
+  "tables": [
+    "profiles",
+    "members",
+    "family_members",
+    "member_services",
+    "cooperatives",
+    "cooperative_memberships",
+    "elections",
+    "candidates",
+    "votes",
+    "announcements",
+    "meetings",
+    "agents",
+    "agent_applications",
+    "agent_assignments",
+    "visits",
+    "insurance_rates",
+    "insurance_status",
+    "notifications",
+    "sms_outbox",
+    "ussd_sessions",
+    "ussd_events",
+    "ussd_blocked_numbers",
+    "admin_audit_log"
+  ],
+  "rls_enabled_metadata": true,
+  "hosted_ussd_edge_function_active": true,
+  "security_advisor_reported": {
+    "authenticated_callable_security_definer_functions": 11,
+    "leaked_password_protection_disabled": true
+  },
+  "warning": "Metadata-only snapshot. Verify current policies/grants/function bodies/versions before any change."
+}

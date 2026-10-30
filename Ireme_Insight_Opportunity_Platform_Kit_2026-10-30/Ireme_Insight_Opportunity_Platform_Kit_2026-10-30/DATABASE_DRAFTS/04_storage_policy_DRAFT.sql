@@ -1,0 +1,16 @@
+-- DRAFT ONLY. Private bucket example for evidence; agent must verify current storage configuration.
+-- Do not make beneficiary evidence public.
+-- Operation: privileged server checks assignment/consent, then obtains constrained signed upload URL.
+-- Bucket creation and limits are an explicit separate migration/review decision.
+-- Below policy applies only to owner-scope upload path, e.g. <user-uuid>/<uuid>.jpg.
+
+-- Example to be adapted after the bucket exists and uploader workflow is authorized:
+-- CREATE POLICY "assigned uploader controls own staging prefix" ON storage.objects
+-- FOR INSERT TO authenticated
+-- WITH CHECK (
+--  bucket_id = 'livelihood-evidence-private'
+--  AND (storage.foldername(name))[1] = (SELECT auth.uid())::text
+-- );
+-- No public SELECT grant. Signed reads issued by trusted server ONLY after case ownership check.
+-- Never return original private Storage paths as direct public URLs.
+-- Limit mime type, size, file scan and metadata; RLS alone cannot validate consent.

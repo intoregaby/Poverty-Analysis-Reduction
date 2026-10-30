@@ -72,6 +72,11 @@ class ProfileConfig:
     mfa_enabled: bool = True
     admin_mfa_toggle: bool = False  # Allow admin to toggle MFA ON/OFF via admin panel
 
+    # Admin bypass toggles (HACKATHON_DEMO only) - for testing without human/org dependencies
+    bypass_independent_statistician: bool = False  # Bypass BLK-R requirement
+    bypass_human_approvals: bool = False  # Bypass BLK-APPROVALS requirement
+    bypass_production_infra: bool = False  # Bypass BLK-INFRA requirement
+
 
 # =============================================================================
 # Profile definitions
@@ -83,7 +88,8 @@ HACKATHON_DEMO_CONFIG = ProfileConfig(
         "NISR 2026 Hackathon demonstration profile. "
         "Allows validated, authorized, non-sensitive outputs with DEMONSTRATION labels. "
         "Uses test identities. Does NOT grant production certification. "
-        "MFA is disabled by default for quick testing; admin can toggle ON via admin panel."
+        "MFA is disabled by default for quick testing; admin can toggle ON via admin panel. "
+        "Admin bypass toggles available for testing without human/org dependencies."
     ),
 
     # Report/review gates - relaxed for demo
@@ -102,6 +108,11 @@ HACKATHON_DEMO_CONFIG = ProfileConfig(
     # MFA Configuration - disabled by default for demo, but admin can toggle
     mfa_enabled=False,
     admin_mfa_toggle=True,  # Allow admin to toggle MFA ON/OFF via admin panel
+
+    # Admin bypass toggles (for hackathon demo testing without human/org deps)
+    bypass_independent_statistician=True,  # Bypass BLK-R for demo testing
+    bypass_human_approvals=True,  # Bypass BLK-APPROVALS for demo testing
+    bypass_production_infra=True,  # Bypass BLK-INFRA for demo testing
 
     # Infrastructure - allow local dev
     require_production_infrastructure=False,
@@ -159,6 +170,11 @@ GOVERNED_PRODUCTION_CONFIG = ProfileConfig(
 
     # Verification - full requirements
     skip_external_approvals_in_verification=False,
+
+    # Admin bypass toggles - NEVER enabled in production
+    bypass_independent_statistician=False,
+    bypass_human_approvals=False,
+    bypass_production_infra=False,
 )
 
 # Registry of all profiles

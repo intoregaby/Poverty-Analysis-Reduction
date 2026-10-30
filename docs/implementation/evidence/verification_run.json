@@ -120,7 +120,7 @@
       "severity": "Low"
     }
   ],
-  "engine_test_log": "----------------------------------------------------------------------\nRan 223 tests in 159.774s\n\nOK (skipped=4)\n",
+  "engine_test_log": "----------------------------------------------------------------------\nRan 223 tests in 129.260s\n\nOK (skipped=4)\n",
   "engine_test_outcomes": {
     "test_agents.AgentApi.test_authenticated_agent_run_is_journalled_and_never_persists_proposals": "pass",
     "test_agents.AgentApi.test_missing_provider_and_insufficient_role_fail_closed": "pass",
@@ -347,15 +347,15 @@
     "test_validation_safety.ValidationSafety.test_nonfinite_values_cannot_enter_machine_contract_or_snapshot_hash": "pass"
   },
   "engine_tests_executed": 223,
-  "evidence_digest": "b09ab0145ed6c41c0d97eea0fb90d0d5966ec0d6bb17ce353319a03b566f3d78",
+  "evidence_digest": "caa1c48e65055c73b72085c363f35da0aca9664342c6c76a6cbc097c4a079194",
   "failures": [
     "11/95 acceptance scenarios not PASS",
     "audit defect W6 unresolved (regression SCI-09)",
     "open blockers: BLK-R, BLK-APPROVALS, BLK-INFRA",
     "required human approvals missing or not bound to the current evidence digest"
   ],
-  "git_head": "4790c84854001934fce235ce038d7c36c3d0b191",
-  "implementation_sha256": "16860048cf5868f4698821bcbde7c704df378ca609ae86d54533513290abbab2",
+  "git_head": "a9f02ba0a29dbac6827758e4255f3b350728d14c",
+  "implementation_sha256": "8b4c77bef436ef4a5b4a837ff86249293e9d8b1f27d1ebb9e49dec59964ac6cb",
   "open_blockers": [
     "BLK-R",
     "BLK-APPROVALS",
@@ -367,20 +367,20 @@
     {
       "cmd": "npm test",
       "exit": 0,
-      "seconds": 7.2,
-      "tail": " time, and never invents them (1.4675ms)\n\u2714 grid electricity is reported as a methodology mismatch with both published tables named, not as an error (1.5177ms)\n\u2714 the section says what was confirmed, what could not be compared and what is unverified (0.8092ms)\n\u2714 a report from before verification existed claims nothing was checked (2.776ms)\n\u2714 a failed verification run reads as not run, never as verified (2.869ms)\n\u2714 an unresolved discrepancy is carried into the summary so it can be flagged before export (5.0082ms)\n\u2714 data sources separate what the figures come from from what was merely available (9.5359ms)\n\u2714 the Markdown export contains the verification table, the correction and the sources (5.0025ms)\n\u2714 dialling shows the main menu in the member's language (11.3093ms)\n\u2714 insurance, visit, agent and voting screens show this member's data, then go back (93.3547ms)\n\u2714 every screen fits the USSD length limit (8.6119ms)\n\u2714 a wrong choice keeps the menu; 0 exits and ends the session (1.1563ms)\n\u2714 changing language is saved and applies at once (2.8449ms)\n\u2714 a session that sits idle for too long times out (1.278ms)\n\u2714 unregistered and blocked numbers get nothing (0.7537ms)\n\u2714 a failing database never throws: it is logged and the caller sees a polite END (1.4017ms)\n\u2714 too many requests in a minute are refused (1.4998ms)\n\u2714 gateway adapters speak their own formats and share the same core (1.5799ms)\n\u2139 tests 105\n\u2139 suites 0\n\u2139 pass 105\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 5896.3264\n"
+      "seconds": 5.5,
+      "tail": "al time, and never invents them (0.9384ms)\n\u2714 grid electricity is reported as a methodology mismatch with both published tables named, not as an error (0.8329ms)\n\u2714 the section says what was confirmed, what could not be compared and what is unverified (0.8961ms)\n\u2714 a report from before verification existed claims nothing was checked (2.5447ms)\n\u2714 a failed verification run reads as not run, never as verified (0.6441ms)\n\u2714 an unresolved discrepancy is carried into the summary so it can be flagged before export (3.0751ms)\n\u2714 data sources separate what the figures come from from what was merely available (2.5412ms)\n\u2714 the Markdown export contains the verification table, the correction and the sources (6.1336ms)\n\u2714 dialling shows the main menu in the member's language (6.6733ms)\n\u2714 insurance, visit, agent and voting screens show this member's data, then go back (72.6373ms)\n\u2714 every screen fits the USSD length limit (7.0221ms)\n\u2714 a wrong choice keeps the menu; 0 exits and ends the session (1.156ms)\n\u2714 changing language is saved and applies at once (2.181ms)\n\u2714 a session that sits idle for too long times out (0.8636ms)\n\u2714 unregistered and blocked numbers get nothing (0.8323ms)\n\u2714 a failing database never throws: it is logged and the caller sees a polite END (1.2821ms)\n\u2714 too many requests in a minute are refused (1.559ms)\n\u2714 gateway adapters speak their own formats and share the same core (1.6904ms)\n\u2139 tests 105\n\u2139 suites 0\n\u2139 pass 105\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 4493.148\n"
     },
     {
       "cmd": "npm run lint",
       "exit": 0,
-      "seconds": 24.0,
+      "seconds": 22.5,
       "tail": "\n> poverty-analysis-reduction@0.0.0 lint\n> eslint . --quiet\n\n"
     },
     {
       "cmd": "npm run build",
       "exit": 0,
-      "seconds": 8.1,
-      "tail": "\n> poverty-analysis-reduction@0.0.0 build\n> vite build\n\n\u001b[36mvite v8.3.5 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u2713 2929 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                           0.76 kB \u2502 gzip:   0.42 kB\ndist/assets/index-Cw7ZPgqp.css          109.26 kB \u2502 gzip:  23.55 kB\ndist/assets/purify.es-Dqk5qvad.js        29.02 kB \u2502 gzip:  11.45 kB\ndist/assets/index.es-BC1uuWNV.js        151.41 kB \u2502 gzip:  48.90 kB\ndist/assets/html2canvas-DumhGn4R.js     199.39 kB \u2502 gzip:  46.73 kB\ndist/assets/jspdf.es.min-C5kzDufY.js    399.67 kB \u2502 gzip: 129.90 kB\ndist/assets/index-CxH1RMGD.js         2,169.42 kB \u2502 gzip: 587.51 kB\n\n\u001b[32m\u2713 built in 6.27s\u001b[39m\n\u001b[33m[plugin builtin:vite-reporter] \n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\u001b[39m\n"
+      "seconds": 9.4,
+      "tail": "\n> poverty-analysis-reduction@0.0.0 build\n> vite build\n\n\u001b[36mvite v8.3.5 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u2713 2929 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                           0.76 kB \u2502 gzip:   0.42 kB\ndist/assets/index-Cw7ZPgqp.css          109.26 kB \u2502 gzip:  23.55 kB\ndist/assets/purify.es-Dqk5qvad.js        29.02 kB \u2502 gzip:  11.45 kB\ndist/assets/index.es-BC1uuWNV.js        151.41 kB \u2502 gzip:  48.90 kB\ndist/assets/html2canvas-DumhGn4R.js     199.39 kB \u2502 gzip:  46.73 kB\ndist/assets/jspdf.es.min-C5kzDufY.js    399.67 kB \u2502 gzip: 129.90 kB\ndist/assets/index-CxH1RMGD.js         2,169.42 kB \u2502 gzip: 587.51 kB\n\n\u001b[32m\u2713 built in 7.24s\u001b[39m\n\u001b[33m[plugin builtin:vite-reporter] \n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\u001b[39m\n"
     }
   ],
   "scenario_verdicts": {

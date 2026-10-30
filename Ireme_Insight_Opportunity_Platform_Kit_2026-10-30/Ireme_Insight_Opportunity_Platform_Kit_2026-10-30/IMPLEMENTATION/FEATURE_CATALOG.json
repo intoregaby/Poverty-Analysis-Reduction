@@ -1,0 +1,86 @@
+[
+  {
+    "id": "01",
+    "slug": "01_PROGRAMME_ORGANISATIONS_AND_MEMBERS",
+    "goal": "Establish real programme organisation, funding scope, member enrollment and case plans without confusing VUP grant support with paid agent employment.",
+    "users": "programme owner; government district officer; field supervisor; member; authorised programme admin",
+    "acceptance_count": 4
+  },
+  {
+    "id": "02",
+    "slug": "02_AGENT_JOBS_RECRUITMENT_AND_PAY",
+    "goal": "Create genuine paid employment opportunities for qualified job seekers and recruit them as field agents who can help programme members implement livelihood projects.",
+    "users": "job applicant; programme HR/recruiter; assessor; supervisor; agent; financial reviewer",
+    "acceptance_count": 5
+  },
+  {
+    "id": "03",
+    "slug": "03_FIELD_AGENT_TRAIN_IMPLEMENT_VERIFY",
+    "goal": "Make an agent's main work concrete: teach a skill, help implement a livelihood activity, document results, and obtain independent validation.",
+    "users": "field agent; programme member; field supervisor; programme owner; government case officer (only when scoped)",
+    "acceptance_count": 5
+  },
+  {
+    "id": "04",
+    "slug": "04_FINANCIAL_INCLUSION_AND_PROVIDER_REFERRALS",
+    "goal": "Offer understandable financial access without making social support conditional on compulsory finance surveillance or promising loans.",
+    "users": "member; field agent; programme manager; approved bank/mobile-money partner",
+    "acceptance_count": 4
+  },
+  {
+    "id": "05",
+    "slug": "05_FINANCE_FUNDING_LEDGER_AND_GOVERNMENT",
+    "goal": "Enable government and approved funders to account for donations/investments, programme budgets, member support, agent wages and actual validated transfers.",
+    "users": "funder; programme CFO; paymaster; finance reviewer; government auditor; district officer; member and agent in own account",
+    "acceptance_count": 4
+  },
+  {
+    "id": "06",
+    "slug": "06_COOPERATIVES_SAVINGS_AND_FARMER_RECORDS",
+    "goal": "Convert existing cooperatives into usable voluntary savings-group and economic-activity operations while retaining current membership/elections/announcements.",
+    "users": "cooperative leader, treasurer, member, programme specialist, supervised lender partner",
+    "acceptance_count": 4
+  },
+  {
+    "id": "07",
+    "slug": "07_SOCIAL_SUPPORT_ALLOCATION_LAB",
+    "goal": "Use competitor-inspired budget/targeting what-if comparisons to help humans plan social-support coverage without unsupported causal or individual entitlement claims.",
+    "users": "NISR analyst; government planner; programme owner (approved aggregate only)",
+    "acceptance_count": 4
+  },
+  {
+    "id": "08",
+    "slug": "08_HOUSEHOLD_RESILIENCE_AND_ENTERPRISE_DIARY",
+    "goal": "Give members voluntary tools for budgeting, business inputs, savings goals and coping with shocks while maintaining dignity and privacy.",
+    "users": "member, field agent helping with consent, authorised support coach",
+    "acceptance_count": 4
+  },
+  {
+    "id": "09",
+    "slug": "09_SKILLS_MARKETPLACE_AND_REAL_OPPORTUNITIES",
+    "goal": "Close the loop from verified skills to real jobs, small-business opportunities, cooperative work and training while supporting agents as skilled paid employees.",
+    "users": "programme member; applicant; agent; programme employer; training provider; cooperative officer",
+    "acceptance_count": 3
+  },
+  {
+    "id": "10",
+    "slug": "10_GOVERNMENT_FUNDING_OPERATIONS_AND_POLICY",
+    "goal": "Give lawful government oversight of multi-organisation programmes, audited funding, employment, skill delivery, inclusion and action plans across provinces/districts.",
+    "users": "national authorized oversight officer; district/sector/cell lead; NISR analyst; approved auditor",
+    "acceptance_count": 4
+  },
+  {
+    "id": "11",
+    "slug": "11_EVIDENCE_CASES_ACTIONS_AND_COMPLAINTS",
+    "goal": "Connect evidence to field response, programme tasks and government case follow-up, replacing browser-only action requests.",
+    "users": "analyst; programme owner; supervisor; field agent; member; government case officer",
+    "acceptance_count": 4
+  },
+  {
+    "id": "12",
+    "slug": "12_DATA_QUALITY_IMPACT_AND_EXPORTS",
+    "goal": "Measure verified operational outputs responsibly and make reports useful to human decision makers without duplicating governed statistical reporting.",
+    "users": "government reviewer; NISR analyst; programme owner; funder",
+    "acceptance_count": 4
+  }
+]
