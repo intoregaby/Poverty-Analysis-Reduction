@@ -4,7 +4,7 @@ import { supabase, supabaseConfigured } from "@/lib/supabaseClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, Github } from "lucide-react";
+import { ArrowRight, Loader2, Github } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout";
 import GoogleIcon from "@/components/GoogleIcon";
 import { appAbsoluteUrl, safeReturnTo } from "@/lib/authReturnTo";
@@ -100,18 +100,25 @@ export default function Login() {
     <AuthLayout
       title="Sign in"
       subtitle="Use your Ireme Insight account"
-      footer={
-        <>
-          Don't have an account?{" "}
-          <Link
-            to={"/register" + (returnTo !== "/" ? "?returnTo=" + encodeURIComponent(returnTo) : "")}
-            className="text-primary font-medium hover:underline"
-          >
-            Sign up
-          </Link>
-        </>
-      }
     >
+      <div className="mb-5 flex items-center justify-between gap-3 rounded-lg border border-[#dcefe0] bg-[#f5fbf3] px-3.5 py-3">
+        <div>
+          <p className="text-[12.5px] font-semibold text-ink">
+            {supabaseConfigured ? "Sign in with your account" : "Need a quick way in?"}
+          </p>
+          <p className="mt-0.5 text-[11px] leading-relaxed text-sub">
+            {supabaseConfigured
+              ? "Use your registered email and password."
+              : "Choose a demo account below, or use your registered account."}
+          </p>
+        </div>
+        <Link
+          to={"/register" + (returnTo !== "/" ? "?returnTo=" + encodeURIComponent(returnTo) : "")}
+          className="inline-flex shrink-0 items-center gap-1 text-[11.5px] font-semibold text-[#347b31] hover:underline"
+        >
+          Create account <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+        </Link>
+      </div>
       {supabaseConfigured && googleOAuthConfigured && <Button
         variant="outline"
         className="mb-3 h-10 w-full border-[#e2e4e1] bg-[#f4f5f3] text-sm font-normal text-ink hover:bg-[#eceeeb]"
