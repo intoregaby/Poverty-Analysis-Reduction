@@ -18,7 +18,3 @@ services:
         value: https://ireme-insight.vercel.app
       - key: PYTHON_VERSION
         value: "3.12"
-    disk:
-      name: ireme-data
-      mountPath: /var/data
-      sizeGB: 1
