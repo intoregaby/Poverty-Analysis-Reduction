@@ -4,6 +4,7 @@ import {
   Building2,
   ClipboardCheck,
   FileText,
+  Landmark,
   Layers,
   Map as MapIcon,
   BrainCircuit,
@@ -59,6 +60,7 @@ export const NAV_GROUPS = [
       { label: "Other Analysis", to: "/other-analysis", icon: BarChart3, sub: true, roles: ["platform_admin", "nisr_analyst"] },
       { label: "AI Engine", to: "/ai-engine", icon: BrainCircuit, roles: ["platform_admin", "nisr_analyst"] },
       { label: "National Goals", to: "/nst2", icon: Target, roles: ["platform_admin", "nisr_analyst"] },
+      { label: "Financial Inclusion", to: "/financial-inclusion", icon: Landmark, roles: ["platform_admin", "nisr_analyst"] },
       { label: "Programme Results", to: "/evidence", icon: ClipboardCheck, roles: ["platform_admin"] },
     ],
   },
@@ -78,6 +80,7 @@ export const NAV_GROUPS = [
       { label: "Program Member", to: "/beneficiary", icon: UserRound, roles: ["platform_admin", "beneficiary"] },
       { label: "Find a Job", to: "/jobs", icon: Briefcase, roles: ["platform_admin", "job_applicant"] },
       { label: "USSD Control", to: "/ussd-control", icon: Smartphone, roles: ["platform_admin"] },
+      { label: "Account requests", to: "/account-requests", icon: Users, roles: ["platform_admin"] },
     ],
   },
   {

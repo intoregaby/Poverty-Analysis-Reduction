@@ -24,6 +24,7 @@
     "poverty-analysis": "Isesengura ry'ubukene",
     "ai-engine": "Moteri y'ubwenge buhangano",
     "nst2": "Intego z'igihugu",
+    "financial-inclusion": "Kwinjira muri serivisi z'imari",
     "evidence": "Ibyavuye muri gahunda",
     "programmes": "Imicungire ya gahunda",
     "cooperatives": "Amakoperative",
@@ -40,6 +41,9 @@
   "pageTitles": { "districtMap": "Ikarita y'uturere", "programmeManagement": "Imicungire ya gahunda", "cooperatives": "Amakoperative", "cooperative": "Koperative", "government": "Ubutegetsi", "agent": "Imbonerahamwe y'umukozi", "jobs": "Shaka akazi", "datasets": "Amakuru n'uburyo yakusanyijwe" },
   "nst2": { "title": "Intego z'igihugu", "intro": "Intego z'u Rwanda", "question": "Ese tugeze ku ntego za 2024–2029?", "latest": "Imibare iheruka", "latestHelp": "Imibare y'ingenzi y'ubushakashatsi buheruka", "targets": "Intego", "targetsHelp": "Intego zemewe za 2024–2029", "pending": "intego itarashyirwaho", "social": "Impinduka mu mibereho", "socialNote": "Ubukene n'uburinzi bw'abaturage", "economic": "Impinduka mu bukungu", "economicNote": "Kwinjira muri serivisi z'imari", "governance": "Imiyoborere ihindura", "governanceNote": "Ibimenyetso n'ishyirwa mu bikorwa", "poverty": "Igipimo cy'ubukene", "extreme": "Ubukene bukabije", "vupPoor": "Abakene bitabira VUP", "vupAll": "Ingo zivuga ko zitabira VUP", "formal": "Bari muri serivisi zemewe", "excluded": "Batari muri serivisi z'imari", "banked": "Bakoresha banki", "informal": "Serivisi zitari izemewe gusa", "districts": "Uturere dufite amakuru", "critical": "Uturere dufite ubukene bwa 40%+ na VUP iri munsi ya 15% mu bakene", "programmes": "Gahunda zikurikiranwa", "traceability": "Gukurikirana ubwishyu", "perHousehold": "Kuri buri rugo", "targetsText": "Intego z'igihugu, ibipimo by'itangiriro n'imyaka y'ingenzi bizashyirwa hano dosiye y'ibipimo bya NST2 imaze kongerwamo. Imibare iriho iva muri dosiye za NISR." },
   "analyst": { "dashboard": "Imbonerahamwe y'isesengura ry'ubukene", "dashboardHelp": "Iyi mbonerahamwe igaragaza uturere dukeneye ubufasha ugereranyije ubukene bwaho n'ikigereranyo cy'igihugu.", "howToRead": "Uko usoma uru rupapuro", "openAi": "Fungura moteri y'ubwenge", "trends": "Impinduka n'ibikorwa by'imari", "trendsHelp": "Ubukene mu gihe, abavuye mu bukene, n'uko serivisi z'imari zijyana n'ubukene ku karere." },
+  "beneficiaryPage": { "title": "Inyungu zanjye", "helpTitle": "Inyungu zanjye", "help": "Uru rupapuro rugaragaza ubwishyu, gahunda wanditswemo n'ubufasha. Reba igihe ubwishyu butaha buzabera kandi utange ikirego igihe hari ikibazo.", "heading": "Inyungu zawe", "subheading": "Reba ubwishyu na gahunda zawe", "nextPayment": "Ubwishyu butaha", "date": "Itariki", "amount": "Amafaranga", "status": "Imiterere", "scheduled": "Byateganyijwe", "paymentHistory": "Amateka y'ubwishyu", "paid": "Byishyuwe", "programmes": "Gahunda zawe", "enrolled": "Wanditswe", "since": "Kuva {{date}} · butaha {{next}}", "submitComplaint": "Tanga ikirego", "replyWithin": "Turagusubiza mu minsi 5 y'akazi", "received": "Ikirego cyawe twakibonye. Umukozi wo mu murima azakuvugisha.", "subject": "Umutwe", "describe": "Sobanura ikibazo", "send": "Ohereza" },
+  "cooperativesPage": { "helpTitle": "Amakoperative", "help": "Amakoperative ni amatsinda y'abaturage akorera hamwe kugira ngo abone amafaranga. Ushobora gusaba kuyinjiramo mu karere kawe. Koperative ni yo ifata icyemezo cyo kukwakira, ukabona igisubizo kuri uru rupapuro.", "adminNotice": "Urimo kureba amakoperative yose nka {{name}}. Abanyamuryango basaba kuyinjiramo kuri uru rupapuro; abayobozi b'akarere n'umurenge bayabona mu gice cy'Ubutegetsi, naho buri koperative ikiyobora.", "all": "Amakoperative yose", "inDistrict": "Amakoperative yo mu {{district}}", "yourSector": "Umurenge wawe", "yourCooperative": "Koperative yawe", "ledBy": "iyobowe na {{name}}", "yourRequest": "Ubusabe bwo kwinjira muri {{name}} buracyategereje icyemezo cya koperative. Wasabye {{when}}.", "withdraw": "Kuramo", "notYet": "Ntabwo uraba muri koperative. Hitamo imwe hasi usabe kuyinjiramo.", "requestSent": "Ubusabe bwo kwinjira muri {{name}} bwoherejwe. Koperative izafata icyemezo.", "noDistrict": "Nta makoperative yanditswe mu karere kawe. Baza umuyobozi w'umurenge.", "members": "abanyamuryango", "askJoin": "Saba kuyinjiramo", "member": "Uri umunyamuryango", "sent": "Ubusabe bwoherejwe", "full": "Yuzuye", "notAccepting": "Ntabwo yakira abanyamuryango", "inCooperative": "Usanzwe muri koperative", "pendingElsewhere": "Ubusabe buracyategereje ahandi", "accepting": "Yakira abanyamuryango", "yourRequests": "Ubusabe bwawe", "asked": "Wasabye {{when}}", "withSector": "Ku muyobozi w'umurenge", "withCoop": "Ku koperative", "requests": "Ubusabe bwawe", "askedBy": "Wasabye {{when}}", "decidedBy": "cyemejwe na {{name}}" },
+  "coopHealth": { "Going well": "Biragenda neza", "Struggling": "Ifite imbogamizi", "Inactive": "Ntidukora" },
   "programme": { "tabs": { "overview": "Incamake", "requests": "Ubusabe bw'isesengura", "cooperatives": "Amakoperative", "agents": "Abakozi", "beneficiaries": "Abanyamuryango ba gahunda", "jobs": "Akazi no gushaka abakozi", "payments": "Ubwishyu", "skills": "Ubumenyi n'amahugurwa" } },
   "tour": {
     "stepOf": "Intambwe {{current}} kuri {{total}}",
@@ -54,6 +58,7 @@
       "poverty-analysis": "Uru rupapuro rugaragaza umubare w'abantu bakennye mu bice bitandukanye by'u Rwanda.",
       "ai-engine": "Hitamo akarere ureke moteri y'ubwenge isuzume amakuru n'amasoko.",
       "nst2": "Uru rupapuro rugaragaza intego z'u Rwanda n'urwego tugezeho.",
+      "financial-inclusion": "Uru rupapuro rutandukanya imibare ya BNR iva ku batanga serivisi n'ubushakashatsi bwa NISR FinScope kugira ngo ibipimo bitavanganywa.",
       "evidence": "Uru rupapuro rugaragaza uko gahunda z'ubufasha zikora n'abantu zagezeho.",
       "programmes": "Aha ni ho ucunga abakozi bo mu murima, abanyamuryango, akazi n'ubwishyu.",
       "cooperatives": "Shaka amakoperative akwegereye kandi usabe kuyinjiramo.",
@@ -106,6 +111,10 @@
         "title": "",
         "text": ""
       },
+      "financial-intro": { "title": "", "text": "" },
+      "financial-guide": { "title": "", "text": "" },
+      "financial-bnr": { "title": "", "text": "" },
+      "financial-finscope": { "title": "", "text": "" },
       "analysis-data-note": {
         "title": "",
         "text": ""

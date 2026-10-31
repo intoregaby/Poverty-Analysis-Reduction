@@ -3,13 +3,8 @@ import AnalystTopbar from "@/components/analyst/AnalystTopbar";
 import KpiStrip from "@/components/analyst/KpiStrip";
 import PovertyByDistrictChart from "@/components/analyst/PovertyByDistrictChart";
 import MoversCard from "@/components/analyst/MoversCard";
-import AccessCard from "@/components/analyst/AccessCard";
 import TrendChangeCard from "@/components/analyst/TrendChangeCard";
 import PanelMobilityCard from "@/components/analyst/PanelMobilityCard";
-import DistrictAccessCard from "@/components/analyst/DistrictAccessCard";
-import AccessPovertyCard from "@/components/analyst/AccessPovertyCard";
-import FinanceChangeCard from "@/components/analyst/FinanceChangeCard";
-import FinanceSeriesCard from "@/components/analyst/FinanceSeriesCard";
 import PanelGuide from "@/components/analyst/PanelGuide";
 import { DASHBOARD_DISTRICTS, DASHBOARD_SOURCES } from "@/data/dashboardEvidence";
 import { Link, useOutletContext } from "react-router-dom";
@@ -45,7 +40,7 @@ export default function AnalystDashboard() {
     <div className="pb-14">
       <AnalystTopbar province={province} onProvinceChange={setProvince} onExport={handleExport} />
       <PanelGuide id="analyst-dashboard" title="Poverty Analysis">
-        Use the province filter to compare districts. The eye icon explains each chart; the amber triangle opens a data note where our figure differs from NISR's; the sparkles icon opens the existing AI preview. National-only figures stay labelled as national.
+        Use the province filter to compare districts. The eye icon explains each chart; the amber triangle opens a data note where our figure differs from NISR's; the sparkles icon opens the existing AI preview. Financial-inclusion evidence has its own page so survey and provider measures stay clear.
       </PanelGuide>
 
       <main className="mx-auto max-w-[1440px] space-y-4 px-4 py-5 sm:px-6 lg:px-8">
@@ -57,29 +52,18 @@ export default function AnalystDashboard() {
 
         <div data-tour="analysis-poverty-chart"><PovertyByDistrictChart rows={rows} province={province} /></div>
 
-        <div className="grid grid-cols-1 items-start gap-4 xl:grid-cols-2">
-          <div data-tour="analysis-changes"><MoversCard rows={rows} /></div>
-          <div data-tour="analysis-finance"><AccessCard province={province} /></div>
-        </div>
+        <div data-tour="analysis-changes"><MoversCard rows={rows} /></div>
 
         <section aria-labelledby="trends-title" className="space-y-4">
-          <div><h2 id="trends-title" className="text-[16px] font-semibold tracking-tight text-ink">{t("analyst.trends")}</h2><p className="mt-0.5 text-[12px] text-sub">{t("analyst.trendsHelp")}</p></div>
+          <div className="flex flex-wrap items-end justify-between gap-3"><div><h2 id="trends-title" className="text-[16px] font-semibold tracking-tight text-ink">Poverty trends</h2><p className="mt-0.5 text-[12px] text-sub">Poverty changes and household mobility from NISR sources.</p></div><Link to="/financial-inclusion" className="text-[12px] font-medium text-brand hover:underline">View Financial Inclusion →</Link></div>
           <div className="grid grid-cols-1 items-start gap-4 xl:grid-cols-2">
             <TrendChangeCard rows={rows} />
             <PanelMobilityCard province={province} />
           </div>
-          <div className="grid grid-cols-1 items-start gap-4 xl:grid-cols-2">
-            <DistrictAccessCard rows={rows} />
-            <FinanceChangeCard rows={rows} />
-          </div>
-          <div className="grid grid-cols-1 items-start gap-4 xl:grid-cols-2">
-            <FinanceSeriesCard rows={rows} />
-            <AccessPovertyCard rows={rows} province={province} />
-          </div>
         </section>
 
         <p data-tour="analysis-sources" className="text-[10.5px] leading-relaxed text-[#8A94A6]">
-          <a href={DASHBOARD_SOURCES.poverty} target="_blank" rel="noreferrer" className="underline underline-offset-2">NISR EICV7, 2023/24</a> supplies poverty estimates; its VUP modules supply reported household participation. <a href={DASHBOARD_SOURCES.change} target="_blank" rel="noreferrer" className="underline underline-offset-2">NISR's modelled 2016/17 comparison</a> supplies the earlier poverty rates. <a href={DASHBOARD_SOURCES.financial} target="_blank" rel="noreferrer" className="underline underline-offset-2">FinScope 2024</a> supplies the adult financial Access Strand, nationally and by district. The earlier EICV3, EICV4 and EICV5 poverty files and the EICV3–EICV4 panel supply the trend cards. District estimates have uncertainty; differences between measures do not establish causes or programme eligibility.
+          <a href={DASHBOARD_SOURCES.poverty} target="_blank" rel="noreferrer" className="underline underline-offset-2">NISR EICV7, 2023/24</a> supplies poverty estimates; its VUP modules supply reported household participation. <a href={DASHBOARD_SOURCES.change} target="_blank" rel="noreferrer" className="underline underline-offset-2">NISR's modelled 2016/17 comparison</a> supplies the earlier poverty rates. The earlier EICV3, EICV4 and EICV5 poverty files and the EICV3–EICV4 panel supply the trend cards. District estimates have uncertainty; differences between measures do not establish causes or programme eligibility.
         </p>
       </main>
     </div>

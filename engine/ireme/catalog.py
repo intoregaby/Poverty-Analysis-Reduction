@@ -125,6 +125,46 @@ class Catalog:
             'dataset_version': dataset_version, 'dataset_sha256': dataset['sha256'],
             'purposes': sorted(set(purposes)), 'starts': starts, 'expires': expires, 'evidence_sha256': evidence_sha256})
 
+    def permissions(self, at=None):
+        """Permission records for this tenant with validity and revocation state.
+
+        Only catalog metadata is returned; the licensed dataset itself is never read
+        here. Each payload is re-hashed so a tampered revision surfaces as an
+        integrity error instead of being offered to the analyst.
+        """
+        at = at or datetime.now(timezone.utc)
+        rows = self.db.execute("SELECT entity, payload, sha256 FROM revisions "
+                               "WHERE tenant=? AND kind='permission' ORDER BY entity", (self.tenant,)).fetchall()
+        revoked = {row[0] for row in self.db.execute(
+            "SELECT entity FROM revisions WHERE tenant=? AND kind='revocation'", (self.tenant,))}
+        out = []
+        for entity, payload, checksum in rows:
+            value = json.loads(payload)
+            if digest(value) != checksum:
+                raise CatalogIntegrityError('Catalog revision hash mismatch')
+            out.append({'permission_id': entity,
+                        'dataset_id': value['dataset_id'],
+                        'dataset_version': value['dataset_version'],
+                        'purposes': value['purposes'],
+                        'starts': value['starts'],
+                        'expires': value['expires'],
+                        'revoked': entity in revoked,
+                        'active': entity not in revoked and aware_date(value['starts']) <= at < aware_date(value['expires'])})
+        return out
+
+    def indicators(self):
+        """Registered indicator definitions available to this tenant (metadata only)."""
+        rows = self.db.execute("SELECT entity, version, payload, sha256 FROM revisions "
+                               "WHERE tenant=? AND kind='indicator' ORDER BY entity, version", (self.tenant,)).fetchall()
+        out = []
+        for entity, version, payload, checksum in rows:
+            value = json.loads(payload)
+            if digest(value) != checksum:
+                raise CatalogIntegrityError('Catalog revision hash mismatch')
+            out.append({'indicator_id': entity, 'definition_version': version,
+                        'unit': value.get('unit'), 'sha256': checksum})
+        return out
+
     def revoke(self, permission_id, reason):
         self.get('permission', permission_id, '1')
         if not reason.strip():

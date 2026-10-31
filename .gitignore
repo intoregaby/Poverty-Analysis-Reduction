@@ -50,5 +50,10 @@ dist-ssr
 /skills-lock.json
 /_work*/
 
+# Test artefacts (Playwright reports and Supabase CLI scratch state)
+playwright-report/
+test-results/
+supabase/.temp/
+
 __pycache__/
 *.pyc

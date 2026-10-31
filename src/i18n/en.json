@@ -24,6 +24,7 @@
     "poverty-analysis": "Poverty Analysis",
     "ai-engine": "AI Engine",
     "nst2": "National Goals",
+    "financial-inclusion": "Financial Inclusion",
     "evidence": "Programme Results",
     "programmes": "Programme Management",
     "cooperatives": "Cooperatives",
@@ -40,6 +41,9 @@
   "pageTitles": { "districtMap": "District Map", "programmeManagement": "Programme Management", "cooperatives": "Cooperatives", "cooperative": "Cooperative", "government": "Government", "agent": "Agent Dashboard", "jobs": "Find a Job", "datasets": "Data & Methodology" },
   "nst2": { "title": "National Goals", "intro": "Rwanda's National Goals", "question": "Are we meeting the 2024–2029 targets?", "latest": "Latest Numbers", "latestHelp": "Key figures from the latest survey", "targets": "Targets", "targetsHelp": "Official goals for 2024–2029", "pending": "target pending", "social": "Social transformation", "socialNote": "Poverty and social protection", "economic": "Economic transformation", "economicNote": "Financial inclusion", "governance": "Transformational governance", "governanceNote": "Evidence and delivery", "poverty": "Poverty rate", "extreme": "Extreme poverty", "vupPoor": "VUP participation, poor households", "vupAll": "Households reporting VUP participation", "formal": "Formally included", "excluded": "Financially excluded", "banked": "Banked", "informal": "Informal only", "districts": "Districts with data", "critical": "Districts with poverty 40%+ and VUP participation under 15% of poor", "programmes": "Programmes tracked", "traceability": "Payment traceability", "perHousehold": "Per household", "targetsText": "National targets, baselines and milestone years will load here once the NST2 indicator file is added. Current values already come from the NISR files." },
   "analyst": { "dashboard": "Poverty Analysis Dashboard", "dashboardHelp": "Dashboard shows which districts in Rwanda need support by comparing local poverty levels to the national average.", "howToRead": "How to read this page", "openAi": "Open AI Engine", "trends": "Trends and Financial Inclusion", "trendsHelp": "Poverty over time, who escaped poverty, and how financial access lines up with poverty by district." },
+  "beneficiaryPage": { "title": "My Benefits", "helpTitle": "My Benefits", "help": "This page shows your payments, enrolled programmes and support. Use it to check when your next payment is due and to send a complaint if something is wrong.", "heading": "Your Benefits", "subheading": "Check your payments and programmes", "nextPayment": "Next payment", "date": "Date", "amount": "Amount", "status": "Status", "scheduled": "Scheduled", "paymentHistory": "Payment history", "paid": "Paid", "programmes": "Your programmes", "enrolled": "Enrolled", "since": "Since {{date}} · next {{next}}", "submitComplaint": "Submit a complaint", "replyWithin": "We reply within 5 working days", "received": "Your complaint was received. A field agent will contact you.", "subject": "Subject", "describe": "Describe the issue", "send": "Send" },
+  "cooperativesPage": { "helpTitle": "Cooperatives", "help": "Cooperatives are community groups that work together to earn an income. You can ask to join one in your own district. The cooperative decides whether to accept you. You will see the answer on this page.", "adminNotice": "You are viewing every cooperative as {{name}}. Beneficiaries ask to join from this page; district and sector leaders can see them in the Government panel, and each cooperative manages itself.", "all": "All cooperatives", "inDistrict": "Cooperatives in {{district}}", "yourSector": "Your sector", "yourCooperative": "Your cooperative", "ledBy": "led by {{name}}", "yourRequest": "Your request to join {{name}} is waiting for the cooperative to decide. Asked {{when}}.", "withdraw": "Withdraw", "notYet": "You are not in a cooperative yet. Pick one below and ask to join.", "requestSent": "Your request to join {{name}} was sent. The cooperative will decide.", "noDistrict": "No cooperatives are registered in your district yet. Ask your sector leader.", "members": "members", "askJoin": "Ask to join", "member": "You are a member", "sent": "Request sent", "full": "Full", "notAccepting": "Not accepting members", "inCooperative": "You are in a cooperative", "pendingElsewhere": "Request pending elsewhere", "accepting": "Accepting members", "yourRequests": "Your requests", "asked": "Asked {{when}}", "withSector": "With sector leader", "withCoop": "With the cooperative", "requests": "Your requests", "askedBy": "Asked {{when}}", "decidedBy": "decided by {{name}}" },
+  "coopHealth": { "Going well": "Going well", "Struggling": "Struggling", "Inactive": "Inactive" },
   "programme": { "tabs": { "overview": "Overview", "requests": "Analyst requests", "cooperatives": "Cooperatives", "agents": "Agents", "beneficiaries": "Program Members", "jobs": "Jobs & Recruitment", "payments": "Payments", "skills": "Skills & Training" } },
   "tour": {
     "stepOf": "Step {{current}} of {{total}}",
@@ -54,6 +58,7 @@
       "poverty-analysis": "This page shows how many people are poor in each part of Rwanda. You can see where help is needed most.",
       "ai-engine": "Choose a district and let the AI Engine examine available data, check sources, and prepare findings for review.",
       "nst2": "This page shows Rwanda's goals for 2024 to 2029 and how close the country is to reaching them.",
+      "financial-inclusion": "This page separates the live BNR provider dashboard from NISR FinScope household-survey evidence, so their different measures stay clear.",
       "evidence": "This page shows how the aid programmes are doing: money sent, families reached, and results.",
       "programmes": "This is the place to manage a programme: field agents, program members, jobs, and payments.",
       "cooperatives": "Find cooperatives near you. A cooperative is a group of people who work together. You can ask to join one.",
@@ -106,6 +111,10 @@
         "title": "Financial Inclusion",
         "text": "Imagine 100 adults in Rwanda. Each slice shows how many use banks or other money services. These numbers are for the whole country."
       },
+      "financial-intro": { "title": "Two official sources", "text": "This page keeps BNR provider data and NISR FinScope household-survey evidence separate because they measure different things." },
+      "financial-guide": { "title": "Read the figures safely", "text": "Use the source labels before comparing figures. The BNR dashboard is live provider information; FinScope is a survey of adults." },
+      "financial-bnr": { "title": "BNR live dashboard", "text": "Use this embedded official dashboard for the current provider-reported view. If it cannot load here, open it in a new tab." },
+      "financial-finscope": { "title": "NISR FinScope evidence", "text": "These charts show published FinScope survey estimates and trends. They are not a copy of the BNR dashboard." },
       "analysis-data-note": {
         "title": "The amber warning icon",
         "text": "An amber triangle under a chart opens a data note. It tells you, in plain words, where our figure differs from the one NISR published, or why a year is missing, so you know how far to trust it. Click it to read the note."
@@ -140,7 +149,7 @@
       },
       "inv-form": {
         "title": "Open a governed run",
-        "text": "Enter an existing investigation ID and geography. The engine checks your signed-in account and data permissions before loading it."
+        "text": "Your recent runs load automatically. Pick one, or start a new EICV7 analysis with a permission and indicator already on file."
       },
       "inv-tabs": {
         "title": "Research workspace pages",

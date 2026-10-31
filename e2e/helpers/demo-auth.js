@@ -40,6 +40,14 @@ export const DEMO_ACCOUNTS = {
     title: 'Field Agent',
     scope: 'VUP · Nyaruguru',
   },
+  beneficiary: {
+    email: 'beneficiary@people.demo',
+    role: 'beneficiary',
+    name: 'Mukasine Beatrice',
+    title: 'Program Member',
+    programme: 'VUP Direct Support',
+    scope: 'VUP Direct Support',
+  },
   applicant: {
     email: 'applicant@people.demo',
     role: 'job_applicant',

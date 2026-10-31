@@ -4,7 +4,7 @@ import { supabase, supabaseConfigured } from "@/lib/supabaseClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, Github, LogIn } from "lucide-react";
+import { Loader2, Github, LogIn, Smartphone } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout";
 import GoogleIcon from "@/components/GoogleIcon";
 import { appAbsoluteUrl, safeReturnTo } from "@/lib/authReturnTo";
@@ -142,6 +142,10 @@ export default function Login() {
         <p className="text-[12.5px] font-semibold text-ink">Sign in with your account</p>
         <p className="mt-0.5 text-[11px] leading-relaxed text-sub">Use your registered email and password.</p>
       </div>
+      <Link to="/ussd-sim" className="mb-5 flex items-center gap-3 rounded-lg border border-[#D9D6FE] bg-[#F5F3FF] px-3.5 py-3 transition-colors hover:bg-[#F0EEFF]">
+        <span className="grid h-8 w-8 place-items-center rounded-md bg-white text-brand"><Smartphone className="h-4 w-4" aria-hidden="true" /></span>
+        <span><span className="block text-[12px] font-semibold text-ink">Test the USSD mobile simulator</span><span className="mt-0.5 block text-[11px] text-sub">Open the basic-phone demo without signing in.</span></span>
+      </Link>
       {supabaseConfigured && googleOAuthConfigured && <Button
         variant="outline"
         className="mb-3 h-10 w-full border-[#e2e4e1] bg-[#f4f5f3] text-sm font-normal text-ink hover:bg-[#eceeeb]"

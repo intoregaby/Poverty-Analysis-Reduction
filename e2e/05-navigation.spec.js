@@ -7,12 +7,12 @@
 import { test, expect } from '@playwright/test';
 import { loginAs } from './helpers/demo-auth.js';
 
-test.describe('Public dashboard', () => {
-  test('loads dashboard content without a signed-in session', async ({ page }) => {
+test.describe('Analyst dashboard', () => {
+  test('loads dashboard content for an analyst session', async ({ page }) => {
     const pageErrors = [];
     page.on('pageerror', (error) => pageErrors.push(error.message));
 
-    await page.goto('/');
+    await loginAs(page, 'admin', '/');
     await expect(page.getByRole('heading', { name: 'Poverty Analysis Dashboard' })).toBeVisible();
     await expect(page.getByText('Latest data: 2023/24')).toBeVisible();
     expect(pageErrors).toEqual([]);
@@ -20,6 +20,7 @@ test.describe('Public dashboard', () => {
 });
 
 test.describe('Navigation — Admin', () => {
+  test.describe.configure({ timeout: 60_000 });
   test.beforeEach(async ({ page }) => {
     await loginAs(page, 'admin', '/');
     await page.waitForLoadState('domcontentloaded');

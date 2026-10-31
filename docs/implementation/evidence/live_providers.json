@@ -39,8 +39,7 @@
   ]
  },
  "nvidia_json_schema_probe": {
-  "unavailable": [
-   "connection_timeout"
-  ]
+  "model": "openai/gpt-oss-20b",
+  "ok": true
  }
 }

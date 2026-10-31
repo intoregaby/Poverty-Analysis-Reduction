@@ -27,17 +27,19 @@ and never certifies a report as production evidence.
 ## Runtime toggles
 
 In `HACKATHON_DEMO` an admin (`platform_admin` or `admin` role) can flip the
-bypasses and MFA without restarting the API:
+bypasses and MFA without restarting the API. Any signed-in principal can *read*
+the current state so the dashboard can show which demo freedoms are active:
 
 ```text
 GET  /api/v1/admin/mfa/status      -> { mfa_enabled, profile_default, admin_toggle_allowed, profile }
 POST /api/v1/admin/mfa/toggle      -> { enabled: true|false }
-GET  /api/v1/admin/bypass/status   -> { bypass_independent_statistician, bypass_human_approvals, bypass_production_infra }
+GET  /api/v1/admin/bypass/status   -> { profile, bypass: { bypass_independent_statistician, bypass_human_approvals, bypass_production_infra, bypass_verification_gates } }
 POST /api/v1/admin/bypass/toggle   -> { bypass_human_approvals: true|false, ... }
 ```
 
 Toggles live in memory only, default to the demo profile values, and are
-refused with `403` under `GOVERNED_PRODUCTION`.
+refused with `403` under `GOVERNED_PRODUCTION` (including the read endpoints,
+so production never discloses demo state).
 
 ## Verification
 

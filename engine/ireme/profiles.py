@@ -208,6 +208,7 @@ _BYPASS_FIELDS = (
     "bypass_independent_statistician",
     "bypass_human_approvals",
     "bypass_production_infra",
+    "bypass_verification_gates",
 )
 _bypass_lock = threading.Lock()
 _bypass_overrides: dict[str, bool] = {}

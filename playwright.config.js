@@ -20,7 +20,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run preview -- --host 127.0.0.1 --port 5187 --strictPort',
+    // Build inside the test environment so Vite does not reuse a dist bundle
+    // produced with a developer's local Supabase credentials.
+    command: 'npm run build && npm run preview -- --host 127.0.0.1 --port 5187 --strictPort',
     url: 'http://127.0.0.1:5187',
     reuseExistingServer: !process.env.CI,
     env: {
@@ -28,6 +30,6 @@ export default defineConfig({
       VITE_SUPABASE_URL: '',
       VITE_SUPABASE_PUBLISHABLE_KEY: '',
     },
-    timeout: 60_000,
+    timeout: 180_000,
   },
 });

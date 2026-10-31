@@ -150,6 +150,18 @@ class JobStore:
             rid = c.execute("SELECT run_id FROM runs WHERE idem_key=?", (idem_key,)).fetchone()[0]
         return rid
 
+    def list_runs(self, limit: int = 100) -> list[dict]:
+        """Newest runs first. Callers must filter ownership before exposing anything.
+
+        ``params`` is included for ownership checks only; the HTTP layer never
+        returns it verbatim.
+        """
+        rows = self.conn().execute(
+            "SELECT run_id,kind,params,status,created,worker_version FROM runs ORDER BY rowid DESC LIMIT ?",
+            (max(1, min(int(limit), 500)),)).fetchall()
+        return [{"run_id": r[0], "kind": r[1], "params": json.loads(r[2]), "status": r[3],
+                 "created": r[4], "worker_version": r[5]} for r in rows]
+
     def run_info(self, rid: str) -> dict:
         r = self.conn().execute("SELECT run_id,kind,params,worker_version,status FROM runs WHERE run_id=?", (rid,)).fetchone()
         return {"run_id": r[0], "kind": r[1], "params": json.loads(r[2]), "worker_version": r[3], "status": r[4]}

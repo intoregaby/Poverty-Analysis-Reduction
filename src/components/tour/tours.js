@@ -15,7 +15,7 @@ const ANALYSIS_STEPS = [
   step("analysis-filter"), step("analysis-findings"), step("analysis-poverty-chart"),
   step("analysis-chart-eye", "analysis-poverty-chart", { selector: '[data-tour="chart-explanation"]', icon: Eye }),
   step("analysis-chart-ai", "analysis-poverty-chart", { selector: '[data-tour="chart-ai"]', icon: Sparkles }),
-  step("analysis-changes"), step("analysis-finance"),
+  step("analysis-changes"),
   step("analysis-data-note", "analysis-trends", { selector: '[data-tour="data-note"]', icon: TriangleAlert }),
   step("analysis-sources"), step("analysis-export"),
 ];
@@ -30,6 +30,7 @@ export const PAGE_STEPS = {
   "/other-analysis": OTHER_ANALYSIS_STEPS,
   "/ai-engine": [step("inv-form"), step("inv-tabs"), step("inv-history")],
   "/nst2": [step("nst2-intro"), step("nst2-latest"), step("nst2-targets")],
+  "/financial-inclusion": [step("financial-intro"), step("financial-guide"), step("financial-bnr"), step("financial-finscope")],
   "/evidence": [step("ev-payments"), step("ev-journey"), step("ev-mix"), step("ev-table")],
   "/programmes": [step("sidebar-subnav", "sidebar-subnav", { id: "programmes-subnav", ...inMenu }), step("pm-programme-select"), step("agent-open")],
   "/cooperatives": [step("coop-mine"), step("coop-requests")],
@@ -40,6 +41,7 @@ export const PAGE_STEPS = {
   "/jobs": [step("job-application"), step("job-open")],
   "/map": [step("map-layers"), step("map-canvas"), step("map-legend"), step("map-detail"), step("map-list")],
   "/ussd-control": [step("ussd-stats"), step("ussd-sessions"), step("ussd-errors"), step("ussd-blocked"), step("ussd-audit")],
+  "/account-requests": [step("account-request-list")],
   "/datasets": [step("ds-intro"), step("ds-list"), step("ds-dictionary")],
 };
 

@@ -217,6 +217,64 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
             catalog.close()
             jobs.close()
 
+    @app.get('/v1/investigations')
+    def list_investigations(request: Request, limit: int = 25):
+        """Recent runs the caller may see, newest first. Never exposes stored source data."""
+        principal = request.state.principal
+        auth.authorize(principal, 'investigation:read', principal.tenant, profile=current_profile())
+        cap = max(1, min(limit, 100))
+        privileged = principal.roles.intersection(
+            {'platform_admin', 'statistical_reviewer', 'privacy_reviewer', 'release_reviewer'})
+        jobs = JobStore(audit_path)
+        try:
+            runs = []
+            for info in jobs.list_runs(limit=400):
+                params = info['params']
+                if params.get('tenant') != principal.tenant:
+                    continue
+                owned = params.get('principal') == principal.subject
+                if not owned and not privileged:
+                    continue
+                stages = jobs.conn().execute(
+                    'SELECT name,status FROM stages WHERE run_id=? ORDER BY rowid', (info['run_id'],)).fetchall()
+                runs.append({'investigation_id': info['run_id'], 'status': info['status'],
+                             'created': info['created'], 'owned': owned,
+                             'dataset_id': params.get('dataset_id'),
+                             'dataset_version': params.get('dataset_version'),
+                             'indicator_id': params.get('indicator_id'),
+                             'definition_version': params.get('definition_version'),
+                             'purpose': params.get('purpose'),
+                             'stages': [{'stage_id': name, 'status': status} for name, status in stages]})
+                if len(runs) >= cap:
+                    break
+            return {'runs': runs, 'count': len(runs)}
+        finally:
+            jobs.close()
+
+    @app.get('/v1/permissions')
+    def list_permissions(request: Request):
+        """Dataset permissions recorded for the caller's tenant, with validity state."""
+        principal = request.state.principal
+        auth.authorize(principal, 'investigation:read', principal.tenant, profile=current_profile())
+        catalog = Catalog(catalog_path, principal.tenant, principal.subject)
+        try:
+            permissions = catalog.permissions()
+            return {'permissions': permissions, 'count': len(permissions)}
+        finally:
+            catalog.close()
+
+    @app.get('/v1/indicators')
+    def list_indicators(request: Request):
+        """Registered indicator definitions the caller's tenant can request."""
+        principal = request.state.principal
+        auth.authorize(principal, 'investigation:read', principal.tenant, profile=current_profile())
+        catalog = Catalog(catalog_path, principal.tenant, principal.subject)
+        try:
+            indicators = catalog.indicators()
+            return {'indicators': indicators, 'count': len(indicators)}
+        finally:
+            catalog.close()
+
     @app.post('/v1/investigations/{run_id}/resume', status_code=202)
     def resume_investigation(run_id: str, request: Request, background_tasks: BackgroundTasks):
         principal = request.state.principal
@@ -511,14 +569,18 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
         if 'platform_admin' not in principal.roles and 'admin' not in principal.roles:
             raise ApiError(403, 'FORBIDDEN', 'Admin permission required for MFA toggle')
 
+    def _require_demo_reader(profile: ProfileConfig):
+        """Any signed-in principal may read demo toggles; production exposes nothing."""
+        if not profile.admin_mfa_toggle:
+            raise ApiError(403, 'ADMIN_TOGGLE_NOT_ALLOWED', 'Demo controls are not available for this profile')
+
 
     @app.get('/v1/admin/mfa/status')
     @app.get('/admin/mfa/status')
     async def mfa_status(request: Request):
         """Get current MFA status for admin panel."""
         profile = current_profile()
-        principal = request.state.principal
-        _require_admin(principal, profile)
+        _require_demo_reader(profile)
         return auth.get_mfa_status(profile)
 
 
@@ -540,6 +602,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
         bypass_independent_statistician: bool | None = None
         bypass_human_approvals: bool | None = None
         bypass_production_infra: bool | None = None
+        bypass_verification_gates: bool | None = None
 
 
     @app.get('/v1/admin/bypass/status')
@@ -547,9 +610,8 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
     async def bypass_status(request: Request):
         """Current demo bypass toggles (always fully disabled in production)."""
         profile = current_profile()
-        principal = request.state.principal
-        _require_admin(principal, profile)
-        return profiles.get_bypass_status(profile)
+        _require_demo_reader(profile)
+        return {'profile': profile.name.value, 'bypass': profiles.get_bypass_status(profile)}
 
 
     @app.post('/v1/admin/bypass/toggle')
