@@ -62,9 +62,10 @@ const AuthenticatedApp = () => {
     <Routes>
       {/* Add your page Route elements here */}
       <Route path="/ussd-sim" element={<UssdSimulator />} />
-      {/* Public dashboard: aggregate NISR/FinScope evidence only; no household records. */}
-      <Route path="/" element={<AnalystDashboard />} />
       <Route element={<DashboardShell />}>
+        <Route element={<RoleGuard roles={["platform_admin", "nisr_analyst"]} />}>
+          <Route path="/" element={<AnalystDashboard />} />
+        </Route>
         <Route element={<RoleGuard roles={["platform_admin"]} />}>
           <Route path="/ussd-control" element={<UssdControl />} />
         </Route>
