@@ -40,7 +40,7 @@ const choices = [...DASHBOARD_DISTRICTS].sort((a, b) => a.name.localeCompare(b.n
 const suggestions = [...DASHBOARD_DISTRICTS].sort((a, b) => b.poverty - a.poverty).slice(0, 4).map((item) => item.name);
 const DEFAULT_STAGES = Object.keys(STAGE_INFO).map((name) => ({ name, status: "Pending" }));
 
-export default function DistrictInvestigation() {
+export default function AIEngine() {
   const [params, setParams] = useSearchParams();
   const districtParam = params.get("district");
   const [district, setDistrict] = useState(choices.some((item) => item.name === districtParam) ? districtParam : "Gisagara");
@@ -222,9 +222,9 @@ export default function DistrictInvestigation() {
 
   const header = <div className="sticky top-0 z-20 border-b border-hairline bg-white/90 backdrop-blur"><div className={`flex h-[52px] items-center gap-3 px-4 sm:px-6 ${id ? "" : "mx-auto max-w-[1100px] lg:px-8"}`}>
     <Link to="/" className="text-sub hover:text-brand" aria-label="Back to Poverty Analysis"><ArrowLeft className="h-4 w-4" /></Link>
-    <div className="flex min-w-0 items-center gap-2"><h1 className="truncate text-[15px] font-semibold text-ink">{id ? shownDistrict : "District Investigation"}</h1>{id && <><span className="hidden whitespace-nowrap text-[12px] text-sub md:inline">District Investigation</span><Status value={state?.status} /></>}</div>
+    <div className="flex min-w-0 items-center gap-2"><h1 className="truncate text-[15px] font-semibold text-ink">{id ? shownDistrict : "AI Engine"}</h1>{id && <><span className="hidden whitespace-nowrap text-[12px] text-sub md:inline">AI Engine</span><Status value={state?.status} /></>}</div>
     <div className="ml-auto flex items-center gap-2">
-      {id && <button type="button" onClick={goHome} aria-label="New investigation" title="New investigation" className={headerButton}><Plus className="h-3.5 w-3.5 text-brand" /><span className="hidden xl:inline">New investigation</span></button>}
+      {id && <button type="button" onClick={goHome} aria-label="New AI analysis" title="New AI analysis" className={headerButton}><Plus className="h-3.5 w-3.5 text-brand" /><span className="hidden xl:inline">New analysis</span></button>}
       <button type="button" onClick={() => setPanel(panel === "history" ? null : "history")} aria-label="History" title="History" aria-pressed={panel === "history"} className={headerButton}><Clock3 className="h-3.5 w-3.5 text-brand" aria-hidden /><span className="hidden xl:inline">History</span></button>
       <button type="button" onClick={() => setPanel(panel === "connections" ? null : "connections")} aria-label="Connected websites" title="Connected websites" aria-pressed={panel === "connections"} className={headerButton}><Link2 className="h-3.5 w-3.5 text-brand" aria-hidden /><span className="hidden xl:inline">Connected websites</span></button>
     </div>
@@ -233,7 +233,7 @@ export default function DistrictInvestigation() {
   const overlays = <>
     {result && <RequestDialog open={requestOpen} onOpenChange={setRequestOpen} district={shownDistrict} evidence={evidence} context={requestContext} runId={id} suggestedPriority={suggestPriority(result)} preset={requestPreset} onSubmit={sendRequest} />}
     {panel === "connections" && <ConnectionsPanel onClose={() => setPanel(null)} />}
-    {panel === "history" && <SidePanel title="Investigation history" subtitle={`${historyItems.length} saved`} icon={Clock3} onClose={() => setPanel(null)}><div className="p-4"><InvestigationHistory history={historyItems} activeId={id} onOpen={openRun} onDelete={deleteHistory} /></div></SidePanel>}
+    {panel === "history" && <SidePanel title="AI Engine history" subtitle={`${historyItems.length} saved`} icon={Clock3} onClose={() => setPanel(null)}><div className="p-4"><InvestigationHistory history={historyItems} activeId={id} onOpen={openRun} onDelete={deleteHistory} /></div></SidePanel>}
     {panel === "steps" && id && <TaskPanel id={id} district={shownDistrict} state={state} stages={stages} busy={busy} onResume={resume} onClose={() => setPanel(null)} />}
     {panel === "report" && result && <ReportPanel ai={ai} result={result} district={shownDistrict} onClose={() => setPanel(null)} />}
   </>;
@@ -244,14 +244,14 @@ export default function DistrictInvestigation() {
     <main className="mx-auto max-w-[1100px] px-4 py-6 sm:px-6 lg:px-8"><div className="mx-auto max-w-3xl space-y-4">
       <div className="pb-2 pt-6 text-center sm:pt-12">
         <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft text-brand"><Sparkles className="h-6 w-6" /></span>
-        <h2 className="mt-4 text-[26px] font-semibold tracking-tight text-ink">Which district should we investigate?</h2>
-        <p className="mx-auto mt-2 max-w-xl text-[13px] leading-relaxed text-sub">Each investigation is a notebook: the AI reads the survey data and your sources, measures what lines up with poverty, and keeps everything you ask in one place.</p>
+        <h2 className="mt-4 text-[26px] font-semibold tracking-tight text-ink">What would you like the AI Engine to analyze?</h2>
+        <p className="mx-auto mt-2 max-w-xl text-[13px] leading-relaxed text-sub">Choose a district to review its available data, sources, and poverty patterns. Findings are saved with their evidence and require analyst review.</p>
       </div>
       {fromNote}
       <form data-tour="inv-form" onSubmit={(event) => { event.preventDefault(); start(); }} className="flex flex-wrap items-center gap-2 rounded-2xl border border-hairline bg-white p-2 pl-4 shadow-[0_2px_8px_rgba(10,37,64,0.04)] focus-within:border-brand/40">
-        <label htmlFor="investigation-district" className="text-[12px] text-sub">Investigate</label>
+        <label htmlFor="investigation-district" className="text-[12px] text-sub">District</label>
         <select id="investigation-district" value={district} onChange={(event) => setDistrict(event.target.value)} className="h-9 min-w-0 flex-1 rounded-md bg-transparent text-[14px] font-medium text-ink outline-none">{choices.map((item) => <option key={item.name} value={item.name}>{item.name}</option>)}</select>
-        <button type="submit" disabled={busy} aria-label="Run investigation" className="inline-flex h-10 items-center gap-2 rounded-xl bg-brand px-4 text-[12.5px] font-medium text-white hover:bg-[#524BE0] disabled:opacity-60"><ArrowUp className="h-4 w-4" />Run investigation</button>
+        <button type="submit" disabled={busy} aria-label="Run AI analysis" className="inline-flex h-10 items-center gap-2 rounded-xl bg-brand px-4 text-[12.5px] font-medium text-white hover:bg-[#524BE0] disabled:opacity-60"><ArrowUp className="h-4 w-4" />Analyze district</button>
       </form>
       <div className="flex flex-wrap items-center justify-center gap-2 pt-1"><span className="text-[11px] text-sub">Highest poverty rates:</span>{suggestions.map((name) => <button key={name} type="button" disabled={busy} onClick={() => start(name)} className="rounded-full border border-hairline bg-white px-3 py-1 text-[11.5px] text-ink hover:border-brand/40 hover:text-brand disabled:opacity-60">{name}</button>)}</div>
       {errorBanner}

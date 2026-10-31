@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
@@ -9,7 +9,7 @@ import ScrollToTop from './components/ScrollToTop';
 // Add page imports here
 import AnalystDashboard from './pages/AnalystDashboard';
 import OtherAnalysis from './pages/OtherAnalysis';
-import DistrictInvestigation from './pages/DistrictInvestigation';
+import AIEngine from './pages/AIEngine';
 import FinancialMap from './pages/FinancialMap';
 import Nst2Indicators from './pages/Nst2Indicators';
 import ProgrammeEvidence from './pages/ProgrammeEvidence';
@@ -74,7 +74,8 @@ const AuthenticatedApp = () => {
         </Route>
         <Route element={<RoleGuard roles={["platform_admin", "nisr_analyst"]} />}>
           <Route path="/other-analysis" element={<OtherAnalysis />} />
-          <Route path="/investigations" element={<DistrictInvestigation />} />
+          <Route path="/ai-engine" element={<AIEngine />} />
+          <Route path="/investigations" element={<LegacyInvestigationRedirect />} />
           <Route path="/nst2" element={<Nst2Indicators />} />
         </Route>
         <Route element={<RoleGuard roles={["platform_admin", "programme_owner"]} />}>
@@ -117,6 +118,11 @@ const AuthenticatedApp = () => {
   );
 };
 
+
+function LegacyInvestigationRedirect() {
+  const location = useLocation();
+  return <Navigate to={{ pathname: "/ai-engine", search: location.search, hash: location.hash }} replace />;
+}
 
 function App() {
 

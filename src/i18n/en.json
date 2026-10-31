@@ -22,7 +22,7 @@
   "nav": {
     "other-analysis": "Other Analysis",
     "poverty-analysis": "Poverty Analysis",
-    "investigations": "District Investigation",
+    "ai-engine": "AI Engine",
     "nst2": "National Goals",
     "evidence": "Programme Results",
     "programmes": "Programme Management",
@@ -47,7 +47,7 @@
     "intro": {
       "other-analysis": "This page keeps the earlier analysis: social support, programme delivery, district needs and priority districts. It uses older methods and data that are not the latest survey.",
       "poverty-analysis": "This page shows how many people are poor in each part of Rwanda. You can see where help is needed most.",
-      "investigations": "Pick a district and the computer will study it for you. It reads the data, checks the sources, and writes a report.",
+      "ai-engine": "Choose a district and let the AI Engine examine available data, check sources, and prepare findings for review.",
       "nst2": "This page shows Rwanda's goals for 2024 to 2029 and how close the country is to reaching them.",
       "evidence": "This page shows how the aid programmes are doing: money sent, families reached, and results.",
       "programmes": "This is the place to manage a programme: field agents, program members, jobs, and payments.",

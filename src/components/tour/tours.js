@@ -28,7 +28,7 @@ const OTHER_ANALYSIS_STEPS = [
 export const PAGE_STEPS = {
   "/": ANALYSIS_STEPS,
   "/other-analysis": OTHER_ANALYSIS_STEPS,
-  "/investigations": [step("inv-form"), step("inv-tabs"), step("inv-history")],
+  "/ai-engine": [step("inv-form"), step("inv-tabs"), step("inv-history")],
   "/nst2": [step("nst2-intro"), step("nst2-latest"), step("nst2-targets")],
   "/evidence": [step("ev-payments"), step("ev-journey"), step("ev-mix"), step("ev-table")],
   "/programmes": [step("sidebar-subnav", "sidebar-subnav", { id: "programmes-subnav", ...inMenu }), step("pm-programme-select"), step("agent-open")],
