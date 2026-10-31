@@ -6,6 +6,7 @@ import PanelGuide from "@/components/analyst/PanelGuide";
 import { usePublishedJobs, useMyApplications, useApplyForJob } from "@/lib/jobsApi";
 import { supabase } from "@/lib/supabaseClient";
 import { useMe } from "@/lib/memberApi";
+import { useTranslation } from "react-i18next";
 
 // ── helpers ──────────────────────────────────────────────────────────────
 const fmtDate = (d) => (d ? new Date(d).toLocaleDateString("en-RW") : "—");
@@ -223,6 +224,7 @@ const DEMO_POSITIONS = [
 ];
 
 export default function JobApplicant() {
+  const { t } = useTranslation();
   const [applyingFor, setApplyingFor] = useState(null);
   const meQuery = useMe();
   const userId = meQuery.data?.profile?.id ?? null;
@@ -238,7 +240,7 @@ export default function JobApplicant() {
   return (
     <div className="pb-14">
       <PageHeader
-        title="Find a Job"
+        title={t("pageTitles.jobs")}
         badge={
           <span className="hidden items-center gap-1.5 rounded-full border border-hairline px-2 py-[3px] text-[11px] text-sub sm:inline-flex">
             {liveJobsQuery.isLoading ? "Loading…" : `${positions.length} open position${positions.length !== 1 ? "s" : ""}`}

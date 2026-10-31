@@ -15,6 +15,7 @@ import { DASHBOARD_DISTRICTS, DASHBOARD_SOURCES, NATIONAL_EICV7 } from "@/data/d
 import { LAYER_KEYS, MAP_LAYERS } from "@/lib/mapLayers";
 import { useDemoAuth, useRole } from "@/lib/DemoAuthContext";
 import { districtAllowed, mapScope, scopeDistrictGeo, scopeDistrictRows, scopeSectorFeatures } from "@/lib/geoScope";
+import { useTranslation } from "react-i18next";
 
 const CAN_INVESTIGATE = ["platform_admin", "nisr_analyst"];
 const SELECTED_KEY = "district-map-selected";
@@ -24,6 +25,7 @@ const readSaved = (key, fallback) => {
 };
 
 export default function FinancialMap() {
+  const { t } = useTranslation();
   const role = useRole();
   const { demoUser } = useDemoAuth();
   const [geo, setGeo] = useState(null);
@@ -105,7 +107,7 @@ export default function FinancialMap() {
   return (
     <div className="pb-14">
       <PageHeader
-        title="District Map"
+        title={t("pageTitles.districtMap")}
         badge={
           <span className="hidden items-center gap-1.5 rounded-full border border-hairline px-2 py-[3px] text-[11px] text-sub sm:inline-flex">
             <span className="h-1.5 w-1.5 rounded-full bg-pos" />

@@ -30,7 +30,8 @@ function SubNav({ to }) {
   const tabs = SUB_TABS[to];
   if (!tabs || pathname !== to) return null;
   const current = tabs.some((item) => item.id === params.get("tab")) ? params.get("tab") : "overview";
-  return <ul data-tour="sidebar-subnav" className="ml-[19px] mt-0.5 space-y-0.5 border-l border-hairline pl-2">{tabs.map((item) => <li key={item.id}><Link to={item.id === "overview" ? to : `${to}?tab=${item.id}`} className={`flex items-center rounded-md px-2.5 py-1.5 text-[12px] transition-colors ${current === item.id ? "bg-brand-soft font-medium text-brand" : "text-[#425466] hover:bg-canvas hover:text-ink"}`} aria-current={current === item.id ? "page" : undefined}>{t(`member.tabs.${item.id}`, { defaultValue: item.label })}{item.id === "requests" && to === "/programmes" && <RequestBadge />}</Link></li>)}</ul>;
+  const namespace = to === "/programmes" ? "programme.tabs" : to === "/government" ? "gov.tabs" : "member.tabs";
+  return <ul data-tour="sidebar-subnav" className="ml-[19px] mt-0.5 space-y-0.5 border-l border-hairline pl-2">{tabs.map((item) => <li key={item.id}><Link to={item.id === "overview" ? to : `${to}?tab=${item.id}`} className={`flex items-center rounded-md px-2.5 py-1.5 text-[12px] transition-colors ${current === item.id ? "bg-brand-soft font-medium text-brand" : "text-[#425466] hover:bg-canvas hover:text-ink"}`} aria-current={current === item.id ? "page" : undefined}>{t(`${namespace}.${item.id}`, { defaultValue: item.label })}{item.id === "requests" && to === "/programmes" && <RequestBadge />}</Link></li>)}</ul>;
 }
 
 export default function Sidebar({ onStartTour }) {
@@ -87,7 +88,7 @@ export default function Sidebar({ onStartTour }) {
         ))}
       </nav>
       <div className="border-t border-hairline px-3 py-3">
-        <div className="mb-2 flex justify-end"><LanguageSwitcher /></div>
+        <div className="mb-1"><LanguageSwitcher /></div>
         <button type="button" data-tour="take-tour" onClick={onStartTour} className="flex w-full items-center gap-2 rounded-md px-2 py-2 text-[12.5px] text-sub hover:bg-canvas hover:text-ink">
           <CircleHelp className="h-4 w-4" strokeWidth={1.75} />
           <span>{t("common.takeTour")}</span>

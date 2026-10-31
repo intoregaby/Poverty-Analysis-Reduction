@@ -36,6 +36,8 @@
     "datasets": "Data & Methodology",
     "ussd-control": "USSD Control"
   },
+  "pageTitles": { "districtMap": "District Map", "programmeManagement": "Programme Management", "cooperatives": "Cooperatives", "cooperative": "Cooperative", "government": "Government", "agent": "Agent Dashboard", "jobs": "Find a Job", "datasets": "Data & Methodology" },
+  "programme": { "tabs": { "overview": "Overview", "requests": "Analyst requests", "cooperatives": "Cooperatives", "agents": "Agents", "beneficiaries": "Program Members", "jobs": "Jobs & Recruitment", "payments": "Payments", "skills": "Skills & Training" } },
   "tour": {
     "stepOf": "Step {{current}} of {{total}}",
     "close": "Close the tour",
@@ -524,6 +526,7 @@
     }
   },
   "gov": {
+    "tabs": { "overview": "Overview", "beneficiaries": "Program Members", "problems": "Delivery problems", "reports": "Field reports", "requests": "Programme requests", "cooperatives": "Cooperatives" },
     "membersHelp": "People enrolled in programmes in {{area}}. You see no one outside your area.",
     "search": "Search by name",
     "noMembers": "No program members match.",

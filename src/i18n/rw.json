@@ -36,6 +36,8 @@
     "datasets": "Amakuru n'uburyo yakusanyijwe",
     "ussd-control": "Igenzura rya USSD"
   },
+  "pageTitles": { "districtMap": "Ikarita y'uturere", "programmeManagement": "Imicungire ya gahunda", "cooperatives": "Amakoperative", "cooperative": "Koperative", "government": "Ubutegetsi", "agent": "Imbonerahamwe y'umukozi", "jobs": "Shaka akazi", "datasets": "Amakuru n'uburyo yakusanyijwe" },
+  "programme": { "tabs": { "overview": "Incamake", "requests": "Ubusabe bw'isesengura", "cooperatives": "Amakoperative", "agents": "Abakozi", "beneficiaries": "Abanyamuryango ba gahunda", "jobs": "Akazi no gushaka abakozi", "payments": "Ubwishyu", "skills": "Ubumenyi n'amahugurwa" } },
   "tour": {
     "stepOf": "Intambwe {{current}} kuri {{total}}",
     "close": "Funga uru rugendo",
@@ -524,6 +526,7 @@
     }
   },
   "gov": {
+    "tabs": { "overview": "Incamake", "beneficiaries": "Abanyamuryango ba gahunda", "problems": "Ibibazo by'ishyirwa mu bikorwa", "reports": "Raporo zo mu murima", "requests": "Ubusabe bwa gahunda", "cooperatives": "Amakoperative" },
     "membersHelp": "Abantu bari muri gahunda muri {{area}}. Ntubona abo hanze y'aho ukorera.",
     "search": "Shakisha ukoresheje izina",
     "noMembers": "Nta banyamuryango bahuye n'ibyo washatse.",

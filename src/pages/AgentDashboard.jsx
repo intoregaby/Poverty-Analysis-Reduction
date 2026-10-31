@@ -8,6 +8,7 @@ import { supabaseConfigured } from "@/lib/supabaseClient";
 import { useDemoAuth } from "@/lib/DemoAuthContext";
 import { useAuth } from "@/lib/AuthContext";
 import { useAgentAssignmentCount, useAgentVisits, useCompleteAgentVisit } from "@/lib/fieldApi";
+import { useTranslation } from "react-i18next";
 
 // ── Static fallback demo data ─────────────────────────────────────────────────
 const DEMO_VISITS = [
@@ -56,6 +57,7 @@ function StatusBadge({ status }) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function AgentDashboard() {
+  const { t } = useTranslation();
   const { demoUser } = useDemoAuth();
   const { profile } = useAuth();
   const agentId = profile?.agent_id;
@@ -95,7 +97,7 @@ export default function AgentDashboard() {
   return (
     <div className="pb-14" data-testid="agent-dashboard">
       <PageHeader
-        title="Agent Dashboard"
+        title={t("pageTitles.agent")}
         badge={
           <span className="hidden items-center gap-1.5 rounded-full border border-hairline px-2 py-[3px] text-[11px] text-sub sm:inline-flex">
             {isDemo ? "VUP · Nyaruguru" : [profile?.programme, profile?.district].filter(Boolean).join(" · ") || "Field Agent"}

@@ -6,11 +6,13 @@ import { HealthChip } from "@/components/government/GovCooperatives";
 import { ago } from "@/components/requests/bits";
 import { useDemoAuth, useRole } from "@/lib/DemoAuthContext";
 import { beneficiaryFor, requestJoin, useCooperatives, withdrawJoin } from "@/lib/cooperatives";
+import { useTranslation } from "react-i18next";
 
 const REQUEST_STYLE = { Endorsed: "border-[#D3CEFF] bg-[#EFEDFF] text-[#4B3FCC]", Pending: "border-[#FEDF89] bg-[#FFFAEB] text-[#B54708]", Approved: "border-[#ABEFC6] bg-[#ECFDF3] text-[#067647]", Declined: "border-[#FEE4E2] bg-[#FEF3F2] text-[#B42318]", Withdrawn: "border-hairline bg-[#FAFBFD] text-[#8A94A6]" };
 
 // Where a beneficiary asks to join a cooperative. A sector or district leader decides; the beneficiary sees the answer here.
 export default function Cooperatives() {
+  const { t } = useTranslation();
   const role = useRole();
   const { demoUser } = useDemoAuth();
   const store = useCooperatives();
@@ -28,7 +30,7 @@ export default function Cooperatives() {
 
   return (
     <div className="pb-14">
-      <PageHeader title="Cooperatives" badge={<span className="hidden items-center gap-1.5 rounded-full border border-hairline px-2 py-[3px] text-[11px] text-sub sm:inline-flex">{me ? `${me.sector}, ${me.district}` : `${store.coops.length} cooperatives`}</span>} />
+      <PageHeader title={t("pageTitles.cooperatives")} badge={<span className="hidden items-center gap-1.5 rounded-full border border-hairline px-2 py-[3px] text-[11px] text-sub sm:inline-flex">{me ? `${me.sector}, ${me.district}` : `${store.coops.length} cooperatives`}</span>} />
 
       <PanelGuide id="cooperatives" title="Cooperatives">
         Cooperatives are community groups that work together to earn an income. You can ask to join one in your own district. The cooperative decides whether to accept you. You will see the answer on this page.

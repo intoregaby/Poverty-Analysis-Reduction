@@ -6,6 +6,7 @@ import PanelGuide from "@/components/analyst/PanelGuide";
 import { countObservationsBySource } from "@/data/financialInclusion";
 import { DASHBOARD_SOURCES } from "@/data/dashboardEvidence";
 import { loadFinancialInclusionData } from "@/lib/financialInclusion";
+import { useTranslation } from "react-i18next";
 
 const STATUS_STYLES = {
   Imported: "border-[#ABEFC6] bg-[#ECFDF3] text-[#067647]",
@@ -49,6 +50,7 @@ function SourceDetail({ source, observationCount }) {
 }
 
 export default function DatasetDocumentation() {
+  const { t } = useTranslation();
   const [data, setData] = useState({ sources: [], observations: [] });
   const [loadState, setLoadState] = useState("loading");
   const [activeId, setActiveId] = useState(null);
@@ -67,7 +69,7 @@ export default function DatasetDocumentation() {
 
   return (
     <div className="pb-14">
-      <PageHeader title="Data & Methodology" badge={<span className="hidden items-center gap-1.5 rounded-full border border-hairline px-2 py-[3px] text-[11px] text-sub sm:inline-flex"><Database className="h-3 w-3 text-brand" />Official source register</span>} />
+      <PageHeader title={t("pageTitles.datasets")} badge={<span className="hidden items-center gap-1.5 rounded-full border border-hairline px-2 py-[3px] text-[11px] text-sub sm:inline-flex"><Database className="h-3 w-3 text-brand" />Official source register</span>} />
       <PanelGuide id="data-sources" title="Data & Methodology">
         See where the figures come from, what each measure includes, when it was collected and what we cannot conclude from it. Financial-inclusion source status is read from the data store.
       </PanelGuide>
