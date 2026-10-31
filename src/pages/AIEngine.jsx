@@ -1,310 +1,301 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { AlertCircle, ArrowLeft, ArrowUp, CheckCircle2, Clock3, Link2, Plus, Sparkles } from "lucide-react";
-import { DASHBOARD_DISTRICTS, NATIONAL_EICV7 } from "@/data/dashboardEvidence";
-import { request } from "@/lib/investigationApi";
-import AnalystBrief from "@/components/investigation/AnalystBrief";
-import PriorityBoard from "@/components/investigation/PriorityBoard";
-import ProblemProfile from "@/components/investigation/ProblemProfile";
-import VerificationSection, { VerificationSummary } from "@/components/investigation/VerificationSection";
-import { verificationSection } from "@/lib/reportVerification";
-import ContextEvidence from "@/components/investigation/ContextEvidence";
-import DriverDiagnosis from "@/components/investigation/DriverDiagnosis";
-import AccessEvidence from "@/components/investigation/AccessEvidence";
-import FinanceTrendEvidence from "@/components/investigation/FinanceTrendEvidence";
-import ReliabilityEvidence from "@/components/investigation/ReliabilityEvidence";
-import TrendEvidence from "@/components/investigation/TrendEvidence";
-import DataUsed from "@/components/investigation/DataUsed";
-import InvestigationHistory from "@/components/investigation/InvestigationHistory";
-import ThinkingBlock from "@/components/investigation/ThinkingBlock";
-import TaskPanel from "@/components/investigation/TaskPanel";
-import DistrictDelivery from "@/components/investigation/DistrictDelivery";
-import { deliveryForAi } from "@/data/programmeDelivery";
-import RequestDialog from "@/components/requests/RequestDialog";
-import AnalystRequests from "@/components/requests/AnalystRequests";
-import { contextFrom, evidenceFrom, suggestPriority } from "@/components/requests/evidence";
-import { actorFrom, findingsForAi, isOpen, useActionRequests } from "@/lib/actionRequests";
-import { useDemoAuth } from "@/lib/DemoAuthContext";
-import ConnectionsPanel from "@/components/investigation/ConnectionsPanel";
-import Notebook from "@/components/investigation/Notebook";
-import SidePanel from "@/components/investigation/SidePanel";
-import Status from "@/components/investigation/InvestigationStatus";
-import { GuideCard, SourcesPane, StudioPane } from "@/components/investigation/WorkspacePanes";
-import InvestigationChat from "@/components/investigation/InvestigationChat";
-import ReportArtifact, { ReportPanel } from "@/components/investigation/ReportArtifact";
-import useAiReport from "@/components/investigation/useAiReport";
-import { STAGE_INFO } from "@/components/investigation/stageInfo";
-import { ComparisonChart, DataCatalog, EvidenceLimits, FindingsGrid, ResponsesAndReview, SourceConflicts } from "@/components/investigation/EvidenceSections";
+import {
+  Activity, AlertCircle, ArrowDownToLine, ArrowLeft, ArrowRight, BookOpenCheck,
+  BrainCircuit, Check, ChevronRight, CircleHelp, Database, FileCheck2, Fingerprint,
+  GitBranch, LoaderCircle, LockKeyhole, Network, Plus, RefreshCw, Send, ShieldCheck,
+  Sparkles,
+} from "lucide-react";
+import { requestGoverned } from "@/lib/iremeApi";
 
-const choices = [...DASHBOARD_DISTRICTS].sort((a, b) => a.name.localeCompare(b.name));
-const suggestions = [...DASHBOARD_DISTRICTS].sort((a, b) => b.poverty - a.poverty).slice(0, 4).map((item) => item.name);
-const DEFAULT_STAGES = Object.keys(STAGE_INFO).map((name) => ({ name, status: "Pending" }));
+const SECTIONS = [
+  { id: "overview", label: "Overview", icon: Activity },
+  { id: "evidence", label: "Evidence & lineage", icon: Network },
+  { id: "hypotheses", label: "Hypotheses", icon: BookOpenCheck },
+  { id: "agents", label: "AI research", icon: BrainCircuit },
+  { id: "reports", label: "Reports & review", icon: FileCheck2 },
+  { id: "access", label: "Access & audit", icon: ShieldCheck },
+];
+
+const panel = "rounded-2xl border border-slate-200 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.035)]";
+const field = "mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100";
+const primary = "inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-800 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-900 disabled:cursor-not-allowed disabled:opacity-50";
+const secondary = "inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:opacity-50";
+
+function Notice({ kind = "info", children }) {
+  const styles = kind === "error" ? "border-rose-200 bg-rose-50 text-rose-800" : kind === "success" ? "border-emerald-200 bg-emerald-50 text-emerald-900" : "border-sky-200 bg-sky-50 text-sky-900";
+  return <div role={kind === "error" ? "alert" : "status"} className={`flex gap-2.5 rounded-xl border p-3 text-sm leading-6 ${styles}`}><AlertCircle className="mt-1 h-4 w-4 shrink-0" />{children}</div>;
+}
+
+function EmptyPanel({ icon: Icon, title, children }) {
+  return <div className={`${panel} px-6 py-12 text-center`}><span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-800"><Icon className="h-5 w-5" /></span><h3 className="mt-4 text-base font-semibold text-slate-900">{title}</h3><p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-slate-600">{children}</p></div>;
+}
+
+function Overview({ investigation, runId, district, setRunId, setDistrict, onLoad, onStart, onResume, permissionId, setPermissionId, job, busy, lineage, hypotheses, onSection }) {
+  const cards = [
+    { title: "Run status", value: investigation?.status || job?.status || "Not connected", note: investigation ? "Read from the governed run record" : job ? "Worker state from the governed jobs store" : "Connect or start an authorized run", icon: Activity },
+    { title: "Scientific decision", value: investigation?.scientific_decision || "Pending run", note: investigation?.reasons?.[0] || "No decision is inferred before the API responds", icon: ShieldCheck },
+    { title: "Certified facts", value: investigation ? investigation.certified_fact_ids?.length ?? 0 : "—", note: "Only server-certified facts can be shown", icon: Database },
+    { title: "Lineage links", value: lineage?.edges?.length ?? "—", note: lineage ? "Authorized source relationships" : "Load a run to retrieve lineage", icon: GitBranch },
+  ];
+  return <div className="space-y-6">
+    <section className={`${panel} overflow-hidden`}>
+      <div className="grid gap-7 p-6 md:grid-cols-[1fr_0.82fr] md:p-8">
+        <div className="flex flex-col justify-center">
+          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-900"><Sparkles className="h-3.5 w-3.5" /> Ireme Insight · governed research</span>
+          <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight tracking-tight text-slate-950">Research poverty with traceable evidence.</h2>
+          <p className="mt-3 max-w-xl text-sm leading-6 text-slate-600">Inspect a permitted research run, follow its source lineage, record competing explanations, and send bounded AI research tasks for human review.</p>
+          <div className="mt-5 flex flex-wrap gap-2 text-xs text-slate-600"><span className="rounded-full border border-slate-200 px-2.5 py-1">Signed-in Supabase session</span><span className="rounded-full border border-slate-200 px-2.5 py-1">Server-enforced scope</span><span className="rounded-full border border-slate-200 px-2.5 py-1">No sample figures</span></div>
+        </div>
+        <form data-tour="inv-form" onSubmit={(event) => { event.preventDefault(); onLoad(); }} className="rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
+          <div className="flex items-start gap-3"><span className="grid h-9 w-9 place-items-center rounded-xl bg-white text-emerald-800 shadow-sm"><Database className="h-4 w-4" /></span><div><h3 className="text-sm font-semibold text-slate-900">Open a governed run</h3><p className="mt-0.5 text-xs leading-5 text-slate-600">Use an existing run ID you are authorized to access.</p></div></div>
+          <label className="mt-4 block text-xs font-medium text-slate-700" htmlFor="run-id">Investigation ID</label>
+          <input id="run-id" className={field} autoComplete="off" value={runId} onChange={(event) => setRunId(event.target.value)} placeholder="Paste an investigation ID" />
+          <label className="mt-3 block text-xs font-medium text-slate-700" htmlFor="run-district">Geography in this run</label>
+          <input id="run-district" className={field} autoComplete="off" value={district} onChange={(event) => setDistrict(event.target.value)} placeholder="Rwanda or an authorized district" />
+          <button className={`${primary} mt-4 w-full`} disabled={busy || !runId.trim()} type="submit">{busy ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <ArrowRight className="h-4 w-4" />} Open run</button>
+          <p className="mt-3 text-[11px] leading-5 text-slate-500">Starting and resuming runs will appear here once the documented worker API is implemented.</p>
+        </form>
+      </div>
+    </section>
+    {!investigation && <section className={`${panel} p-5 sm:p-6`}><div className="flex flex-wrap items-start justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">Start supported analysis</p><h3 className="mt-1 text-lg font-semibold text-slate-950">EICV7 poverty headcount</h3><p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600">Runs the registered Python estimator and independent R survey reference against the authorized EICV7 archive. The result remains a restricted draft pending scientific review.</p></div><span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">Permission required</span></div><form onSubmit={(event) => { event.preventDefault(); onStart(); }} className="mt-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end"><label className="text-xs font-medium text-slate-700" htmlFor="permission-id">Existing NISR dataset permission ID<input id="permission-id" className={field} value={permissionId} onChange={(event) => setPermissionId(event.target.value)} required placeholder="ID recorded from the signed approval" /></label><button type="submit" className={primary} disabled={busy || Boolean(job && ["queued", "running"].includes(job.status))}>{busy ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />} Start EICV7 analysis</button></form><p className="mt-2 text-xs leading-5 text-slate-500">This button cannot create a permission. It checks the ID against the current catalog and stops if the approval or indicator definition is missing or expired.</p></section>}
+    {job && !investigation && <section className={`${panel} p-5`}><div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">Worker status</p><h3 className="mt-1 font-mono text-sm text-slate-900">{job.investigation_id || job.run_id}</h3></div><span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold capitalize text-slate-800">{job.status}</span>{job.status === "failed" && <button type="button" onClick={onResume} disabled={busy} className={secondary}><RefreshCw className="h-4 w-4"/>Resume from checkpoint</button>}</div><ol className="mt-4 grid gap-2 sm:grid-cols-3">{(job.stages || []).map((stage) => <li key={stage.stage_id || stage.name} className="rounded-lg border border-slate-200 px-3 py-2 text-xs"><span className="font-medium text-slate-800">{stage.stage_id || stage.name}</span><span className="ml-2 capitalize text-slate-500">{stage.status}</span></li>)}</ol></section>}
+    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">{cards.map(({ title, value, note, icon: Icon }) => <article key={title} className={`${panel} p-4`}><div className="flex items-center justify-between"><span className="text-xs font-medium text-slate-600">{title}</span><Icon className="h-4 w-4 text-emerald-800" /></div><p className="mt-3 truncate text-lg font-semibold capitalize text-slate-950">{value}</p><p className="mt-1 line-clamp-2 min-h-8 text-xs leading-4 text-slate-500">{note}</p></article>)}</div>
+    {investigation && <section data-tour="inv-history" className={`${panel} p-5 sm:p-6`}><div className="flex flex-wrap items-start justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">Current investigation</p><h3 className="mt-1 text-xl font-semibold text-slate-950">{investigation.district || district}</h3><p className="mt-1 font-mono text-xs text-slate-500">{investigation.investigation_id}</p></div><span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold capitalize text-emerald-900">{investigation.status}</span></div><div className="mt-5 grid gap-4 md:grid-cols-2"><div className="rounded-xl bg-slate-50 p-4"><p className="text-xs font-medium text-slate-500">Scientific decision</p><p className="mt-1 text-sm font-semibold capitalize text-slate-900">{investigation.scientific_decision || "Not stated"}</p>{investigation.reasons?.length > 0 && <ul className="mt-2 list-inside list-disc space-y-1 text-xs leading-5 text-slate-600">{investigation.reasons.map((reason, index) => <li key={`${reason}-${index}`}>{reason}</li>)}</ul>}</div><div className="rounded-xl bg-slate-50 p-4"><p className="text-xs font-medium text-slate-500">Run manifest</p><p className="mt-1 break-all font-mono text-xs leading-5 text-slate-700">{JSON.stringify(investigation.manifest || {}, null, 2)}</p></div></div><div className="mt-4 flex flex-wrap gap-2">{[{ id: "evidence", title: "View evidence lineage", icon: Network }, { id: "hypotheses", title: `${hypotheses?.history?.length ? "Review" : "Create"} hypotheses`, icon: BookOpenCheck }].map(({ id, title, icon: Icon }) => <button key={id} type="button" onClick={() => onSection(id)} className={secondary}><Icon className="h-4 w-4 text-emerald-800" />{title}<ChevronRight className="h-3.5 w-3.5" /></button>)}</div></section>}
+    {!investigation && <EmptyPanel icon={LockKeyhole} title="Connect to authorized research data">Enter a run ID that exists in the governed catalog. The engine verifies your Supabase bearer token, role, district, dataset permission, and run ownership before returning any record.</EmptyPanel>}
+  </div>;
+}
+
+function EvidencePage({ investigation, lineage, busy, onRefresh }) {
+  if (!investigation) return <EmptyPanel icon={Network} title="Evidence appears with a connected run">Lineage is read from the governed catalog. The interface does not substitute dashboard totals or sample records for investigation evidence.</EmptyPanel>;
+  return <div className="space-y-5"><section className={`${panel} p-5 sm:p-6`}><div className="flex flex-wrap items-start justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">Evidence graph</p><h2 className="mt-1 text-xl font-semibold text-slate-950">Source lineage</h2><p className="mt-1 text-sm text-slate-600">Authorized upstream records linked to this research run.</p></div><button type="button" className={secondary} onClick={onRefresh} disabled={busy}><RefreshCw className={`h-4 w-4 ${busy ? "animate-spin" : ""}`} />Refresh</button></div><div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4"><div className="flex flex-wrap items-center gap-2"><span className="rounded-lg bg-emerald-900 px-3 py-2 text-xs font-semibold text-white">Investigation · {investigation.investigation_id}</span><ArrowLeft className="h-4 w-4 rotate-180 text-slate-400" /><span className="text-sm font-medium text-slate-700">{lineage?.edges?.length ?? 0} upstream links</span></div></div>{lineage?.edges?.length ? <div className="mt-4 space-y-2">{lineage.edges.map((edge, index) => <article key={`${edge.parent?.entity || edge.parent}-${edge.child?.entity || edge.child}-${index}`} className="flex items-start gap-3 rounded-xl border border-slate-200 p-4"><GitBranch className="mt-0.5 h-4 w-4 shrink-0 text-emerald-800" /><div className="min-w-0"><p className="break-all text-sm font-medium text-slate-900">{edge.parent?.kind || edge.kind || "Source record"} · {edge.parent?.entity || edge.entity || "Lineage item"}</p><p className="mt-1 break-all font-mono text-[11px] leading-5 text-slate-500">{JSON.stringify(edge)}</p></div></article>)}</div> : <p className="mt-4 rounded-xl border border-dashed border-slate-300 p-5 text-center text-sm text-slate-600">The governed API returned no lineage edges for this run.</p>}</section><Notice>Raw estimates are intentionally not rendered as certified facts unless the engine’s independent science gate has certified them.</Notice></div>;
+}
+
+function HypothesesPage({ investigation, ledger, busy, onRefresh, onSave }) {
+  const [question, setQuestion] = useState(ledger?.history?.at(-1)?.snapshot?.document?.question || "");
+  const [first, setFirst] = useState("");
+  const [second, setSecond] = useState("");
+  const [plan, setPlan] = useState("");
+  const [notTestedReason, setNotTestedReason] = useState("");
+  useEffect(() => { setQuestion(ledger?.history?.at(-1)?.snapshot?.document?.question || ""); }, [ledger]);
+  if (!investigation) return <EmptyPanel icon={BookOpenCheck} title="Open a run to use the hypothesis ledger">Hypotheses are versioned against a specific investigation and geography. Competing explanations remain visible in the immutable revision history.</EmptyPanel>;
+  const latest = ledger?.history?.at(-1)?.snapshot;
+  const save = (event) => {
+    event.preventDefault();
+    const offset = latest?.document?.hypotheses?.length || 0;
+    const proposed = [first, second].map((statement, index) => ({ hypothesis_id: `h${offset + index + 1}`, statement, direction: "unspecified", competing_ids: [`h${offset + (index === 0 ? 2 : 1)}`], test_plan: plan, status: "open", evidence_for: [], evidence_against: [], tests_run: [], adjusted_inference: "untested", causal_identification_status: "not_established", identification_study: null, confidence_category: "unknown", data_gaps: [], reasons_not_tested: [notTestedReason], next_evidence_request: [] }));
+    onSave({ base_version: latest?.version || 0, document: { question, hypotheses: [...(latest?.document?.hypotheses || []), ...proposed], stop_reason: null } });
+  };
+  return <div className="space-y-5"><section className={`${panel} p-5 sm:p-6`}><div className="flex flex-wrap items-start justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">Research ledger</p><h2 className="mt-1 text-xl font-semibold text-slate-950">Competing explanations</h2><p className="mt-1 text-sm text-slate-600">Record what could explain an observed pattern and how to test it.</p></div><button type="button" onClick={onRefresh} className={secondary} disabled={busy}><RefreshCw className={`h-4 w-4 ${busy ? "animate-spin" : ""}`} />Refresh history</button></div>
+      {latest?.document?.hypotheses?.length > 0 && <div className="mt-5 space-y-3">{latest.document.hypotheses.map((hypothesis) => <article key={hypothesis.hypothesis_id} className="rounded-xl border border-slate-200 p-4"><div className="flex flex-wrap items-center justify-between gap-2"><span className="font-mono text-xs text-slate-500">{hypothesis.hypothesis_id}</span><span className="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium capitalize text-amber-900">{hypothesis.status} · confidence {hypothesis.confidence_category}</span></div><p className="mt-2 text-sm font-medium leading-6 text-slate-900">{hypothesis.statement}</p><p className="mt-2 text-xs leading-5 text-slate-600"><strong>Test plan:</strong> {hypothesis.test_plan}</p></article>)}</div>}
+      <form onSubmit={save} className="mt-5 border-t border-slate-100 pt-5"><h3 className="text-sm font-semibold text-slate-900">{latest ? "Add a ledger revision" : "Create the first ledger revision"}</h3><p className="mt-1 text-xs leading-5 text-slate-500">The API requires at least two competing hypotheses. Existing hypotheses are carried forward unchanged in each immutable revision.</p><label className="mt-4 block text-xs font-medium text-slate-700" htmlFor="research-question">Research question</label><input id="research-question" className={field} value={question} onChange={(event) => setQuestion(event.target.value)} required maxLength={2000} placeholder="What explains the observed difference?"/><div className="mt-3 grid gap-3 md:grid-cols-2">{[[first, setFirst, "Hypothesis A"], [second, setSecond, "Competing hypothesis B"]].map(([value, setter, title]) => <label key={title} className="block text-xs font-medium text-slate-700">{title}<textarea className={`${field} min-h-24 resize-y`} value={value} onChange={(event) => setter(event.target.value)} required maxLength={2000} placeholder="Describe a plausible explanation" /></label>)}</div><label className="mt-3 block text-xs font-medium text-slate-700" htmlFor="test-plan">Shared test plan</label><textarea id="test-plan" className={`${field} min-h-20 resize-y`} value={plan} onChange={(event) => setPlan(event.target.value)} required maxLength={2000} placeholder="Describe evidence and methods that could distinguish the explanations"/><label className="mt-3 block text-xs font-medium text-slate-700" htmlFor="not-tested">Why has this not been tested yet?</label><input id="not-tested" className={field} value={notTestedReason} onChange={(event) => setNotTestedReason(event.target.value)} required maxLength={2000} placeholder="For example: the necessary district sample data is not yet authorized"/><button type="submit" disabled={busy} className={`${primary} mt-4`}>{busy ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />} Save immutable revision</button></form>
+      {ledger?.history?.length > 0 && <details className="mt-5 rounded-xl bg-slate-50 p-4"><summary className="cursor-pointer text-sm font-medium text-slate-800">Revision history ({ledger.history.length})</summary><ol className="mt-3 space-y-2">{ledger.history.map(({ snapshot, sha256 }) => <li key={sha256} className="rounded-lg border border-slate-200 bg-white p-3"><p className="text-xs font-semibold text-slate-800">Revision {snapshot.version}</p><p className="mt-1 break-all font-mono text-[10px] text-slate-500">SHA-256 · {sha256}</p></li>)}</ol></details>}
+    </section><Notice>Saving a hypothesis does not test it, certify a statistic, establish causality, or approve publication.</Notice></div>;
+}
+
+function AgentsPage({ investigation, busy, proposals, onRun }) {
+  const [role, setRole] = useState("skeptical_reviewer");
+  const [question, setQuestion] = useState("");
+  if (!investigation) return <EmptyPanel icon={BrainCircuit} title="AI research needs an authorized run">A bounded agent task only receives policy-filtered aggregate context from a run you are allowed to inspect.</EmptyPanel>;
+  return <div className="space-y-5"><section className={`${panel} p-5 sm:p-6`}><div><p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">Bounded AI assistance</p><h2 className="mt-1 text-xl font-semibold text-slate-950">Ask an AI research role</h2><p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600">The agent can propose questions and critiques. Its output is untrusted until an analyst checks it against the source evidence.</p></div><form onSubmit={(event) => { event.preventDefault(); onRun({ role, question, max_steps: 6, max_repairs: 2 }); }} className="mt-5"><label htmlFor="agent-role" className="block text-xs font-medium text-slate-700">Research role</label><select id="agent-role" className={field} value={role} onChange={(event) => setRole(event.target.value)}>{[["investigation_planner", "Investigation planner"], ["skeptical_reviewer", "Skeptical reviewer"], ["causal_researcher", "Causal researcher"], ["statistical_interpreter", "Statistical interpreter"], ["report_planner", "Report planner"], ["source_researcher", "Source researcher"], ["semantic_mapper", "Semantic mapper"], ["intervention_analyst", "Intervention analyst"], ["translation_assistant", "Translation assistant"]].map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><label className="mt-3 block text-xs font-medium text-slate-700" htmlFor="agent-question">Research task</label><textarea id="agent-question" className={`${field} min-h-28 resize-y`} value={question} onChange={(event) => setQuestion(event.target.value)} maxLength={4000} required placeholder="Ask for a bounded critique grounded in the investigation evidence"/><div className="mt-3 flex flex-wrap items-center justify-between gap-3"><p className="text-xs text-slate-500">Budget: up to 6 steps and 2 repairs. Provider and disclosure policy are checked server-side.</p><button className={primary} type="submit" disabled={busy || !question.trim()}>{busy ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />} Request proposals</button></div></form></section>{proposals && <section className={`${panel} p-5 sm:p-6`}><div className="flex items-center gap-2"><BrainCircuit className="h-4 w-4 text-emerald-800"/><h3 className="text-sm font-semibold text-slate-900">Agent output · requires human review</h3></div><pre className="mt-4 max-h-[34rem] overflow-auto whitespace-pre-wrap break-words rounded-xl bg-slate-950 p-4 font-mono text-xs leading-5 text-emerald-50">{JSON.stringify(proposals, null, 2)}</pre></section>}<Notice kind="info">The API returns proposals only. It cannot append to the immutable ledger, certify facts, make eligibility decisions, or approve a report.</Notice></div>;
+}
+
+function ReportsPage({ busy, reportRecord, onReview, onPublish, onExport }) {
+  const [reportId, setReportId] = useState("");
+  const [version, setVersion] = useState("");
+  const [sha256, setSha256] = useState("");
+  const [decision, setDecision] = useState("approve");
+  const [reason, setReason] = useState("");
+  return <div className="space-y-5"><section className={`${panel} p-5 sm:p-6`}><p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">Human release gate</p><h2 className="mt-1 text-xl font-semibold text-slate-950">Review a frozen report version</h2><p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600">Review decisions bind to the exact report hash. The backend checks your role, MFA assurance, author separation, and required review roles.</p><div className="mt-5 grid gap-3 md:grid-cols-2"><label className="text-xs font-medium text-slate-700">Report ID<input className={field} value={reportId} onChange={(event) => setReportId(event.target.value)} placeholder="Existing report ID" /></label><label className="text-xs font-medium text-slate-700">Report version<input className={field} value={version} onChange={(event) => setVersion(event.target.value)} placeholder="Frozen version" /></label><label className="text-xs font-medium text-slate-700 md:col-span-2">Reviewed AST SHA-256<input className={`${field} font-mono`} value={sha256} onChange={(event) => setSha256(event.target.value)} minLength={64} maxLength={64} placeholder="64-character hash from the report snapshot" /></label><label className="text-xs font-medium text-slate-700">Decision<select className={field} value={decision} onChange={(event) => setDecision(event.target.value)}><option value="approve">Approve this version</option><option value="reject">Reject this version</option></select></label><label className="text-xs font-medium text-slate-700">Review reason<textarea className={`${field} min-h-[42px] resize-y`} value={reason} onChange={(event) => setReason(event.target.value)} maxLength={2000} placeholder="What did you verify?" /></label></div><div className="mt-4 flex flex-wrap gap-2"><button className={primary} type="button" disabled={busy || !reportId || !version || !/^[a-f0-9]{64}$/.test(sha256)} onClick={() => onReview({ reportId, body: { version, decision, report_ast_sha256: sha256, reason } })}>{busy ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />} Submit review</button><button className={secondary} type="button" disabled={busy || !reportId || !version} onClick={() => onPublish({ reportId, version })}><FileCheck2 className="h-4 w-4" />Publish approved version</button><button className={secondary} type="button" disabled={busy || !reportId || !version} onClick={() => onExport({ reportId, version, format: "pdf" })}><ArrowDownToLine className="h-4 w-4" />Download released PDF</button></div><p className="mt-3 text-xs leading-5 text-slate-500">The API deliberately has no report-list or report-detail route yet. You need an existing report ID and exact frozen version from the authorized report workflow.</p></section>{reportRecord && <section className={`${panel} p-5`}><h3 className="text-sm font-semibold text-slate-900">Latest server response</h3><pre className="mt-3 overflow-auto rounded-xl bg-slate-950 p-4 font-mono text-xs leading-5 text-emerald-50">{JSON.stringify(reportRecord, null, 2)}</pre></section>}<Notice>Approvals are server recorded signatures. This interface never fabricates a signature or changes release status on its own.</Notice></div>;
+}
+
+function AccessPage() {
+  return <div className="space-y-5"><section className={`${panel} p-5 sm:p-6`}><p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">Identity & authorization</p><h2 className="mt-1 text-xl font-semibold text-slate-950">Permission checks happen in the engine</h2><p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">Each request sends the current Supabase access token to the configured governed API. The API verifies its signature, trusted issuer, role and district claims, current dataset permission, and run ownership before responding.</p><div className="mt-5 grid gap-3 sm:grid-cols-2">{[{ title: "Signed-in session", text: "The browser forwards a short-lived access token; it never uses a service-role key.", icon: Fingerprint }, { title: "Dataset permission", text: "The engine checks the current permission record for the exact dataset, version, and purpose.", icon: LockKeyhole }, { title: "Audit trail", text: "Governed reads and research writes are journalled by the API with trace IDs.", icon: GitBranch }, { title: "NISR access paperwork", text: "An access agreement or approval must be recorded through the organization’s process before restricted source permissions are granted.", icon: FileCheck2 }].map(({ title, text, icon: Icon }) => <article key={title} className="rounded-xl border border-slate-200 p-4"><Icon className="h-4 w-4 text-emerald-800"/><h3 className="mt-2 text-sm font-semibold text-slate-900">{title}</h3><p className="mt-1 text-xs leading-5 text-slate-600">{text}</p></article>)}</div></section><section className="rounded-2xl border border-amber-200 bg-amber-50 p-5"><div className="flex gap-3"><CircleHelp className="mt-0.5 h-5 w-5 shrink-0 text-amber-800"/><div><h3 className="text-sm font-semibold text-amber-950">Current connection boundary</h3><p className="mt-1 text-sm leading-6 text-amber-900">The API contract is in place, but hosted identity claims, durable production storage, job workers, and release operations still need deployment configuration and verification. If the API rejects a token or scope, the screen will show the server’s trace ID and response code.</p></div></div></section></div>;
+}
 
 export default function AIEngine() {
-  const [params, setParams] = useSearchParams();
-  const districtParam = params.get("district");
-  const [district, setDistrict] = useState(choices.some((item) => item.name === districtParam) ? districtParam : "Gisagara");
-  const [id, setId] = useState(params.get("id"));
-  const activeId = useRef(id);
-  const [state, setState] = useState(null);
-  const [result, setResult] = useState(null);
-  const [history, setHistory] = useState([]);
-  const [catalog, setCatalog] = useState(null);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [review, setReview] = useState({ decision: "request_data", note: "" });
-  const [decisions, setDecisions] = useState([]);
-  const [error, setError] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [section, setSection] = useState(searchParams.get("section") || "overview");
+  const [runId, setRunId] = useState(searchParams.get("id") || "");
+  const [district, setDistrict] = useState(searchParams.get("district") || "Rwanda");
+  const [investigation, setInvestigation] = useState(null);
+  const [lineage, setLineage] = useState(null);
+  const [ledger, setLedger] = useState(null);
+  const [job, setJob] = useState(null);
+  const [permissionId, setPermissionId] = useState("");
+  const [proposals, setProposals] = useState(null);
+  const [reportRecord, setReportRecord] = useState(null);
   const [busy, setBusy] = useState(false);
-  const [panel, setPanel] = useState(null);
-  const [view, setView] = useState("chat");
-  const [pane, setPane] = useState("chat");
-  const [ask, setAsk] = useState(null);
-  const [notebookKey, setNotebookKey] = useState(0);
-  const [sourcesKey, setSourcesKey] = useState(0);
-  const { requests: actionRequests, create: createActionRequest, advance: advanceActionRequest, setInclude } = useActionRequests();
-  const { demoUser } = useDemoAuth();
-  const [requestOpen, setRequestOpen] = useState(false);
-  const [requestPreset, setRequestPreset] = useState(undefined);
-  const [sentRequest, setSentRequest] = useState(null);
-  const [notebookCount, setNotebookCount] = useState(null);
-  const autoStarted = useRef(false);
-  const finished = ["Completed", "Warning"].includes(state?.status);
-  const ai = useAiReport(id, Boolean(result));
+  const [notice, setNotice] = useState(null);
 
-  const loadHistory = useCallback(async () => {
-    try { setHistory((await request("/history")).investigations); } catch (failure) { setError(failure.message); }
+  const setCurrentSection = (next) => {
+    setSection(next);
+    const params = new URLSearchParams(searchParams);
+    if (next === "overview") params.delete("section"); else params.set("section", next);
+    setSearchParams(params, { replace: true });
+  };
+
+  const loadRun = useCallback(async (requestedId = runId, requestedDistrict = district) => {
+    if (!requestedId.trim()) return;
+    setBusy(true); setNotice(null); setInvestigation(null); setLineage(null); setLedger(null);
+    try {
+      const safeId = encodeURIComponent(requestedId.trim());
+      const query = `?district=${encodeURIComponent(requestedDistrict.trim() || "Rwanda")}`;
+      const data = await requestGoverned(`/v1/investigations/${safeId}${query}`);
+      setInvestigation(data);
+      setRunId(data.investigation_id);
+      setDistrict(data.district || requestedDistrict);
+      setSearchParams((previous) => { const next = new URLSearchParams(previous); next.set("id", data.investigation_id); next.set("district", data.district || requestedDistrict); return next; }, { replace: true });
+      setNotice({ kind: "success", text: "Authorized investigation record loaded from the governed API." });
+      const [lineageResult, ledgerResult] = await Promise.allSettled([
+        requestGoverned(`/v1/investigations/${safeId}/lineage${query}`),
+        requestGoverned(`/v1/investigations/${safeId}/hypotheses${query}`),
+      ]);
+      if (lineageResult.status === "fulfilled") setLineage(lineageResult.value);
+      if (ledgerResult.status === "fulfilled") setLedger(ledgerResult.value);
+      const failed = [lineageResult, ledgerResult].filter((item) => item.status === "rejected");
+      if (failed.length) setNotice({ kind: "info", text: `Run loaded. ${failed.length} related section(s) need permission or have no records yet.` });
+    } catch (error) { setNotice({ kind: "error", text: error.message }); }
+    finally { setBusy(false); }
+  }, [district, runId, setSearchParams]);
+
+  useEffect(() => {
+    const initialId = searchParams.get("id");
+    if (!initialId) return undefined;
+    let active = true;
+    const initialDistrict = searchParams.get("district") || "Rwanda";
+    requestGoverned(`/v1/jobs/${encodeURIComponent(initialId)}`).then((status) => {
+      if (!active) return;
+      setRunId(initialId);
+      setDistrict(initialDistrict);
+      if (status.status === "complete") loadRun(initialId, initialDistrict);
+      else setJob({ ...status, investigation_id: status.run_id });
+    }).catch(() => {
+      if (active) loadRun(initialId, initialDistrict);
+    });
+    return () => { active = false; };
+  // Read the run referenced by a direct link once when the workspace opens.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const loadState = useCallback(async (runId) => {
-    try {
-      const data = await request(`/run/${runId}`);
-      if (activeId.current !== runId) return;
-      setState(data);
-      if (["Completed", "Warning"].includes(data.status)) {
-        const [findings, notes] = await Promise.all([request(`/result/${runId}`), request(`/review/${runId}`)]);
-        if (activeId.current !== runId) return;
-        setResult(findings);
-        setDecisions(notes.decisions);
-        await loadHistory();
-      }
-    } catch (failure) { if (activeId.current === runId) setError(failure.message); }
-  }, [loadHistory]);
-
-  useEffect(() => { loadHistory(); }, [loadHistory]);
   useEffect(() => {
-    if (!id) return undefined;
-    loadState(id);
-    if (["Completed", "Warning", "Failed"].includes(state?.status)) return undefined;
-    const timer = window.setInterval(() => loadState(id), 1800);
-    return () => window.clearInterval(timer);
-  }, [id, loadState, state?.status]);
-  useEffect(() => {
-    if (!id || !state?.data_signature || !["Completed", "Warning"].includes(state?.stages?.[0]?.status)) return;
+    if (!job?.run_id || !["queued", "running"].includes(job.status)) return undefined;
     let active = true;
-    request(`/catalog/${id}?q=${encodeURIComponent(query)}&page=${page}`).then((data) => { if (active && activeId.current === id) setCatalog(data); }).catch((failure) => { if (active && activeId.current === id) setError(failure.message); });
-    return () => { active = false; };
-  }, [id, state?.data_signature, state?.stages?.[0]?.status, query, page]);
-
-  const reset = () => { setState(null); setResult(null); setCatalog(null); setDecisions([]); setError(""); setView("chat"); setPane("chat"); };
-  const start = async (name = district) => {
-    activeId.current = null;
-    setId(null); setBusy(true); reset(); setPanel(null);
-    setDistrict(name);
-    try {
-      const data = await request("/run", { method: "POST", body: JSON.stringify({ district: name }) });
-      activeId.current = data.id;
-      setId(data.id);
-      setParams({ district: name, id: data.id });
-    } catch (failure) { setError(failure.message); } finally { setBusy(false); }
-  };
-  const resume = async () => {
-    setBusy(true); setError("");
-    try { await request(`/resume/${id}`, { method: "POST", body: "{}" }); setState((value) => ({ ...value, status: "Running" })); }
-    catch (failure) { setError(failure.message); } finally { setBusy(false); }
-  };
-  const saveReview = async (event) => {
-    event.preventDefault(); setBusy(true); setError("");
-    try {
-      const response = await request(`/review/${id}`, { method: "POST", body: JSON.stringify(review) });
-      setDecisions(response.decisions); setReview({ ...review, note: "" }); setNotebookKey((value) => value + 1);
-    } catch (failure) { setError(failure.message); } finally { setBusy(false); }
-  };
-  // Tasks the analyst confirms in the chat. The server has already limited these to a fixed set.
-  const openView = (key) => { setView(key); setPane("chat"); };
-  const runChatAction = async (action) => {
-    if (action.type === "run_investigation") { await start(action.district); return; }
-    if (action.type === "request_action") { setRequestPreset({ type: action.request_type, programme: action.programme, priority: action.priority, title: action.title, ask: action.ask }); setRequestOpen(true); return; }
-    if (action.type === "write_report") { ai.regenerate(); setPanel("report"); return; }
-    if (action.type === "open_view") { if (action.tab === "history") setPanel("history"); else openView(action.tab); return; }
-    if (action.type === "save_note") {
-      const response = await request(`/review/${id}`, { method: "POST", body: JSON.stringify({ decision: action.decision, note: action.note }) });
-      setDecisions(response.decisions); setNotebookKey((value) => value + 1);
-      return;
-    }
-    throw new Error("Unknown task");
-  };
-  const deleteHistory = async (ids) => {
-    const response = { deleted: [], skipped: [] };
-    for (let offset = 0; offset < ids.length; offset += 200) {
+    const timer = window.setTimeout(async () => {
       try {
-        const batch = await request("/history", { method: "DELETE", body: JSON.stringify({ ids: ids.slice(offset, offset + 200) }) });
-        response.deleted.push(...batch.deleted);
-        response.skipped.push(...batch.skipped);
-      } catch (failure) {
-        response.skipped.push(...ids.slice(offset).map((runId) => ({ id: runId, reason: failure.message })));
-        break;
-      }
-    }
-    setHistory((previous) => previous.filter((item) => !response.deleted.includes(item.id)));
-    if (response.deleted.includes(activeId.current)) {
-      activeId.current = null;
-      setId(null); reset(); setPanel(null);
-      setParams({ district });
-    }
-    await loadHistory();
-    return response;
-  };
-  const openRun = (item) => {
-    activeId.current = item.id;
-    setId(item.id); setDistrict(item.district); reset(); setPanel(null);
-    setParams({ district: item.district, id: item.id });
-  };
-  useEffect(() => {
-    if (params.get("autoStart") === "1" && !id && !autoStarted.current) {
-      autoStarted.current = true;
-      start();
-    }
-  }, [params, id]);
+        const status = await requestGoverned(`/v1/jobs/${encodeURIComponent(job.run_id)}`);
+        if (!active) return;
+        setJob({ ...status, investigation_id: status.run_id });
+        if (status.status === "complete") loadRun(status.run_id, "Rwanda");
+        if (status.status === "failed") setNotice({ kind: "error", text: "The analysis stopped. Check the API service log for a redacted failure category, correct the setup issue, then resume the saved run." });
+      } catch (error) { if (active) setNotice({ kind: "error", text: error.message }); }
+    }, 1400);
+    return () => { active = false; window.clearTimeout(timer); };
+  }, [job, loadRun]);
 
-  // A stopped run keeps its last stage marked Running on disk; show it as stopped.
-  const stages = state?.stages?.length ? (state.status === "Failed" ? state.stages.map((stage) => stage.status === "Running" ? { ...stage, status: "Failed" } : stage) : state.stages) : DEFAULT_STAGES;
-  const shownDistrict = state?.district || district;
-  const historyItems = history.map((item) => item.id === id && state?.status ? { ...item, status: state.status } : item);
-  const evidence = useMemo(() => evidenceFrom(result), [result]);
-  const requestContext = useMemo(() => contextFrom(result), [result]);
-  const districtRequests = actionRequests.filter((item) => item.district === shownDistrict);
-  const programmeFindings = useMemo(() => findingsForAi(shownDistrict, actionRequests), [shownDistrict, actionRequests]);
-  const openRequests = districtRequests.filter((item) => isOpen(item.status)).length;
-  const sendRequest = (input) => {
-    const made = createActionRequest(input, actorFrom(demoUser));
-    setSentRequest(made.id);
-    openView("respond");
+  const refreshRelated = async () => {
+    if (!investigation) return;
+    setBusy(true); setNotice(null);
+    const id = encodeURIComponent(investigation.investigation_id);
+    const query = `?district=${encodeURIComponent(investigation.district || district)}`;
+    const results = await Promise.allSettled([requestGoverned(`/v1/investigations/${id}/lineage${query}`), requestGoverned(`/v1/investigations/${id}/hypotheses${query}`)]);
+    if (results[0].status === "fulfilled") setLineage(results[0].value);
+    if (results[1].status === "fulfilled") setLedger(results[1].value);
+    setNotice(results.some((result) => result.status === "rejected") ? { kind: "error", text: results.find((result) => result.status === "rejected")?.reason?.message || "Could not refresh governed data." } : { kind: "success", text: "Evidence and hypothesis history refreshed." });
+    setBusy(false);
   };
-  const withdrawRequest = (item) => { try { advanceActionRequest(item.id, { to: "Withdrawn", by: actorFrom(demoUser), note: "Withdrawn by the analyst." }); } catch (failure) { setError(failure.message); } };
-  const lead = result?.analyst_brief?.headline || result?.findings?.findings?.[0]?.explanation;
 
-  const topics = (result?.analyst_brief?.observations || []).map((item) => item.title).slice(0, 5);
-  const counts = { respond: openRequests, notebook: notebookCount };
-  const openStudio = (key) => {
-    if (key === "report" || key === "steps") setPanel(panel === key ? null : key);
-    else openView(key);
+  const saveHypotheses = async (body) => {
+    setBusy(true); setNotice(null);
+    try {
+      const id = encodeURIComponent(investigation.investigation_id);
+      const query = `?district=${encodeURIComponent(investigation.district || district)}`;
+      const saved = await requestGoverned(`/v1/investigations/${id}/hypotheses${query}`, { method: "POST", body, idempotencyKey: crypto.randomUUID() });
+      setNotice({ kind: "success", text: "Hypothesis revision saved to the governed ledger." });
+      await refreshRelated();
+      return saved;
+    } catch (error) { setNotice({ kind: "error", text: error.message }); }
+    finally { setBusy(false); }
   };
-  const goHome = () => { activeId.current = null; setId(null); reset(); setPanel(null); setParams({}); };
-  const VIEW_TITLES = { overview: "Findings", drivers: "Drivers", compare: "Comparison", respond: "Requests and review", notebook: "Case notebook", data: "Data and sources" };
-  const headerButton = "inline-flex h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-md border border-hairline bg-white px-2.5 text-[11.5px] font-medium text-ink hover:bg-canvas";
 
-  const fromNote = params.get("from") === "poverty-support" && (() => {
-    const row = DASHBOARD_DISTRICTS.find((item) => item.name === shownDistrict);
-    if (!row) return null;
-    return <div role="note" aria-label="Figures carried over from Poverty and Social Support" className="rounded-xl border border-brand/20 bg-brand-soft px-4 py-3 text-[12px] leading-relaxed text-ink">
-      <p className="font-medium">Started from Poverty &amp; Social Support: {row.name}</p>
-      <p className="mt-0.5 text-sub">Poverty {row.poverty.toFixed(1)}% of people (Rwanda {NATIONAL_EICV7.poverty.toFixed(1)}%). VUP participation {row.vupAmongPoor.toFixed(1)}% of {row.samplePoorHouseholds} surveyed poor households (Rwanda {NATIONAL_EICV7.vupAmongPoor.toFixed(1)}%). EICV7 2023/24. These count different groups, so they cannot be subtracted.</p>
-      <Link to="/" className="mt-1 inline-block font-medium text-brand underline underline-offset-2">Back to Poverty Analysis</Link>
-    </div>;
-  })();
-  const errorBanner = error && <div role="alert" className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-3 text-[12px] text-red-700"><AlertCircle className="h-4 w-4 shrink-0" />{error}</div>;
-  const notices = <>
-    {state?.status === "Failed" && state.errors?.length > 0 && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-3 text-[11.5px] text-red-700">{state.errors.map((item, index) => <p key={index}>{item}</p>)}</div>}
-    {state?.counts?.cached_sources_available > 0 && <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-[12px] text-amber-800">{state.counts.cached_sources_available} previously verified official copies are available. Their hashes were rechecked; the latest source update checks failed. See the source register for dates and errors.</p>}
-  </>;
-  const thinking = <ThinkingBlock district={shownDistrict} state={state} stages={stages} panelOpen={panel === "steps"} onOpenPanel={() => setPanel("steps")} onClosePanel={() => setPanel(null)} />;
+  const runAgent = async (body) => {
+    setBusy(true); setNotice(null); setProposals(null);
+    try {
+      const id = encodeURIComponent(investigation.investigation_id);
+      const query = `?district=${encodeURIComponent(investigation.district || district)}`;
+      const result = await requestGoverned(`/v1/investigations/${id}/agent-proposals${query}`, { method: "POST", body });
+      setProposals(result);
+      setNotice({ kind: "success", text: "Research proposals received. Review them against source evidence before use." });
+    } catch (error) { setNotice({ kind: "error", text: error.message }); }
+    finally { setBusy(false); }
+  };
 
-  const header = <div className="sticky top-0 z-20 border-b border-hairline bg-white/90 backdrop-blur"><div className={`flex h-[52px] items-center gap-3 px-4 sm:px-6 ${id ? "" : "mx-auto max-w-[1100px] lg:px-8"}`}>
-    <Link to="/" className="text-sub hover:text-brand" aria-label="Back to Poverty Analysis"><ArrowLeft className="h-4 w-4" /></Link>
-    <div className="flex min-w-0 items-center gap-2"><h1 className="truncate text-[15px] font-semibold text-ink">{id ? shownDistrict : "AI Engine"}</h1>{id && <><span className="hidden whitespace-nowrap text-[12px] text-sub md:inline">AI Engine</span><Status value={state?.status} /></>}</div>
-    <div className="ml-auto flex items-center gap-2">
-      {id && <button type="button" onClick={goHome} aria-label="New AI analysis" title="New AI analysis" className={headerButton}><Plus className="h-3.5 w-3.5 text-brand" /><span className="hidden xl:inline">New analysis</span></button>}
-      <button type="button" onClick={() => setPanel(panel === "history" ? null : "history")} aria-label="History" title="History" aria-pressed={panel === "history"} className={headerButton}><Clock3 className="h-3.5 w-3.5 text-brand" aria-hidden /><span className="hidden xl:inline">History</span></button>
-      <button type="button" onClick={() => setPanel(panel === "connections" ? null : "connections")} aria-label="Connected websites" title="Connected websites" aria-pressed={panel === "connections"} className={headerButton}><Link2 className="h-3.5 w-3.5 text-brand" aria-hidden /><span className="hidden xl:inline">Connected websites</span></button>
+  const startRun = async () => {
+    setBusy(true); setNotice(null); setInvestigation(null); setLineage(null); setLedger(null);
+    try {
+      const result = await requestGoverned("/v1/investigations", {
+        method: "POST",
+        body: { dataset_id: "eicv7", dataset_version: "1", permission_id: permissionId.trim(), purpose: "research", indicator_id: "poverty", definition_version: "1" },
+        idempotencyKey: crypto.randomUUID(),
+      });
+      setRunId(result.investigation_id);
+      setDistrict("Rwanda");
+      setJob({ ...result, run_id: result.investigation_id });
+      setSearchParams((previous) => { const next = new URLSearchParams(previous); next.set("id", result.investigation_id); next.set("district", "Rwanda"); return next; }, { replace: true });
+      setNotice({ kind: "success", text: "Authorized EICV7 analysis queued. The worker status will update here." });
+    } catch (error) { setNotice({ kind: "error", text: error.message }); }
+    finally { setBusy(false); }
+  };
+
+  const resumeRun = async () => {
+    if (!job?.run_id) return;
+    setBusy(true); setNotice(null);
+    try {
+      const result = await requestGoverned(`/v1/investigations/${encodeURIComponent(job.run_id)}/resume`, { method: "POST" });
+      setJob({ ...result, run_id: result.investigation_id || job.run_id });
+      setNotice({ kind: "success", text: "Checkpointed analysis resumed. The original dataset permission is checked again." });
+    } catch (error) { setNotice({ kind: "error", text: error.message }); }
+    finally { setBusy(false); }
+  };
+
+  const reviewReport = async ({ reportId, body }) => {
+    setBusy(true); setNotice(null); setReportRecord(null);
+    try { const result = await requestGoverned(`/v1/reports/${encodeURIComponent(reportId)}/review`, { method: "POST", body, idempotencyKey: crypto.randomUUID() }); setReportRecord(result); setNotice({ kind: "success", text: "Review response recorded by the governed API." }); }
+    catch (error) { setNotice({ kind: "error", text: error.message }); }
+    finally { setBusy(false); }
+  };
+  const publishReport = async ({ reportId, version }) => {
+    setBusy(true); setNotice(null);
+    try { const result = await requestGoverned(`/v1/reports/${encodeURIComponent(reportId)}/publish`, { method: "POST", body: { version }, idempotencyKey: crypto.randomUUID() }); setReportRecord(result); setNotice({ kind: "success", text: "Publication request completed by the governed API." }); }
+    catch (error) { setNotice({ kind: "error", text: error.message }); }
+    finally { setBusy(false); }
+  };
+  const exportReport = async ({ reportId, version, format }) => {
+    setBusy(true); setNotice(null);
+    try {
+      const file = await requestGoverned(`/v1/reports/${encodeURIComponent(reportId)}/export?version=${encodeURIComponent(version)}&format=${format}`, { responseType: "blob" });
+      const url = URL.createObjectURL(file.blob);
+      const anchor = document.createElement("a"); anchor.href = url; anchor.download = `${reportId}-${version}.${format}`; anchor.click(); URL.revokeObjectURL(url);
+      setNotice({ kind: "success", text: "Released report downloaded from the governed API." });
+    } catch (error) { setNotice({ kind: "error", text: error.message }); }
+    finally { setBusy(false); }
+  };
+
+  const page = useMemo(() => {
+    if (section === "evidence") return <EvidencePage investigation={investigation} lineage={lineage} busy={busy} onRefresh={refreshRelated} />;
+    if (section === "hypotheses") return <HypothesesPage investigation={investigation} ledger={ledger} busy={busy} onRefresh={refreshRelated} onSave={saveHypotheses} />;
+    if (section === "agents") return <AgentsPage investigation={investigation} busy={busy} proposals={proposals} onRun={runAgent} />;
+    if (section === "reports") return <ReportsPage busy={busy} reportRecord={reportRecord} onReview={reviewReport} onPublish={publishReport} onExport={exportReport} />;
+    if (section === "access") return <AccessPage />;
+    return <Overview investigation={investigation} runId={runId} district={district} setRunId={setRunId} setDistrict={setDistrict} onLoad={() => loadRun()} onStart={startRun} onResume={resumeRun} permissionId={permissionId} setPermissionId={setPermissionId} job={job} busy={busy} lineage={lineage} hypotheses={ledger} onSection={setCurrentSection} />;
+  // Page components use stable event callbacks from this component; the dashboard state is intentionally local.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [section, investigation, lineage, busy, ledger, proposals, reportRecord, runId, district, job, permissionId]);
+
+  return <main className="min-h-[calc(100vh-4rem)] bg-[#f5f7f5] text-slate-900">
+    <header className="border-b border-slate-200 bg-white"><div className="mx-auto flex max-w-[1500px] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8"><Link to="/" aria-label="Back to dashboard" className="grid h-9 w-9 place-items-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50"><ArrowLeft className="h-4 w-4" /></Link><div className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-900 text-white"><BrainCircuit className="h-4 w-4"/></div><div><p className="text-sm font-semibold text-slate-950">Ireme Insight</p><p className="text-[11px] text-slate-500">AI Engine · governed research workspace</p></div><div className="ml-auto flex items-center gap-2">{investigation && <span className="hidden max-w-[250px] truncate rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-900 sm:inline-flex">{investigation.district}</span>}<button type="button" className={secondary} onClick={() => setCurrentSection("access")}><ShieldCheck className="h-4 w-4 text-emerald-800"/><span className="hidden sm:inline">Governance</span></button></div></div></header>
+    <div className="mx-auto grid max-w-[1500px] lg:grid-cols-[240px_minmax(0,1fr)]"><aside className="border-b border-slate-200 bg-white p-3 lg:min-h-[calc(100vh-4rem)] lg:border-b-0 lg:border-r lg:p-5"><p className="hidden px-3 pb-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400 lg:block">Workspace</p><nav data-tour="inv-tabs" aria-label="AI Engine pages" className="flex gap-1 overflow-x-auto lg:flex-col">{SECTIONS.map(({ id, label, icon: Icon }) => <button key={id} type="button" aria-current={section === id ? "page" : undefined} onClick={() => setCurrentSection(id)} className={`flex shrink-0 items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-medium transition lg:w-full ${section === id ? "bg-emerald-50 text-emerald-950" : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"}`}><Icon className={`h-4 w-4 ${section === id ? "text-emerald-800" : "text-slate-400"}`} />{label}</button>)}</nav><div className="mt-6 hidden rounded-xl border border-slate-200 bg-slate-50 p-3 lg:block"><div className="flex items-center gap-2 text-xs font-semibold text-slate-800"><LockKeyhole className="h-3.5 w-3.5 text-emerald-800"/>Permission checked</div><p className="mt-1.5 text-[11px] leading-5 text-slate-500">All research data is loaded through the governed API using your signed-in session.</p></div></aside>
+      <section className="min-w-0 p-4 sm:p-6 lg:p-8"><div className="mx-auto max-w-6xl"><div className="mb-5 flex flex-wrap items-end justify-between gap-3"><div><div className="flex items-center gap-1.5 text-xs text-slate-500"><span>Workspace</span><ChevronRight className="h-3 w-3"/><span className="text-slate-700">{SECTIONS.find((item) => item.id === section)?.label}</span></div><h1 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">{SECTIONS.find((item) => item.id === section)?.label}</h1></div>{investigation && section !== "overview" && <button type="button" className={secondary} onClick={() => setCurrentSection("overview")}><ArrowLeft className="h-4 w-4"/>Run overview</button>}</div>{notice && <div className="mb-4"><Notice kind={notice.kind}>{notice.text}</Notice></div>}{page}<footer className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 pt-4 text-[11px] text-slate-500"><span>Evidence state is supplied by the governed research API.</span><span className="inline-flex items-center gap-1"><LockKeyhole className="h-3 w-3"/> Data access is scope checked</span></footer></div></section>
     </div>
-  </div></div>;
-
-  const overlays = <>
-    {result && <RequestDialog open={requestOpen} onOpenChange={setRequestOpen} district={shownDistrict} evidence={evidence} context={requestContext} runId={id} suggestedPriority={suggestPriority(result)} preset={requestPreset} onSubmit={sendRequest} />}
-    {panel === "connections" && <ConnectionsPanel onClose={() => setPanel(null)} />}
-    {panel === "history" && <SidePanel title="AI Engine history" subtitle={`${historyItems.length} saved`} icon={Clock3} onClose={() => setPanel(null)}><div className="p-4"><InvestigationHistory history={historyItems} activeId={id} onOpen={openRun} onDelete={deleteHistory} /></div></SidePanel>}
-    {panel === "steps" && id && <TaskPanel id={id} district={shownDistrict} state={state} stages={stages} busy={busy} onResume={resume} onClose={() => setPanel(null)} />}
-    {panel === "report" && result && <ReportPanel ai={ai} result={result} district={shownDistrict} onClose={() => setPanel(null)} />}
-  </>;
-
-  // Start screen: choose a district, or go back to an earlier investigation.
-  if (!id) return <div className="min-h-screen pb-14">
-    {header}
-    <main className="mx-auto max-w-[1100px] px-4 py-6 sm:px-6 lg:px-8"><div className="mx-auto max-w-3xl space-y-4">
-      <div className="pb-2 pt-6 text-center sm:pt-12">
-        <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft text-brand"><Sparkles className="h-6 w-6" /></span>
-        <h2 className="mt-4 text-[26px] font-semibold tracking-tight text-ink">What would you like the AI Engine to analyze?</h2>
-        <p className="mx-auto mt-2 max-w-xl text-[13px] leading-relaxed text-sub">Choose a district to review its available data, sources, and poverty patterns. Findings are saved with their evidence and require analyst review.</p>
-      </div>
-      {fromNote}
-      <form data-tour="inv-form" onSubmit={(event) => { event.preventDefault(); start(); }} className="flex flex-wrap items-center gap-2 rounded-2xl border border-hairline bg-white p-2 pl-4 shadow-[0_2px_8px_rgba(10,37,64,0.04)] focus-within:border-brand/40">
-        <label htmlFor="investigation-district" className="text-[12px] text-sub">District</label>
-        <select id="investigation-district" value={district} onChange={(event) => setDistrict(event.target.value)} className="h-9 min-w-0 flex-1 rounded-md bg-transparent text-[14px] font-medium text-ink outline-none">{choices.map((item) => <option key={item.name} value={item.name}>{item.name}</option>)}</select>
-        <button type="submit" disabled={busy} aria-label="Run AI analysis" className="inline-flex h-10 items-center gap-2 rounded-xl bg-brand px-4 text-[12.5px] font-medium text-white hover:bg-[#524BE0] disabled:opacity-60"><ArrowUp className="h-4 w-4" />Analyze district</button>
-      </form>
-      <div className="flex flex-wrap items-center justify-center gap-2 pt-1"><span className="text-[11px] text-sub">Highest poverty rates:</span>{suggestions.map((name) => <button key={name} type="button" disabled={busy} onClick={() => start(name)} className="rounded-full border border-hairline bg-white px-3 py-1 text-[11.5px] text-ink hover:border-brand/40 hover:text-brand disabled:opacity-60">{name}</button>)}</div>
-      {errorBanner}
-      <PriorityBoard onOpen={start} disabled={busy} />
-      <div className="pt-4"><InvestigationHistory history={historyItems} activeId={id} onOpen={openRun} onDelete={deleteHistory} /></div>
-    </div></main>
-    {overlays}
-  </div>;
-
-  const viewBody = result && <>
-    {view === "overview" && <><AnalystBrief brief={result.analyst_brief} /><VerificationSummary section={verificationSection(result)} /><details className="rounded-lg border border-hairline bg-white p-3 text-[12px]"><summary className="cursor-pointer font-medium text-ink">See each checked figure and its source</summary><div className="mt-3"><VerificationSection section={verificationSection(result)} /></div></details><ProblemProfile profile={result.problem_profile} /><DistrictDelivery district={shownDistrict} requests={actionRequests} onOpenRequests={() => openView("respond")} /><FindingsGrid result={result} /><DataUsed dataUsed={result.data_used} /></>}
-    {view === "drivers" && (result.drivers && result.diagnosis ? <div className="space-y-4"><DriverDiagnosis drivers={result.drivers} diagnosis={result.diagnosis} /><AccessEvidence access={result.drivers.financial_access} trend={result.drivers.financial_trend} /><FinanceTrendEvidence trend={result.drivers.financial_trend} /></div> : <p className="rounded-xl border border-dashed border-hairline bg-white p-6 text-center text-[12px] text-sub">This saved run predates the driver analysis. Start a new run to include it.</p>)}
-    {view === "compare" && <><ComparisonChart result={result} /><TrendEvidence trends={result.drivers?.poverty_trends} /><ReliabilityEvidence reliability={result.reliability} /><ContextEvidence context={result.contextual_analysis} /><SourceConflicts result={result} /></>}
-    {view === "respond" && <>
-      {sentRequest && <p role="status" className="flex items-start gap-2 rounded-lg border border-[#ABEFC6] bg-[#ECFDF3] p-3 text-[12px] text-[#067647]"><CheckCircle2 className="mt-px h-4 w-4 shrink-0" />Request {sentRequest} was sent. The programme owner will see it in the Programme panel, and their answer will appear below.</p>}
-      <AnalystRequests district={shownDistrict} requests={actionRequests} onNew={() => { setRequestPreset(undefined); setRequestOpen(true); }} onWithdraw={withdrawRequest} onToggleAi={setInclude} />
-      <ResponsesAndReview id={id} result={result} review={review} setReview={setReview} decisions={decisions} busy={busy} onSave={saveReview} />
-    </>}
-    {view === "notebook" && <Notebook id={id} district={shownDistrict} findings={programmeFindings} refreshKey={notebookKey} onCount={setNotebookCount} hideSources />}
-    {view === "data" && <><EvidenceLimits result={result} /><DataCatalog catalog={catalog} query={query} setQuery={setQuery} page={page} setPage={setPage} /></>}
-  </>;
-
-  const paneClass = (name) => `${pane === name ? "flex" : "hidden"} min-h-0 flex-col xl:flex`;
-
-  return <div className="min-h-screen">
-    {header}
-    <div className="flex h-[calc(100dvh-53px)] flex-col xl:grid xl:grid-cols-[260px_minmax(0,1fr)_280px]">
-      <div role="tablist" data-tour="inv-tabs" aria-label="Notebook sections" className="flex shrink-0 border-b border-hairline bg-white xl:hidden">{[["sources", "Sources"], ["chat", "Chat"], ["studio", "Studio"]].map(([key, label]) => <button key={key} role="tab" aria-selected={pane === key} onClick={() => setPane(key)} className={`flex-1 border-b-2 py-2.5 text-[12.5px] font-medium ${pane === key ? "border-brand text-brand" : "border-transparent text-sub"}`}>{label}</button>)}</div>
-
-      <aside aria-label="Sources" className={`${paneClass("sources")} overflow-y-auto border-r border-hairline bg-white`}>
-        <SourcesPane id={id} refreshKey={sourcesKey} ready={Boolean(result)} drawerOpen={panel === "connections"} onChanged={() => setNotebookKey((value) => value + 1)} onOpenView={openView} onOpenConnections={() => setPanel("connections")} />
-      </aside>
-
-      <section aria-label="Investigation" className={`${paneClass("chat")} bg-white`}>
-        {view !== "chat" && result
-          ? <div className="min-h-0 flex-1 overflow-y-auto bg-canvas/40">
-              <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-hairline bg-white/95 px-4 py-2.5 backdrop-blur"><button type="button" onClick={() => setView("chat")} className="inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-[12px] font-medium text-brand hover:bg-brand-soft"><ArrowLeft className="h-3.5 w-3.5" />Chat</button><span className="text-sub">/</span><h2 className="text-[13px] font-semibold text-ink">{VIEW_TITLES[view]}</h2></div>
-              <div className="mx-auto max-w-3xl space-y-4 p-4">{errorBanner}{viewBody}</div>
-            </div>
-          : finished && result
-            ? <InvestigationChat fill id={id} district={shownDistrict} delivery={deliveryForAi(shownDistrict, actionRequests)} findings={programmeFindings} onAction={runChatAction} onSaved={() => setNotebookKey((value) => value + 1)} onUploaded={() => { setSourcesKey((value) => value + 1); setNotebookKey((value) => value + 1); }} ask={ask}
-                intro={<>{errorBanner}{fromNote}{thinking}{notices}<GuideCard district={shownDistrict} lead={lead} topics={topics} onAsk={(text) => setAsk({ text, nonce: Date.now() })} /><ReportArtifact ai={ai} district={shownDistrict} active={panel === "report"} onOpen={() => setPanel(panel === "report" ? null : "report")} /></>} />
-            : <div className="min-h-0 flex-1 overflow-y-auto"><div className="mx-auto max-w-3xl space-y-4 p-4">
-                {errorBanner}{fromNote}
-                <div className="flex justify-end"><p className="max-w-[80%] rounded-2xl rounded-tr-md bg-brand-soft px-4 py-2.5 text-[13px] text-ink">Investigate poverty in <strong>{shownDistrict}</strong></p></div>
-                {thinking}{notices}
-              </div></div>}
-      </section>
-
-      <aside aria-label="Studio" className={`${paneClass("studio")} overflow-y-auto border-l border-hairline bg-white`}>
-        <StudioPane ready={Boolean(result)} view={view} counts={counts} onOpen={openStudio} />
-      </aside>
-    </div>
-    {overlays}
-  </div>;
+  </main>;
 }

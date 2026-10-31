@@ -32,7 +32,7 @@ const PUBLISHED_DECREASE = {
 export const DASHBOARD_SOURCES = {
   poverty: "https://www.statistics.gov.rw/sites/default/files/documents/2025-07/EICV7_Main%20Indicator%20Report.pdf",
   change: "https://www.statistics.gov.rw/sites/default/files/documents/2025-04/EICV7_Poverty%20Profile.pdf",
-  financial: "https://www.statistics.gov.rw/sites/default/files/documents/2024-09/Rwanda-Finscope-2024-Report_compressed.pdf",
+  financial: "https://microdata.statistics.gov.rw/index.php/catalog/120/download/1085",
 };
 
 // Published national FinScope 2024 Access Strand. The four categories are

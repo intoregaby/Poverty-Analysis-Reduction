@@ -33,7 +33,7 @@
     "beneficiary": "Program Member",
     "jobs": "Find a Job",
     "map": "District Map",
-    "datasets": "Data Sources",
+    "datasets": "Data & Methodology",
     "ussd-control": "USSD Control"
   },
   "tour": {
@@ -58,7 +58,7 @@
       "beneficiary": "This is your own panel. See your family, your cooperatives and your vote, your agent and visits, and your health insurance.",
       "jobs": "This page shows jobs you can apply for, and how your application is going.",
       "map": "This map shows Rwanda's 30 districts. Darker colours mean a higher number. Click a district to learn more.",
-      "datasets": "This page shows where every number comes from, and what each number means.",
+      "datasets": "See where the figures come from, what each measure includes, and what the data cannot tell us.",
       "ussd-control": "See who uses the phone service, how it is going, and any problems. You can end a session or block a number. Every action is logged."
     },
     "menu": {
@@ -132,16 +132,16 @@
         "text": "Click Export to save the district numbers as a file. Keep the year and the source with the numbers when you share them."
       },
       "inv-form": {
-        "title": "Choose a district",
-        "text": "Pick a district from the list, then press the purple button. The computer starts to study that district."
+        "title": "Open a governed run",
+        "text": "Enter an existing investigation ID and geography. The engine checks your signed-in account and data permissions before loading it."
       },
       "inv-tabs": {
-        "title": "Read the results",
-        "text": "When the study ends, use these tabs. They show the main findings, the causes that may matter, a comparison with other districts, and the data used."
+        "title": "Research workspace pages",
+        "text": "Use these pages to inspect lineage, record competing explanations, request bounded AI research, and review frozen reports."
       },
       "inv-history": {
-        "title": "Earlier studies",
-        "text": "Your earlier studies are saved. Open one to read it again."
+        "title": "Run record",
+        "text": "The status, scientific decision, and manifest come directly from the authorized governed API response."
       },
       "nst2-intro": {
         "title": "The big goals",
@@ -256,16 +256,16 @@
         "text": "This list shows districts to study first. Click a name to find it on the map."
       },
       "ds-intro": {
-        "title": "Data sources",
-        "text": "Every number in this app comes from one of these files."
+        "title": "Data & methodology",
+        "text": "Check each source's period, population, import status and limits before using its figures."
       },
       "ds-list": {
-        "title": "Dataset list",
-        "text": "Click a dataset to read about it: who made it and which year it is from."
+        "title": "Official source register",
+        "text": "Select a source to review its file details, import count, geography and known limits."
       },
       "ds-dictionary": {
-        "title": "Word list",
-        "text": "Not sure what a word or number means? Look it up here."
+        "title": "How to read the methods",
+        "text": "Compare the survey and provider methods, and keep poverty figures separate from financial access."
       },
       "programmes-subnav": {
         "title": "Tabs",

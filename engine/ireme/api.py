@@ -5,20 +5,24 @@ approved report-release service. No legacy unsigned artifact is exposed here.
 """
 import os
 import re
+import threading
+from pathlib import Path
+from io import StringIO
 from typing import Literal
 from uuid import uuid4
 
-from fastapi import FastAPI, Request, Response
+from fastapi import BackgroundTasks, FastAPI, Header, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 from starlette.concurrency import run_in_threadpool
 from starlette.exceptions import HTTPException
 
-from . import agents, auth
+from . import agents, auth, science
 from .catalog import Catalog, CatalogIntegrityError
 from .gateway import PolicyDenied, has_configured_keys
-from .jobs import JobStore
+from .jobs import IdempotencyConflict, JobStore
 from .profiles import get_config, ProfileConfig
 from .reports import ReportAccessDenied, ReportStore
 from .research import HypothesisLedger, LedgerWrite, ResearchConflict, ResearchInvalid
@@ -60,12 +64,49 @@ class MfaToggleRequest(BaseModel):
     enabled: bool
 
 
+class InvestigationCreateRequest(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+
+    dataset_id: str = Field(min_length=1, max_length=128, pattern=r'^[A-Za-z0-9][A-Za-z0-9_-]*$')
+    dataset_version: str = Field(min_length=1, max_length=128, pattern=r'^[A-Za-z0-9][A-Za-z0-9_.-]*$')
+    permission_id: str = Field(min_length=1, max_length=128, pattern=r'^[A-Za-z0-9][A-Za-z0-9_.-]*$')
+    purpose: str = Field(min_length=1, max_length=200, pattern=r'\S')
+    indicator_id: str = Field(min_length=1, max_length=128, pattern=r'^[A-Za-z0-9][A-Za-z0-9_-]*$')
+    definition_version: str = Field(min_length=1, max_length=128, pattern=r'^[A-Za-z0-9][A-Za-z0-9_.-]*$')
+
+
 def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_clearance=None, report_path=None,
                artifact_path=None, profile: ProfileConfig = None):
     if profile is None:
         profile = get_config()
     app = FastAPI(title='Ireme governed research API', version='1.0', docs_url=None,
                   redoc_url=None, openapi_url=None)
+    active_workers, worker_lock = set(), threading.Lock()
+
+    def run_science_worker(run_id, tenant, subject):
+        with worker_lock:
+            if run_id in active_workers:
+                return
+            active_workers.add(run_id)
+        catalog = jobs = None
+        try:
+            catalog = Catalog(catalog_path, tenant, subject)
+            jobs = JobStore(audit_path)
+            science.resume(catalog, jobs, run_id, tenant, subject)
+        except Exception as exc:
+            try:
+                if jobs is None:
+                    jobs = JobStore(audit_path)
+                jobs.fail_before_stage(run_id, type(exc).__name__)
+            except Exception:
+                pass
+        finally:
+            if catalog is not None:
+                catalog.close()
+            if jobs is not None:
+                jobs.close()
+            with worker_lock:
+                active_workers.discard(run_id)
 
     @app.middleware('http')
     async def boundary(request: Request, call_next):
@@ -107,6 +148,94 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
     @app.exception_handler(RequestValidationError)
     async def validation_error(request, _exc):
         return error(422, 'INVALID_REQUEST', 'Request parameters are invalid', request.state.trace_id)
+
+    @app.post('/v1/investigations', status_code=202)
+    def start_investigation(body: InvestigationCreateRequest, request: Request, background_tasks: BackgroundTasks,
+                            idempotency_key: str | None = Header(default=None, alias='Idempotency-Key')):
+        principal = request.state.principal
+        auth.authorize(principal, 'investigation:create', principal.tenant, 'Rwanda', profile=profile)
+        if not idempotency_key or not 8 <= len(idempotency_key) <= 128:
+            raise ApiError(422, 'IDEMPOTENCY_KEY_REQUIRED', 'A bounded Idempotency-Key header is required')
+        catalog = Catalog(catalog_path, principal.tenant, principal.subject)
+        jobs = JobStore(audit_path)
+        try:
+            try:
+                run_id = science.prepare(catalog, jobs, body.dataset_id, body.dataset_version, body.permission_id,
+                                         body.purpose, body.indicator_id, body.definition_version, idempotency_key)
+            except KeyError:
+                raise ApiError(403, 'DATASET_PERMISSION_REQUIRED',
+                               'A current dataset permission and registered indicator definition are required') from None
+            except PermissionError:
+                raise auth.AuthorizationError('Dataset permission is not valid for this purpose') from None
+            except science.r_reference.ReferenceUnavailable:
+                raise ApiError(503, 'SCIENCE_RUNTIME_UNAVAILABLE',
+                               'The independent R survey reference environment is not ready') from None
+            except (ValueError, OSError):
+                raise ApiError(409, 'SCIENCE_INPUT_NOT_READY',
+                               'The approved dataset or indicator definition is not ready for this calculation') from None
+            status = jobs.public_status(run_id)
+            if status['status'] != 'complete':
+                jobs.log(principal.subject, 'research.create_requested',
+                         {'tenant': principal.tenant, 'run_id': run_id, 'trace_id': request.state.trace_id})
+                background_tasks.add_task(run_science_worker, run_id, principal.tenant, principal.subject)
+            return {'investigation_id': run_id, 'status': status['status'], 'stages': status['stages']}
+        except IdempotencyConflict:
+            raise ApiError(409, 'IDEMPOTENCY_CONFLICT', 'Idempotency key was already used for different inputs') from None
+        finally:
+            catalog.close()
+            jobs.close()
+
+    @app.get('/v1/jobs/{run_id}')
+    def job_status(run_id: str, request: Request):
+        principal = request.state.principal
+        auth.authorize(principal, 'investigation:read', principal.tenant, 'Rwanda', profile=profile)
+        jobs = JobStore(audit_path)
+        catalog = Catalog(catalog_path, principal.tenant, principal.subject)
+        try:
+            status = jobs.public_status(run_id)
+            if status is None:
+                raise ApiError(404, 'NOT_FOUND', 'Research run unavailable')
+            params = jobs.run_info(run_id)['params']
+            privileged = principal.roles.intersection({'platform_admin', 'statistical_reviewer', 'privacy_reviewer', 'release_reviewer'})
+            if params.get('tenant') != principal.tenant or (params.get('principal') != principal.subject and not privileged):
+                raise ApiError(404, 'NOT_FOUND', 'Research run unavailable')
+            try:
+                catalog.authorize(params['permission_id'], params['dataset_id'], params['dataset_version'], params['purpose'])
+            except (KeyError, PermissionError):
+                raise auth.AuthorizationError('Dataset permission is no longer valid') from None
+            jobs.log(principal.subject, 'research.job_status_read',
+                     {'tenant': principal.tenant, 'run_id': run_id, 'trace_id': request.state.trace_id})
+            return status
+        finally:
+            catalog.close()
+            jobs.close()
+
+    @app.post('/v1/investigations/{run_id}/resume', status_code=202)
+    def resume_investigation(run_id: str, request: Request, background_tasks: BackgroundTasks):
+        principal = request.state.principal
+        auth.authorize(principal, 'investigation:create', principal.tenant, 'Rwanda', profile=profile)
+        catalog = Catalog(catalog_path, principal.tenant, principal.subject)
+        jobs = JobStore(audit_path)
+        try:
+            status = jobs.public_status(run_id)
+            if status is None:
+                raise ApiError(404, 'NOT_FOUND', 'Research run unavailable')
+            params = jobs.run_info(run_id)['params']
+            if params.get('tenant') != principal.tenant or params.get('principal') != principal.subject:
+                raise ApiError(404, 'NOT_FOUND', 'Research run unavailable')
+            if status['status'] == 'complete':
+                return status
+            try:
+                catalog.authorize(params['permission_id'], params['dataset_id'], params['dataset_version'], params['purpose'])
+            except (KeyError, PermissionError):
+                raise auth.AuthorizationError('Dataset permission is no longer valid') from None
+            jobs.log(principal.subject, 'research.resume_requested',
+                     {'tenant': principal.tenant, 'run_id': run_id, 'trace_id': request.state.trace_id})
+            background_tasks.add_task(run_science_worker, run_id, principal.tenant, principal.subject)
+            return {'investigation_id': run_id, 'status': status['status'], 'stages': status['stages']}
+        finally:
+            catalog.close()
+            jobs.close()
 
     def permitted_run(request, run_id, district):
         principal = request.state.principal
@@ -400,6 +529,27 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
 
 
 def configured_app():
+    # Local development secrets stay server-side. Deployment environment values
+    # take precedence; load only engine/provider settings from the ignored file.
+    # In particular, never import the unrelated personal Supabase access token.
+    try:
+        from dotenv import dotenv_values
+        env_file = Path(__file__).resolve().parents[2] / '.env.local'
+        allowed = {'IREME_AUTH_ISSUER', 'IREME_AUTH_AUDIENCE', 'IREME_JWKS_URL', 'IREME_CATALOG_DB',
+                   'IREME_JOBS_DB', 'IREME_REPORTS_DB', 'IREME_ARTIFACTS_DIR', 'IREME_AGENT_CLEARANCE',
+                   'IREME_CORS_ORIGINS', 'IREME_PROFILE'}
+        if env_file.is_file():
+            selected = []
+            for line in env_file.read_text(encoding='utf-8').splitlines(keepends=True):
+                name = line.lstrip().removeprefix('export ').split('=', 1)[0].strip()
+                if name in allowed or re.fullmatch(r'(?:GROQ|NVIDIA|OLLAMA)_API_KEY(?:_[2-9])?', name):
+                    selected.append(line)
+            local_values = dotenv_values(stream=StringIO(''.join(selected)), encoding='utf-8')
+            for name, value in local_values.items():
+                if value is not None:
+                    os.environ.setdefault(name, value)
+    except ImportError:
+        pass
     required = ('IREME_AUTH_ISSUER', 'IREME_AUTH_AUDIENCE', 'IREME_JWKS_URL', 'IREME_CATALOG_DB', 'IREME_JOBS_DB')
     if any(not os.environ.get(name) for name in required):
         raise RuntimeError('Governed API identity and persistence configuration required')
@@ -410,7 +560,14 @@ def configured_app():
         from .gateway import Gateway, default_providers
         from .gateway_http import http_transport
         gateway = Gateway(default_providers(), http_transport, dict(os.environ))
-    return create_app(verifier, os.environ['IREME_CATALOG_DB'], os.environ['IREME_JOBS_DB'],
-                      agent_gateway=gateway, agent_clearance=os.environ.get('IREME_AGENT_CLEARANCE') or None,
-                      report_path=os.environ.get('IREME_REPORTS_DB') or None,
-                      artifact_path=os.environ.get('IREME_ARTIFACTS_DIR') or None)
+    app = create_app(verifier, os.environ['IREME_CATALOG_DB'], os.environ['IREME_JOBS_DB'],
+                     agent_gateway=gateway, agent_clearance=os.environ.get('IREME_AGENT_CLEARANCE') or None,
+                     report_path=os.environ.get('IREME_REPORTS_DB') or None,
+                     artifact_path=os.environ.get('IREME_ARTIFACTS_DIR') or None)
+    origins = [value.strip() for value in os.environ.get('IREME_CORS_ORIGINS', '').split(',') if value.strip()]
+    if not origins:
+        origins = ['http://localhost:5173', 'http://127.0.0.1:5173']
+    app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=['GET', 'POST', 'OPTIONS'],
+                       allow_headers=['Authorization', 'Content-Type', 'Idempotency-Key'],
+                       expose_headers=['X-Trace-Id', 'Content-Disposition'], max_age=600)
+    return app

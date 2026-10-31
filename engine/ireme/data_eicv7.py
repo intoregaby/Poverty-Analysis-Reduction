@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import json
 import zipfile
 from pathlib import Path
 
@@ -23,6 +24,20 @@ def zip_path() -> Path:
 
 def available() -> bool:
     return zip_path().exists()
+
+
+def dictionary_fingerprint(archive: Path | None = None) -> str:
+    """Hash only embedded variable/value labels for the calculation's two source tables."""
+    p = Path(archive) if archive is not None else zip_path()
+    dictionary = {}
+    with zipfile.ZipFile(p) as source:
+        for member in (POVERTY, HOUSEHOLD):
+            reader = pd.read_stata(io.BytesIO(source.read(member)), iterator=True, convert_categoricals=False)
+            with reader:
+                dictionary[member] = {'variable_labels': reader.variable_labels(),
+                                      'value_labels': reader.value_labels()}
+    encoded = json.dumps(dictionary, sort_keys=True, separators=(',', ':'), default=str, ensure_ascii=False)
+    return hashlib.sha256(encoded.encode('utf-8')).hexdigest()
 
 
 def load_eicv7(archive: Path | None = None) -> tuple[pd.DataFrame, str]:

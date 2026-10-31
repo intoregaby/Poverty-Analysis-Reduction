@@ -11,6 +11,7 @@ The app has no third-party app builder behind it. It is a static Vite/React site
    ```
    VITE_SUPABASE_URL=https://YOUR-PROJECT.supabase.co
    VITE_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+   VITE_IREME_API_URL=http://127.0.0.1:8020
    GROQ_API_KEY=your-groq-key
    ```
 
@@ -20,6 +21,12 @@ The app has no third-party app builder behind it. It is a static Vite/React site
    `OLLAMA_API_KEY`). Keys are tried in order and the engine fails over to the next key when one is
    rejected or rate-limited; extra keys never raise the provider's account quota. Never commit
    `.env.local` or paste key values into issues, logs or the browser bundle.
+
+   `VITE_IREME_API_URL` is the address of the governed Ireme API. Provider keys
+   such as `GROQ_API_KEY` are read by that server and must never use a `VITE_`
+   prefix. The API loads the git-ignored root `.env.local` for local development
+   when `python-dotenv` is installed; process and deployment environment values
+   take precedence. The browser forwards only the signed-in Supabase access token.
 
 4. Authentication > Providers: Email is on by default. Turn on **Confirm email** and set the email template to include the 6-digit `{{ .Token }}` (the sign-up screen asks for that code).
 5. Authentication > URL Configuration: set **Site URL** to your deployed address, and add `http://localhost:5173/**` and the deployed address to **Redirect URLs** (needed for password reset and Google sign-in).
@@ -56,6 +63,19 @@ during normal operation are tried in suffix order, so one exhausted key does not
 ## 3. Hosting the site
 
 Any static host works (Vercel, Netlify, Cloudflare Pages). Build command `npm run build`, output folder `dist`, and add the two `VITE_SUPABASE_*` values as environment variables. Add a rewrite of all paths to `/index.html` so deep links like `/login` work.
+
+For the AI Engine, host the Python governed API as a separate server service.
+Install `engine/requirements.txt`, configure its issuer, audience, JWKS, catalog,
+and audit database settings, then run it locally with:
+
+```bash
+python -m uvicorn ireme.api:configured_app --factory --app-dir engine --host 127.0.0.1 --port 8020
+```
+
+For deployment, set `VITE_IREME_API_URL` to the API's HTTPS address in the
+frontend build environment and set `IREME_CORS_ORIGINS` on the API to the exact
+frontend origin. Static GitHub Pages can host the frontend, but it cannot host
+the Python API or safely hold provider credentials.
 
 ## 4. Local run
 

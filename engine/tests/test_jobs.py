@@ -99,6 +99,9 @@ class Durability(Base):
         with self.assertRaises(ConnectionError):
             self.store.execute(rid, stages)
         self.assertEqual(self.store.run_info(rid)["status"], "failed")
+        failed_event = next(event for event in self.store.audit_events() if event["action"] == "stage.failed")
+        self.assertEqual(failed_event["detail"]["error_type"], "ConnectionError")
+        self.assertNotIn("source down", str(failed_event["detail"]))
         state["up"] = True
         out = self.store.execute(rid, stages)
         self.assertEqual(out["skipped"], ["prep"])

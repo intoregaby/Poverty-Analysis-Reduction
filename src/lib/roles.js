@@ -89,7 +89,7 @@ export const NAV_GROUPS = [
   {
     label: "Data",
     items: [
-      { label: "Data Sources", to: "/datasets", icon: FileText, roles: ["platform_admin", "nisr_analyst"] },
+      { label: "Data & Methodology", to: "/datasets", icon: FileText, roles: ["platform_admin", "nisr_analyst"] },
     ],
   },
 ];

@@ -31,7 +31,7 @@ The Statistics Dashboard helps analysts and decision-makers:
 
 ### 2. Turn Data Into Action
 
-The Ireme Insight AI Engine is being developed to help analysts study survey data, check sources, explain results, and prepare reports for review.
+The Ireme Insight AI Engine provides a governed workspace for authorized runs, source lineage, immutable hypotheses, bounded AI research proposals, and report review. The browser sends the signed-in Supabase session to the governed API; provider credentials remain on that server.
 
 An analyst can use a finding to request action from a programme or government team. The request can then be followed through to a response and an outcome.
 
@@ -153,7 +153,7 @@ This is how Ireme Insight connects **data, jobs, skills, financial access, and s
 
 ## Run the Project on Your Computer
 
-You need **Node.js and npm**. Python is also needed for the district investigation tools.
+You need **Node.js and npm**. Python is needed to run the governed AI Engine API locally.
 
 ### Step 1: Download the code
 
@@ -180,7 +180,7 @@ On Windows PowerShell:
 Copy-Item .env.example .env.local
 ```
 
-The project uses Supabase settings such as `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` for database access. Some optional AI features need provider API keys, including `GROQ_API_KEY`.
+The project uses `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, and `VITE_IREME_API_URL` for the web client. AI provider keys such as `GROQ_API_KEY` belong in the server environment (or the ignored `.env.local` for local API development), never in `VITE_` variables.
 
 **Never share API keys or commit `.env.local` to GitHub.**
 
@@ -202,17 +202,19 @@ npm run build
 
 These commands check different parts of the website. They do not, by themselves, prove that every external service works.
 
-### Optional: Run a District Investigation
+### Optional: Run the governed AI Engine API locally
 
-The investigation worker needs authorized NISR survey files in the local `Data/` folder. These files are not included in this repository.
+Install the Python dependencies and configure the Supabase issuer, audience, JWKS, and local catalog/audit storage settings in `.env.local`, then start the FastAPI service:
 
 On Windows PowerShell:
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r tools/investigation/requirements.txt
-.\.venv\Scripts\python.exe -m tools.investigation.engine run --district Gisagara
+.\.venv\Scripts\python.exe -m pip install -r engine/requirements.txt
+.\.venv\Scripts\python.exe -m uvicorn ireme.api:configured_app --factory --app-dir engine --host 127.0.0.1 --port 8020
 ```
+
+Set `VITE_IREME_API_URL=http://127.0.0.1:8020` in `.env.local` for the Vite client. The service checks signed server-managed tenant, role, geography, and dataset permission claims. Provider calls also require the configured gateway and applicable disclosure clearance. The local reference API supports creating, checking, and resuming EICV7 research jobs with an in-process background worker. Its SQLite adapters and worker are for local development; production still needs durable storage, a managed worker system, hosted identity/MFA, and release operations. Register the dataset only after the signed NISR approval and exact permitted purpose are recorded.
 
 ## Data Sources and Trust
 
@@ -242,7 +244,7 @@ Read more in the project documents:
 
 Ireme Insight is under active development. The repository includes working screens, data tools, tests, and some connected backend features. Other workflows are still being improved or tested.
 
-The public Statistics Dashboard is available at [intoregaby.github.io/Poverty-Analysis-Reduction](https://intoregaby.github.io/Poverty-Analysis-Reduction/). It presents published aggregate statistics bundled with the frontend; it does not currently fetch those dashboard figures from Supabase at runtime. Some programme records and payment examples are demonstration data. The AI Engine is being developed and tested. The USSD simulator is not the same as a live mobile network service. Real bank, mobile money, and loan integrations must not be assumed from the demo.
+The public Statistics Dashboard is available at [intoregaby.github.io/Poverty-Analysis-Reduction](https://intoregaby.github.io/Poverty-Analysis-Reduction/). It presents published aggregate statistics bundled with the frontend; it does not currently fetch those dashboard figures from Supabase at runtime. Some programme records and payment examples are demonstration data. The AI Engine UI calls the governed API, but production hosting and worker lifecycle are not complete. The USSD simulator is not the same as a live mobile network service. Real bank, mobile money, and loan integrations must not be assumed from the demo.
 
 We want to build a useful, reliable platform, and we will only describe features as fully operational when the required tests and integrations have been completed.
 

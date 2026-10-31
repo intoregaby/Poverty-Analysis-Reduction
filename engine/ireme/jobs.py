@@ -158,6 +158,21 @@ class JobStore:
         return {r[0]: {"status": r[1], "input_hash": r[2], "output_hash": r[3], "worker_version": r[4]} for r in
                 self.conn().execute("SELECT name,status,input_hash,output_hash,worker_version FROM stages WHERE run_id=?", (rid,))}
 
+    def public_status(self, rid: str) -> dict | None:
+        """Return workflow state only; never expose stored input parameters or stage outputs."""
+        row = self.conn().execute("SELECT run_id,status,created FROM runs WHERE run_id=?", (rid,)).fetchone()
+        if not row:
+            return None
+        stages = self.conn().execute("SELECT name,status FROM stages WHERE run_id=? ORDER BY rowid", (rid,)).fetchall()
+        return {"run_id": row[0], "status": row[1], "created": row[2],
+                "stages": [{"stage_id": name, "status": status} for name, status in stages]}
+
+    def fail_before_stage(self, rid: str, error_type: str) -> None:
+        """Mark preparation failures without persisting exception text or source data."""
+        safe_type = error_type if error_type.isascii() and error_type.isalnum() else "WorkerError"
+        self.conn().execute("UPDATE runs SET status='failed' WHERE run_id=? AND status!='complete'", (rid,))
+        self.log("worker", "run.failed_before_stage", {"run_id": rid, "error_type": safe_type[:64]})
+
     def execute(self, rid: str, stages: list[tuple[str, Callable[[dict, dict], dict], Callable[[dict], dict] | None]],
                 ) -> dict:
         """stages: [(name, fn(params, upstream_outputs)->dict, external_inputs(params)->dict|None)].
@@ -186,11 +201,17 @@ class JobStore:
             cascade = True       # anything downstream of a re-run stage is recomputed
             try:
                 out = fn(params, dict(up))
-            except Exception as e:
+            except Exception as exc:
                 c.execute("INSERT OR REPLACE INTO stages(run_id,name,input_hash,output,output_hash,status,worker_version,finished)"
                           " VALUES (?,?,?,?,?,?,?,?)", (rid, name, in_hash, None, None, "failed", info["worker_version"], self.clock()))
                 c.execute("UPDATE runs SET status='failed' WHERE run_id=?", (rid,))
-                self.log("worker", "stage.failed", {"run_id": rid, "stage": name, "error": f"{type(e).__name__}: {e}"})
+                # Exception messages can accidentally contain source values or paths.
+                # Keep only a bounded type label in the audit chain.
+                error_type = type(exc).__name__
+                if not error_type.isascii() or not error_type.isalnum():
+                    error_type = "WorkerError"
+                self.log("worker", "stage.failed", {"run_id": rid, "stage": name,
+                                                     "error_type": error_type[:64]})
                 raise
             c.execute("BEGIN IMMEDIATE")           # stage result + status commit atomically
             c.execute("INSERT OR REPLACE INTO stages(run_id,name,input_hash,output,output_hash,status,worker_version,finished)"
