@@ -236,17 +236,6 @@ CREATE POLICY "enroll_update" ON public.programme_enrollments
 -- RLS Policies — Livelihood Plans
 -- ============================================================
 
--- Helper: check if current user is the assigned agent for a plan
-CREATE OR REPLACE FUNCTION public.is_assigned_agent_for_plan(p_plan_id uuid)
-RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public AS $$
-  SELECT EXISTS (
-    SELECT 1 FROM livelihood_plans lp
-    JOIN agents ag ON ag.id = lp.assigned_agent_id
-    WHERE lp.id = p_plan_id
-      AND EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'field_agent')
-  );
-$$;
-
 CREATE POLICY "plan_select" ON public.livelihood_plans
   FOR SELECT TO authenticated
   USING (
