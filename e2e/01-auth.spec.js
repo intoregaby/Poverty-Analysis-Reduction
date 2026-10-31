@@ -2,7 +2,7 @@
  * e2e/01-auth.spec.js
  *
  * Authentication flow tests.
- * Tests the login page, demo account login, and session state.
+ * Tests the login page, Supabase credential login, and session state.
  */
 import { test, expect } from '@playwright/test';
 import { loginAs, logout, DEMO_PASSWORD } from './helpers/demo-auth.js';
@@ -16,11 +16,9 @@ test.describe('Authentication', () => {
     await expect(page.getByRole('button', { name: /log in/i })).toBeVisible();
   });
 
-  test('demo accounts list is shown on login page', async ({ page }) => {
+  test('login page does not expose the old demo-account list', async ({ page }) => {
     await page.goto('/login', { waitUntil: 'domcontentloaded' });
-    // The login page shows demo account buttons
-    await expect(page.getByText('Demo accounts')).toBeVisible();
-    await expect(page.getByRole('button', { name: /Platform Admin/ })).toBeVisible();
+    await expect(page.locator('body')).not.toContainText(/Demo accounts|Hackathon panel access/);
   });
 
   test('registration asks for a name and does not show unconfigured OAuth providers', async ({ page }) => {

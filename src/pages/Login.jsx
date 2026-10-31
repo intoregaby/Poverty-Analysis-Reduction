@@ -1,23 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { supabase, supabaseConfigured } from "@/lib/supabaseClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, Loader2, Github } from "lucide-react";
+import { Loader2, Github, LogIn } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout";
 import GoogleIcon from "@/components/GoogleIcon";
 import { appAbsoluteUrl, safeReturnTo } from "@/lib/authReturnTo";
 import { useDemoAuth } from "@/lib/DemoAuthContext";
-import { DEMO_ACCOUNTS, DEMO_PASSWORD, ROLES, findDemoAccount, publicAccount, roleHome } from "@/lib/roles";
-import { cooperativeAccounts, findCooperativeAccount } from "@/lib/cooperatives";
+import { DEMO_PASSWORD, ROLES, findDemoAccount, publicAccount, roleHome } from "@/lib/roles";
+import { findCooperativeAccount } from "@/lib/cooperatives";
 import { signInToDatabase } from "@/lib/supabaseClient";
 
 const googleOAuthConfigured = import.meta.env.VITE_SUPABASE_GOOGLE_ENABLED === "true";
 const githubOAuthConfigured = import.meta.env.VITE_SUPABASE_GITHUB_ENABLED === "true";
 
-// These are demo identities confirmed in the connected Supabase project. The shortcut
-// selects an email only; Supabase still requires the account's password and role check.
+// Hackathon panel identities are real Supabase accounts. The shortcut uses the
+// shared hackathon password, then still loads the protected profile role.
 const SUPABASE_PANEL_SHORTCUTS = [
   { label: "Platform Admin", email: "admin@platform.demo" },
   { label: "NISR Analyst", email: "analyst@nisr.demo" },
@@ -36,7 +36,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const passwordRef = useRef(null);
   const navigate = useNavigate();
   // Post-login destination (e.g. the MCP OAuth consent page sends users here
   // with returnTo so the grant flow can resume). Same-origin paths only.
@@ -47,11 +46,39 @@ export default function Login() {
     return <Navigate to={roleHome(demoUser.role)} replace />;
   }
 
-  const handleDemo = async (account) => {
-    if (supabaseConfigured) return;
-    await signInToDatabase(account.email, DEMO_PASSWORD);
-    loginAs(publicAccount(account));
-    navigate(roleHome(account.role), { replace: true });
+  const finishDatabaseLogin = async (emailAddress, passwordValue) => {
+    if (!supabase) throw new Error("Sign-in is not configured.");
+    const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+      email: emailAddress,
+      password: passwordValue,
+    });
+    if (signInError) throw signInError;
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", signInData.user.id)
+      .maybeSingle();
+    if (profileError || !profile?.role || !ROLES[profile.role]) {
+      await supabase.auth.signOut();
+      throw new Error(profileError
+        ? "We could not load access for this account. Please try again or contact the platform administrator."
+        : "This account does not have an approved platform role yet. Contact the platform administrator.");
+    }
+    const hasRequestedDestination = new URLSearchParams(window.location.search).has("returnTo");
+    const destination = hasRequestedDestination && returnTo !== "/" ? returnTo : roleHome(profile.role);
+    navigate(destination, { replace: true });
+  };
+
+  const handlePanelShortcut = async (account) => {
+    setError("");
+    setLoading(true);
+    try {
+      await finishDatabaseLogin(account.email, DEMO_PASSWORD);
+    } catch (err) {
+      setError(err.message || "Panel access could not be started.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -69,22 +96,7 @@ export default function Login() {
     }
     try {
       if (!supabase) throw new Error("Sign-in is not configured.");
-      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-      if (signInError) throw signInError;
-      const { data: profile, error: profileError } = await supabase
-        .from("profiles")
-        .select("role")
-        .eq("id", signInData.user.id)
-        .maybeSingle();
-      if (profileError || !profile?.role || !ROLES[profile.role]) {
-        await supabase.auth.signOut();
-        throw new Error(profileError
-          ? "We could not load access for this account. Please try again or contact the platform administrator."
-          : "This account does not have an approved platform role yet. Contact the platform administrator.");
-      }
-      const hasRequestedDestination = new URLSearchParams(window.location.search).has("returnTo");
-      const destination = hasRequestedDestination && returnTo !== "/" ? returnTo : roleHome(profile.role);
-      navigate(destination, { replace: true });
+      await finishDatabaseLogin(email, password);
     } catch (err) {
       setError(err.message || "Invalid email or password");
     } finally {
@@ -112,35 +124,23 @@ export default function Login() {
     }
   };
 
-  const selectPanelAccount = (accountEmail) => {
-    setEmail(accountEmail);
-    setPassword("");
-    setError("");
-    requestAnimationFrame(() => passwordRef.current?.focus());
-  };
-
   return (
     <AuthLayout
+      icon={LogIn}
       title="Sign in"
       subtitle="Use your Ireme Insight account"
+      footer={
+        <>
+          Don't have an account?{" "}
+          <Link to={"/register" + (returnTo !== "/" ? "?returnTo=" + encodeURIComponent(returnTo) : "")} className="text-primary font-medium hover:underline">
+            Create account
+          </Link>
+        </>
+      }
     >
-      <div className="mb-5 flex items-center justify-between gap-3 rounded-lg border border-[#dcefe0] bg-[#f5fbf3] px-3.5 py-3">
-        <div>
-          <p className="text-[12.5px] font-semibold text-ink">
-            {supabaseConfigured ? "Sign in with your account" : "Need a quick way in?"}
-          </p>
-          <p className="mt-0.5 text-[11px] leading-relaxed text-sub">
-            {supabaseConfigured
-              ? "Use your registered email and password."
-              : "Choose a demo account below, or use your registered account."}
-          </p>
-        </div>
-        <Link
-          to={"/register" + (returnTo !== "/" ? "?returnTo=" + encodeURIComponent(returnTo) : "")}
-          className="inline-flex shrink-0 items-center gap-1 text-[11.5px] font-semibold text-[#347b31] hover:underline"
-        >
-          Create account <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-        </Link>
+      <div className="mb-5 rounded-lg border border-[#dcefe0] bg-[#f5fbf3] px-3.5 py-3">
+        <p className="text-[12.5px] font-semibold text-ink">Sign in with your account</p>
+        <p className="mt-0.5 text-[11px] leading-relaxed text-sub">Use your registered email and password.</p>
       </div>
       {supabaseConfigured && googleOAuthConfigured && <Button
         variant="outline"
@@ -202,7 +202,6 @@ export default function Login() {
           <div>
             <Input
               id="password"
-              ref={passwordRef}
               type="password"
               autoComplete="current-password"
               placeholder="••••••••"
@@ -225,57 +224,22 @@ export default function Login() {
         </Button>
       </form>
 
-      {supabaseConfigured && <details className="mt-5 rounded-lg border border-border px-3 py-2">
-        <summary className="cursor-pointer text-[12px] font-medium text-foreground">
-          Quick panel accounts ({SUPABASE_PANEL_SHORTCUTS.length})
-        </summary>
-        <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
-          Choose a panel to fill its account email, then enter that account’s password. Supabase checks access and the assigned role.
-        </p>
-        <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+      {supabaseConfigured && <div className="mt-5 border-t border-border pt-4">
+        <p className="mb-1 text-xs font-medium text-muted-foreground">Hackathon panel access</p>
+        <p className="mb-2 text-[11px] leading-relaxed text-muted-foreground">Choose a live Supabase panel account to continue.</p>
+        <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
           {SUPABASE_PANEL_SHORTCUTS.map((account) => (
             <button
               key={account.email}
               type="button"
-              onClick={() => selectPanelAccount(account.email)}
+              onClick={() => handlePanelShortcut(account)}
+              disabled={loading}
               className="rounded-md border border-border px-2.5 py-2 text-left transition-colors hover:border-brand hover:bg-brand-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             >
               <span className="block text-[11.5px] font-medium text-foreground">{account.label}</span>
-              <span className="mt-0.5 block truncate font-mono text-[10px] text-muted-foreground">{account.email}</span>
             </button>
           ))}
         </div>
-      </details>}
-
-      {!supabaseConfigured && <div className="mt-6 border-t border-border pt-4">
-        <p className="mb-1 text-xs font-medium text-muted-foreground">Demo accounts: pick one, or type its email</p>
-        <p className="mb-2 text-[11px] text-muted-foreground">Password for every demo account: <span className="font-mono text-foreground">{DEMO_PASSWORD}</span>. Each programme account sees only its own programme.</p>
-        <div className="grid grid-cols-2 gap-2">
-          {DEMO_ACCOUNTS.map((a) => (
-            <button
-              key={a.email}
-              type="button"
-              onClick={() => handleDemo(a)}
-              className="rounded-lg border border-border px-3 py-2 text-left transition-colors hover:border-brand hover:bg-brand-soft"
-            >
-              <p className="text-[12px] font-medium text-foreground">{a.programme || ROLES[a.role].label}</p>
-              <p className="truncate text-[10.5px] text-muted-foreground">{a.scope}</p>
-              <p className="truncate font-mono text-[10px] text-muted-foreground">{a.email}</p>
-            </button>
-          ))}
-        </div>
-        <details className="mt-3 rounded-lg border border-border px-3 py-2">
-          <summary className="cursor-pointer text-[12px] font-medium text-foreground">Cooperative accounts ({cooperativeAccounts().length})</summary>
-          <p className="mt-1 text-[11px] text-muted-foreground">Each cooperative has its own account and accepts or declines its own members.</p>
-          <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-            {cooperativeAccounts().map((a) => (
-              <button key={a.email} type="button" onClick={() => handleDemo(a)} className="rounded-md border border-border px-2.5 py-1.5 text-left transition-colors hover:border-brand hover:bg-brand-soft">
-                <p className="truncate text-[11.5px] font-medium text-foreground">{a.name}</p>
-                <p className="truncate font-mono text-[10px] text-muted-foreground">{a.email}</p>
-              </button>
-            ))}
-          </div>
-        </details>
       </div>}
     </AuthLayout>
   );
