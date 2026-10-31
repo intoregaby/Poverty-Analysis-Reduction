@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const apiUrl = new URL("../../src/lib/jobsApi.js", import.meta.url);
-const migrationUrl = new URL("../../supabase/migrations/20261030200000_opportunity_platform_phase1.sql", import.meta.url);
+const migrationUrl = new URL("../../supabase/migrations/20261031001029_opportunity_platform_phase1.sql", import.meta.url);
 const [api, migration] = await Promise.all([
   readFile(apiUrl, "utf8"),
   readFile(migrationUrl, "utf8"),
