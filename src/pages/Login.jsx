@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { supabase, supabaseConfigured } from "@/lib/supabaseClient";
 import { Button } from "@/components/ui/button";
@@ -16,11 +16,27 @@ import { signInToDatabase } from "@/lib/supabaseClient";
 const googleOAuthConfigured = import.meta.env.VITE_SUPABASE_GOOGLE_ENABLED === "true";
 const githubOAuthConfigured = import.meta.env.VITE_SUPABASE_GITHUB_ENABLED === "true";
 
+// These are demo identities confirmed in the connected Supabase project. The shortcut
+// selects an email only; Supabase still requires the account's password and role check.
+const SUPABASE_PANEL_SHORTCUTS = [
+  { label: "Platform Admin", email: "admin@platform.demo" },
+  { label: "NISR Analyst", email: "analyst@nisr.demo" },
+  { label: "Programme Account", email: "vup@programmes.demo" },
+  { label: "Cooperative", email: "twiyubake-cooperative@coops.demo" },
+  { label: "District Officer", email: "district@gov.demo" },
+  { label: "Sector Leader", email: "sector@gov.demo" },
+  { label: "Cell Leader", email: "cell@gov.demo" },
+  { label: "Field Agent", email: "agent@field.demo" },
+  { label: "Program Member", email: "beneficiary@people.demo" },
+  { label: "Job Applicant", email: "applicant@people.demo" },
+];
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const passwordRef = useRef(null);
   const navigate = useNavigate();
   // Post-login destination (e.g. the MCP OAuth consent page sends users here
   // with returnTo so the grant flow can resume). Same-origin paths only.
@@ -94,6 +110,13 @@ export default function Login() {
       setError(err.message || `${providerName} sign-in could not start. Check its Supabase OAuth configuration.`);
       setLoading(false);
     }
+  };
+
+  const selectPanelAccount = (accountEmail) => {
+    setEmail(accountEmail);
+    setPassword("");
+    setError("");
+    requestAnimationFrame(() => passwordRef.current?.focus());
   };
 
   return (
@@ -179,6 +202,7 @@ export default function Login() {
           <div>
             <Input
               id="password"
+              ref={passwordRef}
               type="password"
               autoComplete="current-password"
               placeholder="••••••••"
@@ -200,6 +224,28 @@ export default function Login() {
           )}
         </Button>
       </form>
+
+      {supabaseConfigured && <details className="mt-5 rounded-lg border border-border px-3 py-2">
+        <summary className="cursor-pointer text-[12px] font-medium text-foreground">
+          Quick panel accounts ({SUPABASE_PANEL_SHORTCUTS.length})
+        </summary>
+        <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+          Choose a panel to fill its account email, then enter that account’s password. Supabase checks access and the assigned role.
+        </p>
+        <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+          {SUPABASE_PANEL_SHORTCUTS.map((account) => (
+            <button
+              key={account.email}
+              type="button"
+              onClick={() => selectPanelAccount(account.email)}
+              className="rounded-md border border-border px-2.5 py-2 text-left transition-colors hover:border-brand hover:bg-brand-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            >
+              <span className="block text-[11.5px] font-medium text-foreground">{account.label}</span>
+              <span className="mt-0.5 block truncate font-mono text-[10px] text-muted-foreground">{account.email}</span>
+            </button>
+          ))}
+        </div>
+      </details>}
 
       {!supabaseConfigured && <div className="mt-6 border-t border-border pt-4">
         <p className="mb-1 text-xs font-medium text-muted-foreground">Demo accounts: pick one, or type its email</p>
