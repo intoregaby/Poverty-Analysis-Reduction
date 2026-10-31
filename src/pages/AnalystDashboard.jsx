@@ -14,10 +14,12 @@ import PanelGuide from "@/components/analyst/PanelGuide";
 import { DASHBOARD_DISTRICTS, DASHBOARD_SOURCES } from "@/data/dashboardEvidence";
 import { Link, useOutletContext } from "react-router-dom";
 import { Search, CircleHelp } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const csvCell = (value) => `"${String(value).replaceAll('"', '""')}"`;
 
 export default function AnalystDashboard() {
+  const { t } = useTranslation();
   const outletContext = useOutletContext();
   const startTour = outletContext?.startTour;
   const [province, setProvince] = useState("all");
@@ -48,8 +50,8 @@ export default function AnalystDashboard() {
 
       <main className="mx-auto max-w-[1440px] space-y-4 px-4 py-5 sm:px-6 lg:px-8">
         <section aria-labelledby="main-findings-title" data-tour="analysis-findings">
-          <div className="flex flex-wrap items-center justify-between gap-2"><h2 id="main-findings-title" className="text-[20px] font-semibold tracking-tight text-ink">Poverty Analysis Dashboard</h2><div className="flex flex-wrap items-center gap-2">{startTour && <button type="button" onClick={startTour} className="inline-flex items-center gap-1.5 rounded-md border border-hairline bg-white px-3 py-2 text-[12px] font-medium text-ink hover:bg-canvas"><CircleHelp className="h-3.5 w-3.5" aria-hidden="true" />How to read this page</button>}<Link to={`/ai-engine?district=${encodeURIComponent(investigationDistrict)}&autoStart=1`} className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-2 text-[12px] font-medium text-white hover:bg-[#524BE0]"><Search className="h-3.5 w-3.5" />Open AI Engine · {investigationDistrict}</Link></div></div>
-          <p className="mb-3 mt-0.5 text-[12px] text-sub">Dashboard shows which districts in Rwanda need support by comparing local poverty levels to the national average.</p>
+          <div className="flex flex-wrap items-center justify-between gap-2"><h2 id="main-findings-title" className="text-[20px] font-semibold tracking-tight text-ink">{t("analyst.dashboard")}</h2><div className="flex flex-wrap items-center gap-2">{startTour && <button type="button" onClick={startTour} className="inline-flex items-center gap-1.5 rounded-md border border-hairline bg-white px-3 py-2 text-[12px] font-medium text-ink hover:bg-canvas"><CircleHelp className="h-3.5 w-3.5" aria-hidden="true" />{t("analyst.howToRead")}</button>}<Link to={`/ai-engine?district=${encodeURIComponent(investigationDistrict)}&autoStart=1`} className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-2 text-[12px] font-medium text-white hover:bg-[#524BE0]"><Search className="h-3.5 w-3.5" />{t("analyst.openAi")} · {investigationDistrict}</Link></div></div>
+          <p className="mb-3 mt-0.5 text-[12px] text-sub">{t("analyst.dashboardHelp")}</p>
           <KpiStrip rows={rows} province={province} />
         </section>
 
@@ -61,7 +63,7 @@ export default function AnalystDashboard() {
         </div>
 
         <section aria-labelledby="trends-title" className="space-y-4">
-          <div><h2 id="trends-title" className="text-[16px] font-semibold tracking-tight text-ink">Trends and Financial Inclusion</h2><p className="mt-0.5 text-[12px] text-sub">Poverty over time from earlier surveys, who escaped poverty, and how financial access lines up with poverty by district. Each card says whether it follows the same households or only compares area averages.</p></div>
+          <div><h2 id="trends-title" className="text-[16px] font-semibold tracking-tight text-ink">{t("analyst.trends")}</h2><p className="mt-0.5 text-[12px] text-sub">{t("analyst.trendsHelp")}</p></div>
           <div className="grid grid-cols-1 items-start gap-4 xl:grid-cols-2">
             <TrendChangeCard rows={rows} />
             <PanelMobilityCard province={province} />

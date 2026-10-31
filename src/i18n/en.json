@@ -34,9 +34,12 @@
     "jobs": "Find a Job",
     "map": "District Map",
     "datasets": "Data & Methodology",
-    "ussd-control": "USSD Control"
+    "ussd-control": "USSD Control",
+    "account-requests": "Account requests"
   },
   "pageTitles": { "districtMap": "District Map", "programmeManagement": "Programme Management", "cooperatives": "Cooperatives", "cooperative": "Cooperative", "government": "Government", "agent": "Agent Dashboard", "jobs": "Find a Job", "datasets": "Data & Methodology" },
+  "nst2": { "title": "National Goals", "intro": "Rwanda's National Goals", "question": "Are we meeting the 2024–2029 targets?", "latest": "Latest Numbers", "latestHelp": "Key figures from the latest survey", "targets": "Targets", "targetsHelp": "Official goals for 2024–2029", "pending": "target pending", "social": "Social transformation", "socialNote": "Poverty and social protection", "economic": "Economic transformation", "economicNote": "Financial inclusion", "governance": "Transformational governance", "governanceNote": "Evidence and delivery", "poverty": "Poverty rate", "extreme": "Extreme poverty", "vupPoor": "VUP participation, poor households", "vupAll": "Households reporting VUP participation", "formal": "Formally included", "excluded": "Financially excluded", "banked": "Banked", "informal": "Informal only", "districts": "Districts with data", "critical": "Districts with poverty 40%+ and VUP participation under 15% of poor", "programmes": "Programmes tracked", "traceability": "Payment traceability", "perHousehold": "Per household", "targetsText": "National targets, baselines and milestone years will load here once the NST2 indicator file is added. Current values already come from the NISR files." },
+  "analyst": { "dashboard": "Poverty Analysis Dashboard", "dashboardHelp": "Dashboard shows which districts in Rwanda need support by comparing local poverty levels to the national average.", "howToRead": "How to read this page", "openAi": "Open AI Engine", "trends": "Trends and Financial Inclusion", "trendsHelp": "Poverty over time, who escaped poverty, and how financial access lines up with poverty by district." },
   "programme": { "tabs": { "overview": "Overview", "requests": "Analyst requests", "cooperatives": "Cooperatives", "agents": "Agents", "beneficiaries": "Program Members", "jobs": "Jobs & Recruitment", "payments": "Payments", "skills": "Skills & Training" } },
   "tour": {
     "stepOf": "Step {{current}} of {{total}}",
@@ -61,7 +64,8 @@
       "jobs": "This page shows jobs you can apply for, and how your application is going.",
       "map": "This map shows Rwanda's 30 districts. Darker colours mean a higher number. Click a district to learn more.",
       "datasets": "See where the figures come from, what each measure includes, and what the data cannot tell us.",
-      "ussd-control": "See who uses the phone service, how it is going, and any problems. You can end a session or block a number. Every action is logged."
+      "ussd-control": "See who uses the phone service, how it is going, and any problems. You can end a session or block a number. Every action is logged.",
+      "account-requests": "Review new programme, cooperative, and member access requests. Match each request to the correct record before approving it."
     },
     "menu": {
       "title": "The menu",
@@ -73,6 +77,7 @@
       "text": "Press Take a tour any time. You will see the tour for the page you are on."
     },
     "steps": {
+      "account-request-list": { "title": "Review requests", "text": "Match the person to the correct official record, then approve or reject the request." },
       "analysis-filter": {
         "title": "Choose a place",
         "text": "Choose All Rwanda or one province. The district charts and the Export file follow your choice. Numbers marked National always stay for the whole country."

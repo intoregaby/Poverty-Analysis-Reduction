@@ -10,6 +10,7 @@ Date: 2026-10-31
 - Added `src/i18n/tourRw.js` for all guided-tour step titles and descriptions. This keeps the long tour copy separate from the main catalogue and prevents empty-string fallbacks.
 - Added browser coverage for switching English → Kinyarwanda → English.
 - Added translated programme and government sub-navigation labels; Playwright specifically checks both panels.
+- Translated the visible National Goals and Analyst Dashboard headings, labels, target states, and introductory copy shown in the supplied screenshots.
 
 ## Findings and limitations for review
 
@@ -27,6 +28,7 @@ Date: 2026-10-31
 - `npm run build`: passed.
 - Playwright `e2e/07-language.spec.js`: passed; verified the shared shell changes language in Chromium and returns to English.
 - Playwright route crawl: checked all authenticated routes in demo mode; found and fixed the programme/government sub-navigation fallback.
+- Playwright `e2e/07-language.spec.js`: passed after the National Goals, Analyst Dashboard, programme, and government fixes.
 
 ## Files changed in the final translation pass
 
