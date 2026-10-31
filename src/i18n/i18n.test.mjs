@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { createI18n as create } from "./core.js";
 import { formatDate, formatMoney, formatNumber } from "../lib/format.js";
+import tourRw from "./tourRw.js";
 
 const load = (name) => JSON.parse(readFileSync(new URL(`./${name}.json`, import.meta.url), "utf8"));
 const en = load("en");
@@ -30,6 +31,13 @@ test("rw.json carries the same translation structure as English", () => {
   const walk = (tree) => Object.values(tree).flatMap((v) => (v && typeof v === "object" ? walk(v) : [v]));
   assert.ok(walk(rw).length > 50);
   assert.equal(Object.keys(rw).sort().join(","), Object.keys(en).sort().join(","));
+});
+
+test("every guided-tour step has Kinyarwanda copy", () => {
+  for (const [id, copy] of Object.entries(tourRw)) {
+    assert.ok(copy.title.trim(), `${id} title is empty`);
+    assert.ok(copy.text.trim(), `${id} text is empty`);
+  }
 });
 
 test("money, numbers and dates follow the language and never throw", () => {

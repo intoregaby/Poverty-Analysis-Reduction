@@ -1,0 +1,38 @@
+# English / Kinyarwanda translation review
+
+Date: 2026-10-31
+
+## Completed
+
+- Added an always-available language selector to the authenticated desktop sidebar and mobile shell.
+- The selector supports only English (`en`) and Kinyarwanda (`rw`), updates mounted panels immediately, and persists the choice in browser storage.
+- Translated the shared navigation, settings, member, government, agent, USSD, login-help, and guided-tour copy.
+- Added `src/i18n/tourRw.js` for all guided-tour step titles and descriptions. This keeps the long tour copy separate from the main catalogue and prevents empty-string fallbacks.
+- Added browser coverage for switching English → Kinyarwanda → English.
+
+## Findings and limitations for review
+
+1. Kinyarwanda wording is an engineering translation and needs a native-speaker review before public release. Names of government programmes, financial products, districts, and source documents are intentionally preserved rather than translated.
+2. Values returned by external data sources, user-entered names, programme names, and report excerpts are not translated by the interface; they remain source text.
+3. Some feature copy is still authored directly inside panel components instead of using `t(...)`. It will remain English when the language is changed. This is a code-structure issue, not a missing translation key, and should be migrated panel by panel in a follow-up pass.
+4. The translation selector is in the shared shell, so it is available on every authenticated route. Public authentication pages retain their existing English copy and are not part of the dashboard shell.
+5. Long guided-tour copy is now present in Kinyarwanda, but terminology and tone should be checked by NISR/Kinyarwanda reviewers.
+
+## Verification
+
+- `npm test`: 113 passed.
+- `npm run lint`: passed.
+- `npm run build`: passed.
+- Playwright `e2e/07-language.spec.js`: passed; verified the shared shell changes language in Chromium and returns to English.
+
+## Files changed in the final translation pass
+
+- `src/components/layout/LanguageSwitcher.jsx`
+- `src/components/layout/Sidebar.jsx`
+- `src/components/layout/DashboardShell.jsx`
+- `src/i18n/rw.json`
+- `src/i18n/tourRw.js`
+- `src/i18n/index.js`
+- `src/i18n/i18n.test.mjs`
+- `src/ussd/core.test.mjs`
+- `e2e/07-language.spec.js`
