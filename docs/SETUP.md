@@ -24,7 +24,7 @@ The app has no third-party app builder behind it. It is a static Vite/React site
 4. Authentication > Providers: Email is on by default. Turn on **Confirm email** and set the email template to include the 6-digit `{{ .Token }}` (the sign-up screen asks for that code).
 5. Authentication > URL Configuration: set **Site URL** to your deployed address, and add `http://localhost:5173/**` and the deployed address to **Redirect URLs** (needed for password reset and Google sign-in).
 6. Optional Google sign-in: Authentication > Providers > Google, using a client ID and secret from Google Cloud Console.
-7. Make your own account an admin: in the SQL editor, `update auth.users set raw_app_meta_data = raw_app_meta_data || '{"role":"platform_admin"}' where email = 'you@example.com';`
+7. Apply and review `supabase/migrations/20261030235858_create_signup_profiles.sql` in a local or staging Supabase project before production. It creates a `profiles` row for new Auth users with the fixed, low-privilege `job_applicant` role. User metadata supplies display name and language only; it never grants a platform role. Existing Auth users without a profile need separate, verified administrator provisioning. Do not grant staff roles through signup metadata or browser code.
 
 ## 2. Edge functions
 

@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p ./jsconfig.json",
     "preview": "vite preview",
-    "test": "node --test \"src/**/*.test.mjs\""
+    "test": "node --test \"src/**/*.test.mjs\"",
+    "e2e": "node tools/e2e/build-isolated.mjs && playwright test"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^17.0.0",
@@ -83,6 +84,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@playwright/test": "^1.64.1",
     "@types/node": "^22.13.5",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

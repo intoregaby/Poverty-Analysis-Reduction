@@ -1,12 +1,13 @@
 import React, { createContext, useCallback, useContext, useState } from "react";
 import { useAuth } from "@/lib/AuthContext";
-import { signOutOfDatabase } from "@/lib/supabaseClient";
+import { signOutOfDatabase, supabaseConfigured } from "@/lib/supabaseClient";
 
 const KEY = "ireme_demo_user";
 const DemoAuthContext = createContext(null);
 
 export const DemoAuthProvider = ({ children }) => {
   const [demoUser, setDemoUser] = useState(() => {
+    if (supabaseConfigured) return null;
     try {
       return JSON.parse(localStorage.getItem(KEY));
     } catch {
@@ -15,6 +16,7 @@ export const DemoAuthProvider = ({ children }) => {
   });
 
   const loginAs = useCallback((account) => {
+    if (supabaseConfigured) return;
     localStorage.setItem(KEY, JSON.stringify(account));
     setDemoUser(account);
   }, []);
@@ -22,7 +24,7 @@ export const DemoAuthProvider = ({ children }) => {
   const logout = useCallback(() => {
     localStorage.removeItem(KEY);
     setDemoUser(null);
-    signOutOfDatabase().finally(() => { window.location.href = "/login"; });
+    signOutOfDatabase().finally(() => { window.location.href = `${import.meta.env.BASE_URL}login`; });
   }, []);
 
   return (
@@ -38,6 +40,6 @@ export const useDemoAuth = () => {
 
 export const useRole = () => {
   const { demoUser } = useDemoAuth();
-  const { isAuthenticated } = useAuth();
-  return demoUser?.role ?? (isAuthenticated ? "nisr_analyst" : null);
+  const { profile } = useAuth();
+  return supabaseConfigured ? profile?.role ?? null : demoUser?.role ?? null;
 };

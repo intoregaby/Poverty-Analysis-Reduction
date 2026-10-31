@@ -4,14 +4,19 @@ import { supabase } from "@/lib/supabaseClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { UserPlus, Mail, Lock, Loader2 } from "lucide-react";
+import { UserPlus, Mail, Lock, Loader2, Github } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import AuthLayout from "@/components/AuthLayout";
 import GoogleIcon from "@/components/GoogleIcon";
 import { toast } from "@/components/ui/use-toast";
-import { safeReturnTo } from "@/lib/authReturnTo";
+import { appAbsoluteUrl, safeReturnTo } from "@/lib/authReturnTo";
+import { ROLES, roleHome } from "@/lib/roles";
+
+const googleOAuthConfigured = import.meta.env.VITE_SUPABASE_GOOGLE_ENABLED === "true";
+const githubOAuthConfigured = import.meta.env.VITE_SUPABASE_GITHUB_ENABLED === "true";
 
 export default function Register() {
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -30,7 +35,12 @@ export default function Register() {
     setLoading(true);
     try {
       if (!supabase) throw new Error("Sign-up is not configured.");
-      const { error: signUpError } = await supabase.auth.signUp({ email, password });
+      if (!fullName.trim()) throw new Error("Enter your name to create an account.");
+      const { error: signUpError } = await supabase.auth.signUp({
+        email: email.trim(),
+        password,
+        options: { data: { full_name: fullName.trim() } },
+      });
       if (signUpError) throw signUpError;
       setShowOtp(true);
     } catch (err) {
@@ -44,9 +54,23 @@ export default function Register() {
     setError("");
     setLoading(true);
     try {
-      const { error: verifyError } = await supabase.auth.verifyOtp({ email, token: otpCode, type: "signup" });
+      const { data: verification, error: verifyError } = await supabase.auth.verifyOtp({ email: email.trim(), token: otpCode, type: "signup" });
       if (verifyError) throw verifyError;
-      window.location.href = safeReturnTo();
+      const userId = verification.user?.id;
+      if (!userId) throw new Error("Email verified, but we could not load the account session. Please sign in.");
+      const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", userId)
+        .maybeSingle();
+      if (profileError) throw new Error("Email verified, but account access is not ready. Contact the platform administrator.");
+      if (!profile?.role || !ROLES[profile.role]) {
+        throw new Error("Email verified, but this account has no approved platform role yet. Contact the platform administrator.");
+      }
+      const requestedDestination = new URLSearchParams(window.location.search).has("returnTo");
+      const returnTo = safeReturnTo();
+      const destination = requestedDestination && returnTo !== "/" ? returnTo : roleHome(profile.role);
+      window.location.href = appAbsoluteUrl(destination);
     } catch (err) {
       setError(err.message || "Invalid verification code");
     } finally {
@@ -68,8 +92,23 @@ export default function Register() {
     }
   };
 
-  const handleGoogle = () => {
-    supabase?.auth.signInWithOAuth({ provider: "google", options: { redirectTo: window.location.origin + safeReturnTo() } });
+  const handleOAuth = async (provider) => {
+    if (!supabase) {
+      setError("Connect Supabase to enable social sign-in.");
+      return;
+    }
+    setError("");
+    setLoading(true);
+    try {
+      const { error: oauthError } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: { redirectTo: appAbsoluteUrl(safeReturnTo()) },
+      });
+      if (oauthError) throw oauthError;
+    } catch (err) {
+      setError(err.message || "Social sign-in could not start. Check the provider configuration.");
+      setLoading(false);
+    }
   };
 
   if (showOtp) {
@@ -143,23 +182,33 @@ export default function Register() {
         </>
       }
     >
-      <Button
+      {supabase && googleOAuthConfigured && <Button
         variant="outline"
         className="w-full h-12 text-sm font-medium mb-6"
-        onClick={handleGoogle}
+        onClick={() => handleOAuth("google")}
+        disabled={loading}
       >
         <GoogleIcon className="w-5 h-5 mr-2" />
         Continue with Google
-      </Button>
+      </Button>}
 
-      <div className="relative mb-6">
+      {supabase && githubOAuthConfigured && <Button
+        variant="outline"
+        className="w-full h-12 text-sm font-medium mb-6"
+        onClick={() => handleOAuth("github")}
+        disabled={loading}
+      >
+        <Github className="mr-2 h-4 w-4" /> Continue with GitHub
+      </Button>}
+
+      {supabase && (googleOAuthConfigured || githubOAuthConfigured) && <div className="relative mb-6">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-border" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-card px-3 text-muted-foreground">or</span>
         </div>
-      </div>
+      </div>}
 
       {error && (
         <div className="mb-4 p-3 rounded-lg bg-destructive/10 text-destructive text-sm">
@@ -168,6 +217,19 @@ export default function Register() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="full-name">Full name</Label>
+          <Input
+            id="full-name"
+            type="text"
+            autoComplete="name"
+            maxLength={120}
+            value={fullName}
+            onChange={(event) => setFullName(event.target.value)}
+            className="h-12"
+            required
+          />
+        </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
           <div className="relative">
