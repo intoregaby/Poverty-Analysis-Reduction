@@ -77,6 +77,26 @@ frontend build environment and set `IREME_CORS_ORIGINS` on the API to the exact
 frontend origin. Static GitHub Pages can host the frontend, but it cannot host
 the Python API or safely hold provider credentials.
 
+The API keeps its catalog, jobs, reports and artifacts in SQLite and on disk, so
+it needs a host with a persistent volume (Render, Railway, Fly.io) rather than a
+serverless function with an ephemeral filesystem. When `VITE_IREME_API_URL` is
+absent the AI Engine still renders and states that no governed API is configured
+instead of showing sample data or an endless loading state.
+
+### Vercel
+
+The frontend deploys from `main` with `vercel.json` already in the repository
+(Vite build, `dist` output, single-page rewrite). Set these project environment
+variables for Production and Preview:
+
+| Variable | Value |
+| --- | --- |
+| `VITE_SUPABASE_URL` | `https://<project-ref>.supabase.co` |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | the project's publishable (anon) key |
+| `VITE_IREME_API_URL` | the HTTPS address of the hosted governed API |
+
+Redeploy after changing any of them: Vite inlines `VITE_*` values at build time.
+
 ## 4. Local run
 
 ```bash

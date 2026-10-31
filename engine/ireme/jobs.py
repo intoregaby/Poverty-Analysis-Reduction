@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Callable
 
 from .gateway import redact
+from .sqlite_support import enable_wal
 
 SCHEMA_VERSION = 2
 MIGRATIONS = {
@@ -53,6 +54,7 @@ class JobStore:
         self.clock = clock
         self._local = threading.local()
         self._all_conns = []
+        self._conn_lock = threading.Lock()
         self._audit_lock = threading.Lock()
         try:
             self.migrate()
@@ -61,14 +63,24 @@ class JobStore:
             raise
 
     # ---- connection / migrations ---------------------------------------------------------------------
+    def _connect(self) -> sqlite3.Connection:
+        """Open a connection with the store's durability pragmas applied."""
+        c = sqlite3.connect(self.path, timeout=30, isolation_level=None, check_same_thread=False)
+        try:
+            enable_wal(c)
+            c.execute("PRAGMA synchronous=FULL")
+        except Exception:
+            c.close()
+            raise
+        return c
+
     def conn(self) -> sqlite3.Connection:
         c = getattr(self._local, "c", None)
         if c is None:
-            c = sqlite3.connect(self.path, timeout=30, isolation_level=None, check_same_thread=False)
-            c.execute("PRAGMA journal_mode=WAL")
-            c.execute("PRAGMA synchronous=FULL")
+            c = self._connect()
             self._local.c = c
-            self._all_conns.append(c)
+            with self._conn_lock:
+                self._all_conns.append(c)
         return c
 
     def close(self):

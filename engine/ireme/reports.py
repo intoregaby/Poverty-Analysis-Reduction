@@ -19,6 +19,7 @@ from typing import Callable
 
 from . import contracts, release_gate, report
 from .profiles import get_config, ProfileConfig
+from .sqlite_support import enable_wal
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS reports(
@@ -89,15 +90,26 @@ class ReportStore:
         self.clock = clock
         self._local = threading.local()
         con = self._db()
-        con.executescript(SCHEMA)
-        con.commit()
+        # A cold file can be initialised by two requests at once; retry only the
+        # transient lock report instead of surfacing a 500 on first load.
+        for attempt in range(6):
+            try:
+                con.executescript(SCHEMA)
+                con.commit()
+                break
+            except sqlite3.OperationalError as exc:
+                if 'locked' not in str(exc) and 'busy' not in str(exc):
+                    raise
+                if attempt == 5:
+                    raise
+                time.sleep(0.05 * (2 ** attempt))
 
     def _db(self):
         con = getattr(self._local, "con", None)
         if con is None:
             con = sqlite3.connect(self.path, timeout=30)
             con.row_factory = sqlite3.Row
-            con.execute("PRAGMA journal_mode=WAL")
+            enable_wal(con)
             con.execute("PRAGMA foreign_keys=ON")
             self._local.con = con
         return con

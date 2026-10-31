@@ -257,5 +257,37 @@ class ConcurrentDistricts(Base):
         self.assertAlmostEqual(by["Kamonyi"]["poverty_pct"], 39.7, places=1)     # concurrency did not corrupt results
 
 
+class ColdOpen(unittest.TestCase):
+    def test_parallel_cold_opens_do_not_fail_on_lock_contention(self):
+        """The console reads runs while other discovery reads open the same file."""
+        tmp = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
+        self.addCleanup(tmp.cleanup)
+        path = Path(tmp.name) / "jobs.db"
+        errors = []
+        opened = []
+        lock = threading.Lock()
+        start = threading.Barrier(4)
+
+        def open_store():
+            try:
+                start.wait(timeout=10)
+                store = jobs.JobStore(path)
+                store.list_runs(10)
+                store.close()
+                with lock:
+                    opened.append(True)
+            except Exception as exc:  # noqa: BLE001 - the failure is the assertion
+                with lock:
+                    errors.append(exc)
+
+        threads = [threading.Thread(target=open_store) for _ in range(4)]
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join(timeout=30)
+        self.assertEqual(errors, [])
+        self.assertEqual(len(opened), 4)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -9,10 +9,12 @@ from __future__ import annotations
 import hashlib
 import json
 import sqlite3
+import time
 from datetime import datetime, timezone
 
 from .contracts import validate
 from . import retention
+from .sqlite_support import enable_wal
 
 
 class RevisionConflict(ValueError):
@@ -38,33 +40,59 @@ def aware_date(value):
     return parsed
 
 
+SCHEMA = '''
+  CREATE TABLE IF NOT EXISTS revisions(
+    tenant TEXT NOT NULL, kind TEXT NOT NULL, entity TEXT NOT NULL, version TEXT NOT NULL,
+    payload TEXT NOT NULL, sha256 TEXT NOT NULL, actor TEXT NOT NULL, created TEXT NOT NULL,
+    PRIMARY KEY(tenant,kind,entity,version));
+  CREATE TABLE IF NOT EXISTS edges(
+    tenant TEXT NOT NULL, parent_kind TEXT NOT NULL, parent TEXT NOT NULL, parent_version TEXT NOT NULL,
+    child_kind TEXT NOT NULL, child TEXT NOT NULL, child_version TEXT NOT NULL,
+    metadata TEXT NOT NULL, sha256 TEXT NOT NULL,
+    PRIMARY KEY(tenant,parent_kind,parent,parent_version,child_kind,child,child_version));
+  CREATE TRIGGER IF NOT EXISTS revision_no_update BEFORE UPDATE ON revisions
+    BEGIN SELECT RAISE(ABORT,'immutable revision'); END;
+  CREATE TRIGGER IF NOT EXISTS revision_no_delete BEFORE DELETE ON revisions
+    BEGIN SELECT RAISE(ABORT,'immutable revision'); END;
+  CREATE TRIGGER IF NOT EXISTS edge_no_update BEFORE UPDATE ON edges
+    BEGIN SELECT RAISE(ABORT,'immutable lineage'); END;
+  CREATE TRIGGER IF NOT EXISTS edge_no_delete BEFORE DELETE ON edges
+    BEGIN SELECT RAISE(ABORT,'immutable lineage'); END;
+'''
+
+
+def connect(path):
+    """Open the catalog, retrying only transient lock contention.
+
+    The analyst console reads permissions, indicators, and runs in parallel, so a
+    cold database can be initialised by several connections at once. SQLite
+    reports that race as ``database is locked`` instead of waiting for the DDL.
+    Retry briefly so a first page load never shows a spurious 500; any other
+    failure still surfaces immediately.
+    """
+    for attempt in range(6):
+        db = sqlite3.connect(path, timeout=30)
+        try:
+            db.execute('PRAGMA foreign_keys=ON')
+            enable_wal(db)
+            db.executescript(SCHEMA)
+            return db
+        except sqlite3.OperationalError as exc:
+            db.close()
+            if 'locked' not in str(exc) and 'busy' not in str(exc):
+                raise
+            if attempt == 5:
+                raise
+            time.sleep(0.05 * (2 ** attempt))
+    raise AssertionError('unreachable')
+
+
 class Catalog:
     def __init__(self, path, tenant: str, principal: str):
         if not tenant or not principal:
             raise PermissionError('Tenant and authenticated principal required')
         self.tenant, self.principal = tenant, principal
-        self.db = sqlite3.connect(path, timeout=30)
-        self.db.execute('PRAGMA foreign_keys=ON')
-        self.db.execute('PRAGMA journal_mode=WAL')
-        self.db.executescript('''
-          CREATE TABLE IF NOT EXISTS revisions(
-            tenant TEXT NOT NULL, kind TEXT NOT NULL, entity TEXT NOT NULL, version TEXT NOT NULL,
-            payload TEXT NOT NULL, sha256 TEXT NOT NULL, actor TEXT NOT NULL, created TEXT NOT NULL,
-            PRIMARY KEY(tenant,kind,entity,version));
-          CREATE TABLE IF NOT EXISTS edges(
-            tenant TEXT NOT NULL, parent_kind TEXT NOT NULL, parent TEXT NOT NULL, parent_version TEXT NOT NULL,
-            child_kind TEXT NOT NULL, child TEXT NOT NULL, child_version TEXT NOT NULL,
-            metadata TEXT NOT NULL, sha256 TEXT NOT NULL,
-            PRIMARY KEY(tenant,parent_kind,parent,parent_version,child_kind,child,child_version));
-          CREATE TRIGGER IF NOT EXISTS revision_no_update BEFORE UPDATE ON revisions
-            BEGIN SELECT RAISE(ABORT,'immutable revision'); END;
-          CREATE TRIGGER IF NOT EXISTS revision_no_delete BEFORE DELETE ON revisions
-            BEGIN SELECT RAISE(ABORT,'immutable revision'); END;
-          CREATE TRIGGER IF NOT EXISTS edge_no_update BEFORE UPDATE ON edges
-            BEGIN SELECT RAISE(ABORT,'immutable lineage'); END;
-          CREATE TRIGGER IF NOT EXISTS edge_no_delete BEFORE DELETE ON edges
-            BEGIN SELECT RAISE(ABORT,'immutable lineage'); END;
-        ''')
+        self.db = connect(path)
 
     def close(self):
         self.db.close()
