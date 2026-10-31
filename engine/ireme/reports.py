@@ -150,14 +150,19 @@ class ReportStore:
         if action not in ("approve", "reject"):
             raise ValueError("review action must be approve or reject")
         review_roles = DEMO_REVIEW_ROLES if (profile and profile.name.value == "HACKATHON_DEMO") else REVIEW_ROLES
+        bypass = bool(profile and profile.bypass_human_approvals)
         held = review_roles.intersection(roles)
-        if len(held) != 1:
-            raise ReportAccessDenied("AMBIGUOUS_ROLE", "a reviewer must hold exactly one review role")
-        role = next(iter(held))
+        if bypass:
+            # Demo freedom: any signed-in role may record the review signature.
+            role = next(iter(held)) if held else (sorted(roles)[0] if roles else "reviewer")
+        else:
+            if len(held) != 1:
+                raise ReportAccessDenied("AMBIGUOUS_ROLE", "a reviewer must hold exactly one review role")
+            role = next(iter(held))
         rec = self.get(report_id, version)
         if rec.status in ("published", "superseded", "revoked"):
             raise ReportAccessDenied("IMMUTABLE", f"report is {rec.status}")
-        if reviewer_id == rec.author:
+        if reviewer_id == rec.author and not bypass:
             raise ReportAccessDenied("FORBIDDEN", "author cannot sign their own report")
         con = self._db()
         if action == "reject":
@@ -179,6 +184,8 @@ class ReportStore:
     def publish(self, report_id: str, version: str, publisher_id: str, roles,
                 artifacts=None, profile: ProfileConfig = None) -> None:
         publish_roles = DEMO_PUBLISH_ROLES if (profile and profile.name.value == "HACKATHON_DEMO") else PUBLISH_ROLES
+        if profile and profile.bypass_human_approvals:
+            publish_roles = publish_roles | {"nisr_analyst", "platform_admin"}
         if not publish_roles.intersection(roles):
             raise ReportAccessDenied("FORBIDDEN", "publication authority required")
         rec = self.get(report_id, version)

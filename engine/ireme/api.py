@@ -20,6 +20,7 @@ from starlette.concurrency import run_in_threadpool
 from starlette.exceptions import HTTPException
 
 from . import agents, auth, science
+from . import profiles
 from .catalog import Catalog, CatalogIntegrityError
 from .gateway import PolicyDenied, has_configured_keys
 from .jobs import IdempotencyConflict, JobStore
@@ -77,8 +78,14 @@ class InvestigationCreateRequest(BaseModel):
 
 def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_clearance=None, report_path=None,
                artifact_path=None, profile: ProfileConfig = None):
-    if profile is None:
-        profile = get_config()
+    # An explicitly supplied profile is pinned (production tests do this). Otherwise the
+    # profile is resolved per request so demo admin toggles take effect live.
+    fixed_profile = profile
+
+    def current_profile() -> ProfileConfig:
+        return fixed_profile if fixed_profile is not None else get_config()
+
+    profile = current_profile()
     app = FastAPI(title='Ireme governed research API', version='1.0', docs_url=None,
                   redoc_url=None, openapi_url=None)
     active_workers, worker_lock = set(), threading.Lock()
@@ -153,7 +160,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
     def start_investigation(body: InvestigationCreateRequest, request: Request, background_tasks: BackgroundTasks,
                             idempotency_key: str | None = Header(default=None, alias='Idempotency-Key')):
         principal = request.state.principal
-        auth.authorize(principal, 'investigation:create', principal.tenant, 'Rwanda', profile=profile)
+        auth.authorize(principal, 'investigation:create', principal.tenant, 'Rwanda', profile=current_profile())
         if not idempotency_key or not 8 <= len(idempotency_key) <= 128:
             raise ApiError(422, 'IDEMPOTENCY_KEY_REQUIRED', 'A bounded Idempotency-Key header is required')
         catalog = Catalog(catalog_path, principal.tenant, principal.subject)
@@ -188,7 +195,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
     @app.get('/v1/jobs/{run_id}')
     def job_status(run_id: str, request: Request):
         principal = request.state.principal
-        auth.authorize(principal, 'investigation:read', principal.tenant, 'Rwanda', profile=profile)
+        auth.authorize(principal, 'investigation:read', principal.tenant, 'Rwanda', profile=current_profile())
         jobs = JobStore(audit_path)
         catalog = Catalog(catalog_path, principal.tenant, principal.subject)
         try:
@@ -213,7 +220,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
     @app.post('/v1/investigations/{run_id}/resume', status_code=202)
     def resume_investigation(run_id: str, request: Request, background_tasks: BackgroundTasks):
         principal = request.state.principal
-        auth.authorize(principal, 'investigation:create', principal.tenant, 'Rwanda', profile=profile)
+        auth.authorize(principal, 'investigation:create', principal.tenant, 'Rwanda', profile=current_profile())
         catalog = Catalog(catalog_path, principal.tenant, principal.subject)
         jobs = JobStore(audit_path)
         try:
@@ -240,7 +247,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
     def permitted_run(request, run_id, district):
         principal = request.state.principal
         geography = district or 'Rwanda'
-        auth.authorize(principal, 'investigation:read', principal.tenant, geography, profile=profile)
+        auth.authorize(principal, 'investigation:read', principal.tenant, geography, profile=current_profile())
         if not re.fullmatch(r'[A-Za-z0-9_-]{1,128}', run_id):
             raise ApiError(404, 'NOT_FOUND', 'Investigation unavailable')
         catalog = Catalog(catalog_path, principal.tenant, principal.subject)
@@ -343,7 +350,7 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
         principal = request.state.principal
         geography = district or 'Rwanda'
         # Running an agent consumes provider budget, so require the creation permission in scope.
-        auth.authorize(principal, 'investigation:create', principal.tenant, geography, profile=profile)
+        auth.authorize(principal, 'investigation:create', principal.tenant, geography, profile=current_profile())
         catalog, _record, geography = permitted_run(request, run_id, geography)
         try:
             context = agents.context_for_investigation(
@@ -399,10 +406,10 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
             if body.report_ast_sha256 != rec.ast_sha256:
                 raise ApiError(409, 'REPORT_CHANGED', 'Report snapshot changed; review the current version')
             principal = request.state.principal
-            auth.authorize(principal, 'report:review', rec.tenant, rec.geography, author=rec.author, profile=profile)
+            auth.authorize(principal, 'report:review', rec.tenant, rec.geography, author=rec.author, profile=current_profile())
             try:
                 decision = store.review(report_id, body.version, principal.subject, principal.roles,
-                                        body.decision, body.reason, profile=profile)
+                                        body.decision, body.reason, profile=current_profile())
             finally:
                 audit_event(principal.subject, 'report.review', {
                     'report_id': report_id, 'version': body.version, 'action': body.decision,
@@ -428,10 +435,10 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
         try:
             rec = store.get(report_id, body.version)
             principal = request.state.principal
-            auth.authorize(principal, 'report:publish', rec.tenant, rec.geography, author=rec.author, profile=profile)
+            auth.authorize(principal, 'report:publish', rec.tenant, rec.geography, author=rec.author, profile=current_profile())
             try:
                 store.publish(report_id, body.version, principal.subject, principal.roles,
-                              artifacts=artifact_store(), profile=profile)
+                              artifacts=artifact_store(), profile=current_profile())
             except ReportAccessDenied:
                 audit_event(principal.subject, 'report.publish_denied', {
                     'report_id': report_id, 'version': body.version, 'trace_id': request.state.trace_id})
@@ -457,10 +464,10 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
             if principal.tenant != rec.tenant:
                 # Cross-tenant access must be indistinguishable from a missing report.
                 raise ApiError(404, 'NOT_FOUND', 'Report unavailable')
-            auth.authorize(principal, 'investigation:read', rec.tenant, district or rec.geography, profile=profile)
+            auth.authorize(principal, 'investigation:read', rec.tenant, district or rec.geography, profile=current_profile())
             try:
                 body, media_type = store.export(report_id, version, principal, format,
-                                                artifacts=artifact_store(), profile=profile)
+                                                artifacts=artifact_store(), profile=current_profile())
             except ReportAccessDenied:
                 audit_event(principal.subject, 'report.export_denied', {
                     'report_id': report_id, 'version': version, 'format': format,
@@ -505,25 +512,61 @@ def create_app(verifier, catalog_path, audit_path, agent_gateway=None, agent_cle
             raise ApiError(403, 'FORBIDDEN', 'Admin permission required for MFA toggle')
 
 
+    @app.get('/v1/admin/mfa/status')
     @app.get('/admin/mfa/status')
     async def mfa_status(request: Request):
         """Get current MFA status for admin panel."""
-        profile = get_config()
+        profile = current_profile()
         principal = request.state.principal
         _require_admin(principal, profile)
         return auth.get_mfa_status(profile)
 
 
+    @app.post('/v1/admin/mfa/toggle')
     @app.post('/admin/mfa/toggle')
     async def mfa_toggle(request: Request, body: MfaToggleRequest):
         """Admin toggle to enable/disable MFA (HACKATHON_DEMO only)."""
-        profile = get_config()
+        profile = current_profile()
         principal = request.state.principal
         _require_admin(principal, profile)
         result = auth.set_mfa_enabled(body.enabled, profile)
         if not result['success']:
             raise ApiError(403, 'ADMIN_TOGGLE_FAILED', result['error'])
         return result
+
+
+    class BypassToggleRequest(BaseModel):
+        model_config = ConfigDict(extra='forbid')
+        bypass_independent_statistician: bool | None = None
+        bypass_human_approvals: bool | None = None
+        bypass_production_infra: bool | None = None
+
+
+    @app.get('/v1/admin/bypass/status')
+    @app.get('/admin/bypass/status')
+    async def bypass_status(request: Request):
+        """Current demo bypass toggles (always fully disabled in production)."""
+        profile = current_profile()
+        principal = request.state.principal
+        _require_admin(principal, profile)
+        return profiles.get_bypass_status(profile)
+
+
+    @app.post('/v1/admin/bypass/toggle')
+    @app.post('/admin/bypass/toggle')
+    async def bypass_toggle(request: Request, body: BypassToggleRequest):
+        """Flip one or more demo bypass toggles without restarting the demo."""
+        profile = current_profile()
+        principal = request.state.principal
+        _require_admin(principal, profile)
+        requested = {k: v for k, v in body.model_dump().items() if v is not None}
+        if not requested:
+            raise ApiError(422, 'NO_TOGGLE', 'Provide at least one bypass toggle')
+        for name, enabled in requested.items():
+            result = profiles.set_bypass(name, enabled, profile)
+            if not result['success']:
+                raise ApiError(403, 'BYPASS_TOGGLE_FAILED', result['error'])
+        return {'success': True, 'bypass': profiles.get_bypass_status(profile)}
 
     return app
 
