@@ -35,6 +35,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import AccountRequests from './pages/AccountRequests';
+import DataUpload from './pages/DataUpload';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -81,6 +82,7 @@ const AuthenticatedApp = () => {
           <Route path="/investigations" element={<LegacyInvestigationRedirect />} />
           <Route path="/nst2" element={<Nst2Indicators />} />
           <Route path="/financial-inclusion" element={<FinancialInclusion />} />
+          <Route path="/data-upload" element={<DataUpload />} />
         </Route>
         <Route element={<RoleGuard roles={["platform_admin", "programme_owner"]} />}>
           <Route path="/programmes" element={<ProgrammeManagement />} />

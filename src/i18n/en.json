@@ -25,6 +25,7 @@
     "ai-engine": "AI Engine",
     "nst2": "National Goals",
     "financial-inclusion": "Financial Inclusion",
+    "data-upload": "Data upload",
     "evidence": "Programme Results",
     "programmes": "Programme Management",
     "cooperatives": "Cooperatives",
@@ -59,6 +60,7 @@
       "ai-engine": "Choose a district and let the AI Engine examine available data, check sources, and prepare findings for review.",
       "nst2": "This page shows Rwanda's goals for 2024 to 2029 and how close the country is to reaching them.",
       "financial-inclusion": "This page separates the live BNR provider dashboard from NISR FinScope household-survey evidence, so their different measures stay clear.",
+      "data-upload": "Upload approved aggregate evidence as a draft. A platform administrator checks and publishes it before it can change public charts.",
       "evidence": "This page shows how the aid programmes are doing: money sent, families reached, and results.",
       "programmes": "This is the place to manage a programme: field agents, program members, jobs, and payments.",
       "cooperatives": "Find cooperatives near you. A cooperative is a group of people who work together. You can ask to join one.",
@@ -115,6 +117,10 @@
       "financial-guide": { "title": "Read the figures safely", "text": "Use the source labels before comparing figures. The BNR dashboard is live provider information; FinScope is a survey of adults." },
       "financial-bnr": { "title": "BNR live dashboard", "text": "Use this embedded official dashboard for the current provider-reported view. If it cannot load here, open it in a new tab." },
       "financial-finscope": { "title": "NISR FinScope evidence", "text": "These charts show published FinScope survey estimates and trends. They are not a copy of the BNR dashboard." },
+      "upload-intro": { "title": "Safe uploads", "text": "This page accepts published aggregate indicators only. Personal, household, and customer data do not belong here." },
+      "upload-form": { "title": "Submit a draft", "text": "Add the official source details and use the CSV template. The file is checked before it is sent for review." },
+      "upload-preview": { "title": "Check the rows", "text": "Review the first parsed rows before submitting. Fix any source, period, or value error in the file first." },
+      "upload-review": { "title": "Approval controls", "text": "Drafts do not change public charts. A platform administrator can approve or reject them with a recorded note." },
       "analysis-data-note": {
         "title": "The amber warning icon",
         "text": "An amber triangle under a chart opens a data note. It tells you, in plain words, where our figure differs from the one NISR published, or why a year is missing, so you know how far to trust it. Click it to read the note."

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Cell, Pie, PieChart, Tooltip } from "recharts";
 import Card from "@/components/analyst/Card";
 import { DASHBOARD_SOURCES } from "@/data/dashboardEvidence";
-import { mapFinancialAccessRows } from "@/data/financialInclusion";
+import { mapFinancialAccessRows, selectCompleteNationalAccessStrand } from "@/data/financialInclusion";
 import { loadFinancialInclusionData } from "@/lib/financialInclusion";
 
 export default function AccessCard({ province }) {
@@ -15,8 +15,9 @@ export default function AccessCard({ province }) {
     loadFinancialInclusionData()
       .then(({ observations: loaded, sources }) => {
         if (!active) return;
-        setObservations(loaded.filter((row) => row.source_id === "nisr-finscope-2024-report"));
-        setSource(sources.find((item) => item.source_id === "nisr-finscope-2024-report") || null);
+        const selected = selectCompleteNationalAccessStrand(loaded);
+        setObservations(selected?.rows || []);
+        setSource(sources.find((item) => item.source_id === selected?.sourceId) || null);
         setLoadState("ready");
       })
       .catch(() => { if (active) setLoadState("error"); });

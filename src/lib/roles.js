@@ -6,6 +6,7 @@ import {
   FileText,
   Landmark,
   Layers,
+  Upload,
   Map as MapIcon,
   BrainCircuit,
   ShieldCheck,
@@ -81,6 +82,7 @@ export const NAV_GROUPS = [
       { label: "Find a Job", to: "/jobs", icon: Briefcase, roles: ["platform_admin", "job_applicant"] },
       { label: "USSD Control", to: "/ussd-control", icon: Smartphone, roles: ["platform_admin"] },
       { label: "Account requests", to: "/account-requests", icon: Users, roles: ["platform_admin"] },
+      { label: "Data upload", to: "/data-upload", icon: Upload, roles: ["platform_admin", "nisr_analyst"] },
     ],
   },
   {

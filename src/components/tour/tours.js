@@ -42,6 +42,7 @@ export const PAGE_STEPS = {
   "/map": [step("map-layers"), step("map-canvas"), step("map-legend"), step("map-detail"), step("map-list")],
   "/ussd-control": [step("ussd-stats"), step("ussd-sessions"), step("ussd-errors"), step("ussd-blocked"), step("ussd-audit")],
   "/account-requests": [step("account-request-list")],
+  "/data-upload": [step("upload-intro"), step("upload-form"), step("upload-preview"), step("upload-review")],
   "/datasets": [step("ds-intro"), step("ds-list"), step("ds-dictionary")],
 };
 

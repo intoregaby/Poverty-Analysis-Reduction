@@ -25,6 +25,7 @@
     "ai-engine": "Moteri y'ubwenge buhangano",
     "nst2": "Intego z'igihugu",
     "financial-inclusion": "Kwinjira muri serivisi z'imari",
+    "data-upload": "Kohereza amakuru",
     "evidence": "Ibyavuye muri gahunda",
     "programmes": "Imicungire ya gahunda",
     "cooperatives": "Amakoperative",
@@ -59,6 +60,7 @@
       "ai-engine": "Hitamo akarere ureke moteri y'ubwenge isuzume amakuru n'amasoko.",
       "nst2": "Uru rupapuro rugaragaza intego z'u Rwanda n'urwego tugezeho.",
       "financial-inclusion": "Uru rupapuro rutandukanya imibare ya BNR iva ku batanga serivisi n'ubushakashatsi bwa NISR FinScope kugira ngo ibipimo bitavanganywa.",
+      "data-upload": "Ohereza amakuru yemewe y'incamake nk'inyandiko itegereje kugenzurwa. Umuyobozi wa platform arayagenzura mbere y'uko ahindura imbonerahamwe.",
       "evidence": "Uru rupapuro rugaragaza uko gahunda z'ubufasha zikora n'abantu zagezeho.",
       "programmes": "Aha ni ho ucunga abakozi bo mu murima, abanyamuryango, akazi n'ubwishyu.",
       "cooperatives": "Shaka amakoperative akwegereye kandi usabe kuyinjiramo.",
@@ -115,6 +117,10 @@
       "financial-guide": { "title": "", "text": "" },
       "financial-bnr": { "title": "", "text": "" },
       "financial-finscope": { "title": "", "text": "" },
+      "upload-intro": { "title": "", "text": "" },
+      "upload-form": { "title": "", "text": "" },
+      "upload-preview": { "title": "", "text": "" },
+      "upload-review": { "title": "", "text": "" },
       "analysis-data-note": {
         "title": "",
         "text": ""
