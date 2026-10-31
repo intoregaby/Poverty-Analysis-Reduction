@@ -6,6 +6,7 @@ import Brand from "@/components/layout/Brand";
 import GuidedTour from "@/components/tour/GuidedTour";
 import { useAuth } from "@/lib/AuthContext";
 import { useDemoAuth, useRole } from "@/lib/DemoAuthContext";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 
 export default function DashboardShell() {
   const [open, setOpen] = useState(false);
@@ -27,13 +28,16 @@ export default function DashboardShell() {
         <div className="min-w-0 flex-1">
           <div className="flex h-14 items-center justify-between border-b border-hairline bg-white px-4 lg:hidden">
             <Brand />
-            <button
-              onClick={() => setOpen(true)}
-              className="grid h-8 w-8 place-items-center rounded-md border border-hairline text-sub"
-              aria-label="Open menu"
-            >
-              <Menu className="h-4 w-4" />
-            </button>
+            <div className="flex items-center gap-2">
+              <LanguageSwitcher />
+              <button
+                onClick={() => setOpen(true)}
+                className="grid h-8 w-8 place-items-center rounded-md border border-hairline text-sub"
+                aria-label="Open menu"
+              >
+                <Menu className="h-4 w-4" />
+              </button>
+            </div>
           </div>
           <Outlet context={{ startTour }} />
         </div>

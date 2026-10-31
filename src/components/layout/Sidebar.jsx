@@ -11,6 +11,7 @@ import { GOV_TABS } from "@/lib/govArea";
 import { MEMBER_TABS } from "@/lib/memberTabs";
 import { requestStats, useActionRequests } from "@/lib/actionRequests";
 import { useProgrammeScope } from "@/lib/programmeScope";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 
 const SUB_TABS = { "/programmes": PM_TABS, "/government": GOV_TABS, "/beneficiary": MEMBER_TABS };
 
@@ -86,6 +87,7 @@ export default function Sidebar({ onStartTour }) {
         ))}
       </nav>
       <div className="border-t border-hairline px-3 py-3">
+        <div className="mb-2 flex justify-end"><LanguageSwitcher /></div>
         <button type="button" data-tour="take-tour" onClick={onStartTour} className="flex w-full items-center gap-2 rounded-md px-2 py-2 text-[12.5px] text-sub hover:bg-canvas hover:text-ink">
           <CircleHelp className="h-4 w-4" strokeWidth={1.75} />
           <span>{t("common.takeTour")}</span>
